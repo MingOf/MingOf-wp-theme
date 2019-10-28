@@ -1,0 +1,57 @@
+.timeline-container {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 3%;
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 102%;
+    background: rgba($highlightColor, 0.2);
+    z-index: -1;
+    margin-left: -20px;
+  }
+  .tl-year-title {
+    margin-bottom: 20px;
+    position: relative;
+    color: $highlightColor;
+  }
+  .tl-year-title::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-left: -22px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: $highlightColor;
+    border-radius: 50%;
+  }
+  .tl-posts-container {
+    margin-bottom: 30px;
+    .tl-post-item {
+      position: relative;
+      margin-bottom: 20px;
+      &::before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 6px;
+        height: 6px;
+        background: $highlightColor;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        margin-left: -22px;
+      }
+      .tl-post-date {
+        font-size: 14px;
+        margin-right: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+/*
+Theme Name: MingOf
+Theme URI: https://linyqiang.com
+Author: MingOf
+Author URI: https://linyqiang.com
+Description: no_feature
+Requires at least: WordPress 4.9.6
+Version: 0.2
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: mingof
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+ */
+@charset "utf-8";
+
+/* 一些基础样式和变量*/
+@import "assets/sass/normalize";
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  background-color: $bgColorBase;
+  z-index: 2;
+}
+/* header*/
+@import "assets/sass/header";
+#mastcontainer {
+  margin: 0 0 0 380px;
+  min-width: 900px;
+  position: relative;
+  transform: translate3d(0, -30px, 0);
+
+  a:hover {
+    color: $highlightColor;
+  }
+
+  &::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /*文章列表容器*/
+  @import "assets/sass/postsContainer";
+
+  /*侧边栏*/
+  @import "assets/sass/sidebar";
+
+  /*时间线页面*/
+  @import "assets/sass/timeline";
+
+  /*分页按钮*/
+  @import "assets/sass/pageNav";
+
+  /*404 界面*/
+  @import "assets/sass/notFound";
+
+  /*关于*/
+  @import "assets/sass/about";
+
+  /*评论*/
+  @import "assets/sass/comments";
+}
+
+/*footer*/
+@import "assets/sass/footer";

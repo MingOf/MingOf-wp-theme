@@ -12,7 +12,7 @@ register_sidebar([
 /*添加CSS和脚本*/
 function add_theme_scripts() {
     wp_enqueue_style('animation', get_template_directory_uri().'/assets/css/animation.css');
-    wp_enqueue_style('normalize', get_template_directory_uri()."/assets/css/normalize.css", [], null);
+//    wp_enqueue_style('normalize', get_template_directory_uri()."/assets/css/normalize.css", [], null);
     wp_enqueue_style("typo", get_template_directory_uri()."/assets/css/typo.css", [], null);
     wp_enqueue_style('style', get_stylesheet_uri());
 //    wp_enqueue_script('canvas-nest', get_template_directory_uri().'/assets/js/canvas-nest.js',[], null, true);

@@ -1,0 +1,29 @@
+.page-nav {
+  width: 70%;
+  margin: 80px auto 30px auto;
+  text-align: center;
+  border-top: 1px solid #eee;
+  .page-numbers {
+    display: inline-block;
+    margin: -1px 5px 0 5px;
+    padding: 0 10px;
+    border-top: 1px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+    &.current {
+      background-color: $highlightColor;
+      color: #fff;
+    }
+    &:hover:not(.current) {
+      border-top: 1px solid $highlightColor;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      bottom: -5px;
+      left: -10px;
+    }
+  }
+}
