@@ -14,6 +14,11 @@
     max-height: 150px;
     margin: 0 auto 0;
     overflow: hidden;
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 50%;
+    }
     img {
       transition: transform .3s;
       width: 100%;
