@@ -1,6 +1,11 @@
 #sidebar {
   margin-left: 67%;
   padding: 3% 3% 0 0;
+  @media screen and (max-width: 1200px) {
+    padding: 3%;
+    margin: 0;
+    float: left;
+  }
   .sidebar-widget {
     margin-bottom: 3%;
     form {

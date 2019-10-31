@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
        var x = e.pageX,
            y = e.pageY;
 
-       i.style.zIndex = 9999999999999999999999999999999999999;
+       i.style.zIndex = 9999;
        i.style.top = (y - 20) + 'px';
        i.style.left = x + 'px';
        i.style.position = "absolute";
@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
        function animate () {
            i.style.top = parseInt(i.style.top) - 1 + 'px';
            i.style.opacity -= 0.05;
-
-           requestAnimationFrame(animate);
            if(parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
                body.removeChild(i);
+               return;
            }
+           requestAnimationFrame(animate);
        }
        requestAnimationFrame(animate);
    });
