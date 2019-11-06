@@ -20,6 +20,6 @@
         </div>
         <nav id="nav"><?php wp_nav_menu()?></nav>
 <!--        --><?php //get_sidebar();?>
-        <?php get_footer();?>
+        <?php get_template_part('footer');?>
     </header>
 

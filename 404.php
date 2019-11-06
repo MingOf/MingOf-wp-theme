@@ -1,3 +1,4 @@
+<?php /*404*/?>
 <?php get_header();?>
 <section id="mastcontainer" class="typo">
     <div id="overlay"></div>
@@ -11,5 +12,6 @@
         <p class="not-found-desc"><?php _e("这里没得东西",'mingof')?></p>
     </div>
 </section>
+<?php get_template_part('footer', 'm');?>
 <?php wp_footer() ?>
 

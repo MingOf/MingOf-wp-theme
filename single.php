@@ -1,3 +1,4 @@
+<?php /*文章模板*/?>
 <?php get_header();?>
 <section id="mastcontainer" class="typo">
     <div id="overlay"></div>
@@ -53,6 +54,7 @@
     </section>
     <?php get_sidebar("侧边栏") ?>
 </section>
+<?php get_template_part('footer', 'm');?>
 <?php wp_footer() ?>
 
 

@@ -1,3 +1,4 @@
+<?php /*时间线归档页面*/?>
 <?php get_header();?>
 <section id="mastcontainer" class="typo">
     <div id="overlay"></div>
@@ -146,5 +147,6 @@
     <?php endif;?>
     </div>
 </section>
+<?php get_template_part('footer', 'm');?>
 <?php wp_footer() ?>
 

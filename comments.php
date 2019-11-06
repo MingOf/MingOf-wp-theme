@@ -1,3 +1,4 @@
+<?php /*评论模板*/?>
 <?php
 if(post_password_required()) return;
 if(!comments_open()) return;

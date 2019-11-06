@@ -42,7 +42,8 @@
             ]);?>
         </div>
     </section>
-    <?php get_sidebar() ?>
+    <?php get_sidebar(); ?>
 </section>
-<?php wp_footer() ?>
+<?php get_template_part('footer', 'm');?>
+<?php wp_footer(); ?>
 
