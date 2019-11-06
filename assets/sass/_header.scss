@@ -74,6 +74,7 @@
         height: 1px;
         box-shadow: inset 0px -1px 1px $subFontColor;
         span {
+          // 扩展可点击区域
           display: block;
           height: 2em;
           position: absolute;
@@ -123,8 +124,14 @@
     #nav {
       display: none;
     }
-    .footer, .description {
+    .footer {
       display: none;
+    }
+    .description {
+      padding: 0;
+      flex: auto;
+      text-align: left;
+      text-indent: 1.5em;
     }
     h1,h2 {
       padding: 0;
