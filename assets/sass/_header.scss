@@ -6,9 +6,6 @@
   /*width: 20%;*/
   width: 380px;
   z-index: 1;
-  @media screen and (max-width: 1200px) {
-    width: 280px;
-  }
   a:hover {
     color: $highlightColor;
   }
@@ -20,7 +17,6 @@
     &::after {
       content: "";
       display: block;
-      margin-top: 50%;
     }
     img {
       transition: transform .3s;
@@ -49,5 +45,89 @@
   .menu .menu-item {
     margin-bottom: 0.5em;
     position: relative;
+  }
+  .nav-toggle {
+    display: none;
+    position: relative;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 280px;
+  }
+  @media screen and (max-width: 1000px) {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 1px 0 3px #ccc;
+    background-color: rgba($bgColorBase, 0.85);
+    #headering {
+      display: flex;
+      padding: 0.5em 3%;
+      justify-content: space-between;
+      align-items: center;
+      .nav-toggle {
+        content: '';
+        display: block;
+        width: 2em;
+        height: 1px;
+        box-shadow: inset 0px -1px 1px $subFontColor;
+        span {
+          display: block;
+          height: 2em;
+          position: absolute;
+          width: 100%;
+          top: -2em;
+          padding: 1em;
+          bottom: -1em;
+          right: -1em;
+          left: -1em;
+        }
+        &::after, &::before {
+          content: " ";
+          display: block;
+          width: 2em;
+          height: 1px;
+          box-shadow: inset 0px -1px 1px $subFontColor;
+          transition: all 0.3s;
+        }
+        // 使用background-color 1px会有差异 的问题
+        &.nav-close {
+          &::after {
+            transform: translateY(0.5em);
+
+          }
+          &::before {
+            transform: translateY(-0.5em);
+          }
+        }
+        &.nav-open {
+          height: 0;
+          &::after {
+            transform: rotate(45deg);
+            margin-top: -1px;
+          }
+          &::before {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+    #logo {
+      display: none;
+    }
+    #name {
+      text-align: left;
+    }
+    #nav {
+      display: none;
+    }
+    #footer, .description {
+      display: none;
+    }
+    h1,h2 {
+      padding: 0;
+    }
   }
 }

@@ -6,6 +6,10 @@
     margin: 0;
     float: left;
   }
+  @media screen and (max-width: 1000px) {
+    padding: 3%;
+    float: none;
+  }
   .sidebar-widget {
     margin-bottom: 3%;
     form {
@@ -55,6 +59,13 @@
     #wp-calendar {
       tbody  a{
         color: $highlightColor;
+      }
+      table-layout: fixed;
+      width: 100%;
+      @media screen and (max-width: 1000px) {
+        th, td, caption {
+          border: 0 none;
+        }
       }
     }
     .tagcloud {

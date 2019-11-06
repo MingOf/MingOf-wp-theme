@@ -72,8 +72,9 @@ function loadImg(url, cb) {
 /* 鼠标点击动画 */
 var a_idx = 0;
 document.addEventListener("DOMContentLoaded", function () {
-   var body = document.body;
-   body.addEventListener("click", (e)=> {
+    var body = document.body;
+    if(body.clientWidth <= 1000) return;
+    body.addEventListener("click", (e)=> {
        var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"];
 
        var i = document.createElement('span');
@@ -103,5 +104,24 @@ document.addEventListener("DOMContentLoaded", function () {
            requestAnimationFrame(animate);
        }
        requestAnimationFrame(animate);
-   });
+    });
 });
+
+function toggleNav () {
+    var toggle = document.getElementsByClassName('nav-toggle')[0];
+    var nav = document.getElementById('nav');
+    toggle.addEventListener("click", () => {
+        if(window.getComputedStyle(nav).display === "block") {
+            nav.style.display = "none";
+            toggle.removeClass("nav-open");
+            toggle.addClass("nav-close");
+        } else {
+            nav.style.display = "block";
+            toggle.removeClass("nav-close");
+            toggle.addClass("nav-open");
+
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', toggleNav);

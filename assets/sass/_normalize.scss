@@ -41,6 +41,9 @@ input:focus, textarea:focus {
 html {
   background-color: $bgColorBase;
   font-family: "webfont","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+  @media screen and (max-width: 1000px) {
+    font-size: 14px;
+  }
 }
 code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important;
@@ -67,11 +70,8 @@ button {
   overflow: hidden;
 }
 pre {
-  //overflow: hidden;
-  //&:hover,&:focus {
-  //  width: 100%;
-  //  width: min-content;
-  //}
-  white-space: pre-wrap;
+  overflow-x: auto;
+}
+code {
 }
 

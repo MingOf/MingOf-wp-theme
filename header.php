@@ -16,6 +16,7 @@
 <!--            <h1><a href="--><?php //echo get_option('home');?><!--">--><?php //bloginfo('name');?><!--</a></h1>-->
             <h1 id="name"><a href="<?php echo get_option('home');?>">MingOf</a></h1>
             <div class="description"><?php bloginfo("description");?></div>
+            <div class="nav-toggle nav-close"><span></span></div>
         </div>
         <nav id="nav"><?php wp_nav_menu()?></nav>
 <!--        --><?php //get_sidebar();?>

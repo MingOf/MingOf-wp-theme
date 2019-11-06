@@ -5,6 +5,10 @@
   @media screen and (max-width: 1200px){
     width: auto;
   }
+  @media screen and (max-width: 1000px) {
+    width: auto;
+    float: none;
+  }
   .posts-cate-title {
     text-align: center;
     margin: 0 0 30px 0;
