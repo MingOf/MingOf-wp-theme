@@ -2,13 +2,6 @@
   width: 61%;
   padding: 3%;
   float: left;
-  @media screen and (max-width: 1200px){
-    width: auto;
-  }
-  @media screen and (max-width: 1000px) {
-    width: auto;
-    float: none;
-  }
   .posts-cate-title {
     text-align: center;
     margin: 0 0 30px 0;
@@ -58,6 +51,13 @@
       }
     }
     .post-excerpt {
+      .post-thumbnail {
+        float: left;
+        width: 380px;
+        height: 150px;
+        overflow: hidden;
+        padding: 0 1em 0 0;
+      }
       .read-more {
         padding: 5px;
         border: 2px solid transparent;
@@ -79,6 +79,11 @@
           }
         }
       }
+      &::after {
+        clear: both;
+        content: "";
+        display: block;
+      }
     }
   }
   .post-switch {
@@ -94,6 +99,18 @@
     .post-next .next span
     {
       margin-right: 1.0em;
+    }
+  }
+  @media screen and (max-width: 1200px){
+    width: auto;
+  }
+  @media screen and (max-width: 1000px) {
+    width: auto;
+    float: none;
+    .post-excerpt {
+      .post-thumbnail {
+        display: none;
+      }
     }
   }
 }

@@ -7,23 +7,28 @@
             while( have_posts()) {
 //                    获取日志信息，并且将信息存入全局变量 $post 中
                 the_post();
-                ?>
-                <div class="post-item">
-                    <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
-                    <div class="post-meta">
-                        <span class="post-meta-opt post-meta-cate"><?php _e("分类","mingof")?>：<? the_category(','); ?></span>
-                        <span class="post-meta-opt post-meta-auth"><?php _e("作者","mingof")?>：<? the_author(); ?></span>
-                        <span class="post-meta-opt post-meta-time"><?php _e("时间","mingof")?>：<? the_time('Y-m-d'); ?></span>
-                        <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
-                    </div>
-                    <div class="post-excerpt">
-                        <?php
-                        the_excerpt();
-                        ?>
-                    </div>
-                    <div class="divider $post_"></div>
+        ?>
+        <div class="post-item">
+            <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
+            <div class="post-meta">
+                <span class="post-meta-opt post-meta-cate"><?php _e("分类","mingof")?>：<? the_category(','); ?></span>
+                <span class="post-meta-opt post-meta-auth"><?php _e("作者","mingof")?>：<? the_author(); ?></span>
+                <span class="post-meta-opt post-meta-time"><?php _e("时间","mingof")?>：<? the_time('Y-m-d'); ?></span>
+                <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
+            </div>
+            <article class="post-excerpt">
+                <?php if(has_post_thumbnail()):?>
+                <div class="post-thumbnail"><a href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a></div>
+                <?php endif;?>
+                <div>
+                    <?php
+                    the_excerpt();
+                    ?>
                 </div>
-                <?php
+            </article>
+            <div class="divider $post_"></div>
+        </div>
+        <?php
             }
         } else {
             echo 'nothing';
@@ -42,7 +47,7 @@
             ]);?>
         </div>
     </section>
-    <?php get_sidebar(); ?>
+    <?php get_sidebar("侧边栏"); ?>
 </section>
 <?php get_template_part('footer', 'm');?>
 <?php wp_footer(); ?>

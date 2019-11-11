@@ -9,7 +9,7 @@
   a:hover {
     color: $highlightColor;
   }
-  #logo {
+  #logo, .custom-logo {
     width: 100%;
     max-height: 150px;
     margin: 0 auto 0;
@@ -50,7 +50,7 @@
     display: none;
     position: relative;
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1400px) {
     width: 280px;
   }
   @media screen and (max-width: 1000px) {

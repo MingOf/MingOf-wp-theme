@@ -12,7 +12,7 @@
 <body>
     <header id="header">
         <div id="headering">
-            <div id="logo"><img src="<?php echo get_template_directory_uri().'/assets/image/logo.jpg'?>" alt="logo"></div>
+            <div id="logo"><?php if(has_custom_logo()) { the_custom_logo();} else { echo '<img src='.'"'.get_template_directory_uri().'/assets/image/logo.jpg'.'"'.'alt="logo"/>';}?></div>
 <!--            <h1><a href="--><?php //echo get_option('home');?><!--">--><?php //bloginfo('name');?><!--</a></h1>-->
             <h1 id="name"><a href="<?php echo get_option('home');?>">MingOf</a></h1>
             <div class="description"><?php bloginfo("description");?></div>

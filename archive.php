@@ -46,11 +46,16 @@
                     <span class="post-meta-opt post-meta-time"><?php _e("时间","mingof")?>：<? the_time('Y-m-d'); ?></span>
                     <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
                 </div>
-                <div class="post-excerpt">
-                    <?php
-                    the_excerpt();
-                    ?>
-                </div>
+                <article class="post-excerpt">
+                    <?php if(has_post_thumbnail()):?>
+                        <div class="post-thumbnail"><?php the_post_thumbnail();?></div>
+                    <?php endif;?>
+                    <div>
+                        <?php
+                        the_excerpt();
+                        ?>
+                    </div>
+                </article>
                 <div class="divider"></div>
             </div>
         <?php

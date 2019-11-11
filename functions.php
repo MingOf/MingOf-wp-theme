@@ -38,3 +38,15 @@ add_filter('excerpt_more', 'new_excerpt_more');
 register_nav_menus([
     'header-menu' => __('导航菜单','mingof')
 ]);
+
+function theme_setup() {
+    add_theme_support('custom-logo', array(
+        'width'          => 380,
+        'height'         => 150,
+        'flex-width'     => true,
+        'flex-height'    => true
+    ));
+    add_theme_support( 'post-thumbnails', array('post'));
+    add_theme_support( 'title-tag' );
+}
+add_action('after_setup_theme', 'theme_setup');
