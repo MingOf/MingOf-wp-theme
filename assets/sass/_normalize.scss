@@ -33,6 +33,23 @@ a:link,a:visited,a:active {
   background-color: rgba(51, 51, 51, 0.31);
   color: #fff;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.3);
+  border-radius: 3px;
+  background-color: $bgColorBase;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #bebebe;
+  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  //background: rgba($highlightColor,0.4);
+}
+
 input:focus, textarea:focus {
 
   outline: none;

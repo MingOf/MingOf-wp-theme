@@ -3,11 +3,16 @@
   background-color: $bgColorHeader;
   top: 0;
   height: 100%;
-  /*width: 20%;*/
+  overflow: auto;
   width: 380px;
   z-index: 1;
   a:hover {
     color: $highlightColor;
+  }
+  &::after {
+    content: '';
+    display: block;
+    height: 6em;
   }
   #logo, .custom-logo {
     width: 100%;
@@ -58,13 +63,18 @@
     width: 100%;
     display: flex;
     height: auto;
+    min-height: 0;
     flex-direction: column;
     border-bottom: 1px solid #ccc;
     box-shadow: 1px 0 3px #ccc;
+    overflow: hidden;
     background-color: rgba($bgColorBase, 0.85);
+    &::after {
+      display: none;
+    }
     #headering {
       display: flex;
-      padding: 0.5em 3%;
+      padding: 0.5em 1em;
       justify-content: space-between;
       align-items: center;
       .nav-toggle {

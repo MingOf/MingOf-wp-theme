@@ -107,21 +107,54 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function toggleNav () {
+function initializeHeader () {
     var toggle = document.getElementsByClassName('nav-toggle')[0];
     var nav = document.getElementById('nav');
+    var header = document.getElementById('header');
+    var footer = document.getElementsByClassName('footer')[0];
+
+    /*移动端 header 导航折叠*/
+    function unfoldHeader () {
+        nav.style.display = "block";
+        toggle.removeClass("nav-close");
+        toggle.addClass("nav-open");
+        header.style.overflow = 'auto';
+        header.style.height = '100%';
+    }
+    function foldHeader () {
+        nav.style.display = "none";
+        toggle.removeClass("nav-open");
+        toggle.addClass("nav-close");
+        header.style.overflow = '';
+        header.style.height = 'auto';
+    }
+
+    /*动态设置 PC 端 footer 的宽度，避免溢出 header 的包裹*/
+    function setFooter () {
+        footer.style.width = header.clientWidth + 'px';
+    }
+    function unsetFooter () {
+        footer.style.width = '';
+    }
     toggle.addEventListener("click", () => {
         if(window.getComputedStyle(nav).display === "block") {
-            nav.style.display = "none";
-            toggle.removeClass("nav-open");
-            toggle.addClass("nav-close");
+            foldHeader();
         } else {
-            nav.style.display = "block";
-            toggle.removeClass("nav-close");
-            toggle.addClass("nav-open");
-
+            unfoldHeader();
         }
     });
+
+    /*响应resize事件*/
+    window.addEventListener("resize", () => {
+       if(document.body.clientWidth > 1000) {
+           unfoldHeader();
+           setFooter();
+       } else {
+           foldHeader();
+           unsetFooter();
+       }
+    });
+    setFooter();
 }
 
-document.addEventListener('DOMContentLoaded', toggleNav);
+document.addEventListener('DOMContentLoaded', initializeHeader);

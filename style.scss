@@ -34,13 +34,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
   min-width: 900px;
   position: relative;
   transform: translate3d(0, -30px, 0);
+  word-break: break-word;
   //overflow: hidden;
   @media screen and (max-width: 1400px){
     margin: 0 0 0 280px;
     min-width: 600px;
   }
   @media screen and (max-width: 1000px) {
-    margin: 4em auto auto auto;
+    margin: auto;
+    padding-top: 4em;
     min-width: auto;
   }
   a:hover {

@@ -2,17 +2,39 @@
 .footer {
   clear: both;
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0; right: 0;
-  padding: 30px;
+  left: 0;
   margin: 0 auto;
+  height: 4em;
+  padding: 1em 0;
+  background: rgba($bgColorHeader, 0.8);
   @media screen and (max-width: 1000px) {
     display: none;
   }
 }
+body {
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    min-height: 100%;
+    &::after {
+      content: "";
+      display: block;
+      height: 2em;
+    }
+  }
+}
+html {
+  @media screen and (max-width: 1000px) {
+    height: 100%;
+  }
+}
 .footer-m {
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  height: 2em;
+  width: 100%;
   @media screen and (min-width: 1000px) {
     display: none;
   }
