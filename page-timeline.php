@@ -92,7 +92,6 @@
         <?php
             if($ellipsis) {
                 /*
-                 * 采用二分法
                  * 如果 当前页面 $paged <= 页面总数的一半，则 ellipsis 为 true , 表示省略号在页面总数一半的右边, 反之在
                  * 比如： 当前页面是 $paged == 4 , 页面总数 $pages_count = 13。那么 $ellipsis = (4 <= 13/2)
                  *

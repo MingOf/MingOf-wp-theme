@@ -13,9 +13,9 @@
         <div class="post-item">
             <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
             <div class="post-meta">
-                <span class="post-meta-opt post-meta-auth"><?php _e("作者","mingof")?>：<? the_author(); ?></span>
+<!--                <span class="post-meta-opt post-meta-auth">--><?php //_e("作者","mingof")?><!--：--><?// the_author(); ?><!--</span>-->
                 <span class="post-meta-opt post-meta-time"><?php _e("时间","mingof")?>：<? the_time('Y-m-d'); ?></span>
-                <span class="post-meta-opt post-meta-visited"><?php _e("访问次数","mingof")?>：<?php echo get_post_meta($post->ID,'_visited', true) ?></span>
+<!--                <span class="post-meta-opt post-meta-visited">--><?php //_e("访问次数","mingof")?><!--：--><?php //echo get_post_meta($post->ID,'_visited', true) ?><!--</span>-->
                 <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
             </div>
             <div class="post-content">
