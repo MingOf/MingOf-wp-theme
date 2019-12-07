@@ -53,22 +53,6 @@ function enterAnimation () {
 
 document.addEventListener('DOMContentLoaded', enterAnimation);
 
-
-/*
-* 图片预加载 防止闪烁
-* */
-function loadImg(url, cb) {
-    var img = new Image();
-    img.src = url;
-    if(img.complete) {
-        cb.call(img);
-    }
-    img.onload = function () {
-        console.log(img);
-        cb.call(img,img);
-    }
-}
-
 /* 鼠标点击动画 */
 var a_idx = 0;
 document.addEventListener("DOMContentLoaded", function () {
@@ -107,6 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/*
+* header 初始化
+* */
 function initializeHeader () {
     var toggle = document.getElementsByClassName('nav-toggle')[0];
     var nav = document.getElementById('nav');
@@ -158,3 +145,48 @@ function initializeHeader () {
 }
 
 document.addEventListener('DOMContentLoaded', initializeHeader);
+
+/*
+* 图片灯箱效果
+* */
+(function(){
+    if(document.body.clientWidth <= 1200) return;
+    function lightBox() {
+        const postContent   = document.getElementsByClassName('post-content')[0]; if(!postContent) return;
+        const imgs          = postContent.getElementsByTagName('img'); if(imgs.length <= 0) return;
+        const mastContainer = document.getElementById('mastcontainer');
+
+        const img           = document.createElement('img');
+        const lbContainer   = document.createElement('div');
+        lbContainer.appendChild(img);
+
+        function removeLightBox() {
+            lbContainer.removeClass('out');
+            lbContainer.removeClass('light-box');
+            mastContainer.removeChild(lbContainer);
+            lbContainer.removeEventListener('animationend', removeLightBox);
+        }
+        function addLightBox(imgSrc) {
+            img.src = imgSrc;
+            lbContainer.addClass('light-box');
+            mastContainer.appendChild(lbContainer);
+        }
+
+        for(let i = 0, len = imgs.length; i < len; i++) {
+            imgs[i].onclick = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                addLightBox(this.src);
+            }
+        }
+
+        lbContainer.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            lbContainer.addClass('out');
+            lbContainer.addEventListener('animationend', removeLightBox);
+        };
+
+    }
+    document.addEventListener('DOMContentLoaded', lightBox);
+}());
