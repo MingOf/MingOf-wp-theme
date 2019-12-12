@@ -13,7 +13,7 @@
     .divider {
       display: block;
       height: 1px;
-      background-color: #ccc;
+      background-color: $subColor;
       width: 8%;
       margin: 30px auto;
     }
@@ -97,8 +97,8 @@
     color: $highlightColor;
     font-weight: 400;
     list-style: none;
-    border-top: 2px dashed #ccc;
-    border-bottom: 2px dashed #ccc;
+    border-top: 2px dashed $subColor;
+    border-bottom: 2px dashed $subColor;
     padding: 20px 10px;
     .post-prev .previous span,
     .post-next .next span

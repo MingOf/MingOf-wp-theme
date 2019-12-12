@@ -16,6 +16,7 @@ function add_theme_scripts() {
     wp_enqueue_style('style', get_stylesheet_uri());
 //    wp_enqueue_script('canvas-nest', get_template_directory_uri().'/assets/js/canvas-nest.js',[], null, true);
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/animation.js',[],null,true);
+    wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/catalog.js',[],null,true);
     wp_enqueue_script('iconfont','https://at.alicdn.com/t/font_1475483_cvza2re0xfb.js',[],null,true);
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');

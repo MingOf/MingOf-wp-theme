@@ -10,7 +10,7 @@
       margin-bottom: -20px;
     }
     .comment-body {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid $subColor;
       margin-top: 5px;
       position: relative;
       margin-bottom: 20px;
@@ -47,7 +47,7 @@
       width: 100%;
       min-height: 120px;
       border-radius: 3px;
-      border: 1px solid #ccc;
+      border: 1px solid $subColor;
       text-indent: 0.5em;
     }
     .comment-form-author,.comment-form-email,.comment-form-url {
@@ -70,7 +70,7 @@
         &:hover {
           background-color: transparent;
           border: 1px solid $highlightColor;
-          color: #333;
+          color: $subFontColor;
         }
       }
     }

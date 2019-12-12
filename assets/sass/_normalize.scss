@@ -2,6 +2,7 @@ $subFontColor: #333;
 $bgColorBase: #fcfbf8;
 //$highlightColor: $highlightColor;
 $highlightColor: #ff6651;
+$subColor: #b3b3b3;
 $bgColorHeader: #fff;
 @font-face {
   font-family: 'iconfont';  /* project id 1475483 */
@@ -43,7 +44,7 @@ a:link,a:visited,a:active {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: #bebebe;
+  background: $subColor;
   //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
 }
 ::-webkit-scrollbar-thumb:window-inactive {
