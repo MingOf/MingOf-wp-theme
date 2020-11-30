@@ -51,6 +51,28 @@
       .tl-post-date {
         font-size: 14px;
         margin-right: 16px;
+        font-weight: bold;
+        float: left;
+        margin-top: 0.3em;
+      }
+      .tl-post-title{
+        display: inline-block;
+        max-width: 24em;
+        &:hover {
+          &::after {
+            border-bottom: 0.1em solid $highlightColor;
+            width: 100%;
+          }
+        }
+        &::after {
+          transition: all 0.3s;
+          margin: 0 auto;
+          display: block;
+          content: "";
+          width: 0;
+          border-bottom: 0.1em solid $subFontColor;
+          margin-top: 0.1em;
+        }
       }
     }
   }

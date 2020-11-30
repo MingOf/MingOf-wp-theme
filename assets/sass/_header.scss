@@ -6,6 +6,7 @@
   overflow-x: hidden;
   width: 380px;
   z-index: 1;
+  font-weight: bold;
   box-shadow: 3px 3px 3px 1px mix($bgColorBase,#ccc,50%);
   a:hover {
     color: $highlightColor;
@@ -16,8 +17,8 @@
     height: 6em;
   }
   #logo, .custom-logo {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 2em auto;
     border-radius: 50%;
     overflow: hidden;
@@ -42,11 +43,12 @@
   }
   #name {
     font-size: 1.5em;
+    font-weight: bold;
   }
   .description {
     text-align: center;
-    font-weight: 400;
     padding: 20px;
+    font-weight: bold;
   }
   #nav {
     text-align: center;
@@ -56,9 +58,10 @@
   }
   .nav-title {
     font-size: 24px;
-    border-bottom: 2px solid $subFontColor;
+    border-bottom: 0.1em solid $subFontColor;
     line-height: 2em;
     margin-bottom: 1em;
+    font-weight: bold;
   }
   #catalog {
     display: none;
@@ -83,6 +86,7 @@
   .menu .menu-item {
     margin-bottom: 0.5em;
     position: relative;
+    font-weight: bold;
   }
   .nav-toggle {
     display: none;

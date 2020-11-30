@@ -63,7 +63,7 @@ code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important; }
 
 body {
-  max-width: 1440px;
+  max-width: 1600px;
   margin: 0 auto; }
 
 div.wp-caption {
@@ -107,6 +107,7 @@ pre {
   overflow-x: hidden;
   width: 380px;
   z-index: 1;
+  font-weight: bold;
   box-shadow: 3px 3px 3px 1px #e4e4e2; }
   #header a:hover {
     color: #ff6651; }
@@ -115,8 +116,8 @@ pre {
     display: block;
     height: 6em; }
   #header #logo, #header .custom-logo {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 2em auto;
     border-radius: 50%;
     overflow: hidden; }
@@ -135,11 +136,12 @@ pre {
     text-align: center;
     padding-bottom: 0; }
   #header #name {
-    font-size: 1.5em; }
+    font-size: 1.5em;
+    font-weight: bold; }
   #header .description {
     text-align: center;
-    font-weight: 400;
-    padding: 20px; }
+    padding: 20px;
+    font-weight: bold; }
   #header #nav {
     text-align: center;
     font-size: 20px;
@@ -147,9 +149,10 @@ pre {
     background: inherit; }
   #header .nav-title {
     font-size: 24px;
-    border-bottom: 2px solid #333;
+    border-bottom: 0.1em solid #333;
     line-height: 2em;
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    font-weight: bold; }
   #header #catalog {
     display: none;
     padding: 0 20px; }
@@ -167,7 +170,8 @@ pre {
         color: #b3b3b3; }
   #header .menu .menu-item {
     margin-bottom: 0.5em;
-    position: relative; }
+    position: relative;
+    font-weight: bold; }
   #header .nav-toggle {
     display: none;
     position: relative; }
@@ -472,7 +476,24 @@ pre {
           margin-left: -22px; }
         #mastcontainer .timeline-container .tl-posts-container .tl-post-item .tl-post-date {
           font-size: 14px;
-          margin-right: 16px; }
+          margin-right: 16px;
+          font-weight: bold;
+          float: left;
+          margin-top: 0.3em; }
+        #mastcontainer .timeline-container .tl-posts-container .tl-post-item .tl-post-title {
+          display: inline-block;
+          max-width: 24em; }
+          #mastcontainer .timeline-container .tl-posts-container .tl-post-item .tl-post-title:hover::after {
+            border-bottom: 0.1em solid #ff6651;
+            width: 100%; }
+          #mastcontainer .timeline-container .tl-posts-container .tl-post-item .tl-post-title::after {
+            transition: all 0.3s;
+            margin: 0 auto;
+            display: block;
+            content: "";
+            width: 0;
+            border-bottom: 0.1em solid #333;
+            margin-top: 0.1em; }
   #mastcontainer .page-nav {
     width: 70%;
     margin: 80px auto 30px auto;

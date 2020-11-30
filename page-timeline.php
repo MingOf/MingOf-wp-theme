@@ -8,7 +8,7 @@
     /*$paged 就是 test.com/?page_id&paged=1 的paged*/
     $paged = $paged ? $paged : 1;
 
-    $numberposts = 10; //每次查询文章的数量
+    $numberposts = 15; //每次查询文章的数量
 
 
 //        global $wp;
