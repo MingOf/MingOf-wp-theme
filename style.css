@@ -120,7 +120,8 @@ pre {
     height: 150px;
     margin: 2em auto;
     border-radius: 50%;
-    overflow: hidden; }
+    overflow: hidden;
+    box-shadow: 2px 2px 2px #ccc; }
     #header #logo::after, #header .custom-logo::after {
       content: "";
       display: block; }
