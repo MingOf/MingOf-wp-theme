@@ -23,19 +23,32 @@ add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
 /*设置摘要*/
 function new_excerpt_length () {
-    return 500;
+    return 600;
 }
-function new_excerpt_more($more) {
+function excerpt_read_more_link( $output ) {
+    // 根据标点符号智能断句的摘要
+    preg_match_all('/[。：！!:？?]/u',$output,$matches);  //匹配摘要的标点符号
+    $pos = mb_strrpos($output, $matches[0][count($matches[0])-1]); //最后一个满足条件的标点符号最后出现的位置
+    $output = mb_substr($output,0,$pos+1,"utf8"); //截取摘要，从头到最后一个满足条件的标点符号最后出现的位置。
     $link = get_permalink();
     $more = '  <button class="read-more"><a href='
         .$link
         .'>'.__("阅读全文", "mingof").'  ->  '
         .'</a></button>';
-    return $more;
+    return $output.$more;
 }
-add_filter('excerpt_length', 'new_excerpt_length');
-add_filter('excerpt_more', 'new_excerpt_more');
+//function new_excerpt_more($more) {
+//    $link = get_permalink();
+//    $more = '  <button class="read-more"><a href='
+//        .$link
+//        .'>'.__("阅读全文", "mingof").'  ->  '
+//        .'</a></button>';
+//    return $more;
+//}
 
+add_filter('excerpt_length', 'new_excerpt_length');
+//add_filter('excerpt_more', 'new_excerpt_more');
+add_filter('the_excerpt', 'excerpt_read_more_link');
 register_nav_menus([
     'header-menu' => __('导航菜单','mingof')
 ]);

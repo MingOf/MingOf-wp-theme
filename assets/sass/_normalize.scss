@@ -1,5 +1,6 @@
 $subFontColor: #333;
 $bgColorBase: #fcfbf8;
+//$bgColorBase: #000000;
 //$highlightColor: $highlightColor;
 $highlightColor: #ff6651;
 $subColor: #b3b3b3;
@@ -68,7 +69,7 @@ code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important;
 }
 body {
-  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
 }
 div.wp-caption {

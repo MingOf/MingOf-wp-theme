@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let p = document.createElement('p');
 
         p.classList.add("catalog-item");
-        p.innerText = titles[i].$1th.el.innerText;
+        p.innerText = (i+1) + ". " + titles[i].$1th.el.innerText;
         p.onclick = () => titles[i].$1th.el.scrollIntoView({
             behavior: "smooth"
         });

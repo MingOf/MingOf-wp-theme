@@ -1,4 +1,6 @@
-/*动画相关 js*/
+/**
+ * 动画相关 js
+ * */
 var tools = {
     addClass: function (className) {
         if(typeof this ==="object" && this.nodeType === 1 && typeof this.nodeName === "string") {
@@ -19,7 +21,9 @@ Object.prototype.addClass = tools.addClass;
 Object.prototype.removeClass = tools.removeClass;
 Object.prototype.hide = tools.hide;
 
-// 入场动画
+/**
+ * 入场动画
+ **/
 function enterAnimation () {
     var overlay = document.getElementById('overlay');
     var mastContainer = document.getElementById('mastcontainer');
@@ -50,10 +54,11 @@ function enterAnimation () {
         requestAnimationFrame(animationCompleted(mastContainer));
     });
 }
-
 document.addEventListener('DOMContentLoaded', enterAnimation);
 
-/* 鼠标点击动画 */
+/**
+ * 鼠标点击动画
+ **/
 var a_idx = 0;
 document.addEventListener("DOMContentLoaded", function () {
     var body = document.body;
@@ -91,14 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/*
+/**
 * header 初始化
-* */
+**/
 function initializeHeader () {
     var toggle = document.getElementsByClassName('nav-toggle')[0];
     var nav = document.getElementById('nav');
     var header = document.getElementById('header');
-    var footer = document.getElementsByClassName('footer')[0];
 
     /*移动端 header 导航折叠*/
     function unfoldHeader () {
@@ -115,14 +119,6 @@ function initializeHeader () {
         header.style.overflow = '';
         header.style.height = 'auto';
     }
-
-    /*动态设置 PC 端 footer 的宽度，避免溢出 header 的包裹*/
-    function setFooter () {
-        footer.style.width = header.clientWidth + 'px';
-    }
-    function unsetFooter () {
-        footer.style.width = '';
-    }
     toggle.addEventListener("click", () => {
         if(window.getComputedStyle(nav).display === "block") {
             foldHeader();
@@ -130,23 +126,41 @@ function initializeHeader () {
             unfoldHeader();
         }
     });
-
-    /*响应resize事件*/
     window.addEventListener("resize", () => {
-       if(document.body.clientWidth > 1000) {
-           unfoldHeader();
-           setFooter();
-       } else {
-           foldHeader();
-           unsetFooter();
-       }
+        if(document.body.clientWidth > 1000) {
+            unfoldHeader();
+        } else {
+            foldHeader();
+        }
     });
-    setFooter();
 }
-
 document.addEventListener('DOMContentLoaded', initializeHeader);
 
-/*
+/**
+ * 动态设置 PC 端 footer 的宽度，避免溢出 header 的包裹
+ **/
+function initializeFooter() {
+    var footer = document.getElementsByClassName('footer')[0];
+    var header = document.getElementById('header');
+    function setFooter () {
+        footer.style.width = header.clientWidth + 'px';
+    }
+    function unsetFooter () {
+        footer.style.width = '';
+    }
+    setFooter();
+    /*响应resize事件*/
+    window.addEventListener("resize", () => {
+        if(document.body.clientWidth > 1000) {
+            setFooter();
+        } else {
+            unsetFooter();
+        }
+    });
+}
+window.addEventListener("load", initializeFooter);
+
+/**
 * 图片灯箱效果
 * */
 (function(){

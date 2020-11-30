@@ -4,13 +4,19 @@
   text-align: center;
   position: fixed;
   bottom: 0;
-  left: 0;
   margin: 0 auto;
+  font-size: .65em;
+  line-height: 4em;
   height: 4em;
   padding: 1em 0;
-  background: rgba($bgColorHeader, 0.8);
+  background: inherit;
+  z-index: 1;
+  width: 380px;
   @media screen and (max-width: 1000px) {
     display: none;
+  }
+  @media screen and (max-width: 1400px) {
+    width: 280px;
   }
 }
 body {
