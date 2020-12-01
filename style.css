@@ -6,7 +6,7 @@ Author: MingOf
 Author URI: https://linyqiang.com
 Description: no_feature
 Requires at least: WordPress 4.9.6
-Version: 2.2
+Version: 2.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mingof
@@ -118,7 +118,7 @@ div.enlighter > div > div {
 /* header*/
 #header {
   position: fixed;
-  background: linear-gradient(to right, #fcfbf8, #fefdfc, #fff);
+  background: linear-gradient(to right, #fcfbf8, #fefdfc, #ffffff);
   top: 0;
   height: 100%;
   overflow-x: hidden;
@@ -353,13 +353,12 @@ div.enlighter > div > div {
         margin-right: 10px; }
     #mastcontainer #posts-container .post-item .post-excerpt .post-thumbnail {
       border: 1em solid #fff;
-      box-shadow: 5px 5px 5px #eee;
       border-radius: 5px;
       width: 280px;
       height: auto;
       overflow: hidden;
-      margin-right: 1.5em;
-      float: left;
+      margin-left: 1.5em;
+      float: right;
       transition: all 0.3s; }
       #mastcontainer #posts-container .post-item .post-excerpt .post-thumbnail.error {
         display: none; }

@@ -27,10 +27,12 @@ function new_excerpt_length () {
 }
 function excerpt_read_more_link( $output ) {
     // 根据标点符号智能断句的摘要
-    preg_match_all('/[。：！!:？?]/u',$output,$matches);  //匹配摘要的标点符号
-    $pos = mb_strrpos($output, $matches[0][count($matches[0])-1]); //最后一个满足条件的标点符号最后出现的位置
-    $output = mb_substr($output,0,$pos+1,"utf8"); //截取摘要，从头到最后一个满足条件的标点符号最后出现的位置。
-    $link = get_permalink();
+    $have_punctuation = preg_match_all('/[。：！!:？?]/u',$output,$matches);  //匹配摘要的标点符号
+    if($have_punctuation) {
+        $pos = mb_strrpos($output, $matches[0][count($matches[0])-1]); //最后一个满足条件的标点符号最后出现的位置
+        $output = mb_substr($output,0,$pos+1,"utf8"); //截取摘要，从头到最后一个满足条件的标点符号最后出现的位置。
+        $link = get_permalink();
+    }
     $more = '  <button class="read-more"><a href='
         .$link
         .'>'.__("阅读全文", "mingof").'  →  '
@@ -71,10 +73,9 @@ function get_thumbnail_img($post_id) {
     $catched_img_url = catch_post_img();
     $usable_img_url = $catched_img_url;
     if ( has_post_thumbnail()) {
-        $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
+        $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'thumbnail');
         $usable_img_url = 'src="'.$thumbnail_image_url[0].'"';
-    }
-    if ($catched_img_url == NULL) {
+    } else if ($catched_img_url == NULL) {
         $usable_img_url = "";
     }
     return $usable_img_url;
