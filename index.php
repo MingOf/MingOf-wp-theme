@@ -17,8 +17,10 @@
                 <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
             </div>
             <article class="post-excerpt">
-                <?php if(has_post_thumbnail()):?>
-                <div class="post-thumbnail"><a href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a></div>
+                <?php if(get_thumbnail_img(get_the_ID())!==""):?>
+                <a href="<?php the_permalink();?>">
+                    <img class="post-thumbnail" <?php echo get_thumbnail_img(get_the_ID());?> alt="" onerror="this.classList.add('error');">
+                </a>
                 <?php endif;?>
                 <div>
                     <?php

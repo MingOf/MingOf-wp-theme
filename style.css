@@ -6,7 +6,7 @@ Author: MingOf
 Author URI: https://linyqiang.com
 Description: no_feature
 Requires at least: WordPress 4.9.6
-Version: 2.0
+Version: 2.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mingof
@@ -71,7 +71,8 @@ div.wp-caption {
 
 img {
   max-width: 100% !important;
-  height: auto; }
+  height: auto;
+  cursor: pointer; }
 
 button {
   background: none;
@@ -87,6 +88,22 @@ button {
 
 pre {
   overflow-x: auto; }
+
+/**
+for enlighter highlight-plugin
+ */
+.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter > div::before {
+  padding: 0;
+  font-size: .9em; }
+
+.enlighter-overflow-scroll.enlighter-v-standard {
+  padding: 1em 0; }
+
+.enlighter-default {
+  padding: 1em 0; }
+
+div.enlighter > div > div {
+  padding-left: 0; }
 
 #overlay {
   position: absolute;
@@ -164,11 +181,22 @@ pre {
     #header #catalog .catalog-item {
       cursor: pointer;
       transition: all 0.3s;
-      padding: 0 2em; }
+      padding: 0 2em;
+      display: flex;
+      flex-direction: row; }
       #header #catalog .catalog-item:hover {
         color: #b3b3b3; }
       #header #catalog .catalog-item.catalog-item-active {
         color: #b3b3b3; }
+      #header #catalog .catalog-item span {
+        display: inline-block;
+        width: 2em;
+        text-align: right;
+        align-items: flex-start;
+        margin-right: 0.5em; }
+      #header #catalog .catalog-item div {
+        display: inline-block;
+        flex: 1; }
   #header .menu .menu-item {
     margin-bottom: 0.5em;
     position: relative;
@@ -303,7 +331,8 @@ pre {
         margin-bottom: 0; }
         #mastcontainer #posts-container .post-item .post-title h2 a {
           color: #ff6651;
-          display: inline-block; }
+          display: inline-block;
+          transition: all 0.3s; }
           #mastcontainer #posts-container .post-item .post-title h2 a::after {
             content: '';
             display: block;
@@ -315,16 +344,27 @@ pre {
             background-color: #ff6651; }
           #mastcontainer #posts-container .post-item .post-title h2 a:hover::after {
             width: 100%; }
+          #mastcontainer #posts-container .post-item .post-title h2 a:hover {
+            transform: scale(1.03); }
     #mastcontainer #posts-container .post-item .post-meta {
-      margin: 10px 0 15px 0; }
+      margin: 0 0 15px 0;
+      font-size: 14px; }
       #mastcontainer #posts-container .post-item .post-meta .post-meta-opt:not(:empty) {
         margin-right: 10px; }
     #mastcontainer #posts-container .post-item .post-excerpt .post-thumbnail {
-      float: left;
-      width: 380px;
-      height: 150px;
+      border: 1em solid #fff;
+      box-shadow: 5px 5px 5px #eee;
+      border-radius: 5px;
+      width: 280px;
+      height: auto;
       overflow: hidden;
-      padding: 0 1em 0 0; }
+      margin-right: 1.5em;
+      float: left;
+      transition: all 0.3s; }
+      #mastcontainer #posts-container .post-item .post-excerpt .post-thumbnail.error {
+        display: none; }
+      #mastcontainer #posts-container .post-item .post-excerpt .post-thumbnail:hover {
+        transform: scale(1.1); }
     #mastcontainer #posts-container .post-item .post-excerpt .read-more {
       padding: 5px;
       border: 2px solid transparent;
@@ -333,13 +373,15 @@ pre {
       transition: all 0.3s;
       margin-top: 10px;
       background-color: #ff6651;
-      line-height: 1; }
+      line-height: 1;
+      box-shadow: 5px 5px 5px #eee; }
       #mastcontainer #posts-container .post-item .post-excerpt .read-more a {
         color: #fff; }
       #mastcontainer #posts-container .post-item .post-excerpt .read-more:hover {
         color: #333;
         border: 2px solid #ff6651;
-        background-color: transparent; }
+        background-color: transparent;
+        transform: scale(1.1); }
         #mastcontainer #posts-container .post-item .post-excerpt .read-more:hover a {
           color: #333; }
     #mastcontainer #posts-container .post-item .post-excerpt::after {
@@ -384,22 +426,24 @@ pre {
         float: none; } }
     #mastcontainer #sidebar .sidebar-widget {
       margin-bottom: 3%; }
-      #mastcontainer #sidebar .sidebar-widget form label {
-        display: none; }
-      #mastcontainer #sidebar .sidebar-widget form input[type=submit] {
-        /*display: none;*/
-        width: 20%;
-        /*border-radius: 3px;*/
-        background: #ff6651;
-        color: #fff;
-        height: 35px;
-        border: 0 none; }
-      #mastcontainer #sidebar .sidebar-widget form input[type=text] {
-        border: none;
-        width: 80%;
-        height: 35px;
-        text-indent: 20px;
-        float: left; }
+      #mastcontainer #sidebar .sidebar-widget form {
+        box-shadow: 3px 3px 3px #eee; }
+        #mastcontainer #sidebar .sidebar-widget form label {
+          display: none; }
+        #mastcontainer #sidebar .sidebar-widget form input[type=submit] {
+          /*display: none;*/
+          width: 20%;
+          /*border-radius: 3px;*/
+          background: #ff6651;
+          color: #fff;
+          height: 35px;
+          border: 0 none; }
+        #mastcontainer #sidebar .sidebar-widget form input[type=text] {
+          border: none;
+          width: 80%;
+          height: 35px;
+          text-indent: 20px;
+          float: left; }
       #mastcontainer #sidebar .sidebar-widget h2 {
         text-align: left;
         line-height: 2;
@@ -499,7 +543,10 @@ pre {
     width: 70%;
     margin: 80px auto 30px auto;
     text-align: center;
-    border-top: 1px solid #eee; }
+    border-top: 1px solid #eee;
+    transition: transform 0.3s; }
+    #mastcontainer .page-nav:hover {
+      transform: scale(1.3); }
     #mastcontainer .page-nav .page-numbers {
       display: inline-block;
       margin: -1px 5px 0 5px;
@@ -509,7 +556,8 @@ pre {
       position: relative; }
       #mastcontainer .page-nav .page-numbers.current {
         background-color: #ff6651;
-        color: #fff; }
+        color: #fff;
+        box-shadow: 5px 5px 5px #eee; }
       #mastcontainer .page-nav .page-numbers:hover:not(.current) {
         border-top: 1px solid #ff6651; }
       #mastcontainer .page-nav .page-numbers::before {

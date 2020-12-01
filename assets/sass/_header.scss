@@ -76,11 +76,24 @@
       cursor: pointer;
       transition: all 0.3s;
       padding: 0 2em;
+      display: flex;
+      flex-direction: row;
       &:hover {
         color: #b3b3b3;
       }
       &.catalog-item-active {
         color: #b3b3b3;
+      }
+      span {
+        display: inline-block;
+        width: 2em;
+        text-align: right;
+        align-items: flex-start;
+        margin-right: 0.5em;
+      }
+      div {
+        display: inline-block;
+        flex:1;
       }
     }
   }

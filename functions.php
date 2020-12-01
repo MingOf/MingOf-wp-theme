@@ -23,7 +23,7 @@ add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
 /*设置摘要*/
 function new_excerpt_length () {
-    return 600;
+    return 400;
 }
 function excerpt_read_more_link( $output ) {
     // 根据标点符号智能断句的摘要
@@ -33,25 +33,52 @@ function excerpt_read_more_link( $output ) {
     $link = get_permalink();
     $more = '  <button class="read-more"><a href='
         .$link
-        .'>'.__("阅读全文", "mingof").'  ->  '
+        .'>'.__("阅读全文", "mingof").'  →  '
         .'</a></button>';
     return $output.$more;
 }
-//function new_excerpt_more($more) {
-//    $link = get_permalink();
-//    $more = '  <button class="read-more"><a href='
-//        .$link
-//        .'>'.__("阅读全文", "mingof").'  ->  '
-//        .'</a></button>';
-//    return $more;
-//}
 
 add_filter('excerpt_length', 'new_excerpt_length');
-//add_filter('excerpt_more', 'new_excerpt_more');
 add_filter('the_excerpt', 'excerpt_read_more_link');
 register_nav_menus([
     'header-menu' => __('导航菜单','mingof')
 ]);
+
+/**
+ * thumbnail image supported
+ */
+function catch_post_img() {
+    /*
+     * use preg to match the img_url of the post
+     * if  missed then return NULL
+     */
+    global $post;
+    $first_img_url='';
+    $output = preg_match_all('/(\s+src\s?\=)\s?[\'|"]([^\'|"]*)/is', $post->post_content, $matches);
+    $tmp_url = $matches[0][0];
+    if ($tmp_url !== NULL) {
+        $first_img_url = $matches[0][0].'"';
+    } else {
+        $first_img_url = NULL;
+    }
+    return $first_img_url;
+}
+function get_thumbnail_img($post_id) {
+    /*
+     * return correct url for img src
+     * if has thumbnail then use default thumbnail
+     */
+    $catched_img_url = catch_post_img();
+    $usable_img_url = $catched_img_url;
+    if ( has_post_thumbnail()) {
+        $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
+        $usable_img_url = 'src="'.$thumbnail_image_url[0].'"';
+    }
+    if ($catched_img_url == NULL) {
+        $usable_img_url = "";
+    }
+    return $usable_img_url;
+}
 
 function theme_setup() {
     add_theme_support('custom-logo', array(
