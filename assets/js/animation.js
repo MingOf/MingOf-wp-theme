@@ -97,35 +97,47 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
-* header 初始化
+* mobile header 初始化
 **/
 function initializeHeader () {
-    var toggle = document.getElementsByClassName('nav-toggle')[0];
-    var nav = document.getElementById('nav');
-    var header = document.getElementById('header');
-
+    let toggle = document.getElementsByClassName('nav-toggle')[0];
+    // let nav = document.getElementById('nav');
+    let header = document.getElementById('header');
+    var lastPos = 0;
+    if(document.documentElement.clientWidth>1000) {return}
     /*移动端 header 导航折叠*/
     function unfoldHeader () {
-        nav.style.display = "block";
+        // nav.style.display = "block";
         toggle.removeClass("nav-close");
         toggle.addClass("nav-open");
         header.style.overflow = 'auto';
         header.style.height = '100%';
     }
     function foldHeader () {
-        nav.style.display = "none";
+        // nav.style.display = "none";
         toggle.removeClass("nav-open");
         toggle.addClass("nav-close");
-        header.style.overflow = '';
-        header.style.height = 'auto';
+        header.style.overflow = 'hidden';
+        header.style.height = '3em';
     }
-    toggle.addEventListener("click", () => {
-        if(window.getComputedStyle(nav).display === "block") {
-            foldHeader();
-        } else {
-            unfoldHeader();
+    if(document.documentElement.clientWidth <= 1000) {
+        foldHeader();
+    }
+    header.addEventListener("click", (e)=> {
+        let event = e || window.event;
+        let target = event.target || event.srcElement;
+        if(target.className.toLocaleLowerCase()=="nav-touch-area") {
+            if(header.style.height === "3em") {
+                unfoldHeader();
+            } else {
+                foldHeader();
+            }
         }
     });
+    header.addEventListener("touch", (e)=> {
+        e.stopPropagation();
+    })
+
     window.addEventListener("resize", () => {
         if(document.body.clientWidth > 1000) {
             unfoldHeader();
@@ -133,15 +145,27 @@ function initializeHeader () {
             foldHeader();
         }
     });
+    document.addEventListener("scroll", ()=> {
+        /*auto hide header*/
+        let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
+        let delta = scrollTop - lastPos;
+        if(delta >= 20) {
+            header.classList.add("hide");
+        } else if (delta < 0) {
+            header.classList.remove("hide");
+        }
+        lastPos = scrollTop;
+    });
 }
+
 document.addEventListener('DOMContentLoaded', initializeHeader);
 
 /**
  * 动态设置 PC 端 footer 的宽度，避免溢出 header 的包裹
  **/
 function initializeFooter() {
-    var footer = document.getElementsByClassName('footer')[0];
-    var header = document.getElementById('header');
+    let footer = document.getElementsByClassName('footer')[0];
+    let header = document.getElementById('header');
     function setFooter () {
         footer.style.width = header.clientWidth + 'px';
     }

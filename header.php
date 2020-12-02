@@ -16,7 +16,7 @@
             <div id="logo"><?php if(has_custom_logo()) { the_custom_logo();} else { echo '<img src='.'"'.get_template_directory_uri().'/assets/image/logo.png'.'"'.'alt="logo"/>';}?></div>
             <h1 id="name"><a href="<?php echo get_option('home');?>"><?php bloginfo('name');?></a></h1>
             <div class="description"><?php bloginfo("description");?></div>
-            <div class="nav-toggle nav-close"><span></span></div>
+            <div class="nav-toggle nav-close"><span class="nav-touch-area"></span></div>
         </div>
         <nav id="nav">
             <h1 class="nav-title">导航</h1>

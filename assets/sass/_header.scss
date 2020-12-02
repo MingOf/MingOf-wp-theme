@@ -65,7 +65,7 @@
     font-weight: bold;
   }
   #catalog {
-    display: none;
+    display: block;
     padding: 0 20px;
     .catalog-title {
       padding: 0.5em 0;
@@ -113,13 +113,19 @@
     position: fixed;
     width: 100%;
     display: flex;
-    height: auto;
+    height: 3em;
     min-height: 0;
     flex-direction: column;
-    border-bottom: 1px solid #ccc;
-    box-shadow: 1px 0 3px #ccc;
-    overflow: hidden;
-    background: rgba($bgColorBase, 0.85);
+    border-bottom: 1px solid #eee;
+    box-shadow: 1px 0 3px #eee;
+    overflow: auto;
+    transition: all 0.3s;
+    opacity: 0.9;
+    transform: translate3d(0, 0, 0);
+    &.hide {
+      transform: translate3d(0,-3.2em,0);
+    }
+    //background: rgba($bgColorBase, 0.85);
     &::after {
       display: none;
     }
@@ -184,7 +190,10 @@
       text-align: left;
     }
     #nav {
-      display: none;
+      //display: none;
+    }
+    #catalog {
+      //display: none;
     }
     .footer, .description {
       display: none;
