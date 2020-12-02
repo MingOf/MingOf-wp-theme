@@ -144,21 +144,21 @@ blockquote {
     content: '';
     display: block;
     height: 6em; }
-  #header #logo, #header .custom-logo {
+  #header #logo {
     width: 150px;
     height: 150px;
     margin: 2em auto;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 2px 2px 2px #ccc; }
-    #header #logo::after, #header .custom-logo::after {
+    #header #logo::after {
       content: "";
       display: block; }
-    #header #logo img, #header .custom-logo img {
+    #header #logo img {
       transition: transform .3s;
       width: 100%;
       height: 100%; }
-      #header #logo img:hover, #header .custom-logo img:hover {
+      #header #logo img:hover {
         transform: scale(1.3); }
   #header h1, #header h2 {
     padding: 20px;

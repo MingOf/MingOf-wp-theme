@@ -13,7 +13,17 @@
 <body>
     <header id="header">
         <div id="headering">
-            <div id="logo"><?php if(has_custom_logo()) { the_custom_logo();} else { echo '<img src='.'"'.get_template_directory_uri().'/assets/image/logo.png'.'"'.'alt="logo"/>';}?></div>
+            <div id="logo">
+                <?php
+                if(has_custom_logo()) {
+                    the_custom_logo();
+                } else {
+                    echo '<a href="http://test.com/" class="custom-logo-link" rel="home">'.
+                            '<img src='.'"'.get_template_directory_uri().'/assets/image/logo.png'.'"'.'alt="logo"/>'.
+                        '</a>';
+                }
+                ?>
+            </div>
             <h1 id="name"><a href="<?php echo get_option('home');?>"><?php bloginfo('name');?></a></h1>
             <div class="description"><?php bloginfo("description");?></div>
             <div class="nav-toggle nav-close"><span class="nav-touch-area"></span></div>

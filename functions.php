@@ -83,10 +83,10 @@ function get_thumbnail_img($post_id) {
 
 function theme_setup() {
     add_theme_support('custom-logo', array(
-        'width'          => 380,
-        'height'         => 150,
-        'flex-width'     => true,
-        'flex-height'    => true
+        'width'          => 500,
+        'height'         => 500,
+        'flex-width'     => false,
+        'flex-height'    => false
     ));
     add_theme_support( 'post-thumbnails', array('post'));
     add_theme_support( 'title-tag' );
