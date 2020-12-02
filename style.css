@@ -6,7 +6,7 @@ Author: MingOf
 Author URI: https://mingof.top
 Description: no_feature
 Requires at least: WordPress 4.9.6
-Version: 2.3.1
+Version: 2.3.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mingof
@@ -104,6 +104,18 @@ for enlighter highlight-plugin
 
 div.enlighter > div > div {
   padding-left: 0; }
+
+blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 400;
+  border-left: 3px solid #ff6651;
+  padding: 1.2em;
+  margin: 1em 0 1em 2em;
+  border-radius: 3px;
+  background-color: #f0f0f1; }
+  blockquote p:last-of-type {
+    margin-bottom: 0; }
 
 #overlay {
   position: absolute;

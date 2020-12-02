@@ -113,3 +113,16 @@ for enlighter highlight-plugin
 div.enlighter>div>div {
   padding-left: 0;
 }
+blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 400;
+  border-left: 3px solid $highlightColor;
+  padding: 1.2em;
+  margin: 1em 0 1em 2em;
+  border-radius: 3px;
+  background-color: #f0f0f1;
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
