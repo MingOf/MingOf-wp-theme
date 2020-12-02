@@ -110,7 +110,7 @@ function initializeHeader () {
         toggle.removeClass("nav-close");
         toggle.addClass("nav-open");
         header.style.overflow = 'auto';
-        header.style.height = '130%';
+        header.style.height = '100%';
     }
     function foldHeader () {
         // nav.style.display = "none";
@@ -127,6 +127,7 @@ function initializeHeader () {
     header.addEventListener("click", (e)=> {
         let event = e || window.event;
         let target = event.target || event.srcElement;
+        if(document.querySelectorAll(".nav-open"))
         if(target.className.toLocaleLowerCase()=="nav-touch-area") {
             if(header.style.height === "3em") {
                 unfoldHeader();
@@ -148,6 +149,8 @@ function initializeHeader () {
     });
     document.addEventListener("scroll", ()=> {
         /*auto hide header*/
+        let toggle = document.getElementsByClassName('nav-open');
+        if(toggle.length>0) return;
         let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
         let delta = scrollTop - lastPos;
         if(delta >= 20) {
