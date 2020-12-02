@@ -103,6 +103,12 @@ function initializeHeader () {
     let toggle = document.getElementsByClassName('nav-toggle')[0];
     // let nav = document.getElementById('nav');
     let header = document.getElementById('header');
+
+    header.addEventListener("touchmove", (e)=> {e.preventDefault();e.stopPropagation();});
+    header.addEventListener("touchstart", (e)=> {e.stopPropagation();});
+    header.addEventListener("touchend", (e)=> {e.stopPropagation();});
+    header.addEventListener("scroll",(e)=>{e.preventDefault();e.stopPropagation();});
+
     var lastPos = 0;
     /*移动端 header 导航折叠*/
     function unfoldHeader () {
@@ -136,10 +142,6 @@ function initializeHeader () {
             }
         }
     });
-    header.addEventListener("touch", (e)=> {
-        e.stopPropagation();
-    })
-
     window.addEventListener("resize", () => {
         if(document.body.clientWidth > 1000) {
             unfoldHeader();
@@ -147,7 +149,7 @@ function initializeHeader () {
             foldHeader();
         }
     });
-    document.addEventListener("scroll", ()=> {
+    document.addEventListener("touchmove", ()=> {
         /*auto hide header*/
         let toggle = document.getElementsByClassName('nav-open');
         if(toggle.length>0) return;
