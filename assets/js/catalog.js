@@ -72,17 +72,22 @@ function initCatalog (el) {
 }
 document.addEventListener("DOMContentLoaded", () => {
     let el          = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
+    let catalog     = document.getElementById('catalog'); //目录
+    if (!el) {
+        catalog.style.display = "none";
+        return;
+    }
 
-    if (!el) return;
-
+    let navTitles   = document.getElementsByClassName('nav-title'); // 导航类别，如"文章目录"，"导航"
     let titles      = initCatalog(el);
 
-    if (titles.length === 0) return;
+    if (titles.length === 0) {
+        catalog.style.display = "none";
+        return;
+    }
 
-    let catalog     = document.getElementById('catalog'); //目录
-    let navTitles   = document.getElementsByClassName('nav-title'); // 导航类别，如"文章目录"，"导航"
 
-    // catalog.style.display = 'block'; // 如果有目录则显示"文章目录"类别
+    catalog.style.display = 'block'; // 如果有目录则显示"文章目录"类别
 
     let catalogItems = [];
 

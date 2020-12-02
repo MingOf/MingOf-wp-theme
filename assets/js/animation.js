@@ -104,14 +104,13 @@ function initializeHeader () {
     // let nav = document.getElementById('nav');
     let header = document.getElementById('header');
     var lastPos = 0;
-    if(document.documentElement.clientWidth>1000) {return}
     /*移动端 header 导航折叠*/
     function unfoldHeader () {
         // nav.style.display = "block";
         toggle.removeClass("nav-close");
         toggle.addClass("nav-open");
         header.style.overflow = 'auto';
-        header.style.height = '100%';
+        header.style.height = '130%';
     }
     function foldHeader () {
         // nav.style.display = "none";
@@ -122,6 +121,8 @@ function initializeHeader () {
     }
     if(document.documentElement.clientWidth <= 1000) {
         foldHeader();
+    } else {
+        unfoldHeader();
     }
     header.addEventListener("click", (e)=> {
         let event = e || window.event;

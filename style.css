@@ -172,7 +172,7 @@ div.enlighter > div > div {
     margin-bottom: 1em;
     font-weight: bold; }
   #header #catalog {
-    display: block;
+    display: none;
     padding: 0 20px; }
     #header #catalog .catalog-title {
       padding: 0.5em 0;
