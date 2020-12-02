@@ -19,7 +19,7 @@
             <article class="post-excerpt">
                 <?php if(get_thumbnail_img(get_the_ID())!==""):?>
                 <a class="thumb-link" href="<?php the_permalink();?>">
-                    <img class="post-thumbnail" <?php echo get_thumbnail_img(get_the_ID());?> alt="" onerror="this.classList.add('error');">
+                    <img class="post-thumbnail" <?php echo get_thumbnail_img(get_the_ID());?> alt="" onerror="thumbnail_error(this)">
                 </a>
                 <?php endif;?>
                 <div>

@@ -234,3 +234,11 @@ window.addEventListener("load", initializeFooter);
     }
     document.addEventListener('DOMContentLoaded', lightBox);
 }());
+
+/**
+ * thumbnail加载失败则不显示
+ */
+
+function thumbnail_error(thumbnailImg) {
+    thumbnailImg.parentNode.style.display = "none";
+}
