@@ -152,7 +152,7 @@ function initializeHeader () {
         let delta = scrollTop - lastPos;
         if(delta >= 20) {
             header.classList.add("hide");
-        } else if (delta < 0) {
+        } else if (delta < -20) {
             header.classList.remove("hide");
         }
         lastPos = scrollTop;
