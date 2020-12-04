@@ -1,25 +1,6 @@
 /**
  * 动画相关 js
  * */
-var tools = {
-    addClass: function (className) {
-        if(typeof this ==="object" && this.nodeType === 1 && typeof this.nodeName === "string") {
-            this.classList.add(className);
-        }
-    },
-    removeClass: function (className) {
-        if(typeof this ==="object" && this.nodeType === 1 && typeof this.nodeName === "string") {
-            this.classList.remove(className);
-        }
-    },
-    hide: function () {
-        this.style.display = "none";
-    }
-};
-
-Object.prototype.addClass = tools.addClass;
-Object.prototype.removeClass = tools.removeClass;
-Object.prototype.hide = tools.hide;
 
 /**
  * 入场动画
@@ -28,21 +9,21 @@ function enterAnimation () {
     var overlay = document.getElementById('overlay');
     var mastContainer = document.getElementById('mastcontainer');
 
-    overlay.addClass('fadeOut');
-    mastContainer.addClass('pageShow');
+    overlay.classList.add('fadeOut');
+    mastContainer.classList.add('pageShow');
 
     // 动画执行完毕后执行该函数
     function animationCompleted (...doms) {
         return function () {
             for(let i = 0, l = doms.length; i < l; i++ ) {
                 doms[i].style.transform = 'none';
-                doms[i].removeClass('pageShow');
+                doms[i].classList.remove('pageShow');
             }
         }
     }
     // overlay 动画完成后隐藏遮罩
     overlay.addEventListener("animationend", function () {
-        this.hide();
+        this.style.display = "none";
     });
 
     mastContainer.addEventListener("animationend", function () {
@@ -113,15 +94,15 @@ function initializeHeader () {
     /*移动端 header 导航折叠*/
     function unfoldHeader () {
         // nav.style.display = "block";
-        toggle.removeClass("nav-close");
-        toggle.addClass("nav-open");
+        toggle.classList.remove("nav-close");
+        toggle.classList.add("nav-open");
         header.style.overflow = 'auto';
         header.style.height = '100%';
     }
     function foldHeader () {
         // nav.style.display = "none";
-        toggle.removeClass("nav-open");
-        toggle.addClass("nav-close");
+        toggle.classList.remove("nav-open");
+        toggle.classList.add("nav-close");
         header.style.overflow = 'hidden';
         header.style.height = '3em';
     }
@@ -205,14 +186,14 @@ window.addEventListener("load", initializeFooter);
         lbContainer.appendChild(img);
 
         function removeLightBox() {
-            lbContainer.removeClass('out');
-            lbContainer.removeClass('light-box');
+            lbContainer.classList.remove('out');
+            lbContainer.classList.remove('light-box');
             mastContainer.removeChild(lbContainer);
             lbContainer.removeEventListener('animationend', removeLightBox);
         }
         function addLightBox(imgSrc) {
             img.src = imgSrc;
-            lbContainer.addClass('light-box');
+            lbContainer.classList.add('light-box');
             mastContainer.appendChild(lbContainer);
         }
 
@@ -227,7 +208,7 @@ window.addEventListener("load", initializeFooter);
         lbContainer.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            lbContainer.addClass('out');
+            lbContainer.classList.add('out');
             lbContainer.addEventListener('animationend', removeLightBox);
         };
 
