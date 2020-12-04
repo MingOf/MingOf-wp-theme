@@ -70,7 +70,7 @@ function initCatalog (el) {
     }
     return titles
 }
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
     let el          = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
     let catalog     = document.getElementById('catalog'); //目录
     if (!el) {
@@ -97,10 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         p.classList.add("catalog-item");
         p.innerHTML = "<span>"+(i+1)+"."+"</span>" +" "+"<div>"+titles[i].$1th.el.innerText+"</div>";
-        p.onclick = () => titles[i].$1th.el.scrollIntoView({
-            behavior: "smooth"
-        });
-
+        p.onclick = function (){
+            titles[i].$1th.el.scrollIntoView({
+                behavior: "smooth"
+            });
+        };
         catalog.appendChild(p);
         catalogItems.push({el: p, title: titles[i].$1th.el});
     }
@@ -116,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /*
     * 监听滚动事件，实现滚动时与文章目录动态关联
     * */
-    document.addEventListener('scroll', () => {
+    document.addEventListener('scroll', function() {
         let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
         let clientHeight    = document.documentElement.clientHeight || document.body.clientHeight;
         let scrollHeight    = document.documentElement.scrollHeight || document.body.scrollHeight;

@@ -84,66 +84,68 @@
 
     <?php endforeach;?>
     </section>
-    <div class="page-nav">
-    <?php if($paged > 1):?>
-        <a class="tl-prev-page" href="<?php echo get_previous_posts_page_link();?>">&lt;</a>
-    <?php endif;?>
-    <?php for($i = 1; $i <= $pages_count; $i++):?>
-        <?php
-            if($ellipsis) {
-                /*
-                 * 如果 当前页面 $paged <= 页面总数的一半，则 ellipsis 为 true , 表示省略号在页面总数一半的右边, 反之在
-                 * 比如： 当前页面是 $paged == 4 , 页面总数 $pages_count = 13。那么 $ellipsis = (4 <= 13/2)
-                 *
-                 * 当省略号应该在右边时：
-                 * */
-                if($i == $pages_count - 1) {
+    <div class="page-nav-wrapper">
+        <div class="page-nav">
+            <?php if($paged > 1):?>
+                <a class="tl-prev-page" href="<?php echo get_previous_posts_page_link();?>">&lt;</a>
+            <?php endif;?>
+            <?php for($i = 1; $i <= $pages_count; $i++):?>
+                <?php
+                if($ellipsis) {
                     /*
-                     *  把页面数的最大值的前一个换成省略号。
-                     * 如： 最大值是 $pages_count = 13, 则第 12 个button 换成 省略号
+                     * 如果 当前页面 $paged <= 页面总数的一半，则 ellipsis 为 true , 表示省略号在页面总数一半的右边, 反之在
+                     * 比如： 当前页面是 $paged == 4 , 页面总数 $pages_count = 13。那么 $ellipsis = (4 <= 13/2)
+                     *
+                     * 当省略号应该在右边时：
                      * */
-                    echo '<button class="tl-page-num">...</button>';
-                    continue;
+                    if($i == $pages_count - 1) {
+                        /*
+                         *  把页面数的最大值的前一个换成省略号。
+                         * 如： 最大值是 $pages_count = 13, 则第 12 个button 换成 省略号
+                         * */
+                        echo '<button class="tl-page-num">...</button>';
+                        continue;
+                    }
+                    elseif ($i > $paged + 1 && $i < $pages_count ) {
+                        /*
+                         * i 值遍历到当前页数的下一个就直接跳过遍历
+                         * 如： 当前页面 $paged = 4, 则结果应该为 1 2 3 4 5 ... 13
+                         * */
+                        continue;
+                    }
                 }
-                elseif ($i > $paged + 1 && $i < $pages_count ) {
+                else {
                     /*
-                     * i 值遍历到当前页数的下一个就直接跳过遍历
-                     * 如： 当前页面 $paged = 4, 则结果应该为 1 2 3 4 5 ... 13
+                     * 当省略号在左边时：
                      * */
-                    continue;
+                    if($i === 2 ) {
+                        /*
+                         * 把第二个 button 变为 省略号
+                         * */
+                        echo '<button class="tl-page-num">...</button>';
+                        continue;
+                    } elseif ( $i > 2 && $i < $paged - 1 ) {
+                        /*
+                         *  从 i 值 为 3 开始直接跳过 创建button的循环, 直到当前页的前一页
+                         * 如：1 ... 7 8 9 10 11 12 13
+                        */
+                        continue;
+                    }
                 }
-            }
-            else {
-                /*
-                 * 当省略号在左边时：
-                 * */
-                if($i === 2 ) {
-                    /*
-                     * 把第二个 button 变为 省略号
-                     * */
-                    echo '<button class="tl-page-num">...</button>';
-                    continue;
-                } elseif ( $i > 2 && $i < $paged - 1 ) {
-                    /*
-                     *  从 i 值 为 3 开始直接跳过 创建button的循环, 直到当前页的前一页
-                     * 如：1 ... 7 8 9 10 11 12 13
-                    */
-                    continue;
+                ?>
+                <a class="page-numbers <?php if($paged === $i) { echo 'current';} ?>" href="<?php
+                if($paged !== $i) {
+                    echo get_pagenum_link($i);
+                } else {
+                    echo "javascript:";
                 }
-            }
-            ?>
-            <a class="page-numbers <?php if($paged === $i) { echo 'current';} ?>" href="<?php
-            if($paged !== $i) {
-                echo get_pagenum_link($i);
-            } else {
-                echo "javascript:";
-            }
-            ?>"><?php echo $i; ?></a>
+                ?>"><?php echo $i; ?></a>
 
-    <?php endfor;?>
-    <?php if($paged < $pages_count):?>
-        <a class="tl-next-page" href="<?php echo get_next_posts_page_link();?>">&gt;</a>
-    <?php endif;?>
+            <?php endfor;?>
+            <?php if($paged < $pages_count):?>
+                <a class="tl-next-page" href="<?php echo get_next_posts_page_link();?>">&gt;</a>
+            <?php endif;?>
+        </div>
     </div>
 </section>
 <?php get_template_part('footer', 'm');?>

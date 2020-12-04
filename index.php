@@ -37,16 +37,18 @@
         }
         rewind_posts();
         ?>
-        <div class="page-nav">
-            <?php
-            global $wp_query;
-            echo paginate_links([
-                'format' => '?paged=%#%',
-                'current' => max( 1, get_query_var('paged') ),
-                'total' => $wp_query->max_num_pages,
-                'prev_text' => __('<', 'mingof'),
-                'next_text' => __('>', 'mingof')
-            ]);?>
+        <div class="page-nav-wrapper">
+            <div class="page-nav">
+                <?php
+                global $wp_query;
+                echo paginate_links([
+                    'format' => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                    'total' => $wp_query->max_num_pages,
+                    'prev_text' => __('<', 'mingof'),
+                    'next_text' => __('>', 'mingof')
+                ]);?>
+            </div>
         </div>
     </section>
     <?php get_sidebar("侧边栏"); ?>
