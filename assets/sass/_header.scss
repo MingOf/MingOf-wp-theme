@@ -7,9 +7,17 @@
   width: 380px;
   z-index: 1;
   font-weight: bold;
-  box-shadow: 3px 3px 3px 1px mix($bgColorBase,#ccc,50%);
+  //box-shadow: 3px 3px 3px 1px mix($bgColorBase,#ccc,50%);
+  @include boxShadow;
+  @media (prefers-color-scheme: dark) {
+    background: $bgColorHeaderInDarkMode;
+    @include boxShadowInDarkMode;
+  }
   a:hover {
     color: $highlightColor;
+    @media (prefers-color-scheme: dark) {
+      color: $highlightColorInDarkMode;
+    }
   }
   &::after {
     content: '';
@@ -23,6 +31,9 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 2px 2px 2px #ccc;
+    @media (prefers-color-scheme: dark) {
+      @include boxShadowInDarkMode;
+    }
     &::after {
       content: "";
       display: block;
@@ -59,7 +70,11 @@
   }
   .nav-title {
     font-size: 24px;
-    border-bottom: 0.1em solid $subFontColor;
+    //border-bottom: 0.1em solid $subFontColor;
+    @include hDivider(#333);
+    @media (prefers-color-scheme: dark) {
+      @include hDividerInDarkMode;
+    }
     line-height: 2em;
     margin-bottom: 1em;
     font-weight: bold;
@@ -114,8 +129,11 @@
     width: 100%;
     height: 3em;
     min-height: 0;
-    border-bottom: 1px solid #eee;
+    //border-bottom: 1px solid #eee;
     box-shadow: 1px 0 3px #eee;
+    @media (prefers-color-scheme: dark) {
+      @include boxShadowInDarkMode;
+    }
     overflow: auto;
     transition: all 0.3s;
     opacity: 0.9;
@@ -145,6 +163,9 @@
         width: 2em;
         height: 1px;
         box-shadow: inset 0px -1px 1px $subFontColor;
+        @media (prefers-color-scheme: dark) {
+          box-shadow: inset 0px -1px 1px $FontColorInDarkMode;
+        }
         span {
           // 扩展可点击区域
           display: block;
@@ -163,6 +184,9 @@
           width: 2em;
           height: 1px;
           box-shadow: inset 0px -1px 1px $subFontColor;
+          @media (prefers-color-scheme: dark) {
+            box-shadow: inset 0px -1px 1px $FontColorInDarkMode;
+          }
           transition: all 0.3s;
         }
         // 使用background-color 1px会有差异 的问题

@@ -15,13 +15,27 @@
       border-top: 1px solid transparent;
       transition: all 0.3s;
       position: relative;
+      color: $subFontColor;
+      @include boxShadow;
+      @media (prefers-color-scheme: dark) {
+        color: $FontColorInDarkMode;
+        @include boxShadowInDarkMode;
+      }
       &.current {
-        background-color: $highlightColor;
         color: #fff;
-        box-shadow: 5px 5px 5px #eee;
+        background-color: $highlightColor;
+        @media (prefers-color-scheme: dark) {
+          color: $FontColorInDarkMode;
+          background-color: $highlightColorInDarkMode;
+        }
       }
       &:hover:not(.current) {
         border-top: 1px solid $highlightColor;
+        color: $highlightColor;
+        @media (prefers-color-scheme: dark) {
+          color: $highlightColorInDarkMode;
+          border-top: 1px solid $highlightColorInDarkMode;
+        }
       }
       &::before {
         content: '';

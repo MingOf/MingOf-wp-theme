@@ -13,13 +13,25 @@
   .sidebar-widget {
     margin-bottom: 3%;
     form {
-      box-shadow: 3px 3px 3px #eee;
+      @include boxShadow;
+      @media (prefers-color-scheme: dark) {
+        @include boxShadowInDarkMode;
+      }
       label {display: none;}
+      input {
+        border-radius: 0;
+        @media (prefers-color-scheme: dark) {
+          background-color: #2b323f;
+        }
+      }
       input[type=submit] {
         /*display: none;*/
         width: 20%;
         /*border-radius: 3px;*/
         background: $highlightColor;
+        @media (prefers-color-scheme: dark) {
+          background: $highlightColorInDarkMode;
+        }
         color: #fff;
         height: 35px;
         border: 0 none;
@@ -35,7 +47,11 @@
     h2 {
       text-align: left;
       line-height: 2;
-      border-bottom: 2px solid $subColor;
+      //border-bottom: 2px solid $subColor;
+      @include hDivider($subColor);
+      @media (prefers-color-scheme: dark) {
+        @include hDividerInDarkMode;
+      }
       margin-bottom: 3%;
       //color: $highlightColor;
     }
@@ -54,16 +70,33 @@
         }
         &:hover::before {
           color: $highlightColor;
+          @media (prefers-color-scheme: dark) {
+            color: $highlightColorInDarkMode;
+          }
         }
       }
     }
     #wp-calendar {
       tbody  a{
         color: $highlightColor;
+        @media (prefers-color-scheme: dark) {
+          color: $highlightColorInDarkMode;
+        }
+      }
+      #next,#prev {
+        text-align: center;
       }
       table-layout: fixed;
       width: 100%;
       @media screen and (max-width: 1000px) {
+        th, td, caption {
+          border: 0 none;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        th {
+          background: #1c232d;
+        }
         th, td, caption {
           border: 0 none;
         }

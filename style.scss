@@ -17,6 +17,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 /* 一些基础样式和变量*/
 @import "assets/sass/normalize";
+@import "assets/sass/typo.css";
+@import "assets/sass/animation";
 #overlay {
   position: absolute;
   left: 0;
@@ -25,6 +27,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
   right: 0;
   opacity: 1;
   background-color: $bgColorBase;
+  @media (prefers-color-scheme: dark) {
+    background-color: $bgColorBaseInDarkMode;
+  }
   z-index: 2;
 }
 /* header*/
@@ -47,6 +52,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
   }
   a:hover {
     color: $highlightColor;
+    @media (prefers-color-scheme: dark) {
+      color: $highlightColorInDarkMode;
+    }
   }
 
   &::after {

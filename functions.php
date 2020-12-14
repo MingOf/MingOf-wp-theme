@@ -11,8 +11,8 @@ register_sidebar([
 wp_enqueue_script("jquery");
 /*添加CSS和脚本*/
 function add_theme_scripts() {
-    wp_enqueue_style('animation', get_template_directory_uri().'/assets/css/animation.min.css');
-    wp_enqueue_style("typo", get_template_directory_uri()."/assets/css/typo.min.css", [], null);
+//    wp_enqueue_style('animation', get_template_directory_uri().'/assets/css/animation.min.css');
+//    wp_enqueue_style("typo", get_template_directory_uri()."/assets/css/typo.min.css", [], null);
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/mingofAnimation.js',[],null,true);
     wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/mingofCatalog.min.js',[],null,true);

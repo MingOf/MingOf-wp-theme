@@ -286,63 +286,392 @@
   border-top: 3px solid $highlightColor
 }
 #wpd-bubble-wrapper #wpd-bubble-all-comments-count {
-  color: $highlightColor 
+  color: $highlightColor
 }
 
 #wpd-bubble-wrapper > div {
-  background-color: $highlightColor 
+  background-color: $highlightColor
 }
 
 #wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message {
-  background-color: $highlightColor 
+  background-color: $highlightColor
 }
 
 #wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message::before {
   border-left-color: $highlightColor ;
-  border-right-color: $highlightColor 
+  border-right-color: $highlightColor
 }
 
 #wpd-bubble-wrapper.wpd-right-corner > #wpd-bubble #wpd-bubble-add-message::before {
   border-left-color: $highlightColor ;
-  border-right-color: $highlightColor 
+  border-right-color: $highlightColor
 }
 
 .wpd-inline-icon-wrapper path.wpd-inline-icon-first {
-  fill: $highlightColor 
+  fill: $highlightColor
 }
 
 .wpd-inline-icon-count {
-  background-color: $highlightColor 
+  background-color: $highlightColor
 }
 
 .wpd-inline-icon-count::before {
-  border-right-color: $highlightColor 
+  border-right-color: $highlightColor
 }
 
 .wpd-inline-form-wrapper::before {
-  border-bottom-color: $highlightColor 
+  border-bottom-color: $highlightColor
 }
 
 .wpd-inline-form-question {
-  background-color: $highlightColor 
+  background-color: $highlightColor
 }
 
 .wpd-inline-form {
-  background-color: $highlightColor 
+  background-color: $highlightColor
 }
 
 .wpd-last-inline-comments-wrapper {
-  border-color: $highlightColor 
+  border-color: $highlightColor
 }
 
 .wpd-last-inline-comments-wrapper::before {
-  border-bottom-color: $highlightColor 
+  border-bottom-color: $highlightColor
 }
 
 .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments {
-  background: $highlightColor 
+  background: $highlightColor
 }
 
 .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus {
-  background-color: $highlightColor 
+  background-color: $highlightColor
+}
+@media (prefers-color-scheme: dark) {
+  #wpdcom .wpd-prim-button {
+    background-color: $highlightColorInDarkMode;
+  }
+  #wpdcom .wpd-comment-info-bar {
+    border: 1px dashed $highlightColorInDarkMode;
+  }
+  #wpdcom .wpd_label__check i.wpdicon-on {
+    border: 1px solid $highlightColorInDarkMode;
+  }
+  #wpdcom .wpd-blog-administrator .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-administrator .wpd-comment-author, #wpdcom .wpd-blog-administrator .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-administrator .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-administrator {
+    border-left: 3px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-administrator .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-administrator .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-administrator .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-editor .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-editor .wpd-comment-author, #wpdcom .wpd-blog-editor .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-editor .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-editor {
+    border-left: 3px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-editor .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-editor .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-editor .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-author .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-author .wpd-comment-author, #wpdcom .wpd-blog-author .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-author .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-author .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-author .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-author .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-contributor .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-contributor .wpd-comment-author, #wpdcom .wpd-blog-contributor .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-contributor .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-contributor .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-contributor .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-contributor .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-subscriber .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-subscriber .wpd-comment-author, #wpdcom .wpd-blog-subscriber .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-subscriber .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-subscriber .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-wpseo_manager .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-wpseo_manager .wpd-comment-author, #wpdcom .wpd-blog-wpseo_manager .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-wpseo_manager .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-wpseo_manager .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-wpseo_manager .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-wpseo_manager .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-wpseo_editor .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-wpseo_editor .wpd-comment-author, #wpdcom .wpd-blog-wpseo_editor .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-wpseo_editor .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-wpseo_editor .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-wpseo_editor .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-wpseo_editor .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-post_author .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-post_author .wpd-comment-author, #wpdcom .wpd-blog-post_author .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-post_author .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-post_author .wpd-avatar img {
+    border-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-post_author {
+    border-left: 3px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-post_author .wpd-avatar img {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-post_author .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-post_author .wpd-comment-right {
+    border-left: 1px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-blog-guest .wpd-comment-label {
+    background-color: $highlightColorInDarkMode;
+  }
+
+  #wpdcom .wpd-blog-guest .wpd-comment-author, #wpdcom .wpd-blog-guest .wpd-comment-author a {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom.wpd-layout-3 .wpd-blog-guest .wpd-comment-subheader {
+    border-top: 1px dashed $highlightColorInDarkMode
+  }
+  #wpdcom .wpd-thread-head .wpd-thread-info {
+    border-bottom: 2px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-thread-head .wpd-thread-info.wpd-reviews-tab svg {
+    fill: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-thread-head .wpdiscuz-user-settings {
+    border-bottom: 2px solid $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-thread-head .wpdiscuz-user-settings:hover {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-comment .wpd-follow-link:hover {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-comment-status .wpd-sticky {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-thread-filter .wpdf-active {
+    color: $highlightColorInDarkMode;
+    border-bottom-color: $highlightColorInDarkMode
+  }
+  #wpdcom .wpd-comment-info-bar .wpd-current-view i {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpd-filter-view-all:hover {
+    background: $highlightColorInDarkMode
+  }
+  #wpdcom .wpd-follow:hover i, #wpdcom .wpd-unfollow:hover i, #wpdcom .wpd-comment .wpd-follow-active:hover i {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .wpdiscuz-readmore {
+    cursor: pointer;
+    color: $highlightColorInDarkMode
+  }
+  .wpd-wrapper .wpd-list-item.wpd-active {
+    border-top: 3px solid $highlightColorInDarkMode
+  }
+  #wpd-bubble-wrapper #wpd-bubble-all-comments-count {
+    color: $highlightColorInDarkMode
+  }
+
+  #wpd-bubble-wrapper > div {
+    background-color: $highlightColorInDarkMode
+  }
+
+  #wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message {
+    background-color: $highlightColorInDarkMode
+  }
+
+  #wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message::before {
+    border-left-color: $highlightColorInDarkMode ;
+    border-right-color: $highlightColorInDarkMode
+  }
+
+  #wpd-bubble-wrapper.wpd-right-corner > #wpd-bubble #wpd-bubble-add-message::before {
+    border-left-color: $highlightColorInDarkMode ;
+    border-right-color: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-icon-wrapper path.wpd-inline-icon-first {
+    fill: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-icon-count {
+    background-color: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-icon-count::before {
+    border-right-color: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-form-wrapper::before {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-form-question {
+    background-color: $highlightColorInDarkMode
+  }
+
+  .wpd-inline-form {
+    background-color: $highlightColorInDarkMode
+  }
+
+  .wpd-last-inline-comments-wrapper {
+    border-color: $highlightColorInDarkMode
+  }
+
+  .wpd-last-inline-comments-wrapper::before {
+    border-bottom-color: $highlightColorInDarkMode
+  }
+
+  .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments {
+    background: $highlightColorInDarkMode
+  }
+
+  .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus {
+    background-color: $highlightColorInDarkMode
+  }
 }

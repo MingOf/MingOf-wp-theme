@@ -11,6 +11,9 @@
     width: 4px;
     height: 102%;
     background: rgba($highlightColor, 0.2);
+    @media (prefers-color-scheme: dark) {
+      background:  rgba($highlightColorInDarkMode,0.2);
+    }
     z-index: -1;
     margin-left: -20px;
   }
@@ -18,6 +21,9 @@
     margin-bottom: 20px;
     position: relative;
     color: $highlightColor;
+    @media (prefers-color-scheme: dark) {
+      color: $highlightColorInDarkMode;
+    }
   }
   .tl-year-title::before {
     content: " ";
@@ -29,6 +35,9 @@
     width: 8px;
     height: 8px;
     background: $highlightColor;
+    @media (prefers-color-scheme: dark) {
+      background: $highlightColorInDarkMode;
+    }
     border-radius: 50%;
   }
   .tl-posts-container {
@@ -44,6 +53,9 @@
         width: 6px;
         height: 6px;
         background: $highlightColor;
+        @media (prefers-color-scheme: dark) {
+          background: $highlightColorInDarkMode;
+        }
         border-radius: 50%;
         border: 1px solid #fff;
         margin-left: -22px;
@@ -61,6 +73,9 @@
         &:hover {
           &::after {
             border-bottom: 0.1em solid $highlightColor;
+            @media (prefers-color-scheme: dark) {
+              border-bottom: 0.1em solid $highlightColorInDarkMode;
+            }
             width: 100%;
           }
         }
