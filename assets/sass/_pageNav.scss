@@ -17,25 +17,13 @@
       position: relative;
       color: $subFontColor;
       @include boxShadow;
-      @media (prefers-color-scheme: dark) {
-        color: $FontColorInDarkMode;
-        @include boxShadowInDarkMode;
-      }
       &.current {
         color: #fff;
         background-color: $highlightColor;
-        @media (prefers-color-scheme: dark) {
-          color: $FontColorInDarkMode;
-          background-color: $highlightColorInDarkMode;
-        }
       }
       &:hover:not(.current) {
         border-top: 1px solid $highlightColor;
         color: $highlightColor;
-        @media (prefers-color-scheme: dark) {
-          color: $highlightColorInDarkMode;
-          border-top: 1px solid $highlightColorInDarkMode;
-        }
       }
       &::before {
         content: '';
@@ -50,6 +38,29 @@
   &:hover {
     .page-nav {
       transform: scale(1.3);
+    }
+  }
+}
+
+.dark {
+  .page-nav-wrapper {
+    .page-nav {
+      border: 0 none;
+      .tl-page-num {
+        color: $FontColorInDarkMode;
+      }
+      .page-numbers {
+          color: $FontColorInDarkMode;
+          @include boxShadowInDarkMode;
+        &.current {
+          color: $FontColorInDarkMode;
+          background-color: $highlightColorInDarkMode;
+        }
+        &:hover:not(.current) {
+          color: $highlightColorInDarkMode;
+          border-top: 1px solid $highlightColorInDarkMode;
+        }
+      }
     }
   }
 }

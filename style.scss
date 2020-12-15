@@ -5,7 +5,7 @@ Author: MingOf
 Author URI: https://mingof.top
 Description: no_feature
 Requires at least: WordPress 4.9.6
-Version: 2.4
+Version: 2.5
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mingof
@@ -14,10 +14,12 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
  */
 @charset "utf-8";
-
+:root {
+  color-scheme: light dark;
+}
 /* 一些基础样式和变量*/
+@import "assets/sass/typo.scss";
 @import "assets/sass/normalize";
-@import "assets/sass/typo.css";
 @import "assets/sass/animation";
 #overlay {
   position: absolute;
@@ -62,34 +64,34 @@ Use it to make something cool, have fun, and share what you've learned with othe
     display: block;
     clear: both;
   }
-
-  /*文章列表容器*/
-  @import "assets/sass/postsContainer";
-
-  /*侧边栏*/
-  @import "assets/sass/sidebar";
-
-  /*时间线页面*/
-  @import "assets/sass/timeline";
-
-  /*分页按钮*/
-  @import "assets/sass/pageNav";
-
-  /*404 界面*/
-  @import "assets/sass/notFound";
-
-  /*关于*/
-  @import "assets/sass/about";
-
-  /*评论*/
-  @import "assets/sass/comments";
-
-  /*灯箱*/
-  @import "assets/sass/lightBox";
-
-  /*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
-  @import "assets/sass/wpDiscuzColorBak";
 }
+
+/*文章列表容器*/
+@import "assets/sass/postsContainer";
+
+/*侧边栏*/
+@import "assets/sass/sidebar";
+
+/*时间线页面*/
+@import "assets/sass/timeline";
+
+/*分页按钮*/
+@import "assets/sass/pageNav";
+
+/*404 界面*/
+@import "assets/sass/notFound";
+
+/*关于*/
+@import "assets/sass/about";
+
+/*评论*/
+@import "assets/sass/comments";
+
+/*灯箱*/
+@import "assets/sass/lightBox";
+
+/*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
+@import "assets/sass/wpDiscuzColorBak";
 
 /*footer*/
 @import "assets/sass/footer";

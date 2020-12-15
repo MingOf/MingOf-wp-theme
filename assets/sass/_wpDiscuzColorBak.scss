@@ -346,7 +346,7 @@
 .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus {
   background-color: $highlightColor
 }
-@media (prefers-color-scheme: dark) {
+.dark {
   #wpdcom .wpd-prim-button {
     background-color: $highlightColorInDarkMode;
   }
@@ -673,5 +673,22 @@
 
   .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active, .wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus {
     background-color: $highlightColorInDarkMode
+  }
+
+  #wpdcom .ql-container {
+    background: #1d242c;
+    border: 1px solid #2c3440;
+  }
+  #wpdcom .ql-toolbar {
+    background-color: transparent;
+    border: 1px solid #2c3440;
+    border-top: 0 none;
+  }
+
+  #wpdcom .wpd-auth .wpd-login {
+    color: $FontColorInDarkMode;
+  }
+  .ql-toolbar.ql-snow {
+    border: 1px solid #2c3440;
   }
 }

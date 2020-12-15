@@ -221,5 +221,6 @@ window.addEventListener("load", initializeFooter);
  */
 
 function thumbnail_error(thumbnailImg) {
-    thumbnailImg.parentNode.style.display = "none";
+    // thumbnailImg.parentNode.style.display = "none";
+    thumbnailImg.classList.add("error");
 }

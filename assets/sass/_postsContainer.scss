@@ -8,9 +8,6 @@
     font-weight: 400;
     font-size: 30px;
     color: $highlightColor;
-    @media (prefers-color-scheme: dark) {
-      color: $highlightColorInDarkMode;
-    }
   }
   .post-item {
     .divider {
@@ -19,9 +16,6 @@
       background-color: $subColor;
       width: 8%;
       margin: 30px auto;
-      @media (prefers-color-scheme: dark) {
-        background-color: transparent;
-      }
     }
     &:nth-last-of-type(2) .divider {
       background-color: transparent;
@@ -33,9 +27,6 @@
         margin-bottom: 0;
         a {
           color: $highlightColor;
-          @media (prefers-color-scheme: dark) {
-            color: $highlightColorInDarkMode;
-          }
           display: inline-block;
           transition: all 0.3s;
           &::after {
@@ -47,9 +38,6 @@
             margin-top: 2px;
             height: 2px;
             background-color: $highlightColor;
-            @media (prefers-color-scheme: dark) {
-              background-color: $highlightColorInDarkMode;
-            }
           }
           &:hover::after {
             width: 100%;
@@ -70,16 +58,29 @@
     .post-excerpt {
       .post-thumbnail {
         border: 1em solid #fff;
-        //box-shadow: 5px 5px 5px #eee;
         border-radius: 5px;
         width: 280px;
         height: auto;
         overflow: hidden;
-        margin-left: 1.5em;
+        margin-left: 1em;
         float: right;
         transition: all 0.3s;
+        position: relative;
+        margin-top: 5px;
         &.error {
-          display: none;
+          &::after {
+            content: '';
+            height: 168px;
+            width: 100%;
+            background: url("/wp-content/themes/MingOf/assets/image/imgError.svg") no-repeat center;
+            opacity: 1;
+          }
+        }
+        &::after {
+          content: "";
+          float: left;
+          height: 0;
+          opacity: 0;
         }
         &:hover {
           transform: scale(1.1);
@@ -93,23 +94,14 @@
         transition: all 0.3s;
         margin-top: 10px;
         background-color: $highlightColor;
-        @media (prefers-color-scheme: dark) {
-         background-color: $highlightColorInDarkMode;
-        }
         line-height: 1;
         @include boxShadow;
-        @media (prefers-color-scheme: dark) {
-          @include boxShadowInDarkMode;
-        }
         a {
           color: #fff;
         }
         &:hover {
           color: $subFontColor;
           border: 2px solid $highlightColor;
-          @media (prefers-color-scheme: dark) {
-            border: 2px solid $highlightColorInDarkMode;
-          }
           background-color: transparent;
           a {
             color: $subFontColor;
@@ -133,9 +125,6 @@
     margin-left: 0;
     margin-top: 30px;
     color: $highlightColor;
-    @media (prefers-color-scheme: dark) {
-      color: $highlightColorInDarkMode;
-    }
     font-weight: 400;
     list-style: none;
     border-top: 2px dashed $subColor;
@@ -159,7 +148,6 @@
         .thumb-link {
           display: block;
           width: 100%;
-          height: 280px;
           overflow: hidden;
           margin-bottom: 1em;
           border-radius: 3px;
@@ -176,5 +164,53 @@
       }
     }
 
+  }
+}
+
+.dark {
+  #posts-container {
+    .posts-cate-title {
+      color: $highlightColorInDarkMode;
+    }
+    .post-item {
+      .divider {
+        background-color: transparent;
+      }
+      .post-title {
+        h2 {
+          a {
+            color: $highlightColorInDarkMode;
+            &::after {
+              background-color: $highlightColorInDarkMode;
+            }
+          }
+        }
+      }
+      .post-excerpt {
+        .post-thumbnail {
+          border: 1em solid #1c232d;
+        }
+        .read-more {
+          background-color: $highlightColorInDarkMode;
+          @include boxShadowInDarkMode;
+          &:hover {
+            border: 2px solid $highlightColorInDarkMode;
+          }
+        }
+      }
+    }
+    .post-switch {
+      color: $highlightColorInDarkMode;
+    }
+    @media screen and (max-width: 1000px) {
+      .post-item{
+        .post-excerpt {
+          .post-thumbnail {
+            border: 0 none;
+          }
+        }
+      }
+
+    }
   }
 }

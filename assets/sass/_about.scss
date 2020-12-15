@@ -10,7 +10,11 @@
   h1 {
     //height: 100px;
     color: $highlightColor;
-    @media (prefers-color-scheme: dark) {
+  }
+}
+.dark {
+  #about {
+    h1 {
       color: $highlightColorInDarkMode;
     }
   }

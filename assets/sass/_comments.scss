@@ -24,9 +24,6 @@
         display: none;
         /*border-radius: 3px;*/
         background-color: $highlightColor;
-        @media (prefers-color-scheme: dark) {
-          background-color: $highlightColorInDarkMode;
-        }
         color: #fff;
         padding: 0 6px;
         font-size: 15px;
@@ -64,9 +61,6 @@
     .form-submit {
       input {
         background-color: $highlightColor;
-        @media (prefers-color-scheme: dark) {
-          background-color: $highlightColorInDarkMode;
-        }
         color: #fff;
         border: 1px solid transparent;
         box-sizing: border-box;
@@ -76,15 +70,35 @@
         &:hover {
           background-color: transparent;
           border: 1px solid $highlightColor;
-          @media (prefers-color-scheme: dark) {
-            border: 1px solid $highlightColorInDarkMode;
-          }
           color: $subFontColor;
         }
       }
     }
     .comment-form-cookies-consent {
       clear: both;
+    }
+  }
+}
+
+
+.dark {
+  #comments {
+    .comment-list {
+      .comment-body {
+        .reply {
+          background-color: $highlightColorInDarkMode;
+        }
+      }
+    }
+    #respond {
+      .form-submit {
+        input {
+          background-color: $highlightColorInDarkMode;
+          &:hover {
+            border: 1px solid $highlightColorInDarkMode;
+          }
+        }
+      }
     }
   }
 }

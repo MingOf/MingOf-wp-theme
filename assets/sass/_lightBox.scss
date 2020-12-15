@@ -5,9 +5,6 @@
   right: 0;
   left: 0;
   background-color: rgba($bgColorBase, 0.95);
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba($bgColorBaseInDarkMode,0.95);
-  }
   height: 100%;
   width: 100%;
   z-index: 9999;
@@ -42,5 +39,11 @@
     top: 0;
     bottom: 0;
     border: 5px solid #fff;
+  }
+}
+
+.dark {
+  .light-box {
+    background-color: rgba($bgColorBaseInDarkMode,0.95);
   }
 }
