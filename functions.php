@@ -132,3 +132,11 @@ function mingof_customize_register( $wp_customize ) {
     )));
 }
 add_action( 'customize_register', 'mingof_customize_register' );
+
+function real_header_mode () {
+    if(wp_is_mobile()) {
+        return "vertical";
+    } else {
+        return get_option('mingof_header_mode','vertical');
+    }
+}

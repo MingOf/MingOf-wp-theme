@@ -1,6 +1,6 @@
 <?php /*时间线归档页面*/?>
 <?php get_header();?>
-<section id="mastcontainer" class="typo">
+<section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
     <div id="overlay"></div>
     <section class="timeline-container">
     <?php

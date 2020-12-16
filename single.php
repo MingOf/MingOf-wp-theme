@@ -5,7 +5,7 @@ if (has_post_thumbnail()) {
     include("banner-m.php");
 }
 ?>
-<section id="mastcontainer" class="typo">
+<section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
     <div id="overlay"></div>
     <section id="posts-container">
         <?php

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?php language_attributes()?>">
+<html lang="<?php language_attributes()?>" class="<?php echo real_header_mode().'-header-mode' ?>">
 <head>
     <meta charset="<?php bloginfo('charset');?>">
     <meta name="viewport"
@@ -10,9 +10,10 @@
     <?php wp_head(); ?>
 </head>
 <body>
-    <?php $header_mode = get_option('mingof_header_mode','vertical');?>
-    <?php var_dump(($header_mode));if($header_mode==="vertical"):?>
-    <header id="header">
+    <?php $header_mode = real_header_mode();?>
+    <?php if($header_mode==="vertical"): ?>
+    <div class="wrapper">
+    <header id="header" class="vertical-header">
         <div id="headering">
             <div id="logo">
                 <?php
@@ -41,5 +42,20 @@
         </nav>
         <?php get_template_part('footer');?>
     </header>
-    <?php endif; ?>
+    <?php elseif ($header_mode==="horizontal"): ?>
+    <header class="horizontal-header">
+        <div class="header-wrapper">
+            <div class="header-left">
+                <h1 class="horizontal-name"><a href="<?php echo get_option('home');?>"><?php bloginfo('name');?></a></h1>
+                <div class="description"><?php bloginfo("description");?></div>
+            </div>
+            <div class="header-right">
+                <?php wp_nav_menu(array(
+                    'menu_class'=>"hz-nav-menu",
+                    'container_class'=>"hz-nav-menu-container"
+                )); ?>
+            </div>
+        </div>
+    </header>
+    <?php endif;?>
 

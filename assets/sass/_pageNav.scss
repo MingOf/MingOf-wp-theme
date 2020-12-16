@@ -16,7 +16,8 @@
       transition: all 0.3s;
       position: relative;
       color: $subFontColor;
-      @include boxShadow;
+      //@include boxShadow;
+      box-shadow: 0 -3px 3px #eee;
       &.current {
         color: #fff;
         background-color: $highlightColor;

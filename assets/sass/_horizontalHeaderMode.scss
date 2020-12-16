@@ -1,0 +1,82 @@
+.horizontal-header-mode {
+  .horizontal-header {
+    height: 70px;
+    position: fixed;
+    @include boxShadow;
+    box-shadow: 0 0 5px #eee;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba($bgColorHeader,0.8);
+    .header-wrapper {
+      width: 61.8%;
+      margin: 0 auto;
+      .header-left {
+        float: left;
+        height: 70px;
+        h1 {
+          width: 100%;
+          font-size: 1.5em;
+          font-weight: bold;
+          a {
+            display: block;
+            height: 35px;
+            width: 100%;
+            line-height: 35px;
+            &:hover {
+              color: $highlightColor;
+            }
+          }
+        }
+        .description {
+          width: 100%;
+          height: 35px;
+          line-height: 35px;
+          cursor: none;
+        }
+      }
+      .header-right {
+        float: right;
+        .hz-nav-menu-container {
+          li {
+            display: inline-block;
+            height: 70px;
+            line-height: 70px;
+            margin-left: 2em;
+          }
+        }
+      }
+    }
+  }
+  #mastcontainer.horizontal {
+    margin: 0 auto;
+    width: 61.8%;
+    padding-top: 70px;
+    #posts-container {
+      padding: 3% 0;
+    }
+    #sidebar {
+      padding: 3% 0 3% 0;
+      margin-left: 70%;
+    }
+  }
+}
+
+
+.dark {
+  .horizontal-header {
+    background-color: $bgColorBaseInDarkMode;
+    @include boxShadowInDarkMode;
+    .header-wrapper {
+      .header-left {
+        h1 {
+          a {
+            &:hover {
+              color: $highlightColorInDarkMode;
+            }
+          }
+        }
+      }
+    }
+  }
+}

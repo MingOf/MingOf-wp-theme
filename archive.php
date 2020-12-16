@@ -1,6 +1,6 @@
 <?php /*归档界面，按照日期、标签*/?>
 <?php get_header();?>
-<section id="mastcontainer" class="typo">
+<section id="mastcontainer" class="typo <?php echo real_header_mode()?>">
     <div id="overlay"></div>
     <section id="posts-container">
 
