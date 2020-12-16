@@ -85,7 +85,7 @@ function initializeHeader () {
     // let nav = document.getElementById('nav');
     let header = document.getElementById('header');
 
-    header.addEventListener("touchmove", (e)=> {e.preventDefault();e.stopPropagation();});
+    header.addEventListener("touchmove", (e)=> {e.stopPropagation();});
     header.addEventListener("touchstart", (e)=> {e.stopPropagation();});
     header.addEventListener("touchend", (e)=> {e.stopPropagation();});
     header.addEventListener("scroll",(e)=>{e.preventDefault();e.stopPropagation();});
@@ -130,7 +130,7 @@ function initializeHeader () {
             foldHeader();
         }
     });
-    document.addEventListener("touchmove", ()=> {
+    document.addEventListener("touchmove", (e)=> {
         /*auto hide header*/
         let toggle = document.getElementsByClassName('nav-open');
         if(toggle.length>0) return;
@@ -217,7 +217,7 @@ window.addEventListener("load", initializeFooter);
 }());
 
 /**
- * thumbnail加载失败则不显示
+ * thumbnail加载失败
  */
 
 function thumbnail_error(thumbnailImg) {

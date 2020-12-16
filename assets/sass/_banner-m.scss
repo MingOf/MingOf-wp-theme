@@ -1,0 +1,144 @@
+#banner {
+  display: none;
+}
+@media screen and (max-width: 1000px){
+  #banner {
+    display: block;
+    position: relative;
+    height: 400px;
+    background: #fff;
+    background: url("./assets/image/banner.jpg") no-repeat center;
+    background-size: cover;
+    margin-bottom: -4em;
+    color: #fff;
+    font-size: 16px;
+    overflow: hidden;
+    z-index: 3;
+    .description {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      text-align: center;
+      top: 17.5em;
+      opacity: 0.8;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      border-radius: 100%;
+      z-index: 2;
+      height: 3em;
+      bottom: -1em;
+      left: -25%;
+      background-color: $bgColorBase;
+    }
+    #banner-logo {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 5em;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0px 0px 3px #eee;
+      opacity: 0.9;
+      &::after {
+        content: "";
+        display: block;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    #banner-headering {
+      display: flex;
+      padding: 0 1em;
+      height: 3em;
+      align-items: center;
+      opacity: 0.8;
+      transition: all 0.3s;
+      #banner-name {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        a {
+          color: inherit;
+        }
+      }
+    }
+    #banner-nav {
+      position: absolute;
+      font-size: inherit;
+      width: 70%;
+      height: 2.5em;
+      background-color: #fff;
+      left: 0; right: 0;
+      margin: 0 auto;
+      top: 14em;
+      box-shadow: 0 0 2px inset #eee;
+      border-radius: 3px;
+      opacity: 0.8;
+      .banner-nav-container {
+        .banner-menu {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          li {
+            text-align: center;
+            flex: 1;
+            height: 100%;
+            a {
+              display: block;
+              height: 2.5em;
+              line-height: 2.5em;
+              border-radius: 3px;
+              &:active {
+                background-color: $highlightColor;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.dark {
+  @media screen and (max-width: 1000px) {
+    #banner {
+      &::after {
+        background-color: $bgColorBaseInDarkMode;
+      }
+      #banner-headering {
+        #banner-name {
+          color: $FontColorInDarkMode;
+        }
+      }
+      #banner-nav {
+        background-color: transparent;
+        .banner-nav-container {
+          .banner-menu {
+            li {
+              a {
+                &:active {
+                  background-color: $highlightColorInDarkMode;
+                  color: $FontColorInDarkMode;
+                }
+              }
+            }
+          }
+        }
+      }
+      .description {
+        color: $FontColorInDarkMode;
+      }
+    }
+  }
+}

@@ -70,7 +70,17 @@
       }
       table-layout: fixed;
       width: 100%;
+      .wp-calendar-nav {
+        display: flex;
+        background-color: $subColor;
+      }
+      .wp-calendar-nav-prev, .wp-calendar-nav-next {
+        flex: 1;
+        text-align: center;
+      }
       @media screen and (max-width: 1000px) {
+        font-size: 10px;
+        text-align: left;
         th, td, caption {
           border: 0 none;
         }
@@ -116,6 +126,9 @@
         }
         th, td, caption {
           border: 0 none;
+        }
+        .wp-calendar-nav {
+          background-color: #2b323f;
         }
       }
     }

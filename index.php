@@ -1,4 +1,5 @@
 <?php get_header();?>
+<?php include('banner-m.php');?>
 <section id="mastcontainer" class="typo">
     <div id="overlay"></div>
     <section id="posts-container">

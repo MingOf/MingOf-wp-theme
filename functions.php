@@ -9,6 +9,7 @@ register_sidebar([
     'after_title'   => '</h2>'
 ]);
 wp_enqueue_script("jquery");
+
 /*添加CSS和脚本*/
 function add_theme_scripts() {
 //    wp_enqueue_style('animation', get_template_directory_uri().'/assets/css/animation.min.css');
@@ -20,6 +21,7 @@ function add_theme_scripts() {
 //    wp_enqueue_script('iconfont','https://at.alicdn.com/t/font_1475483_cvza2re0xfb.js',[],null,true);
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
+
 /*设置摘要*/
 function new_excerpt_length () {
     return 400;
@@ -91,3 +93,42 @@ function theme_setup() {
     add_theme_support( 'title-tag' );
 }
 add_action('after_setup_theme', 'theme_setup');
+
+/*注册自定义功能*/
+function mingof_customize_register( $wp_customize ) {
+    $wp_customize->add_setting( 'mingof_style_options[highlight_color]', array(
+        'default'        => '#ff6651',
+        'type'           => 'option',
+        'capability'     => 'edit_theme_options',
+        'transport'      => 'refresh'
+    ));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'highlight_color', array(
+        /*名字*/
+        'label'        => __( 'Highlight Color', 'mingof' ),
+        /*section属于……*/
+        'section'    => 'colors',
+        /*对弈的settings*/
+        'settings'   => 'mingof_style_options[highlight_color]',
+    )));
+
+    $wp_customize->add_section ('mingof_set_header_section', array(
+        'title'=>__('Change Header Mode', 'mingof')
+    ));
+    $wp_customize->add_setting('mingof_header_mode', array(
+        'default'=>'vertical',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'header_mode', array(
+       'label'=>__('Header Mode', 'mingof'),
+       'section'=>'mingof_set_header_section',
+       'settings'=>'mingof_header_mode',
+        'type'=>'radio',
+        'choices'=>array(
+            'vertical'=>__('vertical','mingof'),
+            'horizontal'=>__('horizontal','mingof')
+        )
+    )));
+}
+add_action( 'customize_register', 'mingof_customize_register' );

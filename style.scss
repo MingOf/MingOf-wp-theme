@@ -36,6 +36,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 /* header*/
 @import "assets/sass/header";
+@import "assets/sass/banner-m";
 #mastcontainer {
   margin: 0 0 0 380px;
   min-width: 900px;
@@ -49,7 +50,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   }
   @media screen and (max-width: 1000px) {
     margin: auto;
-    padding-top: 3em;
+    //padding-top: 3em;
     min-width: auto;
   }
   a:hover {

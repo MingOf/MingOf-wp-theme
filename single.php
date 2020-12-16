@@ -1,5 +1,10 @@
 <?php /*文章模板*/?>
 <?php get_header();?>
+<?php
+if (has_post_thumbnail()) {
+    include("banner-m.php");
+}
+?>
 <section id="mastcontainer" class="typo">
     <div id="overlay"></div>
     <section id="posts-container">
