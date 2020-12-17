@@ -80,66 +80,61 @@ document.addEventListener("DOMContentLoaded", function () {
 /**
 * mobile header 初始化
 **/
-function initializeHeader () {
-    let toggle = document.getElementsByClassName('nav-toggle')[0];
-    // let nav = document.getElementById('nav');
-    let header = document.getElementById('header');
+/**
+ * 移动端 header 的 toggle 按钮的事件处理
+ * @param toggle    {DOM} toggle自身
+ * @param targets   {Array} 事件需要影响到的目标
+ * @param isOpen    {Boolean} 开关是否为打开，不是则打开，是则关闭
+ * @returns {boolean}
+ */
+function toggleHandler ({toggle, targets},isOpen) {
 
-    header.addEventListener("touchmove", (e)=> {e.stopPropagation();});
-    header.addEventListener("touchstart", (e)=> {e.stopPropagation();});
-    header.addEventListener("touchend", (e)=> {e.stopPropagation();});
-    header.addEventListener("scroll",(e)=>{e.preventDefault();e.stopPropagation();});
-
-    var lastPos = 0;
-    /*移动端 header 导航折叠*/
-    function unfoldHeader () {
-        // nav.style.display = "block";
+    for (let i = 0; i<targets.length; i++) {
+        if (!isOpen) {
+            targets[i].classList.add("target-opened");
+        } else {
+            targets[i].classList.remove("target-opened");
+        }
+    }
+    if(!isOpen) {
         toggle.classList.remove("nav-close");
         toggle.classList.add("nav-open");
-        header.style.overflow = 'auto';
-        header.style.height = '100%';
-    }
-    function foldHeader () {
-        // nav.style.display = "none";
+    } else {
         toggle.classList.remove("nav-open");
         toggle.classList.add("nav-close");
-        header.style.overflow = 'hidden';
-        header.style.height = '3em';
     }
-    if(document.documentElement.clientWidth <= 1000) {
-        foldHeader();
-    } else {
-        unfoldHeader();
-    }
-    header.addEventListener("click", (e)=> {
-        let event = e || window.event;
-        let target = event.target || event.srcElement;
-        if(document.querySelectorAll(".nav-open"))
-        if(target.className.toLocaleLowerCase()=="nav-touch-area") {
-            if(header.style.height === "3em") {
-                unfoldHeader();
-            } else {
-                foldHeader();
-            }
-        }
+    return !isOpen;
+}
+
+/**
+ * mobile header 的一系列DOM操作。
+ */
+function initializeHeader () {
+    let toggle = document.getElementsByClassName('nav-toggle')[0];
+    let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
+    let mbTarget1 = document.getElementsByClassName('mb-header-side')[0];
+    let mbTarget2 = document.getElementsByClassName('mb-wrapper')[0];
+
+    var lastPos = 0;
+    let isOpen = false;
+
+    toggle.addEventListener("touchend", ()=> {
+        isOpen = toggleHandler({toggle:toggle,targets: [mbTarget1,mbTarget2,mbHeader]},isOpen);
     });
-    window.addEventListener("resize", () => {
-        if(document.body.clientWidth > 1000) {
-            unfoldHeader();
-        } else {
-            foldHeader();
-        }
+    mbTarget2.addEventListener("touchend", ()=> {
+        console.log(isOpen);
+       if(isOpen) {
+           isOpen = toggleHandler({toggle:toggle, targets:[mbTarget1,mbTarget2,mbHeader]},true);
+       }
     });
     document.addEventListener("touchmove", (e)=> {
         /*auto hide header*/
-        let toggle = document.getElementsByClassName('nav-open');
-        if(toggle.length>0) return;
         let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
         let delta = scrollTop - lastPos;
         if(delta >= 20) {
-            header.classList.add("hide");
+            mbHeader.classList.add("hide");
         } else if (delta < -20) {
-            header.classList.remove("hide");
+            mbHeader.classList.remove("hide");
         }
         lastPos = scrollTop;
     });
@@ -148,11 +143,12 @@ function initializeHeader () {
 document.addEventListener('DOMContentLoaded', initializeHeader);
 
 /**
- * 动态设置 PC 端 footer 的宽度，避免溢出 header 的包裹
+ * 动态设置 PC 端 footer 的宽度，避免溢出 vertical-header 的包裹
  **/
 function initializeFooter() {
     let footer = document.getElementsByClassName('footer')[0];
     let header = document.getElementById('header');
+    if(!footer || !header) return;
     function setFooter () {
         footer.style.width = header.clientWidth + 'px';
     }
@@ -221,6 +217,5 @@ window.addEventListener("load", initializeFooter);
  */
 
 function thumbnail_error(thumbnailImg) {
-    // thumbnailImg.parentNode.style.display = "none";
     thumbnailImg.classList.add("error");
 }

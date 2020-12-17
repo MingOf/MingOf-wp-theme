@@ -52,7 +52,8 @@
       }
       .page-numbers {
           color: $FontColorInDarkMode;
-          @include boxShadowInDarkMode;
+          //@include boxShadowInDarkMode;
+        box-shadow: 0 -3px 3px #222933;
         &.current {
           color: $FontColorInDarkMode;
           background-color: $highlightColorInDarkMode;
