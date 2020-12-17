@@ -76,7 +76,7 @@
                     'container_class'=>"nav-menu-container"
                 )); ?>
             </nav>
-            <aside id="catalog">
+            <aside id="catalog" class="mb-catalog">
 
             </aside>
         </section>

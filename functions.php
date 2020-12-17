@@ -17,7 +17,7 @@ function add_theme_scripts() {
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/mingofAnimation.js',[],null,true);
     wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/mingofChangeMode.js',[],null,false);
-    wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/mingofCatalog.min.js',[],null,true);
+    wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/mingofCatalog.js',[],null,true);
 //    wp_enqueue_script('iconfont','https://at.alicdn.com/t/font_1475483_cvza2re0xfb.js',[],null,true);
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');

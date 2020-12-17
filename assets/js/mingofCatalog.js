@@ -90,11 +90,13 @@ document.addEventListener("DOMContentLoaded", function() {
     catalog.style.display = 'block'; // 如果有目录则显示"文章目录"类别
 
     let catalogItems = [];
-
-    // 点击文章目录滚动到相应标题
+    let isCenter = true;
     for (let i = 0, l = titles.length; i < l; i++) {
         let p = document.createElement('p');
-
+        if(titles[i].$1th.el.innerText.length >= 10) {
+            isCenter = false;
+        }
+        // 点击文章目录滚动到相应标题
         p.classList.add("catalog-item");
         p.innerHTML = "<span>"+(i+1)+"."+"</span>" +" "+"<div>"+titles[i].$1th.el.innerText+"</div>";
         p.onclick = function (){
@@ -105,15 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
         catalog.appendChild(p);
         catalogItems.push({el: p, title: titles[i].$1th.el});
     }
-
-    // 点击两个类别时实现相互切换
-    for (let i = 0; i < navTitles.length; i++) {
-        navTitles[i].onclick = function () {
-            let j = (i + 1) % navTitles.length;
-            navTitles[j].scrollIntoView(true);
-        }
-    }
-
+    isCenter && catalog.classList.add("text-center");
     /*
     * 监听滚动事件，实现滚动时与文章目录动态关联
     * */

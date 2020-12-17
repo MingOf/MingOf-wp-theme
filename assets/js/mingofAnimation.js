@@ -3,6 +3,20 @@
  * */
 
 /**
+ * 判断是否为移动端
+ * @returns {boolean}
+ */
+function isMobile(){
+    let info = navigator.userAgent;
+    let agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
+    for(let i = 0; i < agents.length; i++){
+        if(info.indexOf(agents[i]) >= 0) return true;
+    }
+    return false;
+}
+window.mingofIsMobile = isMobile;
+
+/**
  * 入场动画
  **/
 function enterAnimation () {
@@ -110,6 +124,7 @@ function toggleHandler ({toggle, targets},isOpen) {
  * mobile header 的一系列DOM操作。
  */
 function initializeHeader () {
+    if(!mingofIsMobile()) return;
     let toggle = document.getElementsByClassName('nav-toggle')[0];
     let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
     let mbTarget1 = document.getElementsByClassName('mb-header-side')[0];
@@ -143,7 +158,7 @@ function initializeHeader () {
 document.addEventListener('DOMContentLoaded', initializeHeader);
 
 /**
- * 动态设置 PC 端 footer 的宽度，避免溢出 vertical-header 的包裹
+ * 动态设置 PC 端 vertical header mode 下 footer 的宽度，避免溢出 vertical-header 的包裹
  **/
 function initializeFooter() {
     let footer = document.getElementsByClassName('footer')[0];
