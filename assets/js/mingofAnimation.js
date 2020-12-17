@@ -106,8 +106,10 @@ function toggleHandler ({toggle, targets},isOpen) {
     for (let i = 0; i<targets.length; i++) {
         if (!isOpen) {
             targets[i].classList.add("target-opened");
+            targets[i].classList.remove("target-closed")
         } else {
             targets[i].classList.remove("target-opened");
+            targets[i].classList.add("target-closed");
         }
     }
     if(!isOpen) {

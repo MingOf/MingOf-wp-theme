@@ -148,13 +148,14 @@
   z-index: 2;
   //border-bottom: 1px solid #eee;
   box-shadow: -1px 1px 2px #eee;
-  transition: all 0.5s;
+  transition: all 0.6s;
   opacity: 0.9;
   top: 0;
-  left: 0;
+  right: 0;
   //background: transparent;
   background-color: $bgColorBase;
   transform: translate3d(0, 0, 0);
+  will-change: right;
   &.hide {
     transform: translate3d(0, -3.2em, 0);
   }
@@ -235,11 +236,14 @@
   z-index: -4;
   top: 0;
   right: -63%;
-  transition: all 0.5s;
+  //transform: translate3d(102%,0,0);
+  transform: translate3d(0,0,0);
+  transition: all 0.65s;
   width: 61.8%;
   overflow-y: scroll;
   height: 100%;
   box-shadow: -1px 0 100px inset #eee;
+  will-change: right;
   #catalog {
     margin: 2em;
   }
@@ -258,21 +262,32 @@
   }
 }
 .mb-wrapper {
-  transition: all 0.5s;
+  transition: all 0.7s;
 }
 .target-opened {
   &.mb-wrapper {
     transform: translate3d(-61.8%, 0, 0);
   }
   &.mb-header-toggle-bar {
-    left: -61.8%;
+    transform: translate3d(-61.8%,0, 0);
   }
   &.mb-header-side {
-    right: 0;
+    transform: translate3d(-100%, 0, 0);
     z-index: 4;
   }
 }
-
+.target-closed{
+  &.mb-wrapper {
+    transform: translate3d(0, 0, 0);
+  }
+  &.mb-header-toggle-bar {
+    transform: translate3d(0, 0, 0);
+  }
+  &.mb-header-side {
+    transform: translate3d(0,0,0);
+    z-index: -4;
+  }
+}
 
 .dark {
   #header {
