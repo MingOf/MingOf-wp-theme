@@ -19,37 +19,37 @@ window.mingofIsMobile = isMobile;
 /**
  * 入场动画
  **/
-function enterAnimation () {
-    var overlay = document.getElementById('overlay');
-    var mastContainer = document.getElementById('mastcontainer');
-
-    overlay.classList.add('fadeOut');
-    mastContainer.classList.add('pageShow');
-
-    // 动画执行完毕后执行该函数
-    function animationCompleted (...doms) {
-        return function () {
-            for(let i = 0, l = doms.length; i < l; i++ ) {
-                doms[i].style.transform = 'none';
-                doms[i].classList.remove('pageShow');
-            }
-        }
-    }
-    // overlay 动画完成后隐藏遮罩
-    overlay.addEventListener("animationend", function () {
-        this.style.display = "none";
-    });
-
-    mastContainer.addEventListener("animationend", function () {
-        requestAnimationFrame(animationCompleted(mastContainer));
-    });
-
-    // 用户滚动则停止动画;
-    window.addEventListener('scroll', function () {
-        requestAnimationFrame(animationCompleted(mastContainer));
-    });
-}
-document.addEventListener('DOMContentLoaded', enterAnimation);
+// function enterAnimation () {
+//     // var overlay = document.getElementById('overlay');
+//     var mastContainer = document.getElementById('mastcontainer');
+//
+//     // overlay.classList.add('fadeOut');
+//     mastContainer.classList.add('pageShow');
+//
+//     // 动画执行完毕后执行该函数
+//     function animationCompleted (...doms) {
+//         return function () {
+//             for(let i = 0, l = doms.length; i < l; i++ ) {
+//                 // doms[i].style.transform = 'translate3d(0,0,0)';
+//                 doms[i].classList.remove('pageShow');
+//             }
+//         }
+//     }
+//     // overlay 动画完成后隐藏遮罩
+//     // overlay.addEventListener("animationend", function () {
+//     //     this.style.display = "none";
+//     // });
+//
+//     mastContainer.addEventListener("animationend", function () {
+//         requestAnimationFrame(animationCompleted(mastContainer));
+//     });
+//
+//     // 用户滚动则停止动画;
+//     // window.addEventListener('scroll', function () {
+//     //     requestAnimationFrame(animationCompleted(mastContainer));
+//     // });
+// }
+// window.addEventListener('load', enterAnimation);
 
 /**
  * 鼠标点击动画
@@ -127,23 +127,36 @@ function toggleHandler ({toggle, targets},isOpen) {
  */
 function initializeHeader () {
     if(!mingofIsMobile()) return;
+    let doc = document.getElementsByClassName("mobile")[0];
     let toggle = document.getElementsByClassName('nav-toggle')[0];
-    let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
-    let mbTarget1 = document.getElementsByClassName('mb-header-side')[0];
-    let mbTarget2 = document.getElementsByClassName('mb-wrapper')[0];
+    let mast = document.getElementById('mastcontainer');
 
-    var lastPos = 0;
     let isOpen = false;
 
     toggle.addEventListener("touchend", ()=> {
-        isOpen = toggleHandler({toggle:toggle,targets: [mbTarget1,mbTarget2,mbHeader]},isOpen);
+        isOpen = toggleHandler({toggle:toggle,targets: [doc]},isOpen);
     });
-    mbTarget2.addEventListener("touchend", ()=> {
+    document.body.addEventListener("touchend", (e)=> {
         console.log(isOpen);
-       if(isOpen) {
-           isOpen = toggleHandler({toggle:toggle, targets:[mbTarget1,mbTarget2,mbHeader]},true);
-       }
-    });
+        console.log(e.target)
+        if(e.target.isEqualNode(mast) && isOpen) {
+            isOpen = toggleHandler({toggle:toggle, targets:[doc]},true);
+        }
+    },false);
+
+}
+document.addEventListener('DOMContentLoaded', initializeHeader);
+/**
+ * 记住上次滑动的位置，用来判断滑动距离的delta值
+ * @type {number}
+ */
+var lastPos = 0;
+
+/**
+ * 自动隐藏mb header
+ */
+function autoHideHeader () {
+    let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
     document.addEventListener("touchmove", (e)=> {
         /*auto hide header*/
         let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
@@ -156,8 +169,8 @@ function initializeHeader () {
         lastPos = scrollTop;
     });
 }
+document.addEventListener('DOMContentLoaded', autoHideHeader);
 
-document.addEventListener('DOMContentLoaded', initializeHeader);
 
 /**
  * 动态设置 PC 端 vertical header mode 下 footer 的宽度，避免溢出 vertical-header 的包裹

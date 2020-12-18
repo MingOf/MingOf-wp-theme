@@ -6,7 +6,7 @@ if (has_post_thumbnail()) {
 }
 ?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
-    <div id="overlay"></div>
+<!--    <div id="overlay"></div>-->
     <section id="posts-container">
         <?php
         the_post();

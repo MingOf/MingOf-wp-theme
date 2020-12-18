@@ -1,7 +1,6 @@
 <?php get_header();?>
 <?php include('banner-m.php');?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
-    <div id="overlay"></div>
     <section id="posts-container">
         <?php
         if ( have_posts()) {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?php language_attributes()?>" class="<?php echo real_header_mode().'-header-mode' ?>">
+<html lang="<?php language_attributes()?>" class="<?php echo real_header_mode().'-header-mode' ?> <?php mingof_is_mobile() && _e('mobile');?>">
 <head>
     <meta charset="<?php bloginfo('charset');?>">
     <meta name="viewport"
@@ -10,7 +10,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-
+<!--<div id="overlay"></div>-->
     <?php $header_mode = real_header_mode();?>
     <?php if($header_mode==="vertical" && !mingof_is_mobile()): ?>
     <!--竖向 Header-->
@@ -78,6 +78,6 @@
             </nav>
             <aside id="catalog" class="mb-catalog"></aside>
         </section>
-        <div class="mb-wrapper">
+<!--        <div class="mb-wrapper">-->
      <?php endif;?>
 

@@ -1,6 +1,6 @@
 <?php get_header();?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
-    <div id="overlay"></div>
+<!--    <div id="overlay"></div>-->
     <div id="about">
         <?php
         while(have_posts()) {
