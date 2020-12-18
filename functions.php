@@ -72,7 +72,7 @@ function get_thumbnail_img($post_id) {
     $catched_img_url = catch_post_img();
     $usable_img_url = $catched_img_url;
     if ( has_post_thumbnail()) {
-        $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'thumbnail');
+        $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'custom-tb-size');
         $usable_img_url = 'src="'.$thumbnail_image_url[0].'"';
     } else if ($catched_img_url == NULL) {
         $usable_img_url = "";
@@ -107,6 +107,10 @@ function real_header_mode () {
     }
 }
 
+function set_img_quality() {
+    return get_option('mingof_img_quality', 100);
+}
+add_filter( 'jpg_quality', 'set_img_quality' );
 
 function theme_setup() {
     add_theme_support('custom-logo', array(
@@ -117,8 +121,10 @@ function theme_setup() {
     ));
     add_theme_support( 'post-thumbnails', array('post'));
     add_theme_support( 'title-tag' );
+    add_image_size( 'custom-tb-size', get_option('mingof_tb_img_width',600), get_option('mingof_tb_img_height',400));
 }
 add_action('after_setup_theme', 'theme_setup');
+
 
 /*注册自定义功能*/
 function mingof_customize_register( $wp_customize ) {
@@ -156,6 +162,46 @@ function mingof_customize_register( $wp_customize ) {
             'horizontal'=>__('horizontal','mingof')
         )
     )));
+    $wp_customize->add_section('mingof_set_img_section',array(
+        'title'=>__('Set Image','mingof')
+    ));
+    $wp_customize->add_setting('mingof_img_quality',array(
+       'default'=>100,
+       'type'=>'option',
+       'capability'=>'edit_theme_options',
+       'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'img_quality',array(
+        'label'=>__('Upload Image Quality(%)'),
+        'section'=>'mingof_set_img_section',
+        'settings'=>'mingof_img_quality',
+        'type'=>'number'
+    )));
+
+    $wp_customize->add_setting('mingof_tb_img_width',array(
+        'default'=>600,
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_tb_img_height',array(
+        'default'=>400,
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'tb_img_width',array(
+        'label'=>__('set max-width(px) of thumbnail image','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=> 'mingof_tb_img_width',
+        'type'=>'number'
+    )));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'tb_img_height',array(
+        'label'=>__('set max-height(px) of thumbnail image','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=> 'mingof_tb_img_height',
+        'type'=>'number'
+    )));
 }
-add_action( 'customize_register', 'mingof_customize_register' );
+add_action( 'customize_register', 'mingof_customize_register');
 
