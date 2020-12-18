@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <!--竖向 Header-->
     <?php $header_mode = real_header_mode();?>
-    <?php if($header_mode==="vertical" && !wp_is_mobile()): ?>
-        <div class="wrapper">
+    <?php if($header_mode==="vertical" && !mingof_is_mobile()): ?>
+    <!--竖向 Header-->
+    <div class="wrapper">
         <header id="header" class="vertical-header">
             <div id="headering">
                 <div id="logo">
@@ -44,8 +44,8 @@
             <?php get_template_part('footer');?>
         </header>
 
-    <!--横向 Header-->
-    <?php elseif ($header_mode==="horizontal" &&!wp_is_mobile()): ?>
+    <?php elseif ($header_mode==="horizontal" && !mingof_is_mobile()): ?>
+        <!--横向 Header-->
         <header class="horizontal-header">
             <div class="header-wrapper">
                 <div class="header-left">
@@ -61,8 +61,8 @@
             </div>
         </header>
 
-    <!--移动端专用 Header-->
-    <?php elseif (wp_is_mobile()): ?>
+    <?php elseif (mingof_is_mobile()): ?>
+        <!--移动端专用 Header-->
         <header class="mb-header-toggle-bar">
             <div id="headering">
                 <h1 id="name"><a href="<?php echo get_option('home');?>"><?php bloginfo('name');?></a></h1>
@@ -76,9 +76,7 @@
                     'container_class'=>"nav-menu-container"
                 )); ?>
             </nav>
-            <aside id="catalog" class="mb-catalog">
-
-            </aside>
+            <aside id="catalog" class="mb-catalog"></aside>
         </section>
         <div class="mb-wrapper">
      <?php endif;?>

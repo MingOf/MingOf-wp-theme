@@ -12,8 +12,6 @@ wp_enqueue_script("jquery");
 
 /*添加CSS和脚本*/
 function add_theme_scripts() {
-//    wp_enqueue_style('animation', get_template_directory_uri().'/assets/css/animation.min.css');
-//    wp_enqueue_style("typo", get_template_directory_uri()."/assets/css/typo.min.css", [], null);
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/mingofAnimation.js',[],null,true);
     wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/mingofChangeMode.js',[],null,false);
@@ -82,6 +80,34 @@ function get_thumbnail_img($post_id) {
     return $usable_img_url;
 }
 
+/*判断是否为移动端*/
+function mingof_is_mobile () {
+    if(wp_is_mobile()) {
+        return true;
+    }
+    if (
+        strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false
+    ) {
+        return true;
+    }
+    return false;
+}
+/*判断header 是vertical 还是 horizontal*/
+function real_header_mode () {
+    if(mingof_is_mobile()) {
+        return "vertical";
+    } else {
+        return get_option('mingof_header_mode','vertical');
+    }
+}
+
+
 function theme_setup() {
     add_theme_support('custom-logo', array(
         'width'          => 500,
@@ -107,7 +133,7 @@ function mingof_customize_register( $wp_customize ) {
         'label'        => __( 'Highlight Color', 'mingof' ),
         /*section属于……*/
         'section'    => 'colors',
-        /*对弈的settings*/
+        /*对应的settings*/
         'settings'   => 'mingof_style_options[highlight_color]',
     )));
 
@@ -133,10 +159,3 @@ function mingof_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'mingof_customize_register' );
 
-function real_header_mode () {
-    if(wp_is_mobile()) {
-        return "vertical";
-    } else {
-        return get_option('mingof_header_mode','vertical');
-    }
-}

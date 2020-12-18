@@ -38,13 +38,9 @@ if(!comments_open()) return;
 
     <?php endif; // have_comments() ?>
     <?php $form_args = array(
-        // change the title of send button
         'label_submit'=>'提交评论',
-        // change the title of the reply section
         'title_reply'=>'写下评论或回复',
-        // remove "Text or HTML to be displayed after the set of comment fields"
         'comment_notes_after' => '',
-        // redefine your own textarea (the comment body)
         'comment_field' => '<p class="comment-form-comment">
 <label for="comment">' . _x('Comment', 'noun' ) . '</label><br />
 <textarea id="comment" name="comment" aria-required="true"></textarea>
