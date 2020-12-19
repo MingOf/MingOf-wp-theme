@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 * mobile header 初始化
 **/
 /**
- * 移动端 header 的 toggle 按钮的事件处理
+ * 移动端 header 的 toggle(菜单) 按钮的事件处理
  * @param toggle    {DOM} toggle自身
  * @param targets   {Array} 事件需要影响到的目标
  * @param isOpen    {Boolean} 开关是否为打开，不是则打开，是则关闭
@@ -138,9 +138,6 @@ function initializeHeader () {
     });
     side.addEventListener("touchstart", (e)=> {console.log("haha");e.stopPropagation()});
     mast.addEventListener("touchend", (e)=> {
-        console.log(isOpen);
-        console.log(e.target)
-
         isOpen = toggleHandler({toggle:toggle, targets:[doc]},true);
     },false);
 

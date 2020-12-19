@@ -1,5 +1,7 @@
 <?php
-/*注册sidebar*/
+/**
+ * 注册 sidebar
+ */
 register_sidebar([
     'id'    => 'sidebar-1',
     'name'  => '侧边栏',
@@ -8,26 +10,38 @@ register_sidebar([
     'before_title'  => '<h2>',
     'after_title'   => '</h2>'
 ]);
+/**
+ * 注册自定义菜单
+ */
 register_nav_menus(array(
     'main_menus'=>'主菜单',
     'mobile_menus'=>'移动端banner菜单'
 ));
 wp_enqueue_script("jquery");
 
-/*添加CSS和脚本*/
+/**
+ * 添加 js 或者 css
+ */
 function add_theme_scripts() {
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/mingofAnimation.js',[],null,true);
     wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/mingofChangeMode.js',[],null,false);
     wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/mingofCatalog.js',[],null,true);
-//    wp_enqueue_script('iconfont','https://at.alicdn.com/t/font_1475483_cvza2re0xfb.js',[],null,true);
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
-/*设置摘要*/
+/**
+ * 设置摘要的文字数量，配合 expert_read_more_link 函数
+ * @return int
+ */
 function new_excerpt_length () {
     return 400;
 }
+
+/**
+ * @param $output
+ * @return string 真正的摘要文本
+ */
 function excerpt_read_more_link( $output ) {
     // 根据标点符号智能断句的摘要
     $have_punctuation = preg_match_all('/[。：！!:？?]/u',$output,$matches);  //匹配摘要的标点符号
@@ -50,7 +64,7 @@ register_nav_menus([
 ]);
 
 /**
- * thumbnail image supported
+ * 匹配第一个图像作为文章的 thumbnail，配合 get_thumbnail_img 函数
  */
 function catch_post_img() {
     /*
@@ -68,6 +82,12 @@ function catch_post_img() {
     }
     return $first_img_url;
 }
+
+/**
+ * 如果有自己上传的特色图像，则使用特色图像作为 thumbnail，否则默认使用文章中出现的第一个图像（因为markdown的图像一般使用外链，所以很少使用自定义特色图像）
+ * @param $post_id  文章的ID
+ * @return string|null  返回真正的 thumbnail img src
+ */
 function get_thumbnail_img($post_id) {
     /*
      * return correct url for img src
@@ -84,7 +104,10 @@ function get_thumbnail_img($post_id) {
     return $usable_img_url;
 }
 
-/*判断是否为移动端*/
+/**
+ * 检测是否为移动端，配合 real_header_mode 函数
+ * @return bool
+ */
 function mingof_is_mobile () {
     if(wp_is_mobile()) {
         return true;
@@ -102,7 +125,11 @@ function mingof_is_mobile () {
     }
     return false;
 }
-/*判断header 是vertical 还是 horizontal*/
+
+/**
+ * 判断 Header 是横向排版还是纵向排版，移动端强制使用纵向
+ * @return string
+ */
 function real_header_mode () {
     if(mingof_is_mobile()) {
         return "vertical";
@@ -111,11 +138,23 @@ function real_header_mode () {
     }
 }
 
+/**
+ * 设置图片上传的质量，wordpress 默认会将上传图像压缩至 90%
+ * @return number
+ */
 function set_img_quality() {
     return get_option('mingof_img_quality', 100);
 }
 add_filter( 'jpg_quality', 'set_img_quality' );
 
+/**
+ * 打开友情链接
+ */
+add_filter('pre_option_link_manager_enabled', '__return_true');
+
+/**
+ * 添加主题支持
+ */
 function theme_setup() {
     add_theme_support('custom-logo', array(
         'width'          => 500,
@@ -130,8 +169,12 @@ function theme_setup() {
 add_action('after_setup_theme', 'theme_setup');
 
 
-/*注册自定义功能*/
+/**
+ * 注册自定义功能
+ * @param $wp_customize
+ */
 function mingof_customize_register( $wp_customize ) {
+
     $wp_customize->add_setting( 'mingof_style_options[highlight_color]', array(
         'default'        => '#ff6651',
         'type'           => 'option',
@@ -146,6 +189,7 @@ function mingof_customize_register( $wp_customize ) {
         /*对应的settings*/
         'settings'   => 'mingof_style_options[highlight_color]',
     )));
+
 
     $wp_customize->add_section ('mingof_set_header_section', array(
         'title'=>__('Change Header Mode', 'mingof')
@@ -166,6 +210,8 @@ function mingof_customize_register( $wp_customize ) {
             'horizontal'=>__('horizontal','mingof')
         )
     )));
+
+
     $wp_customize->add_section('mingof_set_img_section',array(
         'title'=>__('Set Image','mingof')
     ));
@@ -181,7 +227,6 @@ function mingof_customize_register( $wp_customize ) {
         'settings'=>'mingof_img_quality',
         'type'=>'number'
     )));
-
     $wp_customize->add_setting('mingof_tb_img_width',array(
         'default'=>600,
         'type'=>'option',
@@ -206,6 +251,7 @@ function mingof_customize_register( $wp_customize ) {
         'settings'=> 'mingof_tb_img_height',
         'type'=>'number'
     )));
+
 }
 add_action( 'customize_register', 'mingof_customize_register');
 

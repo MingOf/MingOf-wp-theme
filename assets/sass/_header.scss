@@ -148,7 +148,7 @@
   z-index: 2;
   //border-bottom: 1px solid #eee;
   box-shadow: -1px 1px 2px #eee;
-  transition: all 0.7s ease;
+  transition: all 0.5s ease;
   opacity: 0.9;
   top: 0;
   right: 0;
@@ -194,7 +194,7 @@
         width: 2em;
         height: 1px;
         box-shadow: inset 0px -1px 0 $subFontColor;
-        transition: all 0.8s;
+        transition: all 0.5s;
       }
       // 使用background-color 1px会有差异 的问题
       &.nav-close {
@@ -236,7 +236,7 @@
   //right:0;
   //transform: translate3d(102%,0,0);
   transform: translate3d(0,0,0);
-  transition: all 0.7s ease;
+  transition: all 0.5s ease;
   width: 61.8%;
   overflow-y: scroll;
   height: 100%;
