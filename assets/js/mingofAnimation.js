@@ -130,18 +130,18 @@ function initializeHeader () {
     let doc = document.getElementsByClassName("mobile")[0];
     let toggle = document.getElementsByClassName('nav-toggle')[0];
     let mast = document.getElementById('mastcontainer');
-
+    let side = document.getElementsByClassName("mb-header-side")[0];
     let isOpen = false;
 
     toggle.addEventListener("touchend", ()=> {
         isOpen = toggleHandler({toggle:toggle,targets: [doc]},isOpen);
     });
-    document.body.addEventListener("touchend", (e)=> {
+    side.addEventListener("touchstart", (e)=> {console.log("haha");e.stopPropagation()});
+    mast.addEventListener("touchend", (e)=> {
         console.log(isOpen);
         console.log(e.target)
-        if(e.target.isEqualNode(mast) && isOpen) {
-            isOpen = toggleHandler({toggle:toggle, targets:[doc]},true);
-        }
+
+        isOpen = toggleHandler({toggle:toggle, targets:[doc]},true);
     },false);
 
 }

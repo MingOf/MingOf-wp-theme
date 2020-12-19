@@ -1,10 +1,14 @@
 <?php /*文章模板*/?>
 <?php get_header();?>
-<?php
-if (has_post_thumbnail()) {
-    include("banner-m.php");
+<?php if(has_post_thumbnail()): ?>
+<div id="banner"  style="background-image: url('<?php
+if(has_post_thumbnail()) {
+    echo wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'thumbnail')[0];
 }
-?>
+?>')">
+    <?php include("banner-m.php"); ?>
+</div>
+<?php endif;?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
 <!--    <div id="overlay"></div>-->
     <section id="posts-container">

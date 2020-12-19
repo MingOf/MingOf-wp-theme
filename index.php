@@ -1,5 +1,9 @@
 <?php get_header();?>
+<div id="banner"  style="background-image: url('<?php
+echo get_template_directory_uri().'/assets/image/banner.jpg';
+?>')">
 <?php include('banner-m.php');?>
+</div>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
     <section id="posts-container">
         <?php

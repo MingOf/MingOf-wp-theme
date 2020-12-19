@@ -26,22 +26,13 @@
     &::after {
       content: '';
       position: absolute;
-      width: 150%;
+      width: 200%;
       border-radius: 100%;
       z-index: 2;
       height: 3em;
       bottom: -1em;
-      left: -25%;
+      left: -50%;
       background-color: $bgColorBase;
-    }
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      left: 0; right: 0; top: 0; bottom: 0;
-      z-index: -1;
-      background-color: #000;
-      opacity: 0.3;
     }
     #banner-logo {
       position: absolute;
@@ -126,6 +117,15 @@
 .dark {
   @media screen and (max-width: 1000px) {
     #banner {
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0; right: 0; top: 0; bottom: 0;
+        z-index: -1;
+        background-color: #000;
+        opacity: 0.3;
+      }
       &::after {
         background-color: $bgColorBaseInDarkMode;
       }

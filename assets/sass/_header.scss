@@ -145,7 +145,7 @@
   width: 100%;
   height: 3em;
   min-height: 0;
-  z-index: 1;
+  z-index: 2;
   //border-bottom: 1px solid #eee;
   box-shadow: -1px 1px 2px #eee;
   transition: all 0.6s;
@@ -238,7 +238,7 @@
   overflow-y: scroll;
   height: 100%;
   box-shadow: -1px 0 100px inset #eee;
-  will-change: right;
+  z-index: 1;
   #catalog {
     margin: 2em;
   }
@@ -266,6 +266,9 @@
   }
   .mb-header-toggle-bar {
     transform: translate3d(-61.8%,0, 0);
+    &.hide {
+      transform: translate3d(-61.8%, -3.2em, 0);
+    }
   }
   .mb-header-side {
     transform: translate3d(-102%, 0, 0);
@@ -288,7 +291,7 @@
 }
 .hide {
   &.mb-header-toggle-bar {
-    transform: translate3d(0, -3.2em, 0);
+    transform: translate3d(0,-3.2em,0);
   }
 }
 .dark {
