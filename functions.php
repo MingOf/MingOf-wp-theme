@@ -8,6 +8,10 @@ register_sidebar([
     'before_title'  => '<h2>',
     'after_title'   => '</h2>'
 ]);
+register_nav_menus(array(
+    'main_menus'=>'主菜单',
+    'mobile_menus'=>'移动端banner菜单'
+));
 wp_enqueue_script("jquery");
 
 /*添加CSS和脚本*/

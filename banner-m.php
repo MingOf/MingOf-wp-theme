@@ -14,8 +14,10 @@
 </div>
 <div id="banner-nav">
     <?php wp_nav_menu(array(
+        'theme_location'=>'mobile_menus',
         'menu_class'=>"banner-menu",
-        'container_class'=>"banner-nav-container"
+        'container_class'=>"banner-nav-container",
+        'depth'=>1
     )); ?>
 </div>
 <div class="description"><?php bloginfo("description");?></div>

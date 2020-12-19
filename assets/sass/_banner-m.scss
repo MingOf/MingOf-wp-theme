@@ -74,7 +74,7 @@
     #banner-nav {
       position: absolute;
       font-size: inherit;
-      min-width: 70%;
+      min-width: 61.8%;
       height: 2.5em;
       background-color: #fff;
       left: 50%; transform: translateX(-50%);
@@ -83,30 +83,35 @@
       box-shadow: 0 0 2px inset #eee;
       border-radius: 3px;
       opacity: 0.8;
-
-      .banner-nav-container {
-        .banner-menu {
-          list-style: none;
+      padding: 0 0.3em;
+      .banner-menu {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        ul {
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          li {
-            text-align: center;
-            flex: 1;
-            height: 100%;
-            text-overflow:ellipsis;
+          width: 100%;
+        }
+        li {
+          text-align: center;
+          flex: 1;
+          height: 100%;
+          margin: 0 0.5em;
+          a {
+            display: block;
+            height: 2.5em;
+            line-height: 2.5em;
+            border-radius: 3px;
+            text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-            a {
-              display: block;
-              height: 2.5em;
-              line-height: 2.5em;
-              border-radius: 3px;
-              &:active {
-                background-color: $highlightColor;
-                color: #fff;
-              }
+            &:active {
+              background-color: $highlightColor;
+              color: #fff;
             }
           }
         }

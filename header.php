@@ -34,6 +34,7 @@
             <nav id="nav">
                 <h1 class="nav-title">导航</h1>
                 <?php wp_nav_menu(array(
+                    'theme_location'=>'main_menus',
                     'menu_class'=>"nav-menu",
                     'container_class'=>"nav-menu-container"
                 )); ?>
@@ -54,6 +55,7 @@
                 </div>
                 <div class="header-right">
                     <?php wp_nav_menu(array(
+                        'theme_location'=>'main_menus',
                         'menu_class'=>"hz-nav-menu",
                         'container_class'=>"hz-nav-menu-container"
                     )); ?>
@@ -72,6 +74,7 @@
         <section class="mb-header-side">
             <nav class="mb-nav">
                 <?php wp_nav_menu(array(
+                    'theme_location'=>'main_menus',
                     'menu_class'=>"nav-menu",
                     'container_class'=>"nav-menu-container"
                 )); ?>
