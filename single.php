@@ -12,6 +12,7 @@ if(has_post_thumbnail()) {
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
 <!--    <div id="overlay"></div>-->
     <section id="posts-container">
+        <section class="post-wrapper <?php has_post_thumbnail() && _e('has-thumbnail')?>">
         <?php
         the_post();
         ?>
@@ -19,7 +20,7 @@ if(has_post_thumbnail()) {
         $visited_count = get_post_meta($post->ID,'_visited', true) ?  get_post_meta($post->ID,'_visited', true) : 0;
         update_post_meta($post->ID,'_visited', ++$visited_count);
         ?>
-        <div class="post-item">
+        <div class="post-item post-single">
             <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
             <div class="post-meta">
 <!--                <span class="post-meta-opt post-meta-auth">--><?php //_e("作者","mingof")?><!--：--><?// the_author(); ?><!--</span>-->
@@ -60,6 +61,7 @@ if(has_post_thumbnail()) {
             </li>
         </ul>
         <?php comments_template(); ?>
+        </section>
     </section>
     <?php get_sidebar("侧边栏") ?>
 </section>

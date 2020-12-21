@@ -46,6 +46,14 @@ section.links {
         z-index: -1;
         border-radius: 10px;
         filter: blur(100px);
+        transition: all 0.3s;
+      }
+    }
+    &:hover {
+      .links-item-fav {
+        &::after {
+          filter: blur(100px) brightness(1.1);
+        }
       }
     }
     .links-item-href {

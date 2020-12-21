@@ -12,7 +12,8 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
 //                    获取日志信息，并且将信息存入全局变量 $post 中
                 the_post();
         ?>
-        <div class="post-item">
+         <?php $tb_url=get_thumbnail_img(get_the_ID());?>
+        <div class="post-item <?php empty($tb_url) && _e('no-thumbnail')?>">
             <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
             <div class="post-meta">
                 <span class="post-meta-opt post-meta-cate"><?php _e("分类","mingof")?>：<? the_category(','); ?></span>
@@ -21,9 +22,9 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
                 <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
             </div>
             <article class="post-excerpt">
-                <?php if(get_thumbnail_img(get_the_ID())!==""):?>
+                <?php if($tb_url!==""):?>
                 <a class="thumb-link" href="<?php the_permalink();?>">
-                    <img class="post-thumbnail" <?php echo get_thumbnail_img(get_the_ID());?> alt="" onerror="thumbnail_error(this)">
+                    <div class="post-thumbnail" style='background-image: url(<?php echo $tb_url?>)' alt="" onerror="thumbnail_error(this)"></div>
                 </a>
                 <?php endif;?>
                 <div>
@@ -37,7 +38,7 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
         <?php
             }
         } else {
-            echo 'nothing';
+            echo '[・ヘ・?]';
         }
         rewind_posts();
         ?>

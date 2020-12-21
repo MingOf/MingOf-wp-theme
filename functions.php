@@ -76,10 +76,11 @@ function catch_post_img() {
     $output = preg_match_all('/(\s+src\s?\=)\s?[\'|"]([^\'|"]*)/is', $post->post_content, $matches);
     $tmp_url = $matches[0][0];
     if ($tmp_url !== NULL) {
-        $first_img_url = $matches[0][0].'"';
+        $first_img_url = $matches[2][0].'"';
     } else {
         $first_img_url = NULL;
     }
+//    var_dump($first_img_url);
     return $first_img_url;
 }
 
@@ -97,7 +98,7 @@ function get_thumbnail_img($post_id) {
     $usable_img_url = $catched_img_url;
     if ( has_post_thumbnail()) {
         $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'custom-tb-size');
-        $usable_img_url = 'src="'.$thumbnail_image_url[0].'"';
+        $usable_img_url = '"'.$thumbnail_image_url[0].'"';
     } else if ($catched_img_url == NULL) {
         $usable_img_url = "";
     }

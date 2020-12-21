@@ -11,7 +11,17 @@
     float: none;
   }
   .sidebar-widget {
-    margin-bottom: 3%;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.02);
+    }
+    h1,h2,h3,h4,h5,h6 {
+      margin-top: 0;
+    }
     form {
       @include boxShadow;
       label {display: none;}
@@ -38,10 +48,7 @@
     h2 {
       text-align: left;
       line-height: 2;
-      //border-bottom: 2px solid $subColor;
       @include hDivider($subColor);
-      margin-bottom: 3%;
-      //color: $highlightColor;
     }
     ul {
       overflow: hidden;
@@ -62,8 +69,13 @@
       }
     }
     #wp-calendar {
+      border: 0 none;
+      font-size: 14px;
       tbody  a{
         color: $highlightColor;
+      }
+      th, td, caption {
+        border: 0 none;
       }
       #next,#prev {
         text-align: center;
@@ -81,9 +93,6 @@
       @media screen and (max-width: 1000px) {
         font-size: 10px;
         text-align: left;
-        th, td, caption {
-          border: 0 none;
-        }
       }
     }
     .tagcloud {
@@ -97,6 +106,7 @@
 .dark {
   #sidebar {
     .sidebar-widget {
+      background-color: #1d2932;
       form {
         @include boxShadowInDarkMode;
         input {
