@@ -1,17 +1,21 @@
 .page-nav-wrapper {
-  width: 70%;
+  //width: 70%;
   margin: 0 auto;
-  padding: 2.8em;
+  //padding: 2.8em;
+  font-size: 24px;
   .page-nav {
     width: 100%;
     margin: 0 auto;
     text-align: center;
     border-top: 1px solid #eee;
     transition: transform 0.3s;
+    span,a {
+      margin-bottom: 1em;
+    }
     .page-numbers {
       display: inline-block;
       margin: -1px 5px 0 5px;
-      padding: 0 10px;
+      padding: 0 16px;
       border-top: 1px solid transparent;
       transition: all 0.3s;
       position: relative;
@@ -36,11 +40,11 @@
       }
     }
   }
-  &:hover {
-    .page-nav {
-      transform: scale(1.3);
-    }
-  }
+  //&:hover {
+  //  .page-nav {
+  //    transform: scale(1.3);
+  //  }
+  //}
 }
 
 .dark {

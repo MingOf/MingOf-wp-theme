@@ -24,7 +24,9 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
             <article class="post-excerpt">
                 <?php if($tb_url!==""):?>
                 <a class="thumb-link" href="<?php the_permalink();?>">
-                    <div class="post-thumbnail" style='background-image: url(<?php echo $tb_url?>)' alt="" onerror="thumbnail_error(this)"></div>
+                    <div class="post-thumbnail" style='background-image: url(<?php echo $tb_url?>)' alt="" onerror="thumbnail_error(this)">
+                        <span>∑(っ°Д°;)っ卧槽，图片消えた</span>
+                    </div>
                 </a>
                 <?php endif;?>
                 <div>

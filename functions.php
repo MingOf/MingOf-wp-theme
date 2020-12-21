@@ -76,7 +76,7 @@ function catch_post_img() {
     $output = preg_match_all('/(\s+src\s?\=)\s?[\'|"]([^\'|"]*)/is', $post->post_content, $matches);
     $tmp_url = $matches[0][0];
     if ($tmp_url !== NULL) {
-        $first_img_url = $matches[2][0].'"';
+        $first_img_url = $matches[2][0].'';
     } else {
         $first_img_url = NULL;
     }

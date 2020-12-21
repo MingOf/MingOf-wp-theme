@@ -23,7 +23,7 @@
       margin-top: 0;
     }
     form {
-      @include boxShadow;
+      box-shadow: 0 0 5px #eee;
       label {display: none;}
       input {
         border-radius: 0;
