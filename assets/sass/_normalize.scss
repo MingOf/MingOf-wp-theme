@@ -14,7 +14,16 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@font-face {
+  font-family: 'webfont';
+  font-display: swap;
+  src: url('//at.alicdn.com/t/webfont_4gy8qz2t80q.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_4gy8qz2t80q.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/webfont_4gy8qz2t80q.woff2') format('woff2'),
+  url('//at.alicdn.com/t/webfont_4gy8qz2t80q.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/webfont_4gy8qz2t80q.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/webfont_4gy8qz2t80q.svg#Alibaba-PuHuiTi-Regular') format('svg'); /* iOS 4.1- */
+}
 /**
  普通模式变量
  */
@@ -145,6 +154,7 @@ img {
   max-width: 100% !important;
   height: auto;
   cursor: pointer;
+  border-radius: 5px;
 }
 button {
   background: none;

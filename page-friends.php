@@ -6,7 +6,8 @@
             the_post();
         }
         ?>
-        <h1><?php the_title();?></h1>
+        <h1 class="links-main-title"><?php the_title();?></h1>
+        <p class="link-main-desc"><?php the_content();?></p>
         <?php
         function get_friends_links ($term_id=null) {
             $bookmarks = get_bookmarks(array(
@@ -18,11 +19,16 @@
                 $output .= '<ul class="links-list">';
                 foreach($bookmarks as $bookmark) {
                     $output .= <<<EOT
+                        <a href="{$bookmark->link_url}" target="{$bookmark->link_target}" title="{$bookmark->link_url}">
                         <li class="links-item">
-                            <img class="links-item-fav" src="{$bookmark->link_url}/favicon.ico" alt="favicon"/>
-                            <a class="links-item-href" href="{$bookmark->link_url}" target="{$bookmark->link_target}">{$bookmark->link_name}</a>
-                            <div class="links-item-desc">{$bookmark->link_description}</div>
+                            <div class="links-item-fav" style="background-image:url('{$bookmark->link_url}/favicon.ico')"></div>
+                            <div class="links-item-detail">
+                                    <div class="links-item-href">{$bookmark->link_name}</div>
+<!--                                <a class="links-item-href" href="{$bookmark->link_url}" target="{$bookmark->link_target}" title="{$bookmark->link_url}">{$bookmark->link_name}</a>-->
+                                <div class="links-item-desc">{$bookmark->link_description}</div>                           
+                            </div>
                         </li>
+                        </a>
 EOT;
                 }
                 $output .= '</ul>';
@@ -45,5 +51,6 @@ EOT;
         }
         echo $result;
         ?>
+        <?php comments_template();?>
     </section>
 </section>
