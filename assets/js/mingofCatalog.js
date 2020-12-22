@@ -1,7 +1,7 @@
 /*
 * 初始化文章目录， 使用遍历节点的方式
 * */
-function initCatalog (el) {
+function initCatalog(el) {
     /**
      * 假定处理过后的hArr 如下：
      * [
@@ -16,10 +16,10 @@ function initCatalog (el) {
      * ]
      *
      */
-    if(!el) throw "el is not a HTMLElement";
+    if (!el) throw "el is not a HTMLElement";
     let hArr = [];
     let els;
-    if(!el.querySelectorAll) {
+    if (!el.querySelectorAll) {
         els = el.querySelectorAll("h1, h2, h3, h4, h5, h6");
     } else {
         els = el.children;
@@ -70,16 +70,17 @@ function initCatalog (el) {
     }
     return titles
 }
-document.addEventListener("DOMContentLoaded", function() {
-    let el          = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
-    let catalog     = document.getElementById('catalog'); //目录
+
+document.addEventListener("DOMContentLoaded", function () {
+    let el = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
+    let catalog = document.getElementById('catalog'); //目录
     if (!el) {
         catalog.style.display = "none";
         return;
     }
 
-    let navTitles   = document.getElementsByClassName('nav-title'); // 导航类别，如"文章目录"，"导航"
-    let titles      = initCatalog(el);
+    let navTitles = document.getElementsByClassName('nav-title'); // 导航类别，如"文章目录"，"导航"
+    let titles = initCatalog(el);
 
     if (titles.length === 0) {
         catalog.style.display = "none";
@@ -93,13 +94,13 @@ document.addEventListener("DOMContentLoaded", function() {
     let isCenter = true;
     for (let i = 0, l = titles.length; i < l; i++) {
         let p = document.createElement('p');
-        if(titles[i].$1th.el.innerText.length >= 10) {
+        if (titles[i].$1th.el.innerText.length >= 10) {
             isCenter = false;
         }
         // 点击文章目录滚动到相应标题
         p.classList.add("catalog-item");
-        p.innerHTML = "<span>"+(i+1)+"."+"</span>" +" "+"<div>"+titles[i].$1th.el.innerText+"</div>";
-        p.onclick = function (){
+        p.innerHTML = "<span>" + (i + 1) + "." + "</span>" + " " + "<div>" + titles[i].$1th.el.innerText + "</div>";
+        p.onclick = function () {
             titles[i].$1th.el.scrollIntoView({
                 behavior: "smooth"
             });
@@ -111,10 +112,10 @@ document.addEventListener("DOMContentLoaded", function() {
     /*
     * 监听滚动事件，实现滚动时与文章目录动态关联
     * */
-    document.addEventListener('scroll', function() {
-        let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
-        let clientHeight    = document.documentElement.clientHeight || document.body.clientHeight;
-        let scrollHeight    = document.documentElement.scrollHeight || document.body.scrollHeight;
+    document.addEventListener('scroll', function () {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         for (let i = 0, l = catalogItems.length; i < l; i++) {
             if (scrollTop >= catalogItems[i].title.offsetTop - 10 || scrollTop + clientHeight === scrollHeight) {
                 catalogItems[i].el.classList.add('catalog-item-active');

@@ -6,14 +6,15 @@
  * 判断是否为移动端
  * @returns {boolean}
  */
-function isMobile(){
+function isMobile() {
     let info = navigator.userAgent;
     let agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
-    for(let i = 0; i < agents.length; i++){
-        if(info.indexOf(agents[i]) >= 0) return true;
+    for (let i = 0; i < agents.length; i++) {
+        if (info.indexOf(agents[i]) >= 0) return true;
     }
     return false;
 }
+
 window.mingofIsMobile = isMobile;
 
 /**
@@ -57,43 +58,44 @@ window.mingofIsMobile = isMobile;
 var a_idx = 0;
 document.addEventListener("DOMContentLoaded", function () {
     var body = document.body;
-    if(body.clientWidth <= 1000) return;
-    body.addEventListener("click", (e)=> {
-       var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"];
+    if (body.clientWidth <= 1000) return;
+    body.addEventListener("click", (e) => {
+        var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"];
 
-       var i = document.createElement('span');
-       i.innerHTML = a[a_idx];
+        var i = document.createElement('span');
+        i.innerHTML = a[a_idx];
 
-       a_idx = (a_idx + 1) % a.length;
-       var x = e.pageX,
-           y = e.pageY;
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+            y = e.pageY;
 
-       i.style.zIndex = 9999;
-       i.style.top = (y - 20) + 'px';
-       i.style.left = x + 'px';
-       i.style.position = "absolute";
-       i.style.fontWeight = "bold";
-       i.style.color = "#ff6651";
-       i.style.opacity = 1;
+        i.style.zIndex = 9999;
+        i.style.top = (y - 20) + 'px';
+        i.style.left = x + 'px';
+        i.style.position = "absolute";
+        i.style.fontWeight = "bold";
+        i.style.color = "#ff6651";
+        i.style.opacity = 1;
 
-       body.appendChild(i);
+        body.appendChild(i);
 
-       function animate () {
-           i.style.top = parseInt(i.style.top) - 1 + 'px';
-           i.style.opacity -= 0.05;
-           if(parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
-               body.removeChild(i);
-               return;
-           }
-           requestAnimationFrame(animate);
-       }
-       requestAnimationFrame(animate);
+        function animate() {
+            i.style.top = parseInt(i.style.top) - 1 + 'px';
+            i.style.opacity -= 0.05;
+            if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
+                body.removeChild(i);
+                return;
+            }
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
     });
 });
 
 /**
-* mobile header 初始化
-**/
+ * mobile header 初始化
+ **/
 /**
  * 移动端 header 的 toggle(菜单) 按钮的事件处理
  * @param toggle    {DOM} toggle自身
@@ -101,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param isOpen    {Boolean} 开关是否为打开，不是则打开，是则关闭
  * @returns {boolean}
  */
-function toggleHandler ({toggle, targets},isOpen) {
+function toggleHandler({toggle, targets}, isOpen) {
 
-    for (let i = 0; i<targets.length; i++) {
+    for (let i = 0; i < targets.length; i++) {
         if (!isOpen) {
             targets[i].classList.add("target-opened");
             targets[i].classList.remove("target-closed")
@@ -112,7 +114,7 @@ function toggleHandler ({toggle, targets},isOpen) {
             targets[i].classList.add("target-closed");
         }
     }
-    if(!isOpen) {
+    if (!isOpen) {
         toggle.classList.remove("nav-close");
         toggle.classList.add("nav-open");
     } else {
@@ -125,23 +127,27 @@ function toggleHandler ({toggle, targets},isOpen) {
 /**
  * mobile header 的一系列DOM操作。
  */
-function initializeHeader () {
-    if(!mingofIsMobile()) return;
+function initializeHeader() {
+    if (!mingofIsMobile()) return;
     let doc = document.getElementsByClassName("mobile")[0];
     let toggle = document.getElementsByClassName('nav-toggle')[0];
     let mast = document.getElementById('mastcontainer');
     let side = document.getElementsByClassName("mb-header-side")[0];
     let isOpen = false;
 
-    toggle.addEventListener("touchend", ()=> {
-        isOpen = toggleHandler({toggle:toggle,targets: [doc]},isOpen);
+    toggle.addEventListener("touchend", () => {
+        isOpen = toggleHandler({toggle: toggle, targets: [doc]}, isOpen);
     });
-    side.addEventListener("touchstart", (e)=> {console.log("haha");e.stopPropagation()});
-    mast.addEventListener("touchend", (e)=> {
-        isOpen = toggleHandler({toggle:toggle, targets:[doc]},true);
-    },false);
+    side.addEventListener("touchstart", (e) => {
+        console.log("haha");
+        e.stopPropagation()
+    });
+    mast.addEventListener("touchend", (e) => {
+        isOpen = toggleHandler({toggle: toggle, targets: [doc]}, true);
+    }, false);
 
 }
+
 document.addEventListener('DOMContentLoaded', initializeHeader);
 /**
  * 记住上次滑动的位置，用来判断滑动距离的delta值
@@ -152,13 +158,13 @@ var lastPos = 0;
 /**
  * 自动隐藏mb header
  */
-function autoHideHeader () {
+function autoHideHeader() {
     let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
-    document.addEventListener("touchmove", (e)=> {
+    document.addEventListener("touchmove", (e) => {
         /*auto hide header*/
-        let scrollTop       = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         let delta = scrollTop - lastPos;
-        if(delta >= 20) {
+        if (delta >= 20) {
             mbHeader.classList.add("hide");
         } else if (delta < -20) {
             mbHeader.classList.remove("hide");
@@ -166,6 +172,7 @@ function autoHideHeader () {
         lastPos = scrollTop;
     });
 }
+
 document.addEventListener('DOMContentLoaded', autoHideHeader);
 
 
@@ -175,28 +182,33 @@ document.addEventListener('DOMContentLoaded', autoHideHeader);
 function initializeFooter() {
     let footer = document.getElementsByClassName('footer')[0];
     let header = document.getElementById('header');
-    if(!footer || !header) return;
-    function setFooter () {
+    if (!footer || !header) return;
+
+    function setFooter() {
         footer.style.width = header.clientWidth + 'px';
     }
-    function unsetFooter () {
+
+
+    function unsetFooter() {
         footer.style.width = '';
     }
+
     setFooter();
     /*响应resize事件*/
     window.addEventListener("resize", () => {
-        if(document.body.clientWidth > 1000) {
+        if (document.body.clientWidth > 1000) {
             setFooter();
         } else {
             unsetFooter();
         }
     });
 }
+
 window.addEventListener("load", initializeFooter);
 
 /**
-* 图片灯箱效果
-* */
+ * 图片灯箱效果
+ * */
 // (function(){
 //     if(document.body.clientWidth <= 1200) return;
 //     function lightBox() {
