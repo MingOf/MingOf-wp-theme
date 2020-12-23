@@ -252,6 +252,19 @@
   }
 }
 .mobile {
+  // 放弃移动端thumbnail的模糊效果，性能太差
+  #posts-container {
+    .post-excerpt {
+      .post-thumbnail {
+        &::after {
+          display: none;
+        }
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
   .archive-container {
     margin-top: 4em;
   }

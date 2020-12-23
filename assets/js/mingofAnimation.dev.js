@@ -120,13 +120,11 @@ function toggleHandler(_ref, isOpen) {
     }
   }
 
-  if (!isOpen) {
-    toggle.classList.remove("nav-close");
-    toggle.classList.add("nav-open");
-  } else {
-    toggle.classList.remove("nav-open");
-    toggle.classList.add("nav-close");
-  }
+  if (!isOpen) {// toggle.classList.remove("nav-close");
+    // toggle.classList.add("nav-open");
+  } else {// toggle.classList.remove("nav-open");
+      // toggle.classList.add("nav-close");
+    }
 
   return !isOpen;
 }
@@ -148,8 +146,7 @@ function initializeHeader() {
       targets: [doc]
     }, isOpen);
   });
-  side.addEventListener("touchstart", function (e) {
-    console.log("haha");
+  side.addEventListener("touchmove", function (e) {
     e.stopPropagation();
   });
   mast.addEventListener("touchend", function (e) {

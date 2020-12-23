@@ -212,7 +212,7 @@
   right: 0;
   background-color: $bgColorBase;
   transform: translate3d(0, 0, 0);
-  //will-change: transform;
+  will-change: transform;
   #headering {
     display: -webkit-box;
     display: -moz-box;
@@ -258,6 +258,7 @@
         transition: all 0.5s;
         background-color: $subFontColor;
         border-radius: 10px;
+        will-change: transform;
       }
       // 使用background-color 1px会有差异 的问题
       &.nav-close {
@@ -297,16 +298,17 @@
   position: fixed;
   top: 0;
   right: -62.8%;
-  //right:0;
+  // right:0;
   //transform: translate3d(102%,0,0);
   transform: translate3d(0,0,0);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   width: 61.8%;
   overflow-y: scroll;
   height: 100%;
-  box-shadow: -1px 0 10px inset #eee;
+  background-color: $bgColorBase;
   z-index: 2;
-  //will-change: transform;
+  will-change: transform;
+  box-shadow: -1px -1px 5px #bbb;
   #catalog {
     margin: 0;
     padding: 0;
@@ -349,32 +351,32 @@
 
 .target-opened {
   #mastcontainer {
-    transform: translate3d(-61.8%, 0, 0);
+    // transform: translate3d(-61.8%, 0, 0);
   }
   #banner {
-    transform: translate3d(-65.1%, 0, 0);
+    // transform: translate3d(-65.1%, 0, 0);
   }
   .mb-header-toggle-bar {
-    transform: translate3d(-61.8%,0, 0);
+    // transform: translate3d(-61.8%,0, 0);
     &.hide {
-      transform: translate3d(-61.8%, -3.2em, 0);
+      // transform: translate3d(-61.8%, -3.2em, 0);
     }
   }
   .mb-header-side {
-    transform: translate3d(-102%, 0, 0);
+    transform: translate3d(-101.9%, 0, 0);
   }
 }
 .target-closed{
-  #mastcontainer {
-    transform: translate3d(0, 0, 0);
-  }
-  #banner {
-    transform: translate3d(0, 0, 0);
-  }
-  &.mb-header-toggle-bar {
-    transform: translate3d(0, 0, 0);
-    z-index: 0;
-  }
+  // #mastcontainer {
+  //   transform: translate3d(0, 0, 0);
+  // }
+  // #banner {
+  //   transform: translate3d(0, 0, 0);
+  // }
+  // &.mb-header-toggle-bar {
+  //   transform: translate3d(0, 0, 0);
+  //   z-index: 0;
+  // }
   &.mb-header-side {
     transform: translate3d(0,0,0);
   }
