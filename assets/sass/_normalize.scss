@@ -95,13 +95,6 @@ $titleColorInDarkMode: #727d87;
   border-bottom: 0.1em solid #303b47;
 }
 
-
-*{
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
 a:link,a:visited,a:active {
   color: $subFontColor;
   text-decoration: none;

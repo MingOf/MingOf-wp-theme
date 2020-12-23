@@ -1,5 +1,27 @@
 <?php
 /**
+ * 检测是否为移动端，配合 real_header_mode 函数
+ * @return bool
+ */
+function mingof_is_mobile () {
+    if(wp_is_mobile()) {
+        return true;
+    }
+    if (
+        strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false
+    ) {
+        return true;
+    }
+    return false;
+}
+
+/**
  * 注册 sidebar
  */
 register_sidebar([
@@ -43,7 +65,10 @@ add_action('wp_enqueue_scripts', 'add_theme_scripts');
  * @return int
  */
 function new_excerpt_length () {
-    return 400;
+    if (mingof_is_mobile()) {
+        return 100;
+    }
+    return 300;
 }
 
 /**
@@ -111,28 +136,6 @@ function get_thumbnail_img($post_id) {
         $usable_img_url = "";
     }
     return $usable_img_url;
-}
-
-/**
- * 检测是否为移动端，配合 real_header_mode 函数
- * @return bool
- */
-function mingof_is_mobile () {
-    if(wp_is_mobile()) {
-        return true;
-    }
-    if (
-        strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false
-    ) {
-        return true;
-    }
-    return false;
 }
 
 /**

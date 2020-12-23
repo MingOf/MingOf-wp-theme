@@ -272,7 +272,9 @@ function thumbnail_error(thumbnailImg) {
  */
 
 
-function toggleSubMenuHandler(target, isOpen) {
+function toggleSubMenuHandler(target) {
+  var isOpen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.isOpen;
+
   if (isOpen) {
     target.classList.add('menu-closed');
     target.classList.remove('menu-opened');
@@ -281,7 +283,19 @@ function toggleSubMenuHandler(target, isOpen) {
     target.classList.remove('menu-closed');
   }
 
+  target.isOpen = !isOpen;
   return !isOpen;
+}
+
+function autoHideSubMenu() {
+  var depth1 = document.getElementsByClassName('menu-item-has-children') || document.getElementsByClassName('menu-with-children');
+  if (depth1.length <= 0) return;
+
+  for (var i = 0; i < depth1.length; i++) {
+    toggleSubMenuHandler(depth1[i], true);
+  }
+
+  window.removeEventListener("scroll", autoHideSubMenu);
 }
 /**
  * 二级菜单
@@ -294,15 +308,16 @@ function toggleSubMenu() {
 
   var _loop = function _loop(i) {
     depth1[i].isOpen = false;
+    depth1[i].toggleSubMenuHandler = toggleSubMenuHandler;
 
     depth1[i].onclick = function (e) {
       for (var j = 0; j < depth1.length; j++) {
-        j !== i && (depth1[j].isOpen = toggleSubMenuHandler(depth1[j], true));
+        j !== i && toggleSubMenuHandler(depth1[j], true);
       }
 
       e.preventDefault();
-      this.isOpen = toggleSubMenuHandler(this, this.isOpen);
-      console.log(this, this.isOpen);
+      toggleSubMenuHandler(this, this.isOpen);
+      window.addEventListener("scroll", autoHideSubMenu);
     };
   };
 

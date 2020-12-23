@@ -54,3 +54,4 @@ EOT;
         <?php comments_template();?>
     </section>
 </section>
+<?php wp_footer(); ?>
