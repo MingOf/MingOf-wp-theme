@@ -18,7 +18,6 @@
             if(!empty($bookmarks)) {
                 $output .= '<ul class="links-list">';
                 foreach($bookmarks as $bookmark) {
-                    var_dump($bookmark);
                     $link_image=$bookmark->link_image;
                     if($link_image == '') {
                         $link_image = $bookmark->link_url.'/favicon.ico';
