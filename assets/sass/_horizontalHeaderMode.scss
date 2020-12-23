@@ -9,6 +9,12 @@
     width: 100%;
     z-index: 1;
     background-color: rgba($bgColorHeader,0.8);
+    .horizontal-name {
+      font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+    }
+    .description {
+      font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+    }
     .header-wrapper {
       width: 61.8%;
       margin: 0 auto;
@@ -47,10 +53,15 @@
             position: relative;
           }
           a {
+            transition: all 0.3s;
             &::after {
               position: static;
               float: right;
               margin-left: 0.2em;
+            }
+            &:hover {
+              transform: scale(1.05);
+              color: $highlightColor;
             }
           }
           .sub-menu {
@@ -95,6 +106,15 @@
     .header-wrapper {
       .header-left {
         h1 {
+          a {
+            &:hover {
+              color: $highlightColorInDarkMode;
+            }
+          }
+        }
+      }
+      .header-right {
+        .hz-nav-menu-container {
           a {
             &:hover {
               color: $highlightColorInDarkMode;

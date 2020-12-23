@@ -51,11 +51,13 @@
   #name {
     font-size: 1.5em;
     font-weight: bold;
+    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
   }
   .description {
     text-align: center;
     padding: 20px;
     font-weight: bold;
+    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
   }
   #nav {
     text-align: center;
@@ -283,6 +285,7 @@
     text-align: left;
     font-size: 1.5em;
     font-weight: bold;
+    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
   }
   h1,h2 {
     padding: 0;

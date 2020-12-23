@@ -22,6 +22,7 @@
       text-align: center;
       top: 17.5em;
       opacity: 0.8;
+      font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
     }
     &::after {
       content: '';
@@ -66,6 +67,7 @@
         font-size: 1.5em;
         font-weight: bold;
         color: #fff;
+        font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
         a {
           color: inherit;
         }
