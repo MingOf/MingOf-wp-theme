@@ -2,7 +2,7 @@
 <?php get_header();?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
 <!--    <div id="overlay"></div>-->
-    <section id="posts-container">
+    <section id="posts-container" class="archive-container">
 
         <?php
         if ( have_posts()) {

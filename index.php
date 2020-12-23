@@ -16,9 +16,9 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
         <div class="post-item <?php empty($tb_url) && _e('no-thumbnail')?>">
             <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
             <div class="post-meta">
-                <span class="post-meta-opt post-meta-cate"><?php _e("分类","mingof")?>：<? the_category(','); ?></span>
+                <span class="post-meta-opt post-meta-cate"><? the_category(','); ?></span>
 <!--                <span class="post-meta-opt post-meta-auth">--><?php //_e("作者","mingof")?><!--：--><?// the_author(); ?><!--</span>-->
-                <span class="post-meta-opt post-meta-time"><?php _e("时间","mingof")?>：<? the_time('Y-m-d'); ?></span>
+                <span class="post-meta-opt post-meta-time"><? the_time('Y-m-d'); ?></span>
                 <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
             </div>
             <article class="post-excerpt">

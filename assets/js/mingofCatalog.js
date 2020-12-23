@@ -74,6 +74,7 @@ function initCatalog(el) {
 document.addEventListener("DOMContentLoaded", function () {
     let el = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
     let catalog = document.getElementById('catalog'); //目录
+    if(!catalog) return;
     if (!el) {
         catalog.style.display = "none";
         return;

@@ -109,9 +109,9 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            transition: all 0.3s;
             &:active {
-              background-color: $highlightColor;
-              color: #fff;
+              transform: scale(0.9);
             }
           }
         }

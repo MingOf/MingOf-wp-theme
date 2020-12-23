@@ -103,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var el = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
   var catalog = document.getElementById('catalog'); //目录
 
+  if (!catalog) return;
+
   if (!el) {
     catalog.style.display = "none";
     return;

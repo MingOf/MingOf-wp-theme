@@ -272,8 +272,8 @@ function thumbnail_error(thumbnailImg) {
  * 二级开关处理函数
  * 如果是打开状态则关闭，如果是关闭状态则打开
  */
-function toggleSubMenuHandler (target, isOpen=this.isOpen) {
-    if(isOpen) {
+function toggleSubMenuHandler(target, isOpen = this.isOpen) {
+    if (isOpen) {
         target.classList.add('menu-closed');
         target.classList.remove('menu-opened');
     } else {
@@ -283,13 +283,14 @@ function toggleSubMenuHandler (target, isOpen=this.isOpen) {
     target.isOpen = !isOpen;
     return !isOpen;
 }
+
 function autoHideSubMenu() {
     let depth1 = document.getElementsByClassName('menu-item-has-children') || document.getElementsByClassName('menu-with-children');
     if (depth1.length <= 0) return;
-    for(let i = 0;i<depth1.length; i++) {
-        toggleSubMenuHandler(depth1[i],true);
+    for (let i = 0; i < depth1.length; i++) {
+        toggleSubMenuHandler(depth1[i], true);
     }
-    window.removeEventListener("scroll",autoHideSubMenu);
+    window.removeEventListener("scroll", autoHideSubMenu);
 }
 /**
  * 二级菜单
@@ -300,13 +301,13 @@ function toggleSubMenu() {
     for (let i = 0; i < depth1.length; i++) {
         depth1[i].isOpen = false;
         depth1[i].toggleSubMenuHandler = toggleSubMenuHandler;
-        depth1[i].onclick = function(e){
-            for(let j=0;j<depth1.length;j++) {
-                j!==i && (toggleSubMenuHandler(depth1[j], true));
+        depth1[i].onclick = function (e) {
+            for (let j = 0; j < depth1.length; j++) {
+                j !== i && (toggleSubMenuHandler(depth1[j], true));
             }
             toggleSubMenuHandler(this, this.isOpen);
             window.addEventListener("scroll", autoHideSubMenu);
         }
     }
 }
-document.addEventListener("DOMContentLoaded",toggleSubMenu);
+document.addEventListener("DOMContentLoaded", toggleSubMenu);

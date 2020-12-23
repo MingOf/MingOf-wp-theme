@@ -227,11 +227,15 @@
     .nav-toggle {
       content: '';
       display: block;
-      width: 2em;
-      height: 1px;
-      box-shadow: inset 0px -1px 0 $subFontColor;
+      width: 1.8em;
+      height: 2px;
+      background-color: $subFontColor;
       position: relative;
-      opacity: 0.99;
+      transition: all 0.3s;
+      border-radius: 10px;
+      &:active {
+        transform: scale(0.9);
+      }
       span {
         // 扩展可点击区域
         display: block;
@@ -247,26 +251,27 @@
       &::after, &::before {
         content: " ";
         display: block;
-        width: 2em;
-        height: 1px;
-        box-shadow: inset 0px -1px 0 $subFontColor;
+        width: 1.8em;
+        height: 2.11px;
         transition: all 0.5s;
+        background-color: $subFontColor;
+        border-radius: 10px;
       }
       // 使用background-color 1px会有差异 的问题
       &.nav-close {
         &::after {
-          transform: translateY(0.5em);
+          transform: translateY(5px);
 
         }
         &::before {
-          transform: translateY(-0.5em);
+          transform: translateY(-6px);
         }
       }
       &.nav-open {
         height: 0;
         &::after {
           transform: rotate(45deg);
-          margin-top: -1px;
+          margin-top: -2px;
         }
         &::before {
           transform: rotate(-45deg);
@@ -300,11 +305,14 @@
   z-index: 2;
   //will-change: transform;
   #catalog {
-    margin: 1em;
+    margin: 0;
+    padding: 0;
     background-color: transparent;
     .catalog-item {
+      margin: 0; padding: 0;
       display: block;
       text-align: left;
+      margin: 0 1.5em;
     }
   }
   .mb-nav {
@@ -334,16 +342,6 @@
       
     }
   }
-  #catalog {
-    padding: 0;
-    .catalog-item {
-      padding: 0;
-      margin-bottom: 0.3em;
-      span {
-        //margin-left: -1em;
-      }
-    }
-  }
 }
 
 .target-opened {
@@ -351,7 +349,7 @@
     transform: translate3d(-61.8%, 0, 0);
   }
   #banner {
-    transform: translate3d(-61.8%, 0, 0);
+    transform: translate3d(-65.1%, 0, 0);
   }
   .mb-header-toggle-bar {
     transform: translate3d(-61.8%,0, 0);
@@ -427,9 +425,9 @@
     box-shadow: -1px 1px 2px #222933;
     #headering {
       .nav-toggle {
-        box-shadow: inset 0px -1px 1px $FontColorInDarkMode;
+        background-color: $subFontColor;
         &::after, &::before {
-          box-shadow: inset 0px -1px 1px $FontColorInDarkMode;
+          background-color: $subFontColor;
         }
       }
     }

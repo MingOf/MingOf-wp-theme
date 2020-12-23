@@ -79,6 +79,12 @@
       & .post-meta-opt:not(:empty) {
         margin-right: 10px;
       }
+      .post-meta-cate {
+        @include icon('\e91f',0);
+      }
+      .post-meta-time {
+        @include icon('\e7bc',0);
+      }
     }
     .post-excerpt {
       .post-thumbnail {
@@ -243,6 +249,11 @@
       }
     }
 
+  }
+}
+.mobile {
+  .archive-container {
+    margin-top: 4em;
   }
 }
 
