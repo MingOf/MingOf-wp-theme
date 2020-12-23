@@ -76,7 +76,14 @@
     #sidebar {
       padding: 3% 0 3% 0;
       margin-left: 70%;
+      
+      @media screen and (max-width: 1200px) {
+        margin-left: 0;
+      }
     }
+  }
+  .footer-m {
+    display: block;
   }
 }
 

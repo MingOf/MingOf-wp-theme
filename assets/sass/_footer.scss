@@ -37,11 +37,10 @@ html {
 }
 .footer-m {
   text-align: center;
-  position: absolute;
-  bottom: 0;
-  height: 2em;
   width: 100%;
+  margin-top: 1em;
+  clear: both;
   @media screen and (min-width: 1000px) {
-    display: none;
+    // display: none;
   }
 }

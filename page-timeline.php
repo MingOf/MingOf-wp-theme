@@ -148,6 +148,5 @@
         </div>
     </div>
 </section>
-<?php get_template_part('footer', 'm');?>
 <?php wp_footer() ?>
 

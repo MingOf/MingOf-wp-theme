@@ -304,7 +304,6 @@ function toggleSubMenu() {
             for(let j=0;j<depth1.length;j++) {
                 j!==i && (toggleSubMenuHandler(depth1[j], true));
             }
-            e.preventDefault(); 
             toggleSubMenuHandler(this, this.isOpen);
             window.addEventListener("scroll", autoHideSubMenu);
         }

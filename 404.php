@@ -12,6 +12,5 @@
         <p class="not-found-desc"><?php _e("这里没得东西",'mingof')?></p>
     </div>
 </section>
-<?php get_template_part('footer', 'm');?>
 <?php wp_footer() ?>
 

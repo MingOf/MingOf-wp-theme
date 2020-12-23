@@ -315,7 +315,6 @@ function toggleSubMenu() {
         j !== i && toggleSubMenuHandler(depth1[j], true);
       }
 
-      e.preventDefault();
       toggleSubMenuHandler(this, this.isOpen);
       window.addEventListener("scroll", autoHideSubMenu);
     };

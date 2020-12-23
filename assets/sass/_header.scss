@@ -297,7 +297,7 @@
   overflow-y: scroll;
   height: 100%;
   box-shadow: -1px 0 10px inset #eee;
-  z-index: 1;
+  z-index: 2;
   //will-change: transform;
   #catalog {
     margin: 1em;
@@ -349,7 +349,6 @@
 .target-opened {
   #mastcontainer {
     transform: translate3d(-61.8%, 0, 0);
-    opacity: 0.99;
   }
   #banner {
     transform: translate3d(-61.8%, 0, 0);
@@ -366,7 +365,6 @@
 }
 .target-closed{
   #mastcontainer {
-    opacity: 0.99;
     transform: translate3d(0, 0, 0);
   }
   #banner {
