@@ -1,14 +1,16 @@
 #header {
   position: fixed;
-  background: linear-gradient(to right,$bgColorBase,mix($bgColorBase,$bgColorHeader,50%), $bgColorHeader);
+  background-color: $bgColorBase;
   top: 0;
   height: 100%;
   overflow-x: hidden;
-  width: 380px;
+  width: 340px;
   z-index: 1;
-  font-weight: bold;
-  //box-shadow: 3px 3px 3px 1px mix($bgColorBase,#ccc,50%);
-  @include boxShadow;
+  padding: 2em;
+  #headering {
+    border: 2px solid #fff;
+    border-radius: 10px 10px 0 0;
+  }
   &::-webkit-scrollbar {
     width: 2px;
   }
@@ -57,45 +59,99 @@
   }
   #nav {
     text-align: center;
-    font-size: 20px;
     padding: 0 20px;
     background: inherit;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
     .nav-menu-container {
+      overflow: hidden;
       .nav-menu {
         li {
-          a{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          &:nth-last-child(1) {
+            margin-bottom: 20px;
           }
+          a{
+            display: block;
+            text-align: left;
+            margin: 0 1em;
+          }
+        }
+      }
+      .menu-item {
+        transition: all 0.3s;
+        margin-bottom: 1px;
+        padding: 0.2em;
+        border-radius: 10px;
+        &:hover {
+          background-color: $bgColorBase;
         }
       }
     }
   }
   .nav-title {
     font-size: 24px;
-    //border-bottom: 0.1em solid $subFontColor;
-    @include hDivider(#333);
     line-height: 2em;
-    margin-bottom: 1em;
-    font-weight: bold;
   }
   .menu .menu-item {
     margin-bottom: 0.5em;
     position: relative;
     font-weight: bold;
   }
+  
+  .menu-with-children,.menu-item-has-children {
+    .menu-item {
+      margin-left: 2em;
+    }
+    a {
+      position: relative;
+      &::after {
+        position: absolute;
+        font-family: iconfont;
+        content:'\e7a7';
+        transition: all 0.3s;
+        right: 0;
+      }
+    }
+    .sub-menu {
+      display: none;
+      transition: all 0.3s;
+      a {
+        &::after {
+          content: '';
+        }
+      }
+    }
+    &.menu-opened {
+      a {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+      
+      .sub-menu {
+        display: block;
+      }
+    }
+    &.menu-closed {
+      .sub-menu {
+        display: none;
+      }
+    }
+  }
   .nav-toggle {
     display: none;
     position: relative;
   }
   @media screen and (max-width: 1400px) {
-    width: 280px;
+    width: 240px;
   }
 }
 #catalog {
   display: none;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 2em;
   .catalog-title {
     padding: 0.5em 0;
     font-size: 20px;
@@ -130,6 +186,9 @@
     text-align: center;
     .catalog-item {
       display: block;
+      span {
+        width: auto;
+      }
     }
   }
   &.mb-catalog {
@@ -146,7 +205,6 @@
   height: 3em;
   min-height: 0;
   z-index: 2;
-  //border-bottom: 1px solid #eee;
   box-shadow: -1px 1px 2px #eee;
   transition: all 0.5s ease;
   opacity: 0.9;
@@ -304,7 +362,22 @@
   #header {
     background: $bgColorHeaderInDarkMode;
     @include boxShadowInDarkMode;
-
+    #headering {
+      border: 2px solid #222933;
+    }
+    #nav {
+      background-color: #222933;
+      .nav-menu-container {
+        .menu-item {
+          &:hover {
+            background-color: $bgColorBaseInDarkMode;
+          }
+        }
+      }
+    }
+    #catalog {
+      background-color: #222933;
+    }
     a:hover {
         color: $highlightColorInDarkMode;
     }

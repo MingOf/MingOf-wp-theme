@@ -11,12 +11,12 @@
   padding: 1em 0;
   background: inherit;
   z-index: 1;
-  width: 380px;
+  width: 340px;
   @media screen and (max-width: 1000px) {
     display: none;
   }
   @media screen and (max-width: 1400px) {
-    width: 280px;
+    width: 240px;
   }
 }
 body {

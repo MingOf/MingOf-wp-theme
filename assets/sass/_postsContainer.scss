@@ -1,6 +1,6 @@
 #posts-container {
   width: 61%;
-  padding: 3%;
+  padding: 2em;
   float: left;
   .post-wrapper {
     padding: 1em;
@@ -185,7 +185,7 @@
     width: auto;
   }
   @media screen and (max-width: 1000px) {
-    //padding: 4em 0 0 0;
+    padding: 0.8em;
     width: auto;
     float: none;
     .post-wrapper {
