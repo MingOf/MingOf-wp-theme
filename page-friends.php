@@ -18,10 +18,15 @@
             if(!empty($bookmarks)) {
                 $output .= '<ul class="links-list">';
                 foreach($bookmarks as $bookmark) {
+                    var_dump($bookmark);
+                    $link_image=$bookmark->link_image;
+                    if($link_image == '') {
+                        $link_image = $bookmark->link_url.'/favicon.ico';
+                    }
                     $output .= <<<EOT
                         <a href="{$bookmark->link_url}" target="{$bookmark->link_target}" title="{$bookmark->link_url}">
                         <li class="links-item">
-                            <div class="links-item-fav" style="background-image:url('{$bookmark->link_url}/favicon.ico')"></div>
+                            <div class="links-item-fav" style="background-image:url('{$link_image}')"></div>
                             <div class="links-item-detail">
                                     <div class="links-item-href">{$bookmark->link_name}</div>
 <!--                                <a class="links-item-href" href="{$bookmark->link_url}" target="{$bookmark->link_target}" title="{$bookmark->link_url}">{$bookmark->link_name}</a>-->
