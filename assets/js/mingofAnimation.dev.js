@@ -10,13 +10,14 @@
  * @param {function} fn 回调函数
  * @param {HTMLElement} el 用于挂上 timer 的元素 
  */
+var timer = 1;
+
 function debounce() {
   var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 500;
   var fn = arguments.length > 1 ? arguments[1] : undefined;
-  var el = arguments.length > 2 ? arguments[2] : undefined;
-  if (!el.timer) el.timer = 1;
-  clearTimeout(el.timer);
-  el.timer = setTimeout(function () {
+  clearTimeout(timer);
+  console.log(timer);
+  timer = setTimeout(function () {
     fn && fn();
   }, delay);
 }
@@ -76,42 +77,38 @@ window.mingofIsMobile = isMobile;
 /**
  * 鼠标点击动画
  **/
+// var a_idx = 0;
+// document.addEventListener("DOMContentLoaded", function () {
+//     var body = document.body;
+//     if (body.clientWidth <= 1000) return;
+//     body.addEventListener("click", (e) => {
+//         var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"];
+//         var i = document.createElement('span');
+//         i.innerHTML = a[a_idx];
+//         a_idx = (a_idx + 1) % a.length;
+//         var x = e.pageX,
+//             y = e.pageY;
+//         i.style.zIndex = 9999;
+//         i.style.top = (y - 20) + 'px';
+//         i.style.left = x + 'px';
+//         i.style.position = "absolute";
+//         i.style.fontWeight = "bold";
+//         i.style.color = "#ff6651";
+//         i.style.opacity = 1;
+//         body.appendChild(i);
+//         function animate() {
+//             i.style.top = parseInt(i.style.top) - 1 + 'px';
+//             i.style.opacity -= 0.05;
+//             if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
+//                 body.removeChild(i);
+//                 return;
+//             }
+//             requestAnimationFrame(animate);
+//         }
+//         requestAnimationFrame(animate);
+//     });
+// });
 
-var a_idx = 0;
-document.addEventListener("DOMContentLoaded", function () {
-  var body = document.body;
-  if (body.clientWidth <= 1000) return;
-  body.addEventListener("click", function (e) {
-    var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"];
-    var i = document.createElement('span');
-    i.innerHTML = a[a_idx];
-    a_idx = (a_idx + 1) % a.length;
-    var x = e.pageX,
-        y = e.pageY;
-    i.style.zIndex = 9999;
-    i.style.top = y - 20 + 'px';
-    i.style.left = x + 'px';
-    i.style.position = "absolute";
-    i.style.fontWeight = "bold";
-    i.style.color = "#ff6651";
-    i.style.opacity = 1;
-    body.appendChild(i);
-
-    function animate() {
-      i.style.top = parseInt(i.style.top) - 1 + 'px';
-      i.style.opacity -= 0.05;
-
-      if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
-        body.removeChild(i);
-        return;
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    requestAnimationFrame(animate);
-  });
-});
 /**
  * 开关函数
  * @param {*} Object
@@ -172,7 +169,7 @@ function toggleHandler(_ref) {
   }
 
   toggle.addEventListener(event, handler);
-  return targets;
+  return;
 }
 /**
  * mobile header 的一系列操作。
@@ -232,7 +229,7 @@ function autoHideHeader() {
 
 
 document.addEventListener("touchmove", function () {
-  debounce(0, autoHideHeader, mbHeader);
+  debounce(0, autoHideHeader);
 });
 /**
  * 二级菜单点击展开

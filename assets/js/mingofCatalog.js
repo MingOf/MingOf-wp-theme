@@ -110,10 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
         catalogItems.push({el: p, title: titles[i].$1th.el});
     }
     isCenter && catalog.classList.add("text-center");
+    if(document.body.clientWidth <= 1200) return;
     /*
     * 监听滚动事件，实现滚动时与文章目录动态关联
     * */
-    document.addEventListener('scroll', function () {
+   function autoScrollToCat () {
         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
         let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -124,5 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 catalogItems[i].el.classList.remove('catalog-item-active');
             }
         }
+   }
+    document.addEventListener('scroll', function () {
+        requestAnimationFrame(autoScrollToCat);
     });
 });
