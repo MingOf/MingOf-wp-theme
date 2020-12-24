@@ -3,6 +3,19 @@
  * */
 
 /**
+ * 防抖
+ * @param {number} delay 延迟时间
+ * @param {function} fn 回调函数
+ * @param {HTMLElement} el 用于挂上 timer 的元素 
+ */
+function debounce(delay = 500, fn, el) {
+    if (!el.timer) el.timer = 1;
+    clearTimeout(el.timer);
+    el.timer = setTimeout(() => {
+        fn && fn();
+    }, delay);
+}
+/**
  * 判断是否为移动端
  * @returns {boolean}
  */
@@ -94,126 +107,164 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
- * mobile header 初始化
- **/
-/**
- * 移动端 header 的 toggle(菜单) 按钮的事件处理
- * @param toggle    {DOM} toggle自身
- * @param targets   {Array} 事件需要影响到的目标
- * @param isOpen    {Boolean} 开关是否为打开，不是则打开，是则关闭
- * @returns {boolean}
+ * 开关函数
+ * @param {*} Object
+ * @param {HTMLElement} Object.toggle  开关元素
+ * @param {Event} Object.event  开关元素监听的事件
+ * @param {Array[HTMLElement]} Object.targets 开关所影响到的目标。targets[i].isOpen 为挂靠在某个目标元素上的开关状态,用于判断目标是开启还是关闭的，默认false
+ * @param {string} Object.force 强制开、关
+ * @param {boolean} Object.once  是否只执行一次开关
+ * @param {string}  Object.targetOpenedClass 目标状态置为开启后，在目标元素上添加的类名
+ * @param {string}  Object.targetClosedClass 目标状态置为关闭后，在目标元素上添加的类名
+ * @param {function} Object.cbOnOpen 目标打开后的回调函数
+ * @param {function} Object.cbOnClose 目标关闭后的回调函数
+ * @returns {Object} Object.targets
  */
 function toggleHandler({
     toggle,
-    targets
-}, isOpen) {
+    event,
+    targets,
+    force,
+    once,
+    targetOpenedClass,
+    targetClosedClass,
+    cbOnOpen,
+    cbOnClose
+}) {
+    if (!toggle) throw "toggle is necessary";
+    let openedClass = targetOpenedClass || "target-opened";
+    let closedClass = targetClosedClass || "target-closed";
 
-    for (let i = 0; i < targets.length; i++) {
-        if (!isOpen) {
-            targets[i].classList.add("target-opened");
-            targets[i].classList.remove("target-closed")
-        } else {
-            targets[i].classList.remove("target-opened");
-            targets[i].classList.add("target-closed");
+    function handler(e) {
+        e.preventDefault();
+        // console.log('hah')
+        for (let i = 0; i < targets.length; i++) {
+            if (force === "close") {
+                targets[i].isOpen = true;
+            }
+            if (force === "open") {
+                targets[i].isOpen = false;
+            }
+            if (!targets[i].isOpen) {
+                targets[i].classList.add(openedClass);
+                targets[i].classList.remove(closedClass);
+                targets[i].isOpen = true;
+                cbOnOpen && cbOnOpen();
+            } else {
+                targets[i].classList.remove(openedClass);
+                targets[i].classList.add(closedClass);
+                targets[i].isOpen = false;
+                cbOnClose && cbOnClose();
+
+            }
+        }
+        if (once) {
+            toggle.removeEventListener(event, handler);
         }
     }
-    if (!isOpen) {
-        // toggle.classList.remove("nav-close");
-        // toggle.classList.add("nav-open");
-    } else {
-        // toggle.classList.remove("nav-open");
-        // toggle.classList.add("nav-close");
-    }
-    return !isOpen;
+    toggle.addEventListener(event, handler);
+    return targets;
 }
 
+
 /**
- * mobile header 的一系列DOM操作。
+ * mobile header 的一系列操作。
  */
 function initializeHeader() {
     if (!mingofIsMobile()) return;
     let doc = document.getElementsByClassName("mobile")[0];
     let toggle = document.getElementsByClassName('nav-toggle')[0];
     let mast = document.getElementById('mastcontainer');
-    let side = document.getElementsByClassName("mb-header-side")[0];
-    let isOpen = false;
-
-    toggle.addEventListener("touchend", () => {
-        isOpen = toggleHandler({
-            toggle: toggle,
-            targets: [doc]
-        }, isOpen);
+    doc.isOpen = false;
+    // 汉堡包按钮的点击事件，开关打开后开始套娃，开启mastcontainer的监听，并设置只监听一次
+    toggleHandler({
+        toggle: toggle,
+        event: 'touchend',
+        targets: [doc],
+        once: false,
+        cbOnOpen: function () {
+            toggleHandler({
+                toggle: mast,
+                event: 'touchend',
+                targets: [doc],
+                once: true,
+                force: 'close'
+            });
+        }
     });
-    side.addEventListener("touchmove", (e) => {
-        e.stopPropagation()
-    });
-    mast.addEventListener("touchend", (e) => {
-        isOpen = toggleHandler({
-            toggle: toggle,
-            targets: [doc]
-        }, true);
-    }, false);
-
 }
-
 document.addEventListener('DOMContentLoaded', initializeHeader);
+
+
 /**
  * 记住上次滑动的位置，用来判断滑动距离的delta值
  * @type {number}
  */
 var lastPos = 0;
-
 /**
  * 自动隐藏mb header
  */
+let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
+
 function autoHideHeader() {
-    let mbHeader = document.getElementsByClassName('mb-header-toggle-bar')[0];
-    document.addEventListener("touchmove", (e) => {
-        /*auto hide header*/
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        let delta = scrollTop - lastPos;
-        if (delta >= 20) {
-            mbHeader.classList.add("hide");
-        } else if (delta < -20) {
-            mbHeader.classList.remove("hide");
-        }
-        lastPos = scrollTop;
-    });
+    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    let delta = scrollTop - lastPos;
+    if (delta >= 20) {
+        mbHeader.classList.add("hide");
+    } else if (delta < -20) {
+        mbHeader.classList.remove("hide");
+    }
+    lastPos = scrollTop;
 }
-
-document.addEventListener('DOMContentLoaded', autoHideHeader);
-
+/*监听滑动，自动隐藏mb header*/
+document.addEventListener("touchmove", () => {
+    debounce(0, autoHideHeader, mbHeader);
+});
 
 /**
- * 动态设置 PC 端 vertical header mode 下 footer 的宽度，避免溢出 vertical-header 的包裹
- **/
-// function initializeFooter() {
-//     let footer = document.getElementsByClassName('footer')[0];
-//     let header = document.getElementById('header');
-//     if (!footer || !header) return;
+ * 二级菜单点击展开
+ */
+function toggleSubMenu() {
+    let depth1 = document.getElementsByClassName('menu-item-has-children') || document.getElementsByClassName('menu-with-children');
+    if (depth1.length <= 0) return;
 
-//     function setFooter() {
-//         footer.style.width = header.clientWidth + 'px';
-//     }
-
-
-//     function unsetFooter() {
-//         footer.style.width = '';
-//     }
-
-//     setFooter();
-//     /*响应resize事件*/
-//     window.addEventListener("resize", () => {
-//         if (document.body.clientWidth > 1000) {
-//             setFooter();
-//         } else {
-//             unsetFooter();
-//         }
-//     });
-// }
-
-// window.addEventListener("load", initializeFooter);
-
+    for (let i = 0; i < depth1.length; i++) {
+        depth1[i].isOpen = false;
+        let tmp = Array.prototype.slice.call(depth1, 0, i)
+        let tmp2 = Array.prototype.slice.call(depth1, i + 1);
+        let targets = Array.prototype.concat.call(tmp, tmp2);
+        // 打开自身
+        toggleHandler({
+            toggle: depth1[i],
+            event: 'click',
+            targets: [depth1[i]],
+            targetOpenedClass: 'menu-opened',
+            targetClosedClass: 'menu-closed',
+            // 滚动时自动隐藏
+            cbOnOpen: function () {
+                toggleHandler({
+                    toggle: window,
+                    event: 'scroll',
+                    targets: depth1,
+                    force: 'close',
+                    once: true,
+                    targetOpenedClass: 'menu-opened',
+                    targetClosedClass: 'menu-closed'
+                });
+            }
+        })
+        // 关闭其他已经展开的二级菜单
+        toggleHandler({
+            toggle: depth1[i],
+            event: 'click',
+            targets: targets,
+            force: 'close',
+            targetOpenedClass: 'menu-opened',
+            targetClosedClass: 'menu-closed'
+        })
+    }
+}
+document.addEventListener("DOMContentLoaded", toggleSubMenu);
 /**
  * 图片灯箱效果
  * */
@@ -263,50 +314,6 @@ document.addEventListener('DOMContentLoaded', autoHideHeader);
  * thumbnail加载失败
  */
 
-function thumbnail_error(thumbnailImg) {
-    thumbnailImg.classList.add("error");
-}
-
-/**
- * 二级开关处理函数
- * 如果是打开状态则关闭，如果是关闭状态则打开
- */
-function toggleSubMenuHandler(target, isOpen = this.isOpen) {
-    if (isOpen) {
-        target.classList.add('menu-closed');
-        target.classList.remove('menu-opened');
-    } else {
-        target.classList.add('menu-opened');
-        target.classList.remove('menu-closed');
-    }
-    target.isOpen = !isOpen;
-    return !isOpen;
-}
-
-function autoHideSubMenu() {
-    let depth1 = document.getElementsByClassName('menu-item-has-children') || document.getElementsByClassName('menu-with-children');
-    if (depth1.length <= 0) return;
-    for (let i = 0; i < depth1.length; i++) {
-        toggleSubMenuHandler(depth1[i], true);
-    }
-    window.removeEventListener("scroll", autoHideSubMenu);
-}
-/**
- * 二级菜单
- */
-function toggleSubMenu() {
-    let depth1 = document.getElementsByClassName('menu-item-has-children') || document.getElementsByClassName('menu-with-children');
-    if (depth1.length <= 0) return;
-    for (let i = 0; i < depth1.length; i++) {
-        depth1[i].isOpen = false;
-        depth1[i].toggleSubMenuHandler = toggleSubMenuHandler;
-        depth1[i].onclick = function (e) {
-            for (let j = 0; j < depth1.length; j++) {
-                j !== i && (toggleSubMenuHandler(depth1[j], true));
-            }
-            toggleSubMenuHandler(this, this.isOpen);
-            window.addEventListener("scroll", autoHideSubMenu);
-        }
-    }
-}
-document.addEventListener("DOMContentLoaded", toggleSubMenu);
+// function thumbnail_error(thumbnailImg) {
+//     thumbnailImg.classList.add("error");
+// }

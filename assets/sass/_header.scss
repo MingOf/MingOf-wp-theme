@@ -430,14 +430,15 @@
     box-shadow: -1px 1px 2px #222933;
     #headering {
       .nav-toggle {
-        background-color: $subFontColor;
+        background-color: $FontColorInDarkMode;
         &::after, &::before {
-          background-color: $subFontColor;
+          background-color: $FontColorInDarkMode;
         }
       }
     }
   }
   .mb-header-side {
     box-shadow: -1px 0 10px inset #222933;
+    background-color: $bgColorBaseInDarkMode;
   }
 }
