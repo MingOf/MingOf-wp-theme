@@ -69,43 +69,43 @@ window.mingofIsMobile = isMobile;
 /**
  * 鼠标点击动画
  **/
-// var a_idx = 0;
-// document.addEventListener("DOMContentLoaded", function () {
-//     var body = document.body;
-//     if (body.clientWidth <= 1000) return;
-//     body.addEventListener("click", (e) => {
-//         var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"];
+var a_idx = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    var body = document.body;
+    if (body.clientWidth <= 1200) return;
+    body.addEventListener("click", (e) => {
+        var a = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"];
 
-//         var i = document.createElement('span');
-//         i.innerHTML = a[a_idx];
+        var i = document.createElement('span');
+        i.innerHTML = a[a_idx];
 
-//         a_idx = (a_idx + 1) % a.length;
-//         var x = e.pageX,
-//             y = e.pageY;
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+            y = e.pageY;
 
-//         i.style.zIndex = 9999;
-//         i.style.top = (y - 20) + 'px';
-//         i.style.left = x + 'px';
-//         i.style.position = "absolute";
-//         i.style.fontWeight = "bold";
-//         i.style.color = "#ff6651";
-//         i.style.opacity = 1;
+        i.style.zIndex = 9999;
+        i.style.top = (y - 20) + 'px';
+        i.style.left = x + 'px';
+        i.style.position = "absolute";
+        i.style.fontWeight = "bold";
+        i.style.color = "#ff6651";
+        i.style.opacity = 1;
 
-//         body.appendChild(i);
+        body.appendChild(i);
 
-//         function animate() {
-//             i.style.top = parseInt(i.style.top) - 1 + 'px';
-//             i.style.opacity -= 0.05;
-//             if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
-//                 body.removeChild(i);
-//                 return;
-//             }
-//             requestAnimationFrame(animate);
-//         }
+        function animate() {
+            i.style.top = parseInt(i.style.top) - 1 + 'px';
+            i.style.opacity -= 0.05;
+            if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
+                body.removeChild(i);
+                return;
+            }
+            requestAnimationFrame(animate);
+        }
 
-//         requestAnimationFrame(animate);
-//     });
-// });
+        requestAnimationFrame(animate);
+    });
+});
 
 /**
  * 开关函数
@@ -136,9 +136,7 @@ function toggleHandler({
     let openedClass = targetOpenedClass || "target-opened";
     let closedClass = targetClosedClass || "target-closed";
 
-    function handler(e) {
-        e.preventDefault();
-        // console.log('hah')
+    function handler() {
         for (let i = 0; i < targets.length; i++) {
             if (force === "close") {
                 targets[i].isOpen = true;
