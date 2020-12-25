@@ -175,8 +175,15 @@ function theme_setup() {
         'flex-height'    => false
     ));
     add_theme_support( 'post-thumbnails', array('post'));
-    add_theme_support( 'title-tag' );
     add_image_size( 'custom-tb-size', get_option('mingof_tb_img_width',600), get_option('mingof_tb_img_height',400));
+    add_theme_support('custom-background',array(
+        'default-image'=>'',
+        'default-position-x'=>'center',
+        'default-position-y'=>'center',
+        'default-size'=>'cover',
+        'default-attachment'=>'fixed'
+    ));
+    add_theme_support( 'title-tag' );
 }
 add_action('after_setup_theme', 'theme_setup');
 

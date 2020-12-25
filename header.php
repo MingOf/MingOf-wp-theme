@@ -9,7 +9,7 @@
     <title><?php bloginfo("name");?></title>
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class();?>>
 <!--<div id="overlay"></div>-->
     <?php $header_mode = real_header_mode();?>
     <?php if($header_mode==="vertical" && !mingof_is_mobile()): ?>
