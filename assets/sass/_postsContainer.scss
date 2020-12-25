@@ -299,7 +299,7 @@
         .post-thumbnail {
           border: 1em solid #1c232d;
           &::before {
-            opacity: 0.1;
+            background-color: #1c232d;
           }
           &::after {
             opacity: 0.1;

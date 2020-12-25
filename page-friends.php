@@ -1,5 +1,6 @@
 <?php get_header();?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
+    <div class="page-wrapper">
     <section class="links">
         <?php
         while(have_posts()) {
@@ -57,5 +58,6 @@ EOT;
         ?>
         <?php comments_template();?>
     </section>
+    </div>
 </section>
 <?php wp_footer(); ?>

@@ -9,7 +9,7 @@
     <title><?php bloginfo("name");?></title>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class();?>>
+<body <?php if(!mingof_is_mobile()) /*只针对pc端有效*/body_class();?>>
 <!--<div id="overlay"></div>-->
     <?php $header_mode = real_header_mode();?>
     <?php if($header_mode==="vertical" && !mingof_is_mobile()): ?>

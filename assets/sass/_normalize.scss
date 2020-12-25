@@ -129,6 +129,7 @@ input:focus, textarea:focus {
 
 }
 html {
+  min-width: 100%; min-height: 100%;
   background-color: $bgColorBase;
   font-family: "Microsoft Yahei",sans-serif, Consolas,Monaco !important;
   @media screen and (max-width: 1000px) {
