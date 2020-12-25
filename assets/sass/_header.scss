@@ -1,6 +1,6 @@
 #header {
   position: fixed;
-  background-color: $bgColorBase;
+  background-color: transparent;
   top: 0;
   height: 100%;
   overflow-x: hidden;
@@ -16,6 +16,7 @@
   }
   a:hover {
     color: $highlightColor;
+    color: var(--highlightColor);
   }
   &::after {
     content: '';
@@ -88,6 +89,7 @@
         border-radius: 10px;
         &:hover {
           background-color: $bgColorBase;
+          background-color: var(--bgColorBase);
         }
       }
     }
@@ -211,6 +213,7 @@
   top: 0;
   right: 0;
   background-color: $bgColorBase;
+  background-color: var(--bgColorBase);
   transform: translate3d(0, 0, 0);
   will-change: transform;
   #headering {
@@ -232,6 +235,7 @@
       width: 1.8em;
       height: 2px;
       background-color: $subFontColor;
+      background-color: var(--subFontColor);
       position: relative;
       transition: all 0.3s;
       border-radius: 10px;
@@ -257,6 +261,7 @@
         height: 2.11px;
         transition: all 0.5s;
         background-color: $subFontColor;
+        background-color: var(--subFontColor);
         border-radius: 10px;
         will-change: transform;
       }
@@ -306,6 +311,7 @@
   overflow-y: scroll;
   height: 100%;
   background-color: $bgColorBase;
+  background-color: var(--bgColorBase);
   z-index: 2;
   will-change: transform;
   box-shadow: -1px -1px 5px #bbb;
@@ -389,6 +395,7 @@
 .dark {
   #header {
     background: $bgColorHeaderInDarkMode;
+    background: var(--bgColorHeaderInDarkMode);
     @include boxShadowInDarkMode;
     #headering {
       border: 2px solid #222933;
@@ -399,6 +406,7 @@
         .menu-item {
           &:hover {
             background-color: $bgColorBaseInDarkMode;
+            background-color: var(--bgColorBaseInDarkMode);
           }
         }
       }
@@ -408,6 +416,7 @@
     }
     a:hover {
         color: $highlightColorInDarkMode;
+        color: var(--highlightColorInDarkMode);
     }
     #logo {
       @include boxShadowInDarkMode;
@@ -427,12 +436,15 @@
   }
   .mb-header-toggle-bar {
     background-color: $bgColorBaseInDarkMode;
+    background-color: var(--bgColorBaseInDarkMode);
     box-shadow: -1px 1px 2px #222933;
     #headering {
       .nav-toggle {
         background-color: $FontColorInDarkMode;
+        background-color: var(--FontColorInDarkMode);
         &::after, &::before {
           background-color: $FontColorInDarkMode;
+          background-color: var(--FontColorInDarkMode);
         }
       }
     }
@@ -440,5 +452,6 @@
   .mb-header-side {
     box-shadow: -1px 0 10px inset #222933;
     background-color: $bgColorBaseInDarkMode;
+    background-color: var(--bgColorBaseInDarkMode);
   }
 }

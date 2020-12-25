@@ -9,6 +9,7 @@
     width: 100%;
     z-index: 1;
     background-color: rgba($bgColorHeader,0.8);
+    background-color: var(--bgColorHeader);
     .horizontal-name {
       font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
     }
@@ -32,6 +33,7 @@
             line-height: 35px;
             &:hover {
               color: $highlightColor;
+              color: var(--highlightColor);
             }
           }
         }
@@ -62,6 +64,7 @@
             &:hover {
               transform: scale(1.05);
               color: $highlightColor;
+              color: var(--highlightColor);
             }
           }
           .sub-menu {
@@ -69,6 +72,7 @@
             z-index: 2;
             width: 300px;
             background-color:rgba($bgColorHeader,0.8);
+            background-color:var(--bgColorHeader);
             border-radius:0 0 10px 10px;
             left:50%;transform: translateX(-50%);
            
@@ -102,6 +106,7 @@
 .dark {
   .horizontal-header {
     background-color: $bgColorBaseInDarkMode;
+    background-color: var(--bgColorBaseInDarkMode);
     @include boxShadowInDarkMode;
     .header-wrapper {
       .header-left {
@@ -109,6 +114,7 @@
           a {
             &:hover {
               color: $highlightColorInDarkMode;
+              color: var(--highlightColorInDarkMode);
             }
           }
         }
@@ -118,6 +124,7 @@
           a {
             &:hover {
               color: $highlightColorInDarkMode;
+              color: var(--highlightColorInDarkMode);
             }
           }
         }

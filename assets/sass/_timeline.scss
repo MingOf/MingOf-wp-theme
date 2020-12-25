@@ -10,7 +10,9 @@
     left: 0;
     width: 4px;
     height: 102%;
-    background: rgba($highlightColor, 0.2);
+    background: $highlightColor;
+    background: var(--highlightColor);
+    opacity: 0.3;
     z-index: -1;
     margin-left: -20px;
   }
@@ -19,6 +21,7 @@
     margin-top: 0;
     position: relative;
     color: $highlightColor;
+    color: var(--highlightColor);
   }
   .tl-year-title::before {
     content: " ";
@@ -30,6 +33,7 @@
     width: 8px;
     height: 8px;
     background: $highlightColor;
+    background: var(--highlightColor);
     border-radius: 50%;
   }
   .tl-posts-container {
@@ -45,6 +49,7 @@
         width: 6px;
         height: 6px;
         background: $highlightColor;
+        background: var(--highlightColor);
         border-radius: 50%;
         //border: 1px solid #fff;
         margin-left: -21px;
@@ -62,6 +67,7 @@
         &:hover {
           &::after {
             border-bottom: 0.1em solid $highlightColor;
+            border-bottom: 0.1em solid var(--highlightColor);
             width: 100%;
           }
         }
@@ -72,6 +78,7 @@
           content: "";
           width: 0;
           border-bottom: 0.1em solid $subFontColor;
+          border-bottom: 0.1em solid var(--subFontColor);
           margin-top: 0.1em;
         }
       }
@@ -87,23 +94,29 @@
 .dark {
   .timeline-container {
     &::after {
-      background:  rgba($highlightColorInDarkMode,0.2);
+      background: $highlightColorInDarkMode;
+      background: var(--highlightColorInDarkMode);
+      opacity: 0.2;
     }
     .tl-year-title {
       color: $highlightColorInDarkMode;
+      color: var(--highlightColorInDarkMode);
     }
     .tl-year-title::before {
       background: $highlightColorInDarkMode;
+      background: var(--highlightColorInDarkMode);
     }
     .tl-posts-container {
       .tl-post-item {
         &::before {
           background: $highlightColorInDarkMode;
+          background: var(--highlightColorInDarkMode);
         }
         .tl-post-title{
           &:hover {
             &::after {
               border-bottom: 0.1em solid $highlightColorInDarkMode;
+              border-bottom: 0.1em solid var(--highlightColorInDarkMode);
             }
           }
         }

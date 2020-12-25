@@ -1,6 +1,10 @@
 <?php get_header();?>
 <div id="banner"  style="background-image: url('<?php
-echo get_template_directory_uri().'/assets/image/banner.jpg';
+if(!empty(get_option('mingof_banner_img'))) {
+    echo get_option('mingof_banner_img');
+} else {
+    echo get_template_directory_uri().'/assets/image/banner.jpg';
+}
 ?>')">
 <?php include('banner-m.php');?>
 </div>
@@ -25,7 +29,7 @@ echo get_template_directory_uri().'/assets/image/banner.jpg';
                 <?php if($tb_url!==""):?>
                 <a class="thumb-link" href="<?php the_permalink();?>">
                     <div class="post-thumbnail" style='background-image: url(<?php echo $tb_url?>)' alt="" onerror="thumbnail_error(this)">
-                        <span>∑(っ°Д°;)っ卧槽，图片消えた</span>
+                        <span>☕图片在火星，正在赶来...</span>
                     </div>
                 </a>
                 <?php endif;?>

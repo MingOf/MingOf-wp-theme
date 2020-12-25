@@ -34,6 +34,7 @@
       bottom: -1em;
       left: -50%;
       background-color: $bgColorBase;
+      background-color: var(--bgColorBase);
     }
     #banner-logo {
       position: absolute;
@@ -135,10 +136,12 @@
       }
       &::after {
         background-color: $bgColorBaseInDarkMode;
+        background-color: var(--bgColorBaseInDarkMode);
       }
       #banner-headering {
         #banner-name {
           color: $FontColorInDarkMode;
+          color: var(--FontColorInDarkMode);
         }
       }
       #banner-nav {
@@ -149,7 +152,9 @@
               a {
                 &:active {
                   background-color: $highlightColorInDarkMode;
+                  background-color: var(--highlightColorInDarkMode);
                   color: $FontColorInDarkMode;
+                  color: var(--FontColorInDarkMode);
                 }
               }
             }
@@ -158,6 +163,7 @@
       }
       .description {
         color: $FontColorInDarkMode;
+        color: var(--FontColorInDarkMode);
       }
     }
   }

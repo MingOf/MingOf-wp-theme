@@ -10,6 +10,7 @@ section.links {
   .links-cat-title {
     line-height: 2em;
     border-bottom: 1px solid $subColor;
+    border-bottom: 1px solid var(--subColor);
     font-size: 1.5em;
   }
   .links-list {

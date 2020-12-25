@@ -98,6 +98,7 @@ $titleColorInDarkMode: #727d87;
 
 a:link,a:visited,a:active {
   color: $subFontColor;
+  color: var(--subFontColor);
   text-decoration: none;
   transition: color .3s;
   border: 0 none;
@@ -117,6 +118,7 @@ a:link,a:visited,a:active {
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background: $subColor;
+  background: var(--subColor);
   //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
 }
 // ::-webkit-scrollbar-thumb:window-inactive {
@@ -129,8 +131,11 @@ input:focus, textarea:focus {
 
 }
 html {
+  color: $subFontColor;
+  color: var(--subFontColor);
   min-width: 100%; min-height: 100%;
   background-color: $bgColorBase;
+  background-color: var(--bgColorBase);
   font-family: "Microsoft Yahei",sans-serif, Consolas,Monaco !important;
   @media screen and (max-width: 1000px) {
     font-size: 16px;
@@ -189,6 +194,7 @@ blockquote {
   color: #999;
   font-weight: 400;
   border-left: 3px solid $highlightColor;
+  border-left: 3px solid var(--highlightColor);
   background-color: #f0f0f1;
   padding: 1.2em;
   margin: 1em 0 1em 2em;
@@ -246,9 +252,11 @@ blockquote {
 .dark {
   a:link,a:visited,a:active {
     color: $FontColorInDarkMode;
+    color: var(--FontColorInDarkMode);
   }
   h1,h2,h3,h4,h5,h6 {
     color: $titleColorInDarkMode;
+    color: var(--titleColorInDarkMode);
   }
   .enlighter-t-wpcustom {
     background-color: #505b6b !important;
@@ -259,13 +267,17 @@ blockquote {
   }
   .enlighter-default {
     color: $FontColorInDarkMode !important;
+    color: --var(--FontColorInDarkMode) !important;
   }
   blockquote {
     border-left: 3px solid $highlightColorInDarkMode;
+    border-left: 3px solid var(--highlightColorInDarkMode);
     background-color: #505b6b;
   }
 }
 html.dark {
   background-color: $bgColorBaseInDarkMode;
+  background-color: var(--bgColorBaseInDarkMode);
   color: $FontColorInDarkMode;
+  color: var(--FontColorInDarkMode);
 }

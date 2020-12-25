@@ -20,15 +20,19 @@
       transition: all 0.3s;
       position: relative;
       color: $subFontColor;
+      color: var(--subFontColor);
       //@include boxShadow;
       box-shadow: 0 -3px 3px #eee;
       &.current {
         color: #fff;
         background-color: $highlightColor;
+        background-color: var(--highlightColor);
       }
       &:hover:not(.current) {
         border-top: 1px solid $highlightColor;
+        border-top: 1px solid var(--highlightColor);
         color: $highlightColor;
+        color: var(--highlightColor);
       }
       &::before {
         content: '';
@@ -53,18 +57,24 @@
       border: 0 none;
       .tl-page-num {
         color: $FontColorInDarkMode;
+        color: var(--FontColorInDarkMode);
       }
       .page-numbers {
           color: $FontColorInDarkMode;
+          color: var(--FontColorInDarkMode);
           //@include boxShadowInDarkMode;
         box-shadow: 0 -3px 3px #222933;
         &.current {
           color: $FontColorInDarkMode;
+          color: var(--FontColorInDarkMode);
           background-color: $highlightColorInDarkMode;
+          background-color: var(--highlightColorInDarkMode);
         }
         &:hover:not(.current) {
           color: $highlightColorInDarkMode;
+          color: var(--highlightColorInDarkMode);
           border-top: 1px solid $highlightColorInDarkMode;
+          border-top: 1px solid var(--highlightColorInDarkMode);
         }
       }
     }

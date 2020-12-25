@@ -33,6 +33,7 @@
         width: 20%;
         /*border-radius: 3px;*/
         background: $highlightColor;
+        background: var(--highlightColor);
         color: #fff;
         height: 35px;
         border: 0 none;
@@ -65,6 +66,7 @@
         }
         &:hover::before {
           color: $highlightColor;
+          color: var(--highlightColor);
         }
       }
     }
@@ -73,6 +75,7 @@
       font-size: 14px;
       tbody  a{
         color: $highlightColor;
+        color: var(--highlightColor);
       }
       th, td, caption {
         border: 0 none;
@@ -85,6 +88,7 @@
       .wp-calendar-nav {
         display: flex;
         background-color: $subColor;
+        background-color: var(--subColor);
       }
       .wp-calendar-nav-prev, .wp-calendar-nav-next {
         flex: 1;
@@ -112,9 +116,11 @@
         input {
           background-color: #2b323f;
           color: $FontColorInDarkMode;
+          color: var(--FontColorInDarkMode);
         }
         input[type=submit] {
           background: $highlightColorInDarkMode;
+          background: var(--highlightColorInDarkMode);
         }
       }
       h2 {
@@ -124,12 +130,14 @@
         .cat-item {
           &:hover::before {
             color: $highlightColorInDarkMode;
+            color: var(--highlightColorInDarkMode);
           }
         }
       }
       #wp-calendar {
         tbody  a{
           color: $highlightColorInDarkMode;
+          color: var(--highlightColorInDarkMode);
         }
         th {
           background: #1c232d;

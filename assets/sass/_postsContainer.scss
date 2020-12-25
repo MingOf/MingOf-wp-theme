@@ -13,6 +13,7 @@
     font-weight: 400;
     font-size: 30px;
     color: $highlightColor;
+    color: var(--highlightColor);
   }
   .post-item {
     position: relative;
@@ -39,6 +40,7 @@
       display: block;
       height: 1px;
       background-color: $subColor;
+      background-color: var(--subColor);
       width: 8%;
       margin: 30px auto;
     }
@@ -52,6 +54,7 @@
         margin-bottom: 0;
         a {
           color: $highlightColor;
+          color: var(--highlightColor);
           display: inline-block;
           transition: all 0.3s;
           &::after {
@@ -63,6 +66,7 @@
             margin-top: 2px;
             height: 2px;
             background-color: $highlightColor;
+            background-color: var(--highlightColor);
           }
           &:hover::after {
             width: 100%;
@@ -146,16 +150,20 @@
         transition: all 0.3s;
         margin-top: 10px;
         background-color: $highlightColor;
+        background-color: var(--highlightColor);
         line-height: 1;
         a {
           color: #fff;
         }
         &:hover {
           color: $subFontColor;
+          color: var(--subFontColor);
           border: 2px solid $highlightColor;
+          border: 2px solid var(--highlightColor);
           background-color: transparent;
           a {
             color: $subFontColor;
+            color: var(--subFontColor);
           }
           transform: scale(1.1);
         }
@@ -176,10 +184,13 @@
     margin-left: 0;
     margin-top: 30px;
     color: $highlightColor;
+    color: var(--highlightColor);
     font-weight: 400;
     list-style: none;
     border-top: 2px dashed $subColor;
+    border-top: 2px dashed var(--subColor);
     border-bottom: 2px dashed $subColor;
+    border-bottom: 2px dashed var(--subColor);
     padding: 20px 10px;
     .post-prev .previous span,
     .post-next .next span
@@ -277,6 +288,7 @@
     }
     .posts-cate-title {
       color: $highlightColorInDarkMode;
+      color: var(--highlightColorInDarkMode);
     }
     .post-item {
       &.no-thumbnail {
@@ -289,8 +301,10 @@
         h2 {
           a {
             color: $highlightColorInDarkMode;
+            color: var(--highlightColorInDarkMode);
             &::after {
               background-color: $highlightColorInDarkMode;
+              background-color: var(--highlightColorInDarkMode);
             }
           }
         }
@@ -307,11 +321,14 @@
         }
         .read-more {
           background-color: $highlightColorInDarkMode;
+          background-color: var(--highlightColorInDarkMode);
           a {
             color: $FontColorInDarkMode;
+            color: var(--FontColorInDarkMode);
           }
           &:hover {
             border: 2px solid $highlightColorInDarkMode;
+            border: 2px solid var(--highlightColorInDarkMode);
             background-color: transparent;
           }
         }
@@ -319,6 +336,7 @@
     }
     .post-switch {
       color: $highlightColorInDarkMode;
+      color: var(--highlightColorInDarkMode);
     }
     @media screen and (max-width: 1000px) {
       .post-item{

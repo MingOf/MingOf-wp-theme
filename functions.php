@@ -193,25 +193,140 @@ add_action('after_setup_theme', 'theme_setup');
  * @param $wp_customize
  */
 function mingof_customize_register( $wp_customize ) {
-
+    /**
+     * 自定义颜色
+     */
     $wp_customize->add_setting( 'mingof_style_options[highlight_color]', array(
-        'default'        => '#ff6651',
+        'default'        => '#738fa3',
         'type'           => 'option',
         'capability'     => 'edit_theme_options',
         'transport'      => 'refresh'
     ));
+    $wp_customize->add_setting('mingof_style_options[highlight_color_in_dark_mode]',array(
+        'default'=>'#b18983',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[font_color]',array(
+        'default'=>'#333',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[font_color_in_dark_mode]',array(
+        'default'=>'#c6c6c6',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[sub_color]',array(
+        'default'=>'#b3b3b3',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[bg_color_base]',array(
+        'default'=>'#f3f3f3',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[bg_color_base_in_dark_mode]',array(
+        'default'=>'#252d38',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[bg_color_header]',array(
+        'default'=>'rgba(255,255,255,0.8)',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[bg_color_header_in_dark_mode]',array(
+        'default'=>'#252d38',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_setting('mingof_style_options[title_color_in_dark_mode]',array(
+        'default'=>'#727d87',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'highlight_color', array(
         /*名字*/
-        'label'        => __( 'Highlight Color', 'mingof' ),
+        'label'        => __( '高亮色（主题色）', 'mingof' ),
         /*section属于……*/
         'section'    => 'colors',
         /*对应的settings*/
         'settings'   => 'mingof_style_options[highlight_color]',
     )));
-
-
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'highlight_color_in_dark_mode', array(
+        'label'        => __( '夜间模式高亮色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[highlight_color_in_dark_mode]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'font_color', array(
+        'label'        => __( '字体颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'description'=> __('请勿随意设置，很可能会变得很丑','mingof'),
+        'settings'   => 'mingof_style_options[font_color]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'font_color_in_dark_mode', array(
+        'label'        => __( '夜间模式字体颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[font_color_in_dark_mode]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'sub_color', array(
+        'label'        => __( 'sub-color', 'mingof' ),
+        'show_opacity'=>true,
+        'description'=> __('非强调色，影响区域包括（非插件的）评论边框，分割线及滚动条等','mingof'),
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[sub_color]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_base', array(
+        'label'        => __( '背景颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'description'=>__('请使用本选项（而不是第一项）来设置背景颜色','mingof'),
+        'settings'   => 'mingof_style_options[bg_color_base]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_base_in_dark_mode', array(
+        'label'        => __( '夜间模式背景颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[bg_color_base_in_dark_mode]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_header', array(
+        'label'        => __( 'Header背景颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'description'=> __('只支持横版Header背景颜色设置','mingof'),
+        'settings'   => 'mingof_style_options[bg_color_header]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_header_in_dark_mode', array(
+        'label'        => __( '夜间模式Header背景颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[bg_color_header_in_dark_mode]'
+    )));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'title_color_in_dark_mode', array(
+        'label'        => __( '夜间模式标题颜色', 'mingof' ),
+        'show_opacity'=>true,
+        'section'    => 'colors',
+        'settings'   => 'mingof_style_options[title_color_in_dark_mode]'
+    )));
+    /**
+     * 自定义 header 模式
+     */
     $wp_customize->add_section ('mingof_set_header_section', array(
-        'title'=>__('Change Header Mode', 'mingof')
+        'title'=>__('切换Header', 'mingof')
     ));
     $wp_customize->add_setting('mingof_header_mode', array(
         'default'=>'vertical',
@@ -220,7 +335,7 @@ function mingof_customize_register( $wp_customize ) {
         'transport'=>'refresh'
     ));
     $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'header_mode', array(
-       'label'=>__('Header Mode', 'mingof'),
+       'label'=>__('设置header模式', 'mingof'),
        'section'=>'mingof_set_header_section',
        'settings'=>'mingof_header_mode',
         'type'=>'radio',
@@ -230,9 +345,11 @@ function mingof_customize_register( $wp_customize ) {
         )
     )));
 
-
+    /**
+     * 设置图像相关
+     */
     $wp_customize->add_section('mingof_set_img_section',array(
-        'title'=>__('Set Image','mingof')
+        'title'=>__('设置图像','mingof')
     ));
     $wp_customize->add_setting('mingof_img_quality',array(
        'default'=>100,
@@ -241,11 +358,16 @@ function mingof_customize_register( $wp_customize ) {
        'transport'=>'refresh'
     ));
     $wp_customize->add_control(new WP_Customize_Control($wp_customize,'img_quality',array(
-        'label'=>__('Upload Image Quality(%)'),
+        'label'=>__('设置上传图片压缩率，100%为不压缩(%)'),
         'section'=>'mingof_set_img_section',
         'settings'=>'mingof_img_quality',
-        'type'=>'number'
+        'type'=>'number',
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 100
+          ),
     )));
+
     $wp_customize->add_setting('mingof_tb_img_width',array(
         'default'=>600,
         'type'=>'option',
@@ -259,18 +381,29 @@ function mingof_customize_register( $wp_customize ) {
         'transport'=>'refresh'
     ));
     $wp_customize->add_control(new WP_Customize_Control($wp_customize,'tb_img_width',array(
-        'label'=>__('set max-width(px) of thumbnail image','mingof'),
+        'label'=>__('设置缩略图最大宽度(px)','mingof'),
         'section'=>'mingof_set_img_section',
         'settings'=> 'mingof_tb_img_width',
         'type'=>'number'
     )));
     $wp_customize->add_control(new WP_Customize_Control($wp_customize,'tb_img_height',array(
-        'label'=>__('set max-height(px) of thumbnail image','mingof'),
+        'label'=>__('设置缩略图最大高度(px)','mingof'),
         'section'=>'mingof_set_img_section',
         'settings'=> 'mingof_tb_img_height',
         'type'=>'number'
     )));
 
+    $wp_customize->add_setting('mingof_banner_img',array(
+        'default'=>'',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'banner_img',array(
+        'label'=>__('设置移动端banner图','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=>'mingof_banner_img'
+    )));
 }
 add_action( 'customize_register', 'mingof_customize_register');
 

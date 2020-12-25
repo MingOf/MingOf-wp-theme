@@ -11,12 +11,14 @@
   h1 {
     //height: 100px;
     color: $highlightColor;
+    color: var(--highlightColor);
   }
 }
 .dark {
   #about {
     h1 {
       color: $highlightColorInDarkMode;
+      color: var(--highlightColorInDarkMode);
     }
   }
 }

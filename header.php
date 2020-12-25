@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="<?php bloginfo("description"); ?>">
     <title><?php bloginfo("name");?></title>
+    <?php include('style-variable.php'); ?>
     <?php wp_head(); ?>
 </head>
 <body <?php if(!mingof_is_mobile()) /*只针对pc端有效*/body_class();?>>
