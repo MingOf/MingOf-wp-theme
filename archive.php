@@ -80,5 +80,6 @@
     <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
     <?php get_template_part('templates/footer', 'm');?>
     <?php endif; ?>
+    <?php include('templates/go-top.php')?>
 </section>
 <?php wp_footer() ?>

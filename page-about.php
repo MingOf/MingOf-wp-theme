@@ -11,6 +11,7 @@
             ?>
         </div>
     </div>
+    <?php include('templates/go-top.php')?>
 </section>
 <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
 <?php get_template_part('footer', 'm');?>

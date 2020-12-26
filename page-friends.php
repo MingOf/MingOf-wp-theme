@@ -59,5 +59,6 @@ EOT;
         <?php comments_template();?>
     </section>
     </div>
+    <?php include('templates/go-top.php')?>
 </section>
 <?php wp_footer(); ?>

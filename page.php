@@ -13,5 +13,6 @@
 
         </div>
     </div>
+    <?php include('templates/go-top.php')?>
 </section>
 <?php wp_footer() ?>
