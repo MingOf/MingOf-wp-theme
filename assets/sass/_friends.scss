@@ -2,7 +2,6 @@ section.links {
   width: 50%;
   margin: 0 auto;
   position: relative;
-  margin-top: 3%;
   .links-main-title {
     font-size: 2em;
     margin-bottom: 1em;
@@ -66,7 +65,6 @@ section.links {
   @media screen and (max-width: 1000px) {
     &.links {
       width: 85%;
-      margin-top: 4em;
     }
     //.links-item {
     //  background: #fff;

@@ -2,7 +2,7 @@
 <?php get_header();?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
 <!--    <div id="overlay"></div>-->
-    <div class="page-wrapper">
+    <div class="custom-page-wrapper">
     <section class="timeline-container">
     <?php
     /*设置默认 page 为1*/

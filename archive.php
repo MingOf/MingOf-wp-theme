@@ -78,7 +78,7 @@
     </section>
     <?php get_sidebar("侧边栏") ?>
     <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
-    <?php get_template_part('footer', 'm');?>
+    <?php get_template_part('templates/footer', 'm');?>
     <?php endif; ?>
 </section>
 <?php wp_footer() ?>

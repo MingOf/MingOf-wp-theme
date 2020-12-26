@@ -11,16 +11,10 @@
     .posts-cate-title {
       filter: brightness(1.5) opacity(0.9);
     }
-    .page-wrapper {
+    .custom-page-wrapper {
       padding-top: 2em;
       @media screen and (max-width: 1000px) {
         padding-top: 4em;
-      }
-    }
-    .links,.timeline-container,#about {
-      margin-top: 0;
-      h1,h2,h3,h4,h5,h6 {
-        margin-top: 0;
       }
     }
     #posts-container {

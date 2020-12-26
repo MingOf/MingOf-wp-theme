@@ -6,7 +6,7 @@ if(!empty(get_option('mingof_banner_img'))) {
     echo get_template_directory_uri().'/assets/image/banner.jpg';
 }
 ?>')">
-<?php include('banner-m.php');?>
+<?php include('templates/banner-m.php');?>
 </div>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
     <section id="posts-container">
@@ -64,7 +64,7 @@ if(!empty(get_option('mingof_banner_img'))) {
     </section>
     <?php get_sidebar("侧边栏"); ?>
     <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
-    <?php get_template_part('footer', 'm');?>
+    <?php get_template_part('templates/footer', 'm');?>
     <?php endif; ?>
 </section>
 <?php wp_footer(); ?>

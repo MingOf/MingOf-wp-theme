@@ -6,7 +6,7 @@ if(has_post_thumbnail()) {
     echo wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'custom-tb-size')[0];
 }
 ?>')">
-    <?php include("banner-m.php"); ?>
+    <?php include("templates/banner-m.php"); ?>
 </div>
 <?php endif;?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
@@ -65,7 +65,7 @@ if(has_post_thumbnail()) {
     </section>
     <?php get_sidebar("侧边栏") ?>
     <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
-    <?php get_template_part('footer', 'm');?>
+    <?php get_template_part('templates/footer', 'm');?>
     <?php endif; ?>
 </section>
 <?php wp_footer() ?>
