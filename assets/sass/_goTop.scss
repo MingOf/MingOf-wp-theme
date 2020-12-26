@@ -15,22 +15,33 @@
     transform: rotate(360deg);
   }
 }
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 5px #fff;
+  }
+  50% {
+    box-shadow: 0 0 20px #fff;
+  }
+  100% {
+    box-shadow: 0 0 5px #fff;
+  }
+}
 .go-top-container {
-  color: #fff;
+  color: #ccc;
   font-weight: bold;
   position: fixed;
-  bottom: 2em; 
-  right: 10%;
+  bottom: 8em; 
+  right: 15%;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   font-size: 10px;
-  background-color: #fff;
-  background-color: #fff;
   overflow: hidden;
-  background-color: #12c8e0;
+  background-color: $highlightColor;
+  background-color: var(--highlightColor);
   opacity: 0.8;
   cursor: pointer;
+  animation: shine 6s infinite;
   .rocket {
     display: flex;
     align-items: center;
@@ -58,7 +69,7 @@
     width: 200%;
     height: 200%;
     z-index: 20;
-    background-color: #85f7fb;
+    background-color:#eee;
     border-radius: 52% 25% 62% 69% / 25% 38%;
     left: -50%;
     top: -100%;
@@ -71,7 +82,7 @@
     width: 200%;
     height: 200%;
     z-index: 20;
-    background-color: #c4fdff;
+    background-color: #fff;
     border-radius: 42% 38% 40% 62% / 48% 35%;
     left: -50%;
     top: -100%;
@@ -85,5 +96,11 @@
    .go-top-inner1, .go-top-inner2,.percent {
      opacity: 0;
    }
+  }
+}
+.dark {
+  .go-top-container {
+    background-color: $highlightColorInDarkMode;
+  background-color: var(--highlightColorInDarkMode);
   }
 }

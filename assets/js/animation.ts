@@ -84,20 +84,20 @@ document.addEventListener("DOMContentLoaded", function (): void {
     a_idx = (a_idx + 1) % a.length;
     var x: number = e.pageX,
       y: number = e.pageY;
-    i.style.zIndex = '9999';
+    i.style.zIndex = 9999;
     i.style.top = y - 20 + 'px';
     i.style.left = x + 'px';
     i.style.position = "absolute";
     i.style.fontWeight = "bold";
     i.style.color = "#ff6651";
-    i.style.opacity = '1';
+    i.style.opacity = 1;
     body.appendChild(i);
 
     function animate(): void {
       i.style.top = parseInt(i.style.top) - 1 + 'px';
-      i.style.opacity = String(parseFloat(i.style.opacity) - 0.05);
+      i.style.opacity = i.style.opacity - 0.05;
 
-      if (parseInt(i.style.top) <= y - 180 || parseFloat(i.style.opacity) <= 0) {
+      if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
         body.removeChild(i);
         return;
       }
@@ -339,8 +339,8 @@ function getScrollPercent() {
   let percent = Math.round(tmp);
   let top = (percent + 100) + '%';
   let cent = document.getElementsByClassName('percent')[0];
-  let wave1 = document.getElementsByClassName('go-top-inner1')[0];
-  let wave2 = document.getElementsByClassName('go-top-inner2')[0];
+  let wave1 = document.getElementsByClassName('go-top-inner1')[0] as Element;
+  let wave2 = document.getElementsByClassName('go-top-inner2')[0] as Element;
   cent.innerHTML = String(percent);
   wave1.style.top = '-' + top;
   wave2.style.top = '-' + top;
@@ -349,7 +349,7 @@ function goTop() {
   goTopTimer = setInterval(function () {
     let scrollTop: number = document.documentElement.scrollTop;
     console.log(scrollTop);
-    let speed = scrollTop / 100;
+    let speed = scrollTop / 5;
     if (scrollTop !== 0) {
       document.documentElement.scrollTop -= speed;
     } else {

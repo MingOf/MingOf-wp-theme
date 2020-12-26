@@ -80,18 +80,18 @@ document.addEventListener("DOMContentLoaded", function () {
         i.innerHTML = a[a_idx];
         a_idx = (a_idx + 1) % a.length;
         var x = e.pageX, y = e.pageY;
-        i.style.zIndex = '9999';
+        i.style.zIndex = 9999;
         i.style.top = y - 20 + 'px';
         i.style.left = x + 'px';
         i.style.position = "absolute";
         i.style.fontWeight = "bold";
         i.style.color = "#ff6651";
-        i.style.opacity = '1';
+        i.style.opacity = 1;
         body.appendChild(i);
         function animate() {
             i.style.top = parseInt(i.style.top) - 1 + 'px';
-            i.style.opacity = String(parseFloat(i.style.opacity) - 0.05);
-            if (parseInt(i.style.top) <= y - 180 || parseFloat(i.style.opacity) <= 0) {
+            i.style.opacity = i.style.opacity - 0.05;
+            if (parseInt(i.style.top) <= y - 180 || i.style.opacity <= 0) {
                 body.removeChild(i);
                 return;
             }
@@ -309,8 +309,8 @@ function goTop() {
     goTopTimer = setInterval(function () {
         var scrollTop = document.documentElement.scrollTop;
         console.log(scrollTop);
-        var speed = scrollTop / 100;
-        if (scrollTop !== 0) {
+        var speed = scrollTop / 5;
+        if (scrollTop > 0) {
             document.documentElement.scrollTop -= speed;
         }
         else {
