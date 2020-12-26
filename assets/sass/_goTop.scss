@@ -1,0 +1,89 @@
+@keyframes loading {
+  0% {
+    height: 25%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.go-top-container {
+  color: #fff;
+  font-weight: bold;
+  position: fixed;
+  bottom: 2em; 
+  right: 10%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 10px;
+  background-color: #fff;
+  background-color: #fff;
+  overflow: hidden;
+  background-color: #12c8e0;
+  opacity: 0.8;
+  cursor: pointer;
+  .rocket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    font-size: 2.5em;
+    z-index: 40;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  .percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+    transition: opacity 0.3s;
+  }
+  .go-top-inner1 {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    z-index: 20;
+    background-color: #85f7fb;
+    border-radius: 52% 25% 62% 69% / 25% 38%;
+    left: -50%;
+    top: -100%;
+    transition: opacity 0.3s;
+    animation: wave 10s linear infinite;
+  }
+  .go-top-inner2 {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    z-index: 20;
+    background-color: #c4fdff;
+    border-radius: 42% 38% 40% 62% / 48% 35%;
+    left: -50%;
+    top: -100%;
+    transition: opacity 0.3s;
+    animation: wave 10s linear infinite;
+  }
+  &:hover {
+   .rocket {
+     opacity: 1;
+   } 
+   .go-top-inner1, .go-top-inner2,.percent {
+     opacity: 0;
+   }
+  }
+}
