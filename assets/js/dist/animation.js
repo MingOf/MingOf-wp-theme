@@ -308,9 +308,8 @@ function getScrollPercent() {
 function goTop() {
     goTopTimer = setInterval(function () {
         var scrollTop = document.documentElement.scrollTop;
-        console.log(scrollTop);
         var speed = scrollTop / 5;
-        if (scrollTop > 0) {
+        if (scrollTop !== 0) {
             document.documentElement.scrollTop -= speed;
         }
         else {

@@ -19,10 +19,10 @@ function initCatalog(el) {
     var hArr = [];
     var els;
     if (!el.querySelectorAll) {
-        els = el.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        els = el.children;
     }
     else {
-        els = el.children;
+        els = el.querySelectorAll("h1, h2, h3, h4, h5, h6");
     }
     for (var i = 0; i < els.length; i++) {
         // 遍历所给元素el 的所有子节点中是标题标签的节点
