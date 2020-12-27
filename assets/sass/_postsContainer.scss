@@ -177,6 +177,10 @@
       }
     }
     .post-content {
+      img {
+        display: block;
+        margin: 0 auto;
+      }
       a {
         text-decoration: underline;
       }
@@ -202,6 +206,8 @@
   }
   @media screen and (max-width: 1200px){
     width: auto;
+    float: none;
+    padding: 3%;
   }
   @media screen and (max-width: 1000px) {
     padding: 0.8em;

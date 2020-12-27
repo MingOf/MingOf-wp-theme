@@ -112,6 +112,9 @@
   @media screen and (max-width: 1400px) {
     width: 240px;
   }
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 .menu-with-children,.menu-item-has-children {
   .menu-item {
