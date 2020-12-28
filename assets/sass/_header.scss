@@ -320,18 +320,31 @@
   will-change: transform;
   box-shadow: -1px -1px 5px #bbb;
   #catalog {
-    margin: 0;
     padding: 0;
     background-color: transparent;
+    margin: 1.8em;
+    &.text-center {
+      .catalog-item {
+        span {
+          margin: 0;
+          width: 1.7em;
+          text-align: center;
+        }
+      }
+    }
     .catalog-item {
       margin: 0; padding: 0;
-      display: block;
+      display: flex;
       text-align: left;
-      margin: 0 1.5em;
+      span {
+        width: 1.7em;
+        text-align: center;
+        margin: 0;
+      }
     }
   }
   .mb-nav {
-    margin: 2.5em;
+    margin: 3.5em;
     .nav-menu {
       li {
         padding: 0.3em 0;
