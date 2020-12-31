@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="<?php bloginfo("description"); ?>">
-    <title><?php bloginfo("name");?></title>
+    <title><?php  //bloginfo("name");?></title>
     <?php include('templates/style-variable.php'); ?>
     <?php wp_head(); ?>
 </head>

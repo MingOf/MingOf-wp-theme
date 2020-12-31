@@ -5,7 +5,7 @@ Author: MingOf
 Author URI: https://mingof.top
 Description: no_feature
 Requires at least: WordPress 4.9.6
-Version: 3.2
+Version: 3.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: mingof
@@ -58,8 +58,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
   }
   a:hover {
     color: $highlightColor;
+    color: var(--highlightColor);
     @media (prefers-color-scheme: dark) {
       color: $highlightColorInDarkMode;
+      color: var(--hgihlightColorInDarkMode);
     }
   }
 
