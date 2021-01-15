@@ -45,6 +45,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   word-break: break-word;
   //overflow: hidden;
   display: flex;
+  flex-direction: column;
   // transition: transform 0.5s ease;
   @media screen and (max-width: 1400px){
     margin: 0 0 0 240px;
@@ -60,6 +61,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
     min-width: auto;
     position: relative;
     z-index: 1;
+  }
+  &.row-direction {
+    flex-direction: row;
   }
   a:hover {
     color: $highlightColor;
