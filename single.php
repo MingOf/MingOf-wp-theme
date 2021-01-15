@@ -64,11 +64,11 @@ if(has_post_thumbnail()) {
         </section>
     </section>
     <?php get_sidebar("侧边栏") ?>
-    <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
-    <?php get_template_part('templates/footer', 'm');?>
-    <?php endif; ?>
     <?php include('templates/go-top.php')?>
 </section>
+<?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
+<?php get_template_part('templates/footer', 'm');?>
+<?php endif; ?>
 <?php wp_footer() ?>
 
 

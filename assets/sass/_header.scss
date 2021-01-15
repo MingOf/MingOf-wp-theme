@@ -373,18 +373,19 @@
 }
 
 .target-opened {
-  #mastcontainer {
-    // transform: translate3d(-61.8%, 0, 0);
-  }
-  #banner {
-    // transform: translate3d(-65.1%, 0, 0);
-  }
-  .mb-header-toggle-bar {
-    // transform: translate3d(-61.8%,0, 0);
-    &.hide {
-      // transform: translate3d(-61.8%, -3.2em, 0);
-    }
-  }
+  // 移动端有卡顿问题
+  // #mastcontainer {
+  //   transform: translate3d(-61.8%, 0, 0);
+  // }
+  // #banner {
+  //   transform: translate3d(-65.1%, 0, 0);
+  // }
+  // .mb-header-toggle-bar {
+  //   transform: translate3d(-61.8%,0, 0);
+  //   &.hide {
+  //     transform: translate3d(-61.8%, -3.2em, 0);
+  //   }
+  // }
   .mb-header-side {
     transform: translate3d(-101.9%, 0, 0);
   }

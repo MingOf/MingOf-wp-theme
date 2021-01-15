@@ -36,7 +36,7 @@ register_sidebar([
  * 注册自定义菜单
  */
 register_nav_menus(array(
-    'main_menus'=>'主菜单',
+    'main_menus'=>'主菜单(有效)',
     'mobile_menus'=>'移动端banner菜单'
 ));
 wp_enqueue_script("jquery");

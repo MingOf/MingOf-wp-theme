@@ -1,6 +1,10 @@
 // 横向 header
 .horizontal-header-mode {
+  body {
+    min-height: 100%;
+  }
   .horizontal-header {
+    backdrop-filter: blur(50px);
     -moz-user-select: none; 
     -webkit-user-select: none; 
     height: 70px; min-width: 1200px;
@@ -18,7 +22,7 @@
       font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
     }
     .header-wrapper {
-      width: 61.8%;
+      width: 61%;
       margin: 0 auto;
       .header-left {
         float: left;
@@ -69,6 +73,8 @@
             }
           }
           .sub-menu {
+            // column-count: 2;
+            column-width: 100px;
             position: absolute;
             z-index: 2;
             width: 300px;
@@ -76,30 +82,53 @@
             background-color:var(--bgColorHeader);
             border-radius:0 0 10px 10px;
             left:50%;transform: translateX(-50%);
-           
+            li {
+              height: auto;
+              line-height: 1.5;
+              width: 100px;
+              text-overflow: ellipsis;
+              text-overflow: fade(10px);
+              -webkit-text-overflow: fade(10px);
+              -moz-text-overflow: fade(10px);
+              overflow: hidden;
+              white-space: nowrap;
+              transition: all 0.3s;
+              &:hover {
+                // overflow: auto;
+                white-space: normal;
+                text-overflow: unset;
+                padding: 0.2em;
+              }
+            }
           }
         }
       }
     }
   }
   #mastcontainer.horizontal {
+    width: 61%;
     margin: 0 auto;
-    width: 61.8%;
     padding-top: 70px;
     #posts-container {
-      padding: 3% 0;
+      padding-left: 0;
+      flex: 0 0 61.8%;
     }
     #sidebar {
-      padding: 3% 0 3% 0;
-      margin-left: 70%;
-      
+      flex: 1;
+      margin-left: 3em;
       @media screen and (max-width: 1200px) {
         margin-left: 0;
       }
     }
   }
   .footer-m {
-    display: block;
+    display: flex;
+    // position: absolute;
+    // bottom: 0;
+    // height: 50px;
+    // backdrop-filter: brightness(1.5) opacity(0.9);
+    align-items: center;
+    justify-content: center;
   }
 }
 

@@ -140,6 +140,7 @@ html {
   min-width: 100%; min-height: 100%;
   background-color: $bgColorBase;
   background-color: var(--bgColorBase);
+  height: 100%;
   @media screen and (max-width: 1000px) {
     font-size: 16px;
   }
@@ -148,8 +149,9 @@ code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important;
 }
 .wrapper {
-  max-width: 1600px;
+  max-width: 1560px;
   margin: 0 auto;
+  padding: 0 2em;
 }
 div.wp-caption {
   width: 100% !important;
