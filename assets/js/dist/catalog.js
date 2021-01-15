@@ -1,4 +1,3 @@
-"use strict";
 function initCatalog(el) {
     /**
      * 假定处理过后的hArr 如下：
@@ -28,8 +27,8 @@ function initCatalog(el) {
         // 遍历所给元素el 的所有子节点中是标题标签的节点
         if (els[i].nodeType === 1 && /H\d/i.test(els[i].nodeName)) {
             // let name = els[i].getElementsByTagName('a')[0].getAttribute('name');
-            var name_1 = els[i].getAttribute('name');
-            hArr.push({ tag: els[i].nodeName.toLowerCase(), text: els[i].innerText, name: name_1, el: els[i] });
+            var name = els[i].getAttribute('name');
+            hArr.push({ tag: els[i].nodeName.toLowerCase(), text: els[i].innerText, name: name, el: els[i] });
         }
     }
     if (hArr.length <= 0) {

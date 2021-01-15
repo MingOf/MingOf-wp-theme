@@ -1,4 +1,3 @@
-"use strict";
 /*
 * 检测夜间模式
 * */
@@ -29,7 +28,7 @@
     function changeMode(el, isDark) {
         isDark ? el.classList.add("dark") : el.classList.remove("dark");
     }
-    window.matchMedia('(prefers-color-scheme: dark').addEventListener('change', function (event) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (event) {
         if (event.matches) {
             changeMode(html, true);
         }

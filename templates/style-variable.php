@@ -44,6 +44,7 @@ echo <<<EOT
 
 /*夜间模式 “近文期章”，“文章归档”等标题颜色*/
   --titleColorInDarkMode: $titleColorInDarkMode;
+  --backgroundImage: "http://localhost/wp-content/uploads/2021/01/abstract-5729094_1920.jpg";
 }
 EOT;
 ?>

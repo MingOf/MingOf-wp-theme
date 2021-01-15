@@ -33,7 +33,7 @@ if(!empty(get_option('mingof_banner_img'))) {
                     </div>
                 </a>
                 <?php endif;?>
-                <div>
+                <div class="post-excerpt-content">
                     <?php
                     the_excerpt();
                     ?>

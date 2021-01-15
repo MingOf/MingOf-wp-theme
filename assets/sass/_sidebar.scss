@@ -1,7 +1,8 @@
 // 侧边栏
 #sidebar {
-  margin-left: 67%;
-  padding: 2em 3% 0 0;
+  // margin-left: 67%;
+  flex: 0 0 370px;
+  padding: 2em 0 0 0;
   @media screen and (max-width: 1200px) {
     padding: 3%;
     margin: 0;
@@ -17,6 +18,7 @@
     background-color: #fff;
     border-radius: 10px;
     transition: transform 0.3s;
+    // gnome 环境下卡顿
     &:hover {
       transform: scale(1.02);
     }

@@ -25,6 +25,9 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+* {
+  backface-visibility: hidden;
+}
 /**
  普通模式变量
  */
@@ -145,7 +148,7 @@ code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important;
 }
 .wrapper {
-  max-width: 1650px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 div.wp-caption {

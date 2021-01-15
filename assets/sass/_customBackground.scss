@@ -1,8 +1,20 @@
 // 设置背景图片
 // 以下背景图片CSS只支持PC端，移动端性能太差，不设置background image
 .custom-background {
-  position: absolute;
+  position: relative;
+  // overflow: hidden;
   width:100%; min-height: 100%;
+  .custom-bg {
+    background-image: url('http://localhost/wp-content/uploads/2021/01/watercolour-1336856_1920.jpg');
+    z-index: -1;
+    position: fixed;
+    will-change: transform;
+    background-size: cover;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+  }
   #header {
     opacity: 0.95;
     background-color: transparent;

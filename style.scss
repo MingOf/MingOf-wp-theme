@@ -39,15 +39,17 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "assets/sass/banner-m";
 @import "assets/sass/horizontalHeaderMode";
 #mastcontainer {
-  margin: 0 0 0 380px;
+  margin: 0 0 0 340px;
   min-width: 900px;
   position: relative;
   word-break: break-word;
   //overflow: hidden;
-  transition: transform 0.5s ease;
-  @media screen and (max-width: 1400px){
+  display: flex;
+  // transition: transform 0.5s ease;
+  @media screen and (max-width: 1200px){
     margin: 0 0 0 280px;
     min-width: 600px;
+    flex-direction: column;
   }
   @media screen and (max-width: 1000px) {
     margin: auto;
@@ -71,7 +73,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
     clear: both;
   }
 }
-
+.mobile {
+  #mastcontainer {
+    display: block;
+  }
+}
 /*文章列表容器*/
 @import "assets/sass/postsContainer";
 

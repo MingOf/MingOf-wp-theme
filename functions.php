@@ -54,12 +54,9 @@ function add_theme_scripts() {
         wp_register_script('jquery-migrate','https://cdn.bootcdn.net/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js','','3.3.2',false);
         wp_enqueue_script('jquery-migrate');
     }
-    // wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/mingofAnimation.prod.js',[],null,true);
-    wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/dist/animation.prod.js',[],null,true);
-    // wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/mingofChangeMode.prod.js',[],null,false);
-    wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/dist/changeMode.prod.js',[],null,false);
-    // wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/mingofCatalog.prod.js',[],null,true);
-    wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/dist/catalog.prod.js',[],null,true);
+    wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/dist/animation.min.js',[],null,true);
+    wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/dist/changeMode.min.js',[],null,false);
+    wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/dist/catalog.min.js',[],null,true);
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
@@ -179,18 +176,25 @@ function theme_setup() {
     ));
     add_theme_support( 'post-thumbnails', array('post'));
     add_image_size( 'custom-tb-size', get_option('mingof_tb_img_width',600), get_option('mingof_tb_img_height',400));
-    add_theme_support('custom-background',array(
-        'default-image'=>'',
-        'default-position-x'=>'center',
-        'default-position-y'=>'center',
-        'default-size'=>'cover',
-        'default-attachment'=>'fixed'
-    ));
+    // linux 下给body设置fixed背景会导致滚动卡顿
+    // add_theme_support('custom-background',array(
+    //     'default-image'=>'',
+    //     'default-position-x'=>'center',
+    //     'default-position-y'=>'center',
+    //     'default-size'=>'cover',
+    //     'default-attachment'=>'fixed'
+    // ));
     add_theme_support( 'title-tag' );
 }
 add_action('after_setup_theme', 'theme_setup');
 
-
+function mingof_body_class($class) {
+    if(!empty(get_option('mingof_bg_img'))) {
+        $class[] = 'custom-background';
+    }
+    return $class;
+}
+add_filter('body_class','mingof_body_class');
 /**
  * 注册自定义功能
  * @param $wp_customize
@@ -406,6 +410,25 @@ function mingof_customize_register( $wp_customize ) {
         'label'=>__('设置移动端banner图','mingof'),
         'section'=>'mingof_set_img_section',
         'settings'=>'mingof_banner_img'
+    )));
+
+    $wp_customize->add_setting('mingof_bg_img',array(
+        'default'=>'',
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'bg_img',array(
+        'label'=>__('设置背景图片','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=>'mingof_bg_img'
+    )));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'bg_img_via_imgbed',array(
+        'label'=>__('自定义背景图片链接','mingof'),
+        'description'=> __('注意定义了链接后默认使用链接的背景图片，而不使用上传的','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=>'mingof_bg_img',
+        'type'=>'text'
     )));
 }
 add_action( 'customize_register', 'mingof_customize_register');

@@ -325,36 +325,38 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 //     document.addEventListener('DOMContentLoaded', lightBox);
 // }());
 
-let topButton = document.getElementsByClassName('go-top-container')[0];
-let goTopTimer = 0;
-function getScrollPercent() {
-  if (mingofIsMobile()) {
-    window.removeEventListener('scroll', getScrollPercent);
-    return;
-  }
-  let scrollTop: number = document.documentElement.scrollTop;
-  let scrollHeight = document.documentElement.scrollHeight;
-  let innerHight: number = window.innerHeight;
-  let tmp = scrollTop / (scrollHeight - innerHeight) * 100;
-  let percent = Math.round(tmp);
-  let top = (percent + 100) + '%';
-  let cent = document.getElementsByClassName('percent')[0];
-  let wave1 = document.getElementsByClassName('go-top-inner1')[0] as Element;
-  let wave2 = document.getElementsByClassName('go-top-inner2')[0] as Element;
-  cent.innerHTML = String(percent);
-  wave1.style.top = '-' + top;
-  wave2.style.top = '-' + top;
-}
-function goTop() {
-  goTopTimer = setInterval(function () {
+(function() {
+  let topButton = document.getElementsByClassName('go-top-container')[0];
+  if (!topButton) return;
+  let goTopTimer = 0;
+  function getScrollPercent() {
+    if (mingofIsMobile()) {
+      window.removeEventListener('scroll', getScrollPercent);
+      return;
+    }
     let scrollTop: number = document.documentElement.scrollTop;
-    let speed = scrollTop / 5;
+    let scrollHeight = document.documentElement.scrollHeight;
+    let innerHight: number = window.innerHeight;
+    let tmp = scrollTop / (scrollHeight - innerHeight) * 100;
+    let percent = Math.round(tmp);
+    let top = (percent + 100) + '%';
+    let cent = document.getElementsByClassName('percent')[0];
+    let wave1 = document.getElementsByClassName('go-top-inner1')[0] as Element;
+    let wave2 = document.getElementsByClassName('go-top-inner2')[0] as Element;
+    cent.innerHTML = String(percent);
+    wave1.style.top = '-' + top;
+    wave2.style.top = '-' + top;
+  }
+  function goTop() {
+    let scrollTop: number = document.documentElement.scrollTop;
+    let speed = scrollTop / 10;
     if (scrollTop !== 0) {
       document.documentElement.scrollTop -= speed;
     } else {
-      clearInterval(goTopTimer);
+      return
     }
-  }, 17);
-}
-topButton.addEventListener('click', goTop);
-window.addEventListener('scroll', getScrollPercent);
+    requestAnimationFrame(goTop)
+  }
+  topButton.addEventListener('click', goTop);
+  window.addEventListener('scroll', getScrollPercent);
+})()

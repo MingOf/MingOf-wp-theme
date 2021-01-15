@@ -285,37 +285,40 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 //     }
 //     document.addEventListener('DOMContentLoaded', lightBox);
 // }());
-var topButton = document.getElementsByClassName('go-top-container')[0];
-var goTopTimer = 0;
-function getScrollPercent() {
-    if (mingofIsMobile()) {
-        window.removeEventListener('scroll', getScrollPercent);
+(function () {
+    var topButton = document.getElementsByClassName('go-top-container')[0];
+    if (!topButton)
         return;
-    }
-    var scrollTop = document.documentElement.scrollTop;
-    var scrollHeight = document.documentElement.scrollHeight;
-    var innerHight = window.innerHeight;
-    var tmp = scrollTop / (scrollHeight - innerHeight) * 100;
-    var percent = Math.round(tmp);
-    var top = (percent + 100) + '%';
-    var cent = document.getElementsByClassName('percent')[0];
-    var wave1 = document.getElementsByClassName('go-top-inner1')[0];
-    var wave2 = document.getElementsByClassName('go-top-inner2')[0];
-    cent.innerHTML = String(percent);
-    wave1.style.top = '-' + top;
-    wave2.style.top = '-' + top;
-}
-function goTop() {
-    goTopTimer = setInterval(function () {
+    var goTopTimer = 0;
+    function getScrollPercent() {
+        if (mingofIsMobile()) {
+            window.removeEventListener('scroll', getScrollPercent);
+            return;
+        }
         var scrollTop = document.documentElement.scrollTop;
-        var speed = scrollTop / 5;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var innerHight = window.innerHeight;
+        var tmp = scrollTop / (scrollHeight - innerHeight) * 100;
+        var percent = Math.round(tmp);
+        var top = (percent + 100) + '%';
+        var cent = document.getElementsByClassName('percent')[0];
+        var wave1 = document.getElementsByClassName('go-top-inner1')[0];
+        var wave2 = document.getElementsByClassName('go-top-inner2')[0];
+        cent.innerHTML = String(percent);
+        wave1.style.top = '-' + top;
+        wave2.style.top = '-' + top;
+    }
+    function goTop() {
+        var scrollTop = document.documentElement.scrollTop;
+        var speed = scrollTop / 10;
         if (scrollTop !== 0) {
             document.documentElement.scrollTop -= speed;
         }
         else {
-            clearInterval(goTopTimer);
+            return;
         }
-    }, 17);
-}
-topButton.addEventListener('click', goTop);
-window.addEventListener('scroll', getScrollPercent);
+        requestAnimationFrame(goTop);
+    }
+    topButton.addEventListener('click', goTop);
+    window.addEventListener('scroll', getScrollPercent);
+})();

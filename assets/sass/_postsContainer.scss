@@ -1,8 +1,9 @@
 // 核心界面——文章容器
 #posts-container {
-  width: 61%;
+  // width: 61%;
+  flex: 1;
   padding: 2em;
-  float: left;
+  // float: left;
   .post-wrapper {
     padding: 1em;
     background-color: #fff;
@@ -25,11 +26,17 @@
     margin-bottom: 2em;
     transition: transform 0.3s;
     //box-shadow: 0 0 3px #fff;
-    &:hover {
-      transform: scale(1.02);
-    }
+    // gnome环境下卡顿
+    // &:hover {
+    //   transform: scale(1.02);
+    // }
     &.no-thumbnail {
       background: #fff;
+      .post-excerpt {
+        .post-excerpt-content {
+          z-index: 0;
+        }
+      }
     }
     &.post-single {
       padding: 0;
@@ -92,6 +99,10 @@
       }
     }
     .post-excerpt {
+      .post-excerpt-content {
+        position: relative;
+        z-index: -1;
+      }
       .post-thumbnail {
         display: flex;
         text-align: center;
@@ -109,6 +120,7 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        transition: transform 0.3s;
         span {
           position: relative;
           z-index: -1;
