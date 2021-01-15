@@ -20,7 +20,6 @@
     background-color: transparent;
   }
   #mastcontainer {
-    opacity: 0.95;
     .posts-cate-title {
       filter: brightness(1.5) opacity(0.9);
     }
@@ -33,6 +32,8 @@
     #posts-container {
       .post-item {
         .post-thumbnail {
+          // position: relative;
+          // z-index: 1;
           &::after {
             opacity: 0.9;
           }

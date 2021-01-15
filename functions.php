@@ -92,9 +92,9 @@ function excerpt_read_more_link( $output ) {
 
 add_filter('excerpt_length', 'new_excerpt_length');
 add_filter('the_excerpt', 'excerpt_read_more_link');
-register_nav_menus([
-    'header-menu' => __('导航菜单','mingof')
-]);
+// register_nav_menus([
+//     'header-menu' => __('导航菜单','mingof')
+// ]);
 
 /**
  * 匹配第一个图像作为文章的 thumbnail，配合 get_thumbnail_img 函数
