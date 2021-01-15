@@ -8,7 +8,7 @@ if(!empty(get_option('mingof_banner_img'))) {
 ?>')">
 <?php include('templates/banner-m.php');?>
 </div>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
+<section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
     <section id="posts-container">
         <?php
         if ( have_posts()) {

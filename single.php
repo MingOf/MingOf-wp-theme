@@ -9,7 +9,7 @@ if(has_post_thumbnail()) {
     <?php include("templates/banner-m.php"); ?>
 </div>
 <?php endif;?>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
+<section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
 <!--    <div id="overlay"></div>-->
     <section id="posts-container">
         <section class="post-wrapper <?php has_post_thumbnail() && _e('has-thumbnail')?>">
