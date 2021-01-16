@@ -33,11 +33,9 @@ if(!empty(get_option('mingof_banner_img'))) {
                     </div>
                 </a>
                 <?php endif;?>
-                <div class="post-excerpt-content">
-                    <?php
-                    the_excerpt();
-                    ?>
-                </div>
+                <?php
+                the_excerpt();
+                ?>
             </article>
             <div class="divider $post_"></div>
         </div>

@@ -50,11 +50,9 @@
                     <?php if(has_post_thumbnail()):?>
                         <div class="post-thumbnail"><?php the_post_thumbnail();?></div>
                     <?php endif;?>
-                    <div>
-                        <?php
-                        the_excerpt();
-                        ?>
-                    </div>
+                    <?php
+                    the_excerpt();
+                    ?>
                 </article>
                 <div class="divider"></div>
             </div>

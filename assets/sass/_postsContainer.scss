@@ -36,11 +36,6 @@
     // }
     &.no-thumbnail {
       background: #fff;
-      .post-excerpt {
-        .post-excerpt-content {
-          z-index: 0;
-        }
-      }
     }
     &.post-single {
       padding: 0;
@@ -103,16 +98,16 @@
       }
     }
     .post-excerpt {
-      // .post-excerpt-content {
-      //   position: relative;
-      //   z-index: -1;
-      // }
+      .post-excerpt-content {
+        position: relative;
+        z-index: -1;
+      }
       .post-thumbnail {
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
-        border: 1em solid #fff;
+        border: 10px solid #fff;
         border-radius: 5px;
         width: 280px;
         overflow: hidden;
@@ -124,7 +119,10 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        transition: transform 0.3s;    
+        transition: all 0.3s;
+        &:hover {
+          border-radius: 20px
+        }    
         span {
           position: relative;
           z-index: -1;

@@ -87,7 +87,7 @@ function excerpt_read_more_link( $output ) {
         .$link
         .'>'.__("阅读全文", "mingof").'  →  '
         .'</a></button>';
-    return $output.$more;
+    return "<article class='post-excerpt-content'>".$output."</article>".$more;
 }
 
 add_filter('excerpt_length', 'new_excerpt_length');
