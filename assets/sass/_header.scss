@@ -5,7 +5,7 @@
   top: 0;
   height: 100%;
   overflow-x: hidden;
-  width: 340px;
+  width: $verticalHeaderWidth;
   z-index: 1;
   padding-top: 2em;
   #headering {
@@ -25,8 +25,10 @@
     height: 6em;
   }
   #logo {
-    width: 150px;
-    height: 150px;
+    max-width: 10em;
+    max-height: 10em;
+    width: 10vw;
+    height: 10vw;
     margin: 2em auto;
     border-radius: 50%;
     overflow: hidden;
@@ -110,7 +112,7 @@
     position: relative;
   }
   @media screen and (max-width: 1400px) {
-    width: 240px;
+    width: $verticalHeaderWidthInLowResolution;
   }
   @media screen and (max-width: 1000px) {
     display: none;

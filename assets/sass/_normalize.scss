@@ -54,6 +54,12 @@ $bgColorHeader: #ffffff;
   box-shadow: 5px 5px 5px #eee;
 }
 
+/*vertical header 宽度 */
+$verticalHeaderWidth: 300px;
+
+/*低分辨率屏幕下 vertical header 宽度*/
+$verticalHeaderWidthInLowResolution: 240px;
+
 /*“近文期章”，“文章归档”等标题分割线*/
 @mixin hDivider($color) {
   border-bottom: 0.1em solid $color;
@@ -141,6 +147,7 @@ html {
   background-color: $bgColorBase;
   background-color: var(--bgColorBase);
   height: 100%;
+  font-size: 14px;
   @media screen and (max-width: 1000px) {
     font-size: 16px;
   }
@@ -149,7 +156,7 @@ code {
   font-family: Monaco, Consolas, "webfont","Microsoft Yahei",sans-serif !important;
 }
 .wrapper {
-  max-width: 1560px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2em;
 }
