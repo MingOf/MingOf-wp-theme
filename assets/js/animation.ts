@@ -348,6 +348,13 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
     wave2.style.top = '-' + top;
   }
   function goTop() {
+    if (document.body.scrollIntoView) {
+      document.body.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+      return;
+    }
     let scrollTop: number = document.documentElement.scrollTop;
     let speed = scrollTop / 10;
     if (scrollTop !== 0) {

@@ -64,8 +64,8 @@ if(has_post_thumbnail()) {
         </section>
     </section>
     <?php get_sidebar("侧边栏") ?>
-    <?php include('templates/go-top.php')?>
 </section>
+<?php include('templates/go-top.php')?>
 <?php if(real_header_mode()==="horizontal" || mingof_is_mobile()):?>
 <?php get_template_part('templates/footer', 'm');?>
 <?php endif; ?>

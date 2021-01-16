@@ -89,7 +89,7 @@
     <div class="page-nav-wrapper">
         <div class="page-nav">
             <?php if($paged > 1):?>
-                <a class="tl-prev-page" href="<?php echo get_previous_posts_page_link();?>">&lt;</a>
+                <a class="tl-prev-page prev page-numbers" href="<?php echo get_previous_posts_page_link();?>">&lt;</a>
             <?php endif;?>
             <?php for($i = 1; $i <= $pages_count; $i++):?>
                 <?php
@@ -145,7 +145,7 @@
 
             <?php endfor;?>
             <?php if($paged < $pages_count):?>
-                <a class="tl-next-page" href="<?php echo get_next_posts_page_link();?>">&gt;</a>
+                <a class="tl-next-page next page-numbers" href="<?php echo get_next_posts_page_link();?>">&gt;</a>
             <?php endif;?>
         </div>
     </div>
