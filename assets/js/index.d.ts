@@ -15,4 +15,7 @@ declare global {
         fontWeight: string;
         display: string;
     }
+    interface GlobalEventHandlers {
+        src: string;
+    }
 }

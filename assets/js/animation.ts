@@ -283,47 +283,46 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 /**
 * 图片灯箱效果
 * */
-// (function(){
-//     if(document.body.clientWidth <= 1200) return;
-//     function lightBox() {
-//         const postContent   = document.getElementsByClassName('post-content')[0]; if(!postContent) return;
-//         const imgs          = postContent.getElementsByTagName('img'); if(imgs.length <= 0) return;
-//         const mastContainer = document.getElementById('mastcontainer');
-//
-//         const img           = document.createElement('img');
-//         const lbContainer   = document.createElement('div');
-//         lbContainer.appendChild(img);
-//
-//         function removeLightBox() {
-//             lbContainer.classList.remove('out');
-//             lbContainer.classList.remove('light-box');
-//             mastContainer.removeChild(lbContainer);
-//             lbContainer.removeEventListener('animationend', removeLightBox);
-//         }
-//         function addLightBox(imgSrc) {
-//             img.src = imgSrc;
-//             lbContainer.classList.add('light-box');
-//             mastContainer.appendChild(lbContainer);
-//         }
-//
-//         for(let i = 0, len = imgs.length; i < len; i++) {
-//             imgs[i].onclick = function (e) {
-//                 e.preventDefault();
-//                 e.stopPropagation();
-//                 addLightBox(this.src);
-//             }
-//         }
-//
-//         lbContainer.onclick = (e) => {
-//             e.preventDefault();
-//             e.stopPropagation();
-//             lbContainer.classList.add('out');
-//             lbContainer.addEventListener('animationend', removeLightBox);
-//         };
-//
-//     }
-//     document.addEventListener('DOMContentLoaded', lightBox);
-// }());
+(function(){
+    if(document.body.clientWidth <= 1200) return;
+    function lightBox() {
+        const postContent   = document.getElementsByClassName('post-content')[0]; if(!postContent) return;
+        const imgs          = postContent.getElementsByTagName('img'); if(imgs.length <= 0) return;
+        const body          = document.body;
+        const img           = document.createElement('img');
+        const lbContainer   = document.createElement('div');
+        lbContainer.appendChild(img);
+
+        function removeLightBox() {
+            lbContainer.classList.remove('out');
+            lbContainer.classList.remove('light-box');
+            body.removeChild(lbContainer);
+            lbContainer.removeEventListener('animationend', removeLightBox);
+        }
+        function addLightBox(imgSrc:string) {
+            img.src = imgSrc;
+            lbContainer.classList.add('light-box');
+            body.appendChild(lbContainer);
+        }
+
+        for(let i = 0, len = imgs.length; i < len; i++) {
+            imgs[i].onclick = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                addLightBox(this.src);
+            }
+        }
+
+        lbContainer.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            lbContainer.classList.add('out');
+            lbContainer.addEventListener('animationend', removeLightBox);
+        };
+
+    }
+    document.addEventListener('DOMContentLoaded', lightBox);
+}());
 
 (function() {
   let topButton = document.getElementsByClassName('go-top-container')[0];
