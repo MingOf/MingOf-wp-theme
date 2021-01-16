@@ -288,6 +288,8 @@
 .mobile {
   // 放弃移动端thumbnail的模糊效果，性能太差
   #posts-container {
+    max-width: unset;
+    min-width: unset;
     .post-excerpt {
       .post-thumbnail {
         &::after {
