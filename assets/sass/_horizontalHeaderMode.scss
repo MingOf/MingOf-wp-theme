@@ -111,7 +111,9 @@
     padding-top: 70px;
     #posts-container {
       padding-left: 0;
-      flex: 0 0 61.8%;
+      flex: 1;
+      max-width: 65%;
+      min-width: 65%;
     }
     #sidebar {
       flex: 1;

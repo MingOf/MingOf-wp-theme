@@ -5,7 +5,7 @@
   // overflow: hidden;
   width:100%; min-height: 100%;
   .custom-bg {
-    background-image: url('http://localhost/wp-content/uploads/2021/01/watercolour-1336856_1920.jpg');
+    background-image: var(--backgroundImage);
     z-index: -1;
     position: fixed;
     will-change: transform;

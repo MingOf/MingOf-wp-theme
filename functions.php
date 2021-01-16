@@ -188,6 +188,9 @@ function theme_setup() {
 }
 add_action('after_setup_theme', 'theme_setup');
 
+/**
+ * 自定义 body_class
+ */
 function mingof_body_class($class) {
     if(!empty(get_option('mingof_bg_img'))) {
         $class[] = 'custom-background';
@@ -195,6 +198,11 @@ function mingof_body_class($class) {
     return $class;
 }
 add_filter('body_class','mingof_body_class');
+
+function get_bg() {
+    return "url(".get_option('mingof_bg_img','').")";
+}
+
 /**
  * 注册自定义功能
  * @param $wp_customize

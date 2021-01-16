@@ -12,6 +12,7 @@ $bgColorBaseInDarkMode    = !empty($styles['bg_color_base_in_dark_mode']) ? $sty
 $bgColorHeaderInDarkMode  = !empty($styles['bg_color_header_in_dark_mode']) ? $styles['bg_color_header_in_dark_mode'] : '#252d38';
 $FontColorInDarkMode      = !empty($styles['font_color_in_dark_mode']) ? $styles['font_color_in_dark_mode'] : '#c6c6c6';
 $titleColorInDarkMode     = !empty($styles['title_color_in_dark_mode']) ? $styles['title_color_in_dark_mode'] : '#727d87';
+$backgroundImage          = get_bg();
 
 echo <<<EOT
 :root {
@@ -44,7 +45,7 @@ echo <<<EOT
 
 /*夜间模式 “近文期章”，“文章归档”等标题颜色*/
   --titleColorInDarkMode: $titleColorInDarkMode;
-  --backgroundImage: "http://localhost/wp-content/uploads/2021/01/abstract-5729094_1920.jpg";
+  --backgroundImage: $backgroundImage;
 }
 EOT;
 ?>
