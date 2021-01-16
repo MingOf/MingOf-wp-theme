@@ -36,7 +36,7 @@ register_sidebar([
  * 注册自定义菜单
  */
 register_nav_menus(array(
-    'main_menus'=>'主菜单(有效)',
+    'main_menus'=>'主菜单',
     'mobile_menus'=>'移动端banner菜单'
 ));
 wp_enqueue_script("jquery");
@@ -246,7 +246,7 @@ function mingof_customize_register( $wp_customize ) {
         'transport'=>'refresh'
     ));
     $wp_customize->add_setting('mingof_style_options[bg_color_header]',array(
-        'default'=>'rgba(255,255,255,0.8)',
+        'default'=>'#fff',
         'type'=>'option',
         'capability'=>'edit_theme_options',
         'transport'=>'refresh'
@@ -310,11 +310,11 @@ function mingof_customize_register( $wp_customize ) {
         'section'    => 'colors',
         'settings'   => 'mingof_style_options[bg_color_base_in_dark_mode]'
     )));
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_header', array(
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bg_color_header', array(
         'label'        => __( 'Header背景颜色', 'mingof' ),
         'show_opacity'=>true,
         'section'    => 'colors',
-        'description'=> __('只支持横版Header背景颜色设置','mingof'),
+        'description'=> __('只支持横版Header背景颜色设置。由于可能需要使用rgba，所以使用输入框代替颜色选择器','mingof'),
         'settings'   => 'mingof_style_options[bg_color_header]'
     )));
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bg_color_header_in_dark_mode', array(
