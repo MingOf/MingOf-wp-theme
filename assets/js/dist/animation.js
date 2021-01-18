@@ -247,6 +247,8 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 (function () {
     if (document.body.clientWidth <= 1200)
         return;
+    if (mingofIsMobile())
+        return;
     function lightBox() {
         var postContent = document.getElementsByClassName('post-content')[0];
         if (!postContent)
@@ -255,30 +257,102 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
         if (imgs.length <= 0)
             return;
         var body = document.body;
-        var img = document.createElement('img');
         var lbContainer = document.createElement('div');
-        lbContainer.appendChild(img);
+        var img = document.createElement('img');
+        var prev = document.createElement('img');
+        var next = document.createElement('img');
+        var imgWrapper = document.createElement('div');
+        var prevWrapper = document.createElement('div');
+        var nextWrapper = document.createElement('div');
+        imgWrapper.appendChild(img);
+        prevWrapper.appendChild(prev);
+        nextWrapper.appendChild(next);
+        imgWrapper.img = img;
+        prevWrapper.img = prev;
+        nextWrapper.img = next;
+        imgWrapper.classList.add('current-img');
+        prevWrapper.classList.add('prev-img');
+        nextWrapper.classList.add('next-img');
+        lbContainer.appendChild(prevWrapper);
+        lbContainer.appendChild(imgWrapper);
+        lbContainer.appendChild(nextWrapper);
         function removeLightBox() {
             lbContainer.classList.remove('out');
             lbContainer.classList.remove('light-box');
             body.removeChild(lbContainer);
             lbContainer.removeEventListener('animationend', removeLightBox);
         }
-        function addLightBox(imgSrc) {
-            img.src = imgSrc;
+        function init(currentPos) {
+            imgWrapper.img.src = imgs[currentPos].src;
+            if (currentPos - 1 >= 0) {
+                prevWrapper.img.src = imgs[currentPos - 1].src;
+            }
+            else {
+                prevWrapper.img.src = "";
+            }
+            if (currentPos + 1 < imgs.length) {
+                nextWrapper.img.src = imgs[currentPos + 1].src;
+            }
+            else {
+                nextWrapper.img.src = "";
+            }
+            prevWrapper.onclick = function prev(e) {
+                e.stopPropagation();
+                imgWrapper.classList.add('next-img');
+                imgWrapper.classList.remove('current-img');
+                prevWrapper.classList.add('current-img');
+                prevWrapper.classList.remove('prev-img');
+                nextWrapper.classList.add('prev-img');
+                nextWrapper.classList.remove('next-img');
+                var prevTmp = prevWrapper;
+                var nextTmp = nextWrapper;
+                var imgTmp = imgWrapper;
+                prevWrapper = nextTmp;
+                nextWrapper = imgTmp;
+                imgWrapper = prevTmp;
+                prevWrapper.onclick = prev;
+                imgWrapper.onclick = null;
+                init(currentPos - 1);
+            };
+            nextWrapper.onclick = function next(e) {
+                e.stopPropagation();
+                imgWrapper.classList.add('prev-img');
+                imgWrapper.classList.remove('current-img');
+                prevWrapper.classList.add('next-img');
+                prevWrapper.classList.remove('prev-img');
+                nextWrapper.classList.add('current-img');
+                nextWrapper.classList.remove('next-img');
+                var prevTmp = prevWrapper;
+                var nextTmp = nextWrapper;
+                var imgTmp = imgWrapper;
+                prevWrapper = imgTmp;
+                nextWrapper = prevTmp;
+                imgWrapper = nextTmp;
+                nextWrapper.onclick = next;
+                imgWrapper.onclick = null;
+                init(currentPos + 1);
+            };
+            console.log(currentPos);
+        }
+        function addLightBox() {
             lbContainer.classList.add('light-box');
             body.appendChild(lbContainer);
         }
-        for (var i = 0, len = imgs.length; i < len; i++) {
+        var _loop_1 = function (i, len) {
             imgs[i].onclick = function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                addLightBox(this.src);
+                init(i);
+                addLightBox();
             };
+        };
+        for (var i = 0, len = imgs.length; i < len; i++) {
+            _loop_1(i, len);
         }
         lbContainer.onclick = function (e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log(e.target);
             lbContainer.classList.add('out');
             lbContainer.addEventListener('animationend', removeLightBox);
         };

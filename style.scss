@@ -83,6 +83,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .mobile {
   #mastcontainer {
     display: block;
+    flex-direction: column;
   }
 }
 /*文章列表容器*/

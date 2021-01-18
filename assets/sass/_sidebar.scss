@@ -55,14 +55,12 @@
       @include hDivider($subColor);
     }
     ul {
-      overflow: hidden;
+      // overflow: hidden;
+      column-count: 2;
       list-style: none;
-      .cat-item {
-        float: left;
-        width: 50%;
+      li {
         &::before {
-          font-family: "iconfont" !important;
-          content: '\e91f';
+          content: "☆";
           margin-right: 3px;
           vertical-align: middle;
           transition: all 0.3s;
@@ -70,6 +68,14 @@
         &:hover::before {
           color: $highlightColor;
           color: var(--highlightColor);
+        }
+      }
+      .cat-item {
+        // float: left;
+        // width: 50%;
+        &::before {
+          font-family: "iconfont" !important;
+          content: '\e91f';
         }
       }
     }

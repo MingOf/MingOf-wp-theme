@@ -283,48 +283,127 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 /**
 * 图片灯箱效果
 * */
-(function(){
-    if(document.body.clientWidth <= 1200) return;
-    function lightBox() {
-        const postContent   = document.getElementsByClassName('post-content')[0]; if(!postContent) return;
-        const imgs          = postContent.getElementsByTagName('img'); if(imgs.length <= 0) return;
-        const body          = document.body;
-        const img           = document.createElement('img');
-        const lbContainer   = document.createElement('div');
-        lbContainer.appendChild(img);
+(function () {
+  if (document.body.clientWidth <= 1200) return;
+  if (mingofIsMobile()) return;
+  function lightBox() {
+    const postContent = document.getElementsByClassName('post-content')[0]; if (!postContent) return;
+    const imgs = postContent.getElementsByTagName('img'); if (imgs.length <= 0) return;
+    const body = document.body;
 
-        function removeLightBox() {
-            lbContainer.classList.remove('out');
-            lbContainer.classList.remove('light-box');
-            body.removeChild(lbContainer);
-            lbContainer.removeEventListener('animationend', removeLightBox);
-        }
-        function addLightBox(imgSrc:string) {
-            img.src = imgSrc;
-            lbContainer.classList.add('light-box');
-            body.appendChild(lbContainer);
-        }
+    const lbContainer = document.createElement('div');
 
-        for(let i = 0, len = imgs.length; i < len; i++) {
-            imgs[i].onclick = function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                addLightBox(this.src);
-            }
-        }
+    const img = document.createElement('img');
+    const prev = document.createElement('img');
+    const next = document.createElement('img');
 
-        lbContainer.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            lbContainer.classList.add('out');
-            lbContainer.addEventListener('animationend', removeLightBox);
-        };
+    let imgWrapper = document.createElement('div');
+    let prevWrapper = document.createElement('div');
+    let nextWrapper = document.createElement('div');
 
+    imgWrapper.appendChild(img);
+    prevWrapper.appendChild(prev);
+    nextWrapper.appendChild(next);
+
+    imgWrapper.img = img;
+    prevWrapper.img = prev;
+    nextWrapper.img = next;
+
+    imgWrapper.classList.add('current-img');
+    prevWrapper.classList.add('prev-img');
+    nextWrapper.classList.add('next-img');
+
+    lbContainer.appendChild(prevWrapper);
+    lbContainer.appendChild(imgWrapper);
+    lbContainer.appendChild(nextWrapper);
+
+    function removeLightBox() {
+      lbContainer.classList.remove('out');
+      lbContainer.classList.remove('light-box');
+      body.removeChild(lbContainer);
+      lbContainer.removeEventListener('animationend', removeLightBox);
     }
-    document.addEventListener('DOMContentLoaded', lightBox);
+    function init(currentPos: number) {
+      imgWrapper.img.src = imgs[currentPos].src;
+      if (currentPos - 1 >= 0) {
+        prevWrapper.img.src = imgs[currentPos - 1].src;
+      } else {
+        prevWrapper.img.src = "";
+      }
+      if (currentPos + 1 < imgs.length) {
+        nextWrapper.img.src = imgs[currentPos + 1].src;
+      } else {
+        nextWrapper.img.src = "";
+      }
+      prevWrapper.onclick = function prev (e) {
+        e.stopPropagation();
+        imgWrapper.classList.add('next-img');
+        imgWrapper.classList.remove('current-img');
+        prevWrapper.classList.add('current-img');
+        prevWrapper.classList.remove('prev-img');
+        nextWrapper.classList.add('prev-img');
+        nextWrapper.classList.remove('next-img');
+
+        let prevTmp = prevWrapper;
+        let nextTmp = nextWrapper;
+        let imgTmp =  imgWrapper;
+
+        prevWrapper = nextTmp;
+        nextWrapper = imgTmp;
+        imgWrapper = prevTmp;
+        prevWrapper.onclick = prev;
+        imgWrapper.onclick = null;
+        init(currentPos - 1);
+      }
+      nextWrapper.onclick = function next (e) {
+        e.stopPropagation();
+        imgWrapper.classList.add('prev-img');
+        imgWrapper.classList.remove('current-img');
+        prevWrapper.classList.add('next-img');
+        prevWrapper.classList.remove('prev-img');
+        nextWrapper.classList.add('current-img');
+        nextWrapper.classList.remove('next-img');
+
+        let prevTmp = prevWrapper;
+        let nextTmp = nextWrapper;
+        let imgTmp =  imgWrapper;
+
+        prevWrapper = imgTmp;
+        nextWrapper = prevTmp;
+        imgWrapper = nextTmp;
+
+        nextWrapper.onclick = next;
+        imgWrapper.onclick = null;
+        init(currentPos + 1);
+      }
+      console.log(currentPos);
+    }
+    function addLightBox () {
+      lbContainer.classList.add('light-box');
+      body.appendChild(lbContainer);
+    }
+    for (let i = 0, len = imgs.length; i < len; i++) {
+      imgs[i].onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        init(i);
+        addLightBox();
+      }
+    }
+
+    lbContainer.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(e.target);
+      lbContainer.classList.add('out');
+      lbContainer.addEventListener('animationend', removeLightBox);
+    };
+  }
+  document.addEventListener('DOMContentLoaded', lightBox);
+  
 }());
 
-(function() {
+(function () {
   let topButton = document.getElementsByClassName('go-top-container')[0];
   if (!topButton) return;
   let goTopTimer = 0;

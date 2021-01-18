@@ -17,5 +17,10 @@ declare global {
     }
     interface GlobalEventHandlers {
         src: string;
+        prevSrc: string;
+        nextSrc: string;
+    }
+    interface HTMLDivElement {
+        img: HTMLImageElement;
     }
 }
