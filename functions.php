@@ -81,8 +81,8 @@ function excerpt_read_more_link( $output ) {
     if($have_punctuation) {
         $pos = mb_strrpos($output, $matches[0][count($matches[0])-1]); //最后一个满足条件的标点符号最后出现的位置
         $output = mb_substr($output,0,$pos+1,"utf8"); //截取摘要，从头到最后一个满足条件的标点符号最后出现的位置。
-        $link = get_permalink();
     }
+    $link = get_permalink();
     $more = '  <button class="read-more"><a href='
         .$link
         .'>'.__("阅读全文", "mingof").'  →  '
@@ -107,7 +107,7 @@ function catch_post_img() {
     global $post;
     $first_img_url='';
     $output = preg_match_all('/(\s+src\s?\=)\s?[\'|"]([^\'|"]*)/is', $post->post_content, $matches);
-    $tmp_url = $matches[0][0];
+    $tmp_url = empty($matches[0][0]) ? null : $matches[0][0];
     if ($tmp_url !== NULL) {
         $first_img_url = $matches[2][0].'';
     } else {
