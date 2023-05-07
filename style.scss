@@ -14,13 +14,16 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
  */
 @charset "utf-8";
+
 :root {
   color-scheme: light dark;
 }
+
 /* 一些基础样式和变量*/
 @import "assets/sass/typo.scss";
 @import "assets/sass/normalize";
 @import "assets/sass/animation";
+
 #overlay {
   position: fixed;
   left: 0;
@@ -29,15 +32,19 @@ Use it to make something cool, have fun, and share what you've learned with othe
   right: 0;
   opacity: 0.8;
   background-color: $bgColorBase;
+
   @media (prefers-color-scheme: dark) {
     background-color: $bgColorBaseInDarkMode;
   }
+
   z-index: 9999;
 }
+
 /* header*/
 @import "assets/sass/header";
 @import "assets/sass/banner-m";
 @import "assets/sass/horizontalHeaderMode";
+
 #mastcontainer {
   margin: 0 0 0 $verticalHeaderWidth;
   min-width: 900px;
@@ -46,15 +53,18 @@ Use it to make something cool, have fun, and share what you've learned with othe
   //overflow: hidden;
   display: flex;
   flex-direction: column;
+
   // transition: transform 0.5s ease;
-  @media screen and (max-width: 1400px){
+  @media screen and (max-width: 1400px) {
     margin: 0 0 0 $verticalHeaderWidthInLowResolution;
     min-width: 600px;
   }
+
   @media screen and (max-width: 1200px) {
     flex-direction: column;
     margin: 0 0 0 $verticalHeaderWidthInLowResolution;
   }
+
   @media screen and (max-width: 1000px) {
     margin: auto;
     //padding-top: 3em;
@@ -62,12 +72,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
     position: relative;
     z-index: 1;
   }
+
   &.row-direction {
     flex-direction: row;
   }
+
   a:hover {
     color: $highlightColor;
     color: var(--highlightColor);
+
     @media (prefers-color-scheme: dark) {
       color: $highlightColorInDarkMode;
       color: var(--highlightColorInDarkMode);
@@ -80,12 +93,14 @@ Use it to make something cool, have fun, and share what you've learned with othe
     clear: both;
   }
 }
+
 .mobile {
   #mastcontainer {
     display: block;
     flex-direction: column;
   }
 }
+
 /*文章列表容器*/
 @import "assets/sass/postsContainer";
 
