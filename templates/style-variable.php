@@ -13,39 +13,45 @@ $bgColorHeaderInDarkMode  = !empty($styles['bg_color_header_in_dark_mode']) ? $s
 $FontColorInDarkMode      = !empty($styles['font_color_in_dark_mode']) ? $styles['font_color_in_dark_mode'] : '#c6c6c6';
 $titleColorInDarkMode     = !empty($styles['title_color_in_dark_mode']) ? $styles['title_color_in_dark_mode'] : '#727d87';
 $backgroundImage          = get_bg();
+$backgroundImageBlur      = get_bg_blur();
 
 echo <<<EOT
 :root {
   /*字体颜色*/
   --subFontColor: $subFontColor;
 
-/*基本的背景颜色*/
+  /*基本的背景颜色*/
   --bgColorBase: $bgColorBase;
 
-/*强调色*/
+  /*强调色*/
   --highlightColor: $highlightColor;
 
-/*非强调的局部颜色*/
+  /*非强调的局部颜色*/
   --subColor: $subColor;
 
-/*Header背景颜色*/
+  /*Header背景颜色*/
   --bgColorHeader: $bgColorHeader;
 
   /*夜间模式 高亮色*/
   --highlightColorInDarkMode: $highlightColorInDarkMode;
 
-/*夜间模式 基本背景颜色*/
+  /*夜间模式 基本背景颜色*/
   --bgColorBaseInDarkMode: $bgColorBaseInDarkMode;
 
-/*夜间模式 Header背景颜色*/
+  /*夜间模式 Header背景颜色*/
   --bgColorHeaderInDarkMode: $bgColorHeaderInDarkMode;
 
-/*夜间模式 字体颜色*/
+  /*夜间模式 字体颜色*/
   --FontColorInDarkMode: $FontColorInDarkMode;
 
-/*夜间模式 “近文期章”，“文章归档”等标题颜色*/
+  /*夜间模式 “近文期章”，“文章归档”等标题颜色*/
   --titleColorInDarkMode: $titleColorInDarkMode;
+
+  /*背景图片*/
   --backgroundImage: $backgroundImage;
+
+  /*背景图片模糊半径*/
+  --backgroundImageBlur: $backgroundImageBlur;
 }
 EOT;
 ?>

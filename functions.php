@@ -202,7 +202,9 @@ add_filter('body_class','mingof_body_class');
 function get_bg() {
     return "url(".get_option('mingof_bg_img','').")";
 }
-
+function get_bg_blur() {
+    return "".get_option( "mingof_bg_img_blur", 0 )."px";
+}
 /**
  * 注册自定义功能
  * @param $wp_customize
@@ -436,6 +438,19 @@ function mingof_customize_register( $wp_customize ) {
         'description'=> __('注意定义了链接后默认使用链接的背景图片，而不使用上传的','mingof'),
         'section'=>'mingof_set_img_section',
         'settings'=>'mingof_bg_img',
+        'type'=>'text'
+    )));
+    $wp_customize->add_setting('mingof_bg_img_blur',array(
+        'default'=>0,
+        'type'=>'option',
+        'capability'=>'edit_theme_options',
+        'transport'=>'refresh'
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize,'bg_img_blur',array(
+        'label'=>__('自定义背景图模糊半径(px)','mingof'),
+        'description'=> __('设置此值可使得背景实现毛玻璃效果','mingof'),
+        'section'=>'mingof_set_img_section',
+        'settings'=>'mingof_bg_img_blur',
         'type'=>'text'
     )));
 }

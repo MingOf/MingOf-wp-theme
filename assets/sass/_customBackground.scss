@@ -3,7 +3,9 @@
 .custom-background {
   position: relative;
   // overflow: hidden;
-  width:100%; min-height: 100%;
+  width: 100%;
+  min-height: 100%;
+
   .custom-bg {
     background-image: var(--backgroundImage);
     z-index: -1;
@@ -11,27 +13,40 @@
     will-change: transform;
     background-size: cover;
     left: 0;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      backdrop-filter: blur(var(--backgroundImageBlur));
+    }
   }
+
   #header {
     opacity: 0.95;
     background-color: transparent;
   }
+
   #mastcontainer {
     .posts-cate-title {
       filter: brightness(1.5) opacity(0.9);
     }
+
     .custom-page-wrapper {
       padding-top: 2em;
+
       @media screen and (max-width: 1000px) {
         padding-top: 4em;
       }
     }
+
     #posts-container {
       .post-item {
         .post-thumbnail {
+
           // position: relative;
           // z-index: 1;
           &::after {
@@ -39,6 +54,7 @@
           }
         }
       }
+
       .page-nav-wrapper {
         .page-nav {
           .page-numbers {
