@@ -3,34 +3,50 @@
   // margin-left: 67%;
   flex: 1;
   padding: 2em 0 0 0;
+
   @media screen and (max-width: 1200px) {
     padding: 3%;
     margin: 0;
     float: left;
   }
+
   @media screen and (max-width: 1000px) {
     padding: 3%;
     float: none;
   }
+
   .sidebar-widget {
     margin-bottom: 2em;
     padding: 1em;
     background-color: #fff;
     border-radius: 10px;
     transition: transform 0.3s;
+
     // gnome 环境下卡顿
     &:hover {
       transform: scale(1.02);
     }
-    h1,h2,h3,h4,h5,h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin-top: 0;
     }
+
     form {
       box-shadow: 0 0 5px #eee;
-      label {display: none;}
+
+      label {
+        display: none;
+      }
+
       input {
         border-radius: 0;
       }
+
       input[type=submit] {
         /*display: none;*/
         width: 20%;
@@ -41,6 +57,7 @@
         height: 35px;
         border: 0 none;
       }
+
       input[type=text] {
         border: none;
         width: 80%;
@@ -49,15 +66,18 @@
         float: left;
       }
     }
+
     h2 {
       text-align: left;
       line-height: 2;
       @include hDivider($subColor);
     }
+
     ul {
       // overflow: hidden;
       column-count: 2;
       list-style: none;
+
       li {
         &::before {
           content: "☆";
@@ -65,12 +85,15 @@
           vertical-align: middle;
           transition: all 0.3s;
         }
+
         &:hover::before {
           color: $highlightColor;
           color: var(--highlightColor);
         }
       }
+
       .cat-item {
+
         // float: left;
         // width: 50%;
         &::before {
@@ -79,35 +102,49 @@
         }
       }
     }
+
     #wp-calendar {
       border: 0 none;
       font-size: 14px;
-      tbody  a{
+
+      tbody a {
         color: $highlightColor;
         color: var(--highlightColor);
       }
-      th, td, caption {
+
+      th,
+      td,
+      caption {
         border: 0 none;
       }
-      #next,#prev {
+
+      #next,
+      #prev {
         text-align: center;
       }
+
       table-layout: fixed;
       width: 100%;
-      .wp-calendar-nav {
-        display: flex;
-        background-color: $subColor;
-        background-color: var(--subColor);
-      }
-      .wp-calendar-nav-prev, .wp-calendar-nav-next {
-        flex: 1;
-        text-align: center;
-      }
+
       @media screen and (max-width: 1000px) {
         font-size: 10px;
         text-align: left;
       }
     }
+
+    .wp-calendar-nav {
+      display: flex;
+      padding: 0 2em;
+    }
+
+    // .wp-calendar-nav-prev {
+
+    // }
+
+    .wp-calendar-nav-next {
+      margin-left: auto;
+    }
+
     .tagcloud {
       a {
         margin-right: 1.2em;
@@ -120,21 +157,26 @@
   #sidebar {
     .sidebar-widget {
       background-color: #1d2932;
+
       form {
         @include boxShadowInDarkMode;
+
         input {
           background-color: #2b323f;
           color: $FontColorInDarkMode;
           color: var(--FontColorInDarkMode);
         }
+
         input[type=submit] {
           background: $highlightColorInDarkMode;
           background: var(--highlightColorInDarkMode);
         }
       }
+
       h2 {
         @include hDividerInDarkMode;
       }
+
       ul {
         .cat-item {
           &:hover::before {
@@ -143,17 +185,23 @@
           }
         }
       }
+
       #wp-calendar {
-        tbody  a{
+        tbody a {
           color: $highlightColorInDarkMode;
           color: var(--highlightColorInDarkMode);
         }
+
         th {
           background: #1c232d;
         }
-        th, td, caption {
+
+        th,
+        td,
+        caption {
           border: 0 none;
         }
+
         .wp-calendar-nav {
           background-color: #2b323f;
         }
