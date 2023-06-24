@@ -39,7 +39,7 @@ register_nav_menus(array(
     'main_menus'=>'主菜单',
     'mobile_menus'=>'移动端banner菜单'
 ));
-wp_enqueue_script("jquery");
+
 
 /**
  * 添加 js 或者 css
@@ -57,6 +57,7 @@ function add_theme_scripts() {
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/dist/animation.min.js',[],null,true);
     wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/dist/changeMode.min.js',[],null,false);
     wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/dist/catalog.min.js',[],null,true);
+    wp_enqueue_script("jquery");
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
