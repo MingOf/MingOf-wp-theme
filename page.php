@@ -7,9 +7,11 @@
             while(have_posts()) {
                 the_post();
             ?>
-            <h1 class='custom-page-title'><? the_title(); ?></h1>
-            <article class='custom-page-content'><? the_content();?></article>
-            <?}?>
+            <h1 class='custom-page-title'><?php the_title(); ?></h1>
+            <article class='custom-page-content'><?php the_content();?></article>
+            <?php 
+            }
+            ?>
 
         </div>
     </div>
