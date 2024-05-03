@@ -1,36 +1,272 @@
 // 一些变量和初始化样式
+/**
+iconfont
+*/
 @font-face {
-  font-family: 'iconfont';  /* project id 1475483 */
+  font-family: 'iconfont';
+  /* project id 1475483 */
   src: url('//at.alicdn.com/t/font_1475483_aigsug8e44k.eot');
   src: url('//at.alicdn.com/t/font_1475483_aigsug8e44k.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1475483_aigsug8e44k.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1475483_aigsug8e44k.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1475483_aigsug8e44k.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1475483_aigsug8e44k.svg#iconfont') format('svg');
+    url('//at.alicdn.com/t/font_1475483_aigsug8e44k.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1475483_aigsug8e44k.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1475483_aigsug8e44k.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1475483_aigsug8e44k.svg#iconfont') format('svg');
 }
+
 @font-face {
   font-family: 'webfont-for-name';
   font-display: swap;
-  src: url('//at.alicdn.com/t/webfont_suy31ce2fn.eot'); /* IE9*/
-  src: url('//at.alicdn.com/t/webfont_suy31ce2fn.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('//at.alicdn.com/t/webfont_suy31ce2fn.woff2') format('woff2'),
-  url('//at.alicdn.com/t/webfont_suy31ce2fn.woff') format('woff'), /* chrome、firefox */
-  url('//at.alicdn.com/t/webfont_suy31ce2fn.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('//at.alicdn.com/t/webfont_suy31ce2fn.svg#站酷小薇体') format('svg'); /* iOS 4.1- */
+  src: url('//at.alicdn.com/t/webfont_suy31ce2fn.eot');
+  /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_suy31ce2fn.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('//at.alicdn.com/t/webfont_suy31ce2fn.woff2') format('woff2'),
+    url('//at.alicdn.com/t/webfont_suy31ce2fn.woff') format('woff'),
+    /* chrome、firefox */
+    url('//at.alicdn.com/t/webfont_suy31ce2fn.ttf') format('truetype'),
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/webfont_suy31ce2fn.svg#站酷小薇体') format('svg');
+  /* iOS 4.1- */
 }
-.iconfont{
-  font-family:"iconfont" !important;
-  font-size:16px;font-style:normal;
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-* {
-  backface-visibility: hidden;
-}
+
 /**
- 普通模式变量
+ * BEGIN
+ * 重置样式
  */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  backface-visibility: hidden;
+  line-height: calc(1.5em + 0.5rem);
+}
+
+a:link,
+a:visited,
+a:active {
+  color: $subFontColor;
+  color: var(--subFontColor);
+  text-decoration: none;
+  transition: color .3s;
+  border: 0 none;
+}
+
+::selection {
+  background-color: rgba(51, 51, 51, 0.31);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.3);
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: $subColor;
+  background: var(--subColor);
+  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+html {
+  color: $subFontColor;
+  color: var(--subFontColor);
+  min-width: 100%;
+  min-height: 100%;
+  background-color: $bgColorBase;
+  background-color: var(--bgColorBase);
+  height: 100%;
+  font-size: 14px;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+pre {
+  border-radius: 10px;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+div.wp-caption {
+  width: 100% !important;
+}
+
+img {
+  max-width: 100% !important;
+  height: auto;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+  border: 0 none;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+/**
+for enlighter highlight-plugin
+ */
+.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter>div::before {
+  padding: 0;
+  font-size: .9em;
+}
+
+.enlighter-overflow-scroll.enlighter-v-standard {
+  padding: 1em 0;
+}
+
+.enlighter-default {
+  padding: 1em 0;
+}
+
+div.enlighter>div>div {
+  padding-left: 0;
+}
+
+/**
+ * END
+ * 重置样式
+ */
+
+
+
+
+/*普通模式变量*/
 
 /*字体颜色*/
 $subFontColor: #333;
@@ -65,7 +301,7 @@ $verticalHeaderWidthInLowResolution: 240px;
   border-bottom: 0.1em solid $color;
 }
 
-@mixin icon($content,$marginRight,$color:inherit,$fontSize:16px) {
+@mixin icon($content, $marginRight, $color:inherit, $fontSize:16px) {
   &::before {
     font-family: iconfont;
     content: $content;
@@ -77,6 +313,7 @@ $verticalHeaderWidthInLowResolution: 240px;
     width: 1.3em;
   }
 }
+
 /**
   夜间模式变量
  */
@@ -106,100 +343,6 @@ $titleColorInDarkMode: #727d87;
   border-bottom: 0.1em solid #303b47;
 }
 
-a:link,a:visited,a:active {
-  color: $subFontColor;
-  color: var(--subFontColor);
-  text-decoration: none;
-  transition: color .3s;
-  border: 0 none;
-}
-::selection {
-  background-color: rgba(51, 51, 51, 0.31);
-  color: #fff;
-}
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.3);
-  border-radius: 3px;
-  background-color: transparent;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background: $subColor;
-  background: var(--subColor);
-  //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
-}
-// ::-webkit-scrollbar-thumb:window-inactive {
-//   //background: rgba($highlightColor,0.4);
-// }
-
-input:focus, textarea:focus {
-
-  outline: none;
-
-}
-html {
-  color: $subFontColor;
-  color: var(--subFontColor);
-  min-width: 100%; min-height: 100%;
-  background-color: $bgColorBase;
-  background-color: var(--bgColorBase);
-  height: 100%;
-  font-size: 14px;
-  @media screen and (max-width: 1000px) {
-    font-size: 16px;
-  }
-}
-pre {
-  border-radius: 10px;
-}
-.wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2em;
-}
-div.wp-caption {
-  width: 100% !important;
-}
-img {
-  max-width: 100% !important;
-  height: auto;
-  cursor: pointer;
-  border-radius: 5px;
-}
-button {
-  background: none;
-  cursor: pointer;
-  border: 0 none;
-}
-.icon {
-  width: 1em; height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
-pre {
-  overflow-x: auto;
-}
-
-/**
-for enlighter highlight-plugin
- */
-.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter>div::before {
-  padding: 0;
-  font-size: .9em;
-}
-.enlighter-overflow-scroll.enlighter-v-standard {
-  padding: 1em 0;
-}
-.enlighter-default {
-  padding: 1em 0;
-}
-div.enlighter>div>div {
-  padding-left: 0;
-}
 
 blockquote {
   position: relative;
@@ -211,10 +354,12 @@ blockquote {
   padding: 1.2em;
   margin: 1em 0 1em 2em;
   border-radius: 3px;
+
   p:last-of-type {
     margin-bottom: 0;
   }
 }
+
 .wp-block-pullquote {
   blockquote {
     background: transparent;
@@ -229,64 +374,83 @@ blockquote {
 
 /*一些icon*/
 .nav-timeline {
+
   //display: flex;
   a {
     display: inline-block;
-    @include icon("\e761",0.4em);
+    @include icon("\e761", 0.4em);
   }
 
 }
+
 .nav-about {
-  a{
+  a {
     display: inline-block;
-    @include icon("\e641",0.35em);
+    @include icon("\e641", 0.35em);
   }
 }
+
 .nav-home {
   a {
     display: inline-block;
     @include icon("\e70a", 0.2em);
   }
 }
+
 .nav-friends {
   a {
     display: inline-block;
-    @include icon("\e6a5",0.2em);
+    @include icon("\e6a5", 0.2em);
   }
 }
+
 .nav-tags {
   a {
     display: inline-block;
-    @include icon("\e723", 0.2em )
+    @include icon("\e723", 0.2em)
   }
 }
 
 .dark {
-  a:link,a:visited,a:active {
+
+  a:link,
+  a:visited,
+  a:active {
     color: $FontColorInDarkMode;
     color: var(--FontColorInDarkMode);
   }
-  h1,h2,h3,h4,h5,h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $titleColorInDarkMode;
     color: var(--titleColorInDarkMode);
   }
+
   .enlighter-t-wpcustom {
     background-color: #505b6b !important;
     border: 0 none !important;
   }
+
   .enlighter-t-wpcustom.enlighter-hover div.enlighter>div:hover {
     background-color: transparent !important;
   }
+
   .enlighter-default {
     color: $FontColorInDarkMode !important;
     color: --var(--FontColorInDarkMode) !important;
   }
+
   blockquote {
     border-left: 3px solid $highlightColorInDarkMode;
     border-left: 3px solid var(--highlightColorInDarkMode);
     background-color: #505b6b;
   }
 }
+
 html.dark {
   background-color: $bgColorBaseInDarkMode;
   background-color: var(--bgColorBaseInDarkMode);
