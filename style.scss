@@ -20,7 +20,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 /* 一些基础样式和变量*/
-@import "assets/sass/typo.scss";
+// @import "assets/sass/typo.scss";
 @import "assets/sass/normalize";
 @import "assets/sass/animation";
 
@@ -126,10 +126,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "assets/sass/customBackground";
 
 /*评论*/
-@import "assets/sass/comments";
+// 废弃，使用WP_discuz插件代替原生评论
+// @import "assets/sass/comments";
 
-/*灯箱*/
-//@import "assets/sass/lightBox";
 
 /*普通页面*/
 @import "assets/sass/page";
@@ -143,4 +142,5 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /*footer*/
 @import "assets/sass/footer";
 
+/*灯箱*/
 @import "assets/sass/lightBox";
