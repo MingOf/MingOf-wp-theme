@@ -383,13 +383,14 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
         wave2.style.top = '-' + top;
     }
     function goTop() {
-        if (document.body.scrollIntoView) {
-            document.body.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-            return;
-        }
+        // 此段代码兼容性不佳，与 headering.scrollIntoView() 冲突
+        // if (document.body.scrollIntoView) {
+        //   document.body.scrollIntoView({
+        //     behavior: "smooth",
+        //     block: "start"
+        //   });
+        //   return;
+        // }
         var scrollTop = document.documentElement.scrollTop;
         var speed = scrollTop / 10;
         if (scrollTop !== 0) {

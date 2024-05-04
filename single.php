@@ -1,5 +1,5 @@
 <?php /*文章模板*/?>
-<?php get_header();?>
+<?php get_header("single");?>
 <?php if(has_post_thumbnail()): ?>
 <div id="banner"  style="background-image: url('<?php
 if(has_post_thumbnail()) {

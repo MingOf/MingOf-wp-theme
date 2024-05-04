@@ -7,23 +7,34 @@
   overflow-x: hidden;
   width: $verticalHeaderWidth;
   z-index: 1;
-  padding-top: 2em;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 2em;
+  // padding-top: 2em;
+
   #headering {
     border: 2px solid #fff;
     border-radius: 10px 10px 0 0;
+    margin-top: 2em;
+    scroll-snap-align: start;
   }
+
   &::-webkit-scrollbar {
     width: 2px;
+    display: none;
+    scrollbar-width: none;
   }
+
   a:hover {
     color: $highlightColor;
     color: var(--highlightColor);
   }
+
   &::after {
     content: '';
     display: block;
     height: 6em;
   }
+
   #logo {
     max-width: 10em;
     max-height: 10em;
@@ -33,63 +44,78 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 5px #eee;
+
     &::after {
       content: "";
       display: block;
     }
+
     img {
       transition: transform .3s;
       width: 100%;
       height: 100%;
+
       &:hover {
         transform: scale(1.3);
       }
     }
   }
-  h1, h2 {
+
+  h1,
+  h2 {
     padding: 20px;
     margin: 0;
     text-align: center;
     padding-bottom: 0;
   }
+
   #name {
     font-size: 1.5em;
     font-weight: bold;
-    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+    font-family: "webfont-for-name", "Microsoft Yahei", sans-serif, Consolas, Monaco !important;
   }
+
   .description {
     text-align: center;
     padding: 20px;
     font-weight: bold;
-    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+    font-family: "webfont-for-name", "Microsoft Yahei", sans-serif, Consolas, Monaco !important;
   }
+
   #nav {
     text-align: center;
     padding: 0 20px;
     background: inherit;
     background-color: #fff;
     border-radius: 0 0 10px 10px;
-    -moz-user-select: none; /*火狐*/
-    -webkit-user-select: none; /*webkit浏览器*/
+    -moz-user-select: none;
+    /*火狐*/
+    -webkit-user-select: none;
+
+    /*webkit浏览器*/
     .nav-menu-container {
       overflow: hidden;
+
       .nav-menu {
         li {
           &:nth-last-child(1) {
             margin-bottom: 20px;
           }
-          a{
+
+          a {
             display: block;
             text-align: left;
             margin: 0 1em;
           }
         }
       }
+
       .menu-item {
         transition: all 0.3s;
         margin-bottom: 1px;
         padding: 0.2em;
         border-radius: 10px;
+
         &:hover {
           background-color: $bgColorBase;
           background-color: var(--bgColorBase);
@@ -97,92 +123,111 @@
       }
     }
   }
+
   .nav-title {
     font-size: 24px;
     line-height: 2em;
   }
+
   .menu .menu-item {
     margin-bottom: 0.5em;
     position: relative;
     font-weight: bold;
   }
-  
+
   .nav-toggle {
     display: none;
     position: relative;
   }
+
   @media screen and (max-width: 1400px) {
     width: $verticalHeaderWidthInLowResolution;
   }
+
   @media screen and (max-width: 1000px) {
     display: none;
   }
 }
-.menu-with-children,.menu-item-has-children {
+
+.menu-with-children,
+.menu-item-has-children {
   .menu-item {
     margin-left: 2em;
   }
+
   a {
     cursor: pointer;
     position: relative;
     text-decoration: none;
+
     &::after {
       position: absolute;
       font-family: iconfont;
-      content:'\e7a7';
+      content: '\e7a7';
       transition: all 0.3s;
       right: 0;
     }
   }
+
   .sub-menu {
     display: none;
     transition: all 0.3s;
+
     a {
       &::after {
         content: '';
       }
     }
   }
+
   &.menu-opened {
     a {
       &::after {
         transform: rotate(180deg);
       }
     }
-    
+
     .sub-menu {
       display: block;
     }
   }
+
   &.menu-closed {
     .sub-menu {
       display: none;
     }
   }
 }
+
 #catalog {
-  display: none;
-  padding: 0 20px 20px 20px;
+  list-style: decimal-leading-zero;
+  list-style-position: inside;
   background-color: #fff;
   border-radius: 10px;
+  padding: 20px;
+  text-align: left;
   margin-top: 2em;
+  scroll-snap-align: start;
+
   .catalog-title {
     padding: 0.5em 0;
     font-size: 20px;
     text-align: left;
   }
+
   .catalog-item {
     cursor: pointer;
     transition: all 0.3s;
-    padding: 0 2em;
-    display: flex;
-    flex-direction: row;
+    margin: 0 1.2em;
+
     &:hover {
       color: #b3b3b3;
     }
+
     &.catalog-item-active {
       color: #b3b3b3;
     }
+
     span {
       display: inline-block;
       width: 2em;
@@ -191,21 +236,26 @@
       margin-right: 0.5em;
       margin-left: -1em;
     }
+
     div {
       display: inline-block;
-      flex:1;
+      flex: 1;
     }
   }
+
   &.text-center {
     text-align: center;
+
     .catalog-item {
       display: block;
+
       span {
         width: auto;
       }
     }
   }
 }
+
 .mb-header-toggle-bar {
   overflow: hidden;
   position: fixed;
@@ -222,6 +272,7 @@
   background-color: var(--bgColorBase);
   transform: translate3d(0, 0, 0);
   will-change: transform;
+
   #headering {
     display: -webkit-box;
     display: -moz-box;
@@ -235,6 +286,7 @@
     align-items: center;
     background: inherit;
     height: 3em;
+
     .nav-toggle {
       content: '';
       display: block;
@@ -245,9 +297,11 @@
       position: relative;
       transition: all 0.3s;
       border-radius: 10px;
+
       &:active {
         transform: scale(0.9);
       }
+
       span {
         // 扩展可点击区域
         display: block;
@@ -260,7 +314,9 @@
         right: -1em;
         left: -1em;
       }
-      &::after, &::before {
+
+      &::after,
+      &::before {
         content: " ";
         display: block;
         width: 1.8em;
@@ -271,35 +327,43 @@
         border-radius: 10px;
         will-change: transform;
       }
+
       // 使用background-color 1px会有差异 的问题
       &.nav-close {
         &::after {
           transform: translateY(5px);
 
         }
+
         &::before {
           transform: translateY(-6px);
         }
       }
+
       &.nav-open {
         height: 0;
+
         &::after {
           transform: rotate(45deg);
           margin-top: -2px;
         }
+
         &::before {
           transform: rotate(-45deg);
         }
       }
     }
   }
+
   #name {
     text-align: left;
     font-size: 1.5em;
     font-weight: bold;
-    font-family: "webfont-for-name","Microsoft Yahei",sans-serif, Consolas,Monaco !important;
+    font-family: "webfont-for-name", "Microsoft Yahei", sans-serif, Consolas, Monaco !important;
   }
-  h1,h2 {
+
+  h1,
+  h2 {
     padding: 0;
   }
 }
@@ -311,7 +375,7 @@
   right: -62.8%;
   // right:0;
   //transform: translate3d(102%,0,0);
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   transition: all 0.3s ease;
   width: 61.8%;
   overflow-y: scroll;
@@ -321,10 +385,12 @@
   z-index: 2;
   will-change: transform;
   box-shadow: -1px -1px 5px #bbb;
+
   #catalog {
     padding: 0;
     background-color: transparent;
     margin: 1.8em;
+
     &.text-center {
       .catalog-item {
         span {
@@ -334,10 +400,13 @@
         }
       }
     }
+
     .catalog-item {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       display: flex;
       text-align: left;
+
       span {
         width: 1.7em;
         text-align: center;
@@ -345,85 +414,105 @@
       }
     }
   }
+
   .mb-nav {
     margin: 3.5em;
+
     .nav-menu {
       li {
         padding: 0.3em 0;
         transition: all 0.3s;
+
         &:active {
           padding: 0.5em 0;
         }
+
         a {
           display: block;
           width: 100%;
           height: 100%;
           position: relative;
+
           &::before {
             position: absolute;
             left: -1.5em;
           }
+
           &::after {
             right: 0;
             margin-left: 0.2em;
           }
         }
       }
-      
+
     }
   }
 }
 
 .target-opened {
+
   // 移动端有卡顿问题
   #mastcontainer {
     transition: all 0.3s;
     transform: translate3d(-61.8%, 0, 0);
   }
+
   #banner {
     transform: translate3d(-65.1%, 0, 0);
   }
+
   .mb-header-toggle-bar {
-    transform: translate3d(-61.8%,0, 0);
+    transform: translate3d(-61.8%, 0, 0);
+
     &.hide {
       transform: translate3d(-61.8%, -3.2em, 0);
     }
   }
+
   .mb-header-side {
     transform: translate3d(-101.9%, 0, 0);
   }
 }
-.target-closed{
+
+.target-closed {
   #mastcontainer {
     transition: all 0.3s;
     transform: translate3d(0, 0, 0);
   }
+
   #banner {
     transform: translate3d(0, 0, 0);
   }
+
   &.mb-header-toggle-bar {
     transform: translate3d(0, 0, 0);
     z-index: 0;
   }
+
   &.mb-header-side {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 }
+
 .hide {
   &.mb-header-toggle-bar {
-    transform: translate3d(0,-3.2em,0);
+    transform: translate3d(0, -3.2em, 0);
   }
 }
+
 .dark {
   #header {
     background: $bgColorHeaderInDarkMode;
     background: var(--bgColorHeaderInDarkMode);
     @include boxShadowInDarkMode;
+
     #headering {
       border: 2px solid #222933;
     }
+
     #nav {
       background-color: #222933;
+
       .nav-menu-container {
         .menu-item {
           &:hover {
@@ -433,21 +522,26 @@
         }
       }
     }
+
     #catalog {
       background-color: #222933;
     }
+
     a:hover {
-        color: $highlightColorInDarkMode;
-        color: var(--highlightColorInDarkMode);
+      color: $highlightColorInDarkMode;
+      color: var(--highlightColorInDarkMode);
     }
+
     #logo {
       @include boxShadowInDarkMode;
     }
+
     .nav-title {
       //border-bottom: 0.1em solid $subFontColor;
       @include hDividerInDarkMode;
 
     }
+
     //@media screen and (max-width: 1000px) {
     //  @include boxShadowInDarkMode;
     //}
@@ -456,21 +550,26 @@
       //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
     }
   }
+
   .mb-header-toggle-bar {
     background-color: $bgColorBaseInDarkMode;
     background-color: var(--bgColorBaseInDarkMode);
     box-shadow: -1px 1px 2px #222933;
+
     #headering {
       .nav-toggle {
         background-color: $FontColorInDarkMode;
         background-color: var(--FontColorInDarkMode);
-        &::after, &::before {
+
+        &::after,
+        &::before {
           background-color: $FontColorInDarkMode;
           background-color: var(--FontColorInDarkMode);
         }
       }
     }
   }
+
   .mb-header-side {
     box-shadow: -1px 0 10px inset #222933;
     background-color: $bgColorBaseInDarkMode;

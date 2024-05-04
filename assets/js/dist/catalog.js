@@ -71,50 +71,58 @@ function initCatalog(el) {
     }
     return titles;
 }
+function generateCatalogList(listElementsName, innerHTML) {
+    var list = document.createElement(listElementsName);
+    list.classList.add("catalog-item");
+    list.innerHTML = innerHTML;
+    return list;
+}
 document.addEventListener("DOMContentLoaded", function () {
+    // 如果屏幕宽度小于1200， 则终止，不显示目录
+    if (document.body.clientWidth <= 1200)
+        return;
     var el = document.getElementsByClassName("post-content") && document.getElementsByClassName("post-content")[0];
-    var catalog = document.getElementById('catalog'); //目录
-    if (!catalog)
-        return;
+    var headering = document.getElementById("headering");
+    // 如果没有 文章内容则终止
     if (!el) {
-        catalog.style.display = "none";
         return;
     }
-    var navTitles = document.getElementsByClassName('nav-title'); // 导航类别，如"文章目录"，"导航"
     var titles = initCatalog(el);
+    // 如果文章内容没有标题则终止
     if (titles.length === 0) {
-        catalog.style.display = "none";
         return;
     }
-    catalog.style.display = 'block'; // 如果有目录则显示"文章目录"类别
+    var header = document.getElementById("header");
+    if (!header) {
+        return;
+    }
+    // 如果有目录则显示"文章目录"类别
+    var catalog = document.createElement("ol");
+    catalog.id = "catalog";
+    header.appendChild(catalog);
+    // 每个标题的目录项
     var catalogItems = [];
-    var isCenter = true;
     var _loop_1 = function (i, l) {
-        var p = document.createElement('p');
-        if (titles[i].$1th.el.innerText.length >= 10) {
-            isCenter = false;
-        }
+        var list = generateCatalogList("li", titles[i].$1th.el.innerText);
+        // let p = document.createElement('p');
         // 点击文章目录滚动到相应标题
-        p.classList.add("catalog-item");
-        p.innerHTML = "<span>" + (i + 1) + "." + "</span>" + " " + "<div>" + titles[i].$1th.el.innerText + "</div>";
-        p.onclick = function () {
+        // p.classList.add("catalog-item");
+        // p.innerHTML = "<span>" + (i + 1) + "." + "</span>" + " " + "<div>" + titles[i].$1th.el.innerText + "</div>";
+        list.onclick = function () {
             titles[i].$1th.el.scrollIntoView({
                 behavior: "smooth"
             });
         };
-        catalog.appendChild(p);
-        catalogItems.push({ el: p, title: titles[i].$1th.el });
+        catalog.appendChild(list);
+        catalogItems.push({ el: list, title: titles[i].$1th.el });
     };
     for (var i = 0, l = titles.length; i < l; i++) {
         _loop_1(i, l);
     }
-    isCenter && catalog.classList.add("text-center");
-    if (document.body.clientWidth <= 1200)
-        return;
     /*
     * 监听滚动事件，实现滚动时与文章目录动态关联
     * */
-    function autoScrollToCat() {
+    function autoScrollToCatalog() {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
         var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -128,6 +136,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     document.addEventListener('scroll', function () {
-        requestAnimationFrame(autoScrollToCat);
+        requestAnimationFrame(function () {
+            autoScrollToCatalog();
+            if (document.documentElement.scrollTop === 0) {
+                headering && headering.scrollIntoView({ behavior: "smooth" });
+            }
+            else {
+                // behavior:"smooth" 存在滚动问题
+                catalog.scrollIntoView({ behavior: "instant" });
+            }
+        });
     });
 });

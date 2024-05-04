@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
       } else {
         nextWrapper.img.src = "";
       }
-      prevWrapper.onclick = function prev (e) {
+      prevWrapper.onclick = function prev(e) {
         e.stopPropagation();
         imgWrapper.classList.add('next-img');
         imgWrapper.classList.remove('current-img');
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 
         let prevTmp = prevWrapper;
         let nextTmp = nextWrapper;
-        let imgTmp =  imgWrapper;
+        let imgTmp = imgWrapper;
 
         prevWrapper = nextTmp;
         nextWrapper = imgTmp;
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
         imgWrapper.onclick = null;
         init(currentPos - 1);
       }
-      nextWrapper.onclick = function next (e) {
+      nextWrapper.onclick = function next(e) {
         e.stopPropagation();
         imgWrapper.classList.add('prev-img');
         imgWrapper.classList.remove('current-img');
@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
 
         let prevTmp = prevWrapper;
         let nextTmp = nextWrapper;
-        let imgTmp =  imgWrapper;
+        let imgTmp = imgWrapper;
 
         prevWrapper = imgTmp;
         nextWrapper = prevTmp;
@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
       }
       console.log(currentPos);
     }
-    function addLightBox () {
+    function addLightBox() {
       lbContainer.classList.add('light-box');
       body.appendChild(lbContainer);
     }
@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
     };
   }
   document.addEventListener('DOMContentLoaded', lightBox);
-  
+
 }());
 
 (function () {
@@ -426,13 +426,14 @@ document.addEventListener("DOMContentLoaded", toggleSubMenu);
     wave2.style.top = '-' + top;
   }
   function goTop() {
-    if (document.body.scrollIntoView) {
-      document.body.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-      return;
-    }
+    // 此段代码兼容性不佳，与 headering.scrollIntoView() 冲突
+    // if (document.body.scrollIntoView) {
+    //   document.body.scrollIntoView({
+    //     behavior: "smooth",
+    //     block: "start"
+    //   });
+    //   return;
+    // }
     let scrollTop: number = document.documentElement.scrollTop;
     let speed = scrollTop / 10;
     if (scrollTop !== 0) {
