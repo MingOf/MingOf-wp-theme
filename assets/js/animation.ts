@@ -233,7 +233,7 @@ function autoHideHeader(): void {
 }
 /*监听滑动，自动隐藏mb header*/
 document.addEventListener("touchmove", () => {
-  debounce(0, autoHideHeader);
+  debounce(50, autoHideHeader);
 });
 
 /**

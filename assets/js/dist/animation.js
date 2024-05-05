@@ -195,7 +195,7 @@ function autoHideHeader() {
 }
 /*监听滑动，自动隐藏mb header*/
 document.addEventListener("touchmove", function () {
-    debounce(0, autoHideHeader);
+    debounce(50, autoHideHeader);
 });
 /**
 * 二级菜单点击展开
