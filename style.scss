@@ -20,9 +20,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 /* 一些基础样式和变量*/
+@import "assets/sass/var";
 @import "assets/sass/normalize";
 @import "assets/sass/animation";
-@import "assets/sass/patch";
 
 #overlay {
   position: fixed;
@@ -136,11 +136,18 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /*goTop*/
 @import "assets/sass/goTop";
 
-/*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
-@import "assets/sass/wpDiscuzColorBak";
 
 /*footer*/
 @import "assets/sass/footer";
 
 /*灯箱*/
 @import "assets/sass/lightBox";
+
+/*enlighter插件*/
+@import "assets/sass/enlighter";
+
+/*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
+@import "assets/sass/wpDiscuzColorBak";
+
+/*缝缝补补又是一年*/
+@import "assets/sass/patch";

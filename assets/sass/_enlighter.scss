@@ -1,0 +1,70 @@
+.enlighter-default .enlighter-btn {
+  border-radius: 50% !important;
+  opacity: 0.6;
+  width: 14px !important;
+  height: 14px !important;
+  padding: 3px;
+}
+
+.enlighter-code::-webkit-scrollbar {
+  height: .375rem;
+  scrollbar-width: none;
+}
+
+.enlighter-code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.enlighter-code {
+  transition: all 0.3s;
+  position: relative;
+  padding: 1.2em 0 !important;
+}
+
+div.enlighter {
+  font-size: .875rem !important;
+}
+
+.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter>div::before {
+  padding: 0 !important;
+}
+
+.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter>div:FIRST-CHILD::before {
+  border-radius: 0 !important;
+}
+
+
+
+.dark {
+
+  .enlighter-code::-webkit-scrollbar-thumb {
+    background: #121212;
+  }
+
+  .enlighter-code {
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .enlighter-default {
+    background: #1e1e1e !important;
+    border: 0 none;
+  }
+
+  div.enlighter .enlighter-text {
+    color: #828282 !important;
+  }
+
+  span.enlighter .enlighter-text {
+    color: #828282 !important;
+  }
+
+  div.enlighter>div {
+    color: #828282 !important;
+  }
+
+  div.enlighter>div:hover {
+    background-color: #242529 !important;
+  }
+
+}

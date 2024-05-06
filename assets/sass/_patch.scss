@@ -1,5 +1,3 @@
-@import "./var.scss";
-
 // 样式打补丁
 
 // 鼠标选择后颜色
@@ -50,38 +48,6 @@ div.wp-caption {
   overflow: hidden;
 }
 
-/*按钮和header阴影*/
-@mixin boxShadow {
-  box-shadow: 5px 5px 5px #eee;
-}
-
-/*“近文期章”，“文章归档”等标题分割线*/
-@mixin hDivider($color) {
-  border-bottom: 0.1em solid $color;
-}
-
-@mixin icon($content, $marginRight, $color:inherit, $fontSize:16px) {
-  &::before {
-    font-family: iconfont;
-    content: $content;
-    margin-right: $marginRight;
-    display: inline-block;
-    opacity: 0.8;
-    color: inherit;
-    font-size: $fontSize;
-    width: 1.3em;
-  }
-}
-
-/*夜间模式按钮和header阴影*/
-@mixin boxShadowInDarkMode {
-  box-shadow: 5px 5px 5px #222933;
-}
-
-/*夜间模式 “近文期章”，“文章归档”等标题分割线*/
-@mixin hDividerInDarkMode {
-  border-bottom: 0.1em solid #303b47;
-}
 
 
 blockquote {

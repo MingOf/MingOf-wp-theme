@@ -505,7 +505,6 @@
   #header {
     background: $bgColorHeaderInDarkMode;
     background: var(--bgColorHeaderInDarkMode);
-    @include boxShadowInDarkMode;
 
     #headering {
       border: 2px solid #222933;

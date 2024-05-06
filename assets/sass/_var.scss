@@ -1,4 +1,4 @@
-// 变量
+// 变量和 mixins
 
 /*
  * 日间模式变量
@@ -44,3 +44,36 @@ $FontColorInDarkMode: #c6c6c6;
 
 /*夜间模式 “近文期章”，“文章归档”等标题颜色*/
 $titleColorInDarkMode: #727d87;
+
+/*按钮和header阴影*/
+@mixin boxShadow {
+  box-shadow: 5px 5px 5px #eee;
+}
+
+/*“近文期章”，“文章归档”等标题分割线*/
+@mixin hDivider($color) {
+  border-bottom: 0.1em solid $color;
+}
+
+@mixin icon($content, $marginRight, $color:inherit, $fontSize:16px) {
+  &::before {
+    font-family: iconfont;
+    content: $content;
+    margin-right: $marginRight;
+    display: inline-block;
+    opacity: 0.8;
+    color: inherit;
+    font-size: $fontSize;
+    width: 1.3em;
+  }
+}
+
+/*夜间模式按钮和header阴影*/
+@mixin boxShadowInDarkMode {
+  box-shadow: 5px 5px 5px #222933;
+}
+
+/*夜间模式 “近文期章”，“文章归档”等标题分割线*/
+@mixin hDividerInDarkMode {
+  border-bottom: 0.1em solid #303b47;
+}
