@@ -1,0 +1,203 @@
+@import "./var.scss";
+
+// 样式打补丁
+
+// 鼠标选择后颜色
+::selection {
+  background-color: rgba(51, 51, 51, 0.31);
+  color: #fff;
+}
+
+/**
+ * 定义滚动条拇指的样式。
+ * 
+ * 本段代码主要通过设置背景颜色来定制滚动条拇指的外观。
+ * 使用了Sass变量和CSS变量两种方式来设置背景颜色，以保证样式的灵活性和兼容性。
+ * 注意：代码中有一行注释掉的盒阴影属性，这可能是为了调试或后续扩展而保留的。
+ */
+::-webkit-scrollbar-thumb {
+  background: $subColor; // 使用Sass变量设置背景颜色
+  background: var(--subColor); // 使用CSS变量设置背景颜色
+  // -webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
+}
+
+
+/**
+ * 设置链接的默认颜色。
+ */
+a:link,
+a:visited,
+a:active {
+  color: $subFontColor; // 使用主题的次级字体颜色
+  color: var(--subFontColor); // 使用CSS变量定义的次级字体颜色
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+div.wp-caption {
+  width: 100% !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+/*按钮和header阴影*/
+@mixin boxShadow {
+  box-shadow: 5px 5px 5px #eee;
+}
+
+/*“近文期章”，“文章归档”等标题分割线*/
+@mixin hDivider($color) {
+  border-bottom: 0.1em solid $color;
+}
+
+@mixin icon($content, $marginRight, $color:inherit, $fontSize:16px) {
+  &::before {
+    font-family: iconfont;
+    content: $content;
+    margin-right: $marginRight;
+    display: inline-block;
+    opacity: 0.8;
+    color: inherit;
+    font-size: $fontSize;
+    width: 1.3em;
+  }
+}
+
+/*夜间模式按钮和header阴影*/
+@mixin boxShadowInDarkMode {
+  box-shadow: 5px 5px 5px #222933;
+}
+
+/*夜间模式 “近文期章”，“文章归档”等标题分割线*/
+@mixin hDividerInDarkMode {
+  border-bottom: 0.1em solid #303b47;
+}
+
+
+blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 400;
+  border-left: 3px solid $highlightColor;
+  border-left: 3px solid var(--highlightColor);
+  background-color: #f0f0f1;
+  padding: 1.2em;
+  margin: 1em 0 1em 2em;
+  border-radius: 3px;
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.wp-block-pullquote {
+  blockquote {
+    background: transparent;
+    border-left: 0 none;
+    margin: 0;
+    border-radius: 0;
+    border-top: 0.2em solid;
+    border-bottom: 0.2em solid;
+    padding: 3em 2em;
+  }
+}
+
+/*一些icon*/
+.nav-timeline {
+
+  //display: flex;
+  a {
+    display: inline-block;
+    @include icon("\e761", 0.4em);
+  }
+
+}
+
+.nav-about {
+  a {
+    display: inline-block;
+    @include icon("\e641", 0.35em);
+  }
+}
+
+.nav-home {
+  a {
+    display: inline-block;
+    @include icon("\e70a", 0.2em);
+  }
+}
+
+.nav-friends {
+  a {
+    display: inline-block;
+    @include icon("\e6a5", 0.2em);
+  }
+}
+
+.nav-tags {
+  a {
+    display: inline-block;
+    @include icon("\e723", 0.2em)
+  }
+}
+
+.dark {
+
+  a:link,
+  a:visited,
+  a:active {
+    color: $FontColorInDarkMode;
+    color: var(--FontColorInDarkMode);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $titleColorInDarkMode;
+    color: var(--titleColorInDarkMode);
+    margin-top: 1.5em;
+    margin-bottom: .5em;
+  }
+
+  blockquote {
+    border-left: 3px solid $highlightColorInDarkMode;
+    border-left: 3px solid var(--highlightColorInDarkMode);
+    background-color: #505b6b;
+  }
+}
+
+html {
+  color: $subFontColor;
+  color: var(--subFontColor);
+  min-width: 100%;
+  min-height: 100%;
+  background-color: $bgColorBase;
+  background-color: var(--bgColorBase);
+  height: 100%;
+  font-size: 14px;
+  font-family: "Titillium Web", sans-serif;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 16px;
+  }
+}
+
+html.dark {
+  background-color: $bgColorBaseInDarkMode;
+  background-color: var(--bgColorBaseInDarkMode);
+  color: $FontColorInDarkMode;
+  color: var(--FontColorInDarkMode);
+}

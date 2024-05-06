@@ -68,51 +68,7 @@ iconfont
 //   font-style: italic;
 // }
 
-
-/*
- * 日间模式变量
- */
-
-/*字体颜色*/
-$subFontColor: #333;
-
-/*基本的背景颜色*/
-//$bgColorBase: #fcfbf8;
-$bgColorBase: #f3f3f3;
-
-/*强调色*/
-//$highlightColor: #ff6651;
-$highlightColor: #738fa3;
-
-/*非强调的局部颜色*/
-$subColor: #b3b3b3;
-
-/*Header背景颜色*/
-$bgColorHeader: #ffffff;
-
-/*vertical header 宽度 */
-$verticalHeaderWidth: 300px;
-
-/*低分辨率屏幕下 vertical header 宽度*/
-$verticalHeaderWidthInLowResolution: 240px;
-
-/*
- *夜间模式变量
- */
-/*夜间模式 高亮色*/
-$highlightColorInDarkMode: #b18983;
-
-/*夜间模式 基本背景颜色*/
-$bgColorBaseInDarkMode: #252D38;
-
-/*夜间模式 Header背景颜色*/
-$bgColorHeaderInDarkMode: #252D38;
-
-/*夜间模式 字体颜色*/
-$FontColorInDarkMode: #c6c6c6;
-
-/*夜间模式 “近文期章”，“文章归档”等标题颜色*/
-$titleColorInDarkMode: #727d87;
+@import './var.scss';
 
 
 /**
@@ -213,16 +169,9 @@ video {
 a:link,
 a:visited,
 a:active {
-  color: $subFontColor;
-  color: var(--subFontColor);
   text-decoration: none;
   transition: color .3s;
   border: 0 none;
-}
-
-::selection {
-  background-color: rgba(51, 51, 51, 0.31);
-  color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -237,8 +186,6 @@ a:active {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: $subColor;
-  background: var(--subColor);
   //-webkit-box-shadow: inset 0 0 3px rgba($subFontColor,0.5);
 }
 
@@ -266,15 +213,6 @@ pre {
   border-radius: 10px;
 }
 
-.wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2em;
-}
-
-div.wp-caption {
-  width: 100% !important;
-}
 
 img {
   max-width: 100% !important;
@@ -289,13 +227,7 @@ button {
   border: 0 none;
 }
 
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+
 
 pre {
   overflow-x: auto;
@@ -327,205 +259,9 @@ h6 {
   font-weight: 500;
 }
 
-/**
-for enlighter highlight-plugin
- */
-.enlighter-t-wpcustom.enlighter-linenumbers div.enlighter>div::before {
-  padding: 0;
-  font-size: .9em;
-}
 
-.enlighter-overflow-scroll.enlighter-v-standard {
-  padding: 1em 0;
-}
-
-.enlighter-default {
-  padding: 1em 0;
-}
-
-div.enlighter>div>div {
-  padding-left: 0;
-}
 
 /**
  * END
  * 重置样式
- */
-
-
-
-/**
- * BEGIN
- * 一些基础通用样式
- */
-
-/*按钮和header阴影*/
-@mixin boxShadow {
-  box-shadow: 5px 5px 5px #eee;
-}
-
-/*“近文期章”，“文章归档”等标题分割线*/
-@mixin hDivider($color) {
-  border-bottom: 0.1em solid $color;
-}
-
-@mixin icon($content, $marginRight, $color:inherit, $fontSize:16px) {
-  &::before {
-    font-family: iconfont;
-    content: $content;
-    margin-right: $marginRight;
-    display: inline-block;
-    opacity: 0.8;
-    color: inherit;
-    font-size: $fontSize;
-    width: 1.3em;
-  }
-}
-
-/*夜间模式按钮和header阴影*/
-@mixin boxShadowInDarkMode {
-  box-shadow: 5px 5px 5px #222933;
-}
-
-/*夜间模式 “近文期章”，“文章归档”等标题分割线*/
-@mixin hDividerInDarkMode {
-  border-bottom: 0.1em solid #303b47;
-}
-
-
-blockquote {
-  position: relative;
-  color: #999;
-  font-weight: 400;
-  border-left: 3px solid $highlightColor;
-  border-left: 3px solid var(--highlightColor);
-  background-color: #f0f0f1;
-  padding: 1.2em;
-  margin: 1em 0 1em 2em;
-  border-radius: 3px;
-
-  p:last-of-type {
-    margin-bottom: 0;
-  }
-}
-
-.wp-block-pullquote {
-  blockquote {
-    background: transparent;
-    border-left: 0 none;
-    margin: 0;
-    border-radius: 0;
-    border-top: 0.2em solid;
-    border-bottom: 0.2em solid;
-    padding: 3em 2em;
-  }
-}
-
-/*一些icon*/
-.nav-timeline {
-
-  //display: flex;
-  a {
-    display: inline-block;
-    @include icon("\e761", 0.4em);
-  }
-
-}
-
-.nav-about {
-  a {
-    display: inline-block;
-    @include icon("\e641", 0.35em);
-  }
-}
-
-.nav-home {
-  a {
-    display: inline-block;
-    @include icon("\e70a", 0.2em);
-  }
-}
-
-.nav-friends {
-  a {
-    display: inline-block;
-    @include icon("\e6a5", 0.2em);
-  }
-}
-
-.nav-tags {
-  a {
-    display: inline-block;
-    @include icon("\e723", 0.2em)
-  }
-}
-
-.dark {
-
-  a:link,
-  a:visited,
-  a:active {
-    color: $FontColorInDarkMode;
-    color: var(--FontColorInDarkMode);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $titleColorInDarkMode;
-    color: var(--titleColorInDarkMode);
-    margin-top: 1.5em;
-    margin-bottom: .5em;
-  }
-
-  .enlighter-t-wpcustom {
-    background-color: #505b6b !important;
-    border: 0 none !important;
-  }
-
-  .enlighter-t-wpcustom.enlighter-hover div.enlighter>div:hover {
-    background-color: transparent !important;
-  }
-
-  .enlighter-default {
-    color: $FontColorInDarkMode !important;
-    color: --var(--FontColorInDarkMode) !important;
-  }
-
-  blockquote {
-    border-left: 3px solid $highlightColorInDarkMode;
-    border-left: 3px solid var(--highlightColorInDarkMode);
-    background-color: #505b6b;
-  }
-}
-
-html {
-  color: $subFontColor;
-  color: var(--subFontColor);
-  min-width: 100%;
-  min-height: 100%;
-  background-color: $bgColorBase;
-  background-color: var(--bgColorBase);
-  height: 100%;
-  font-size: 14px;
-  font-family: "Titillium Web", sans-serif;
-
-  @media screen and (max-width: 1000px) {
-    font-size: 16px;
-  }
-}
-
-html.dark {
-  background-color: $bgColorBaseInDarkMode;
-  background-color: var(--bgColorBaseInDarkMode);
-  color: $FontColorInDarkMode;
-  color: var(--FontColorInDarkMode);
-}
-
-/**
- * END
- * 一些基础通用样式
  */

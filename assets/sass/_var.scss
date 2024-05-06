@@ -1,0 +1,46 @@
+// 变量
+
+/*
+ * 日间模式变量
+ */
+
+/*字体颜色*/
+$subFontColor: #333;
+
+/*基本的背景颜色*/
+//$bgColorBase: #fcfbf8;
+$bgColorBase: #f3f3f3;
+
+/*强调色*/
+//$highlightColor: #ff6651;
+$highlightColor: #738fa3;
+
+/*非强调的局部颜色*/
+$subColor: #b3b3b3;
+
+/*Header背景颜色*/
+$bgColorHeader: #ffffff;
+
+/*vertical header 宽度 */
+$verticalHeaderWidth: 300px;
+
+/*低分辨率屏幕下 vertical header 宽度*/
+$verticalHeaderWidthInLowResolution: 240px;
+
+/*
+ *夜间模式变量
+ */
+/*夜间模式 高亮色*/
+$highlightColorInDarkMode: #b18983;
+
+/*夜间模式 基本背景颜色*/
+$bgColorBaseInDarkMode: #252D38;
+
+/*夜间模式 Header背景颜色*/
+$bgColorHeaderInDarkMode: #252D38;
+
+/*夜间模式 字体颜色*/
+$FontColorInDarkMode: #c6c6c6;
+
+/*夜间模式 “近文期章”，“文章归档”等标题颜色*/
+$titleColorInDarkMode: #727d87;

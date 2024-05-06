@@ -1,7 +1,9 @@
+// go top 按钮样式
 @keyframes loading {
   0% {
     height: 25%;
   }
+
   100% {
     height: 100%;
   }
@@ -11,26 +13,31 @@
   0% {
     transform: rotate(0);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes shine {
   0% {
     box-shadow: 0 0 5px #fff;
   }
+
   50% {
     box-shadow: 0 0 20px #fff;
   }
+
   100% {
     box-shadow: 0 0 5px #fff;
   }
 }
+
 .go-top-container {
   color: #ccc;
   font-weight: bold;
   position: fixed;
-  bottom: 8em; 
+  bottom: 8em;
   right: 15%;
   width: 50px;
   height: 50px;
@@ -42,6 +49,7 @@
   opacity: 0.8;
   cursor: pointer;
   animation: shine 6s infinite;
+
   .rocket {
     display: flex;
     align-items: center;
@@ -56,26 +64,29 @@
     opacity: 0;
     transition: all 0.3s;
   }
+
   .percent {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 100;
     transition: opacity 0.3s;
   }
+
   .go-top-inner1 {
     position: absolute;
     width: 200%;
     height: 200%;
     z-index: 20;
-    background-color:#eee;
+    background-color: #eee;
     border-radius: 52% 25% 62% 69% / 25% 38%;
     left: -50%;
     top: -100%;
     transition: opacity 0.3s;
     animation: wave 10s linear infinite;
   }
+
   .go-top-inner2 {
     content: '';
     position: absolute;
@@ -89,18 +100,23 @@
     transition: opacity 0.3s;
     animation: wave 10s linear infinite;
   }
+
   &:hover {
-   .rocket {
-     opacity: 1;
-   } 
-   .go-top-inner1, .go-top-inner2,.percent {
-     opacity: 0;
-   }
+    .rocket {
+      opacity: 1;
+    }
+
+    .go-top-inner1,
+    .go-top-inner2,
+    .percent {
+      opacity: 0;
+    }
   }
 }
+
 .dark {
   .go-top-container {
     background-color: $highlightColorInDarkMode;
-  background-color: var(--highlightColorInDarkMode);
+    background-color: var(--highlightColorInDarkMode);
   }
 }
