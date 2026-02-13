@@ -4,12 +4,14 @@
   flex: 1;
   padding: 2em 0 0 0;
 
+  // for mobile
   @media screen and (max-width: 1200px) {
     padding: 3%;
     margin: 0;
     float: left;
   }
 
+  // for ipad
   @media screen and (max-width: 1000px) {
     padding: 3%;
     float: none;
@@ -80,7 +82,7 @@
 
       li {
         &::before {
-          content: "☆";
+          content: "🗒️";
           margin-right: 3px;
           vertical-align: middle;
           transition: all 0.3s;
@@ -116,7 +118,6 @@
       td,
       caption {
         border: 0 none;
-        font-size: 0.5vw;
       }
 
       #next,
@@ -128,7 +129,6 @@
       width: 100%;
 
       @media screen and (max-width: 1000px) {
-        font-size: 10px;
         text-align: left;
       }
     }
@@ -201,7 +201,6 @@
         td,
         caption {
           border: 0 none;
-          font-size: 0.5vw;
         }
 
         .wp-calendar-nav {

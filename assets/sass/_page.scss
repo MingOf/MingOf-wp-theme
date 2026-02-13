@@ -1,17 +1,31 @@
 // 普通页面
 .custom-page-wrapper {
   padding-top: 2em;
-  @media screen and (max-width: 1000px) {
-    padding-top: 4em;
-  }
 }
-.links,.timeline-container,#about,.page {
+
+.links,
+.timeline-container,
+#about,
+.page {
   margin-top: 0;
-  h1,h2,h3,h4,h5,h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: 0;
   }
 }
+
 .custom-page {
   width: 61.8%;
   margin: 0 auto;
+}
+
+.mobile {
+  .custom-page-wrapper {
+    padding-top: 4em;
+  }
 }

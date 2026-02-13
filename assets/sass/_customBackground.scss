@@ -37,10 +37,6 @@
 
     .custom-page-wrapper {
       padding-top: 2em;
-
-      @media screen and (max-width: 1000px) {
-        padding-top: 4em;
-      }
     }
 
     #posts-container {
@@ -61,6 +57,17 @@
             color: #eee;
           }
         }
+      }
+    }
+  }
+}
+
+// for mobile
+.mobile {
+  #mastcontainer {
+    #posts-container {
+      .custom-page-wrapper {
+        padding-top: 4em;
       }
     }
   }

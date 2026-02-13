@@ -13,17 +13,28 @@
   background: inherit;
   z-index: 1;
   width: 300px;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
+
   @media screen and (max-width: 1400px) {
     width: 240px;
   }
 }
-body {
-  @media screen and (max-width: 1000px) {
+
+// for mobile
+.mobile {
+  height: 100%;
+
+  .footer {
+    display: block;
+    position: relative;
+    line-height: 2em;
+    height: 2em;
+    padding: 0 0;
+  }
+
+  body {
     position: relative;
     min-height: 100%;
+
     &::after {
       content: "";
       display: block;
@@ -31,16 +42,13 @@ body {
     }
   }
 }
-html {
-  @media screen and (max-width: 1000px) {
-    height: 100%;
-  }
-}
+
 .footer-m {
   text-align: center;
   width: 100%;
   margin-top: 1em;
   clear: both;
+
   @media screen and (min-width: 1000px) {
     // display: none;
   }

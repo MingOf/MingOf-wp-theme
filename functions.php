@@ -352,16 +352,6 @@ function mingof_customize_register( $wp_customize ) {
         'capability'=>'edit_theme_options',
         'transport'=>'refresh'
     ));
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'header_mode', array(
-       'label'=>__('设置header模式', 'mingof'),
-       'section'=>'mingof_set_header_section',
-       'settings'=>'mingof_header_mode',
-        'type'=>'radio',
-        'choices'=>array(
-            'vertical'=>__('vertical','mingof'),
-            'horizontal'=>__('horizontal','mingof')
-        )
-    )));
 
     /**
      * 设置图像相关

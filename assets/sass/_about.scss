@@ -3,17 +3,14 @@
   width: 61%;
   text-align: left;
   margin: 0 auto;
-  @media screen and (max-width: 1000px) {
-    width: auto;
-    padding: 0 1em;
-    min-height: 0;
-  }
+
   h1 {
     //height: 100px;
     color: $highlightColor;
     color: var(--highlightColor);
   }
 }
+
 .dark {
   #about {
     h1 {

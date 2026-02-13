@@ -144,10 +144,6 @@
   @media screen and (max-width: 1400px) {
     width: $verticalHeaderWidthInLowResolution;
   }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 }
 
 .menu-with-children,

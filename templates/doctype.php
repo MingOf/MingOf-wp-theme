@@ -10,4 +10,4 @@
     <?php get_template_part('templates/style-variable') ?>
     <?php wp_head(); ?>
 </head>
-<body 
+<body

@@ -1,14 +1,14 @@
 /*!
-Theme Name: MingOf
-Theme URI: https://mingof.top
-Author: MingOf
-Author URI: https://mingof.top
+Theme Name: Braver
+Theme URI: https://bravers.me
+Author: Braver
+Author URI: https://bravers.me
 Description: no_feature
 Requires at least: WordPress 4.9.6
 Version: 4.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: mingof
+Text Domain: braver
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -22,7 +22,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* 一些基础样式和变量*/
 @import "assets/sass/var";
 @import "assets/sass/normalize";
-@import "assets/sass/animation";
 
 #overlay {
   position: fixed;
@@ -43,7 +42,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* header*/
 @import "assets/sass/header";
 @import "assets/sass/banner-m";
-@import "assets/sass/horizontalHeaderMode";
+
 
 #mastcontainer {
   margin: 0 0 0 $verticalHeaderWidth;
@@ -55,14 +54,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
   flex-direction: column;
 
   // transition: transform 0.5s ease;
-  @media screen and (max-width: 1400px) {
-    margin: 0 0 0 $verticalHeaderWidthInLowResolution;
-    min-width: 600px;
-  }
-
+  // for ipad
   @media screen and (max-width: 1200px) {
     flex-direction: column;
     margin: 0 0 0 $verticalHeaderWidthInLowResolution;
+    display: block;
   }
 
   @media screen and (max-width: 1000px) {
