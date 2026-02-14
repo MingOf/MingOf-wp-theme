@@ -1,7 +1,7 @@
 <!--移动端专用 Header-->
 <header class="mb-header-toggle-bar">
     <div id="headering">
-        <h1 id="name"><a href="<?php echo get_option('home');?>"><?php bloginfo('name');?></a></h1>
+        <h1 id="name"><a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html(get_bloginfo('name')); ?></a></h1>
         <div class="nav-toggle nav-close"><span class="nav-touch-area"></span></div>
     </div>
 </header>

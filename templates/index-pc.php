@@ -1,5 +1,5 @@
 <?php get_header();?>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
+<section id="mastcontainer" class="typo <?php echo esc_attr(real_header_mode()); ?> row-direction">
     <section id="posts-container">
         <?php
         if ( have_posts()) {
@@ -8,7 +8,7 @@
                 the_post();
         ?>
          <?php $tb_url=get_thumbnail_img(get_the_ID());?>
-        <div class="post-item <?php empty($tb_url) && _e('no-thumbnail')?>">
+        <div class="post-item <?php echo empty($tb_url) ? 'no-thumbnail' : ''; ?>">
             <div class="post-title"><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></div>
             <div class="post-meta">
                 <span class="post-meta-opt post-meta-cate"><?php the_category(','); ?></span>
@@ -17,8 +17,8 @@
             </div>
             <article class="post-excerpt">
                 <?php if($tb_url!==""):?>
-                <a class="thumb-link" href="<?php the_permalink();?>">
-                    <div class="post-thumbnail" style='background-image: url(<?php echo $tb_url?>)' alt="" onerror="thumbnail_error(this)">
+                <a class="thumb-link" href="<?php echo esc_url(get_permalink()); ?>">
+                    <div class="post-thumbnail" style="background-image: url('<?php echo esc_url($tb_url); ?>')" alt="" onerror="thumbnail_error(this)">
                         <span>☕图片在火星，正在赶来...</span>
                     </div>
                 </a>

@@ -1,14 +1,14 @@
 <?php get_header();?>
-<div id="banner"  style="background-image: url('<?php
-if(!empty(get_option('mingof_banner_img'))) {
-    echo get_option('mingof_banner_img');
-} else {
-    echo get_template_directory_uri().'/assets/image/banner.jpg';
+<?php
+$banner_img = get_option('mingof_banner_img');
+if (empty($banner_img)) {
+    $banner_img = get_template_directory_uri() . '/assets/image/banner.jpg';
 }
-?>')">
+?>
+<div id="banner" style="background-image: url('<?php echo esc_url($banner_img); ?>')">
 <?php get_template_part('templates/banner', 'mobile');?>
 </div>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
+<section id="mastcontainer" class="typo <?php echo esc_attr(real_header_mode()); ?> row-direction">
     <section id="posts-container">
         <?php
         if ( have_posts()) {
@@ -17,17 +17,17 @@ if(!empty(get_option('mingof_banner_img'))) {
                 the_post();
         ?>
          <?php $tb_url=get_thumbnail_img(get_the_ID());?>
-        <div class="post-item index <?php empty($tb_url) && _e('no-thumbnail')?>">
+        <div class="post-item index <?php echo empty($tb_url) ? 'no-thumbnail' : ''; ?>">
             <div class="post-title">
                 <?php if($tb_url!==""):?>
-                <a class="thumb-link" href="<?php the_permalink();?>">
+                <a class="thumb-link" href="<?php echo esc_url(get_permalink()); ?>">
                     <div class="post-thumbnail"  alt="" onerror="thumbnail_error(this)">
-                      <img src="<?php echo $tb_url?>" alt="thumbnail">
+                      <img src="<?php echo esc_url($tb_url)?>" alt="thumbnail">
                     </div>
                 </a>
                 <?php endif;?>
                 <?php // 修复新版移动端 post-item 的标题覆盖图片后，不能点击的问题 ?>
-                <h2 onclick="window.location.href='<?php esc_url(the_permalink()); ?>'"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <h2 onclick="window.location.href='<?php echo esc_url(get_permalink()); ?>'"><a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-meta-opt post-meta-cate"><?php the_category(','); ?></span>

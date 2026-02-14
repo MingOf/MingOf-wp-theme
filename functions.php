@@ -83,7 +83,7 @@ function excerpt_read_more_link( $output ) {
         $pos = mb_strrpos($output, $matches[0][count($matches[0])-1]); //最后一个满足条件的标点符号最后出现的位置
         $output = mb_substr($output,0,$pos+1,"utf8"); //截取摘要，从头到最后一个满足条件的标点符号最后出现的位置。
     }
-    $link = get_permalink();
+    $link = esc_url(get_permalink());
     $more = '  <button class="read-more"><a href='
         .$link
         .'>'.__("阅读全文", "mingof").'  →  '
@@ -132,7 +132,7 @@ function get_thumbnail_img($post_id) {
     $usable_img_url = $catched_img_url;
     if ( has_post_thumbnail()) {
         $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'custom-tb-size');
-        $usable_img_url = '"'.$thumbnail_image_url[0].'"';
+        $usable_img_url = $thumbnail_image_url[0];
     } else if ($catched_img_url == NULL) {
         $usable_img_url = "";
     }
@@ -147,7 +147,8 @@ function real_header_mode () {
     if(mingof_is_mobile()) {
         return "vertical";
     } else {
-        return get_option('mingof_header_mode','vertical');
+        $mode = get_option('mingof_header_mode','vertical');
+        return in_array($mode, array('vertical', 'horizontal'), true) ? $mode : 'vertical';
     }
 }
 
@@ -201,10 +202,14 @@ function mingof_body_class($class) {
 add_filter('body_class','mingof_body_class');
 
 function get_bg() {
-    return "url(".get_option('mingof_bg_img','').")";
+    $bg_img = esc_url_raw(get_option('mingof_bg_img',''));
+    if (empty($bg_img)) {
+        return 'none';
+    }
+    return 'url("' . $bg_img . '")';
 }
 function get_bg_blur() {
-    return "".get_option( "mingof_bg_img_blur", 0 )."px";
+    return absint(get_option("mingof_bg_img_blur", 0)) . 'px';
 }
 /**
  * 注册自定义功能
@@ -446,4 +451,3 @@ function mingof_customize_register( $wp_customize ) {
     )));
 }
 add_action( 'customize_register', 'mingof_customize_register');
-

@@ -1,19 +1,31 @@
 <style>
 <?php
 $styles = (get_option('mingof_style_options'));
-$subFontColor             = !empty($styles['font_color']) ? $styles['font_color'] : '#333';
-$bgColorBase              = !empty($styles['bg_color_base']) ? $styles['bg_color_base'] : '#f3f3f3';
-$highlightColor           = !empty($styles['highlight_color']) ? $styles['highlight_color'] : '#738fa3';
-$subColor                 = !empty($styles['sub_color']) ? $styles['sub_color'] : '#b3b3b3';
-$bgColorHeader            = !empty($styles['bg_color_header']) ? $styles['bg_color_header'] : 'rgba(255,255,255,0.8)';
+if (!function_exists('mingof_sanitize_css_color')) {
+    function mingof_sanitize_css_color($value, $default) {
+        $value = trim((string) $value);
+        if (preg_match('/^#(?:[0-9a-fA-F]{3}){1,2}$/', $value)) {
+            return $value;
+        }
+        if (preg_match('/^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}(?:\s*,\s*(?:0|1|0?\.\d+))?\s*\)$/', $value)) {
+            return $value;
+        }
+        return $default;
+    }
+}
 
-$highlightColorInDarkMode = !empty($styles['$highlight_color_in_dark_mode']) ? $styles['$highlight_color_in_dark_mode'] : '#b18983';
-$bgColorBaseInDarkMode    = !empty($styles['bg_color_base_in_dark_mode']) ? $styles['bg_color_base_in_dark_mode'] : '#252d38';
-$bgColorHeaderInDarkMode  = !empty($styles['bg_color_header_in_dark_mode']) ? $styles['bg_color_header_in_dark_mode'] : '#252d38';
-$FontColorInDarkMode      = !empty($styles['font_color_in_dark_mode']) ? $styles['font_color_in_dark_mode'] : '#c6c6c6';
-$titleColorInDarkMode     = !empty($styles['title_color_in_dark_mode']) ? $styles['title_color_in_dark_mode'] : '#727d87';
-$backgroundImage          = get_bg();
-$backgroundImageBlur      = get_bg_blur();
+$subFontColor             = mingof_sanitize_css_color($styles['font_color'] ?? '', '#333');
+$bgColorBase              = mingof_sanitize_css_color($styles['bg_color_base'] ?? '', '#f3f3f3');
+$highlightColor           = mingof_sanitize_css_color($styles['highlight_color'] ?? '', '#738fa3');
+$subColor                 = mingof_sanitize_css_color($styles['sub_color'] ?? '', '#b3b3b3');
+$bgColorHeader            = mingof_sanitize_css_color($styles['bg_color_header'] ?? '', 'rgba(255,255,255,0.8)');
+$highlightColorInDarkMode = mingof_sanitize_css_color($styles['highlight_color_in_dark_mode'] ?? '', '#b18983');
+$bgColorBaseInDarkMode    = mingof_sanitize_css_color($styles['bg_color_base_in_dark_mode'] ?? '', '#252d38');
+$bgColorHeaderInDarkMode  = mingof_sanitize_css_color($styles['bg_color_header_in_dark_mode'] ?? '', '#252d38');
+$FontColorInDarkMode      = mingof_sanitize_css_color($styles['font_color_in_dark_mode'] ?? '', '#c6c6c6');
+$titleColorInDarkMode     = mingof_sanitize_css_color($styles['title_color_in_dark_mode'] ?? '', '#727d87');
+$backgroundImage          = sanitize_text_field(get_bg());
+$backgroundImageBlur      = sanitize_text_field(get_bg_blur());
 
 echo <<<EOT
 :root {

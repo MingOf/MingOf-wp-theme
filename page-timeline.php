@@ -1,6 +1,6 @@
 <?php /*时间线归档页面*/?>
 <?php get_header();?>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?>">
+<section id="mastcontainer" class="typo <?php echo esc_attr(real_header_mode()); ?>">
 <!--    <div id="overlay"></div>-->
     <div class="custom-page-wrapper">
     <section class="timeline-container">
@@ -68,14 +68,14 @@
     foreach ($post_groupby_year as $year => $year_value):
     ?>
         <h2 class="tl-year-title">
-            <?php echo $year;?>
+            <?php echo esc_html($year);?>
         </h2>
         <article class="tl-posts-container">
             <?php foreach ($year_value as $post): setup_postdata($post);?>
                 <section class="tl-post-item">
                     <h5 class="tl-post">
-                        <a href="<?php echo get_permalink(get_the_ID())?>">
-                            <span class="tl-post-date"><?php echo get_the_date('m-d');?></span>
+                        <a href="<?php echo esc_url(get_permalink(get_the_ID())); ?>">
+                            <span class="tl-post-date"><?php echo esc_html(get_the_date('m-d'));?></span>
                             <span class="tl-post-title"><?php the_title();?></span>
                         </a>
                     </h5>
@@ -89,7 +89,7 @@
     <div class="page-nav-wrapper">
         <div class="page-nav">
             <?php if($paged > 1):?>
-                <a class="tl-prev-page prev page-numbers" href="<?php echo get_previous_posts_page_link();?>">&lt;</a>
+                <a class="tl-prev-page prev page-numbers" href="<?php echo esc_url(get_previous_posts_page_link()); ?>">&lt;</a>
             <?php endif;?>
             <?php for($i = 1; $i <= $pages_count; $i++):?>
                 <?php
@@ -137,18 +137,17 @@
                 ?>
                 <a class="page-numbers <?php if($paged === $i) { echo 'current';} ?>" href="<?php
                 if($paged !== $i) {
-                    echo get_pagenum_link($i);
+                    echo esc_url(get_pagenum_link($i));
                 } else {
                     echo "javascript:";
                 }
-                ?>"><?php echo $i; ?></a>
+                ?>"><?php echo esc_html($i); ?></a>
 
             <?php endfor;?>
             <?php if($paged < $pages_count):?>
-                <a class="tl-next-page next page-numbers" href="<?php echo get_next_posts_page_link();?>">&gt;</a>
+                <a class="tl-next-page next page-numbers" href="<?php echo esc_url(get_next_posts_page_link()); ?>">&gt;</a>
             <?php endif;?>
         </div>
     </div>
 </section>
 <?php wp_footer() ?>
-

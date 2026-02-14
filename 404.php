@@ -1,6 +1,6 @@
 <?php /*404*/?>
 <?php get_header();?>
-<section id="mastcontainer" class="typo <?php echo real_header_mode(); ?>">
+<section id="mastcontainer" class="typo <?php echo esc_attr(real_header_mode()); ?>">
 <!--    <div id="overlay"></div>-->
     <div id="not-found" class="center-align">
         <p class="not-found-icon">
@@ -11,4 +11,3 @@
     </div>
 </section>
 <?php wp_footer()?>
-

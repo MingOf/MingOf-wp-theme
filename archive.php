@@ -1,6 +1,6 @@
 <?php /*归档界面，按照日期、标签*/?>
 <?php get_header();?>
-<section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
+<section id="mastcontainer" class="typo <?php echo esc_attr(real_header_mode()); ?> row-direction">
 <!--    <div id="overlay"></div>-->
     <section id="posts-container" class="archive-container">
 
@@ -39,12 +39,12 @@
 //                    获取日志信息，并且将信息存入全局变量 $post 中
                 the_post();
         ?>
-            <div class="post-item <?php empty($tb_url) && _e('no-thumbnail')?>">
-                <div class="post-title"><h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2></div>
+            <div class="post-item <?php echo has_post_thumbnail() ? '' : 'no-thumbnail'; ?>">
+                <div class="post-title"><h2><a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a></h2></div>
                 <div class="post-meta">
 <!--                    <span class="post-meta-opt post-meta-auth">--><?php //_e("作者","mingof")?><!--：--><?// the_author(); ?><!--</span>-->
-                    <span class="post-meta-opt post-meta-time"><? the_time('Y-m-d'); ?></span>
-                    <span class="post-meta-edit"><? edit_post_link(__("编辑","mingof")) ?></span>
+                    <span class="post-meta-opt post-meta-time"><?php the_time('Y-m-d'); ?></span>
+                    <span class="post-meta-edit"><?php edit_post_link(__("编辑","mingof")) ?></span>
                 </div>
                 <article class="post-excerpt">
                     <?php if(has_post_thumbnail()):?>
