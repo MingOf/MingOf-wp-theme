@@ -26,7 +26,8 @@ if(!empty(get_option('mingof_banner_img'))) {
                     </div>
                 </a>
                 <?php endif;?>
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <?php // 修复新版移动端 post-item 的标题覆盖图片后，不能点击的问题 ?>
+                <h2 onclick="window.location.href='<?php esc_url(the_permalink()); ?>'"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-meta-opt post-meta-cate"><?php the_category(','); ?></span>
