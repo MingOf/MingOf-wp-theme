@@ -248,6 +248,7 @@
       margin-bottom: 2em;
       overflow: hidden;
 
+      // 移动端 post-item 新的展示效果，当有 post-thumbnail 时，标题覆盖在图片上；当没有 post-thumbnail 时，标题在上方，摘要在下方
       .post-title {
         position: relative;
 
@@ -255,14 +256,16 @@
           position: absolute;
           left: 0;
           top: 0;
-          backdrop-filter: saturate(180%) blur(2px);
+          backdrop-filter: saturate(180%) blur(3px);
+          -webkit-backdrop-filter: saturate(180%) blur(3px);
           background-color: rgba(255, 255, 255, 0.5);
           // border-radius: 5px;
           height: 150px;
           width: 100%;
+          font-size: 18px;
 
           a {
-            padding: 14px;
+            padding: 14px 14px 0 14px;
             display: block;
           }
         }
@@ -288,10 +291,13 @@
       .post-meta {
         margin: 0;
         padding: 0 14px;
+        position: absolute;
+        top: 115px;
+        font-weight: 600;
       }
 
       .post-excerpt {
-        padding: 0 14px 14px 14px;
+        padding: 14px 14px 14px 14px;
 
         .post-thumbnail {
           &::after {
@@ -309,6 +315,7 @@
       }
     }
 
+    // 没有 post-thumbnail 的 post-item，保持原来的设计
     .post-item.no-thumbnail {
       .post-title {
 
@@ -318,6 +325,14 @@
           position: unset;
           height: auto;
         }
+      }
+
+      .post-meta {
+        position: unset;
+      }
+
+      .post-excerpt {
+        padding: 0 14px 14px 14px;
       }
     }
   }
