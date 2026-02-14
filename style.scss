@@ -53,21 +53,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
   display: flex;
   flex-direction: column;
 
-  // transition: transform 0.5s ease;
-  // for ipad
-  @media screen and (max-width: 1200px) {
-    flex-direction: column;
-    margin: 0 0 0 $verticalHeaderWidthInLowResolution;
-    display: block;
-  }
-
-  @media screen and (max-width: 1000px) {
-    margin: auto;
-    //padding-top: 3em;
-    min-width: auto;
-    position: relative;
-    z-index: 1;
-  }
 
   &.row-direction {
     flex-direction: row;
@@ -91,9 +76,17 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .mobile {
+  height: 100%;
+  font-size: 14px;
+
   #mastcontainer {
     display: block;
     flex-direction: column;
+    margin: auto;
+    //padding-top: 3em;
+    min-width: auto;
+    position: relative;
+    z-index: 1;
   }
 }
 

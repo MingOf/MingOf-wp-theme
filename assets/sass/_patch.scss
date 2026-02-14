@@ -84,7 +84,7 @@ blockquote {
   //display: flex;
   a {
     display: inline-block;
-    @include icon("\e761", 0.4em);
+    @include icon("\e761", 0.3em);
   }
 
 }
@@ -92,28 +92,28 @@ blockquote {
 .nav-about {
   a {
     display: inline-block;
-    @include icon("\e641", 0.35em);
+    @include icon("\e641", 0.3em);
   }
 }
 
 .nav-home {
   a {
     display: inline-block;
-    @include icon("\e70a", 0.2em);
+    @include icon("\e70a", 0.3em);
   }
 }
 
 .nav-friends {
   a {
     display: inline-block;
-    @include icon("\e6a5", 0.2em);
+    @include icon("\e6a5", 0.3em);
   }
 }
 
 .nav-tags {
   a {
     display: inline-block;
-    @include icon("\e723", 0.2em)
+    @include icon("\e723", 0.3em)
   }
 }
 

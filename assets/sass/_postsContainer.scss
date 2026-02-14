@@ -12,6 +12,7 @@
     padding: 1em;
     background-color: #fff;
     border-radius: 10px;
+    margin-top: 3em;
   }
 
   .posts-cate-title {
@@ -229,87 +230,6 @@
       margin-right: 1.0em;
     }
   }
-
-  // for ipad
-  @media screen and (max-width: 1200px) {
-    width: auto;
-    float: none;
-    padding: 3%;
-    max-width: none;
-    min-width: none;
-  }
-
-  // for mobile
-  @media screen and (max-width: 1000px) {
-    padding: 0.8em;
-    width: auto;
-    float: none;
-
-    .post-wrapper {
-      margin-top: 4em;
-
-      &.has-thumbnail {
-        margin-top: 0;
-      }
-    }
-
-    .post-item {
-      padding: 1em;
-      border-radius: 10px;
-      background: transparent;
-      margin-bottom: 2em;
-
-      &.no-thumbnail {
-        background: #fff;
-      }
-
-      .post-title {
-        h2 {
-          font-size: 1.3em;
-
-          a {
-            &:hover::after {
-              width: 0;
-            }
-          }
-        }
-      }
-
-      .post-excerpt {
-        div {
-          p {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-
-            .read-more {
-              display: none;
-            }
-          }
-        }
-
-        .thumb-link {
-          display: block;
-          width: 100%;
-          overflow: hidden;
-          margin-bottom: 1em;
-          border-radius: 10px;
-        }
-
-        .post-thumbnail {
-          border-radius: 0;
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          float: none;
-          border: 0 none;
-        }
-      }
-    }
-
-  }
 }
 
 .mobile {
@@ -319,90 +239,87 @@
     padding: 0.8em;
     width: auto;
     float: none;
+    max-width: unset;
+    min-width: unset;
 
-    .post-wrapper {
-      margin-top: 4em;
-
-      &.has-thumbnail {
-        margin-top: 0;
-      }
-    }
-
-    .post-item {
-      padding: 1em;
-      border-radius: 10px;
-      background: #fff; // transparent 有样式问题
+    .post-item.index {
+      margin: 0;
+      padding: 0;
       margin-bottom: 2em;
-
-      &.no-thumbnail {
-        background: #fff;
-      }
+      overflow: hidden;
 
       .post-title {
+        position: relative;
+
         h2 {
-          font-size: 1.3em;
+          position: absolute;
+          left: 0;
+          top: 0;
+          backdrop-filter: saturate(180%) blur(2px);
+          background-color: rgba(255, 255, 255, 0.5);
+          // border-radius: 5px;
+          height: 150px;
+          width: 100%;
 
           a {
-            &:hover::after {
-              width: 0;
-            }
-          }
-        }
-      }
-
-      .post-excerpt {
-        div {
-          p {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-
-            .read-more {
-              display: none;
-            }
+            padding: 14px;
+            display: block;
           }
         }
 
         .thumb-link {
           display: block;
-          width: 100%;
-          overflow: hidden;
-          margin-bottom: 1em;
-          border-radius: 10px;
+
+          .post-thumbnail {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+
         }
+      }
+
+      .post-meta {
+        margin: 0;
+        padding: 0 14px;
+      }
+
+      .post-excerpt {
+        padding: 0 14px 14px 14px;
 
         .post-thumbnail {
-          border-radius: 0;
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          float: none;
-          border: 0 none;
+          &::after {
+            display: none;
+          }
+
+          &::before {
+            opacity: 1;
+          }
         }
-      }
-    }
 
-    max-width: unset;
-    min-width: unset;
-
-    .post-excerpt {
-      .post-thumbnail {
-        &::after {
+        .read-more {
           display: none;
         }
-
-        &::before {
-          opacity: 1;
-        }
-      }
-
-      .read-more {
-        display: none;
       }
     }
 
+    .post-item.no-thumbnail {
+      .post-title {
+
+        position: unset;
+
+        h2 {
+          position: unset;
+          height: auto;
+        }
+      }
+    }
   }
 
   .archive-container {
@@ -426,10 +343,6 @@
 
       &.no-thumbnail {
         background-color: #1d2932;
-      }
-
-      .divider {
-        background-color: transparent;
       }
 
       .post-title {
@@ -481,16 +394,17 @@
       color: $highlightColorInDarkMode;
       color: var(--highlightColorInDarkMode);
     }
+  }
 
-    @media screen and (max-width: 1000px) {
-      .post-item {
-        .post-excerpt {
-          .post-thumbnail {
-            border: 0 none;
+  &.mobile {
+    #posts-container {
+      .post-item.index {
+        .post-title {
+          h2 {
+            background-color: rgba(0, 0, 0, 0.3);
           }
         }
       }
-
     }
   }
 }

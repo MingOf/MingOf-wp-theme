@@ -27,7 +27,7 @@
                 the_excerpt();
                 ?>
             </article>
-            <div class="divider $post_"></div>
+            <!-- <div class="divider $post_"></div> -->
         </div>
         <?php
             }

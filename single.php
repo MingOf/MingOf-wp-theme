@@ -6,7 +6,7 @@ if(has_post_thumbnail()) {
     echo wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'custom-tb-size')[0];
 }
 ?>')">
-    <?php include("templates/banner-m.php"); ?>
+    <?php get_template_part('templates/banner', 'mobile');?>
 </div>
 <?php endif;?>
 <section id="mastcontainer" class="typo <?php echo real_header_mode();?> row-direction">
