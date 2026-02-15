@@ -246,8 +246,14 @@
         font-style: italic;
       }
 
+      // 上角标
       sup {
         vertical-align: super;
+      }
+
+      // 下角标
+      sub {
+        vertical-align: sub;
       }
 
       button {

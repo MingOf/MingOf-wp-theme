@@ -9,7 +9,7 @@
         ?>
          <?php $tb_url=get_thumbnail_img(get_the_ID());?>
         <div class="post-item <?php echo empty($tb_url) ? 'no-thumbnail' : ''; ?>">
-            <div class="post-title"><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></div>
+            <div class="post-title"><h2><a href="<?php esc_url(get_permalink()); ?>"><?php the_title(); ?></a></h2></div>
             <div class="post-meta">
                 <span class="post-meta-opt post-meta-cate"><?php the_category(','); ?></span>
                 <span class="post-meta-opt post-meta-time"><?php the_time('Y-m-d'); ?></span>
