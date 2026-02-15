@@ -12,7 +12,6 @@
     padding: 1em;
     background-color: #fff;
     border-radius: 10px;
-    margin-top: 3em;
   }
 
   .posts-cate-title {
@@ -200,6 +199,7 @@
       }
     }
 
+    // 文章内容渲染样式，作为 normalize.scss 的补充
     .post-content {
       img {
         display: block;
@@ -209,28 +209,90 @@
       a {
         text-decoration: underline;
       }
-    }
-  }
 
-  .post-switch {
-    margin-left: 0;
-    margin-top: 30px;
-    color: $highlightColor;
-    color: var(--highlightColor);
-    font-weight: 400;
-    list-style: none;
-    border-top: 2px dashed $subColor;
-    border-top: 2px dashed var(--subColor);
-    border-bottom: 2px dashed $subColor;
-    border-bottom: 2px dashed var(--subColor);
-    padding: 20px 10px;
+      code {
+        font-family: 'Fira Code', monospace;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
 
-    .post-prev .previous span,
-    .post-next .next span {
-      margin-right: 1.0em;
+      ul {
+        list-style: unset;
+        list-style-position: inside;
+
+      }
+
+      ol {
+        list-style: decimal;
+        list-style-position: inside;
+      }
+
+      figure {
+
+        figcaption {
+          text-align: center;
+          font-size: 14px;
+          color: $subFontColor;
+          color: var(--subFontColor);
+        }
+      }
+
+      strong {
+        font-weight: 600;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      sup {
+        vertical-align: super;
+      }
+
+      button {
+        padding: 5px 10px;
+        border: 2px solid transparent;
+        color: #fff;
+        display: inline-block;
+        transition: all 0.3s;
+        margin-top: 10px;
+        background-color: $highlightColor;
+        background-color: var(--highlightColor);
+        line-height: 1;
+        border-radius: 5px;
+
+        &:hover {
+          color: $subFontColor;
+          color: var(--subFontColor);
+          border: 2px solid $highlightColor;
+          border: 2px solid var(--highlightColor);
+          background-color: transparent;
+        }
+      }
     }
   }
 }
+
+.post-switch {
+  margin-left: 0;
+  margin-top: 30px;
+  color: $highlightColor;
+  color: var(--highlightColor);
+  font-weight: 400;
+  list-style: none;
+  border-top: 2px dashed $subColor;
+  border-top: 2px dashed var(--subColor);
+  border-bottom: 2px dashed $subColor;
+  border-bottom: 2px dashed var(--subColor);
+  padding: 20px 10px;
+
+  .post-prev .previous span,
+  .post-next .next span {
+    margin-right: 1.0em;
+  }
+}
+
 
 .mobile {
 
@@ -312,6 +374,10 @@
         .read-more {
           display: none;
         }
+      }
+
+      .post-wrapper {
+        margin-top: 3em;
       }
     }
 
