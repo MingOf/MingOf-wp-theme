@@ -381,10 +381,6 @@
           display: none;
         }
       }
-
-      .post-wrapper {
-        margin-top: 3em;
-      }
     }
 
     // 没有 post-thumbnail 的 post-item，保持原来的设计
@@ -406,6 +402,10 @@
       .post-excerpt {
         padding: 0 14px 14px 14px;
       }
+    }
+
+    .post-wrapper {
+      margin-top: 2.3em;
     }
   }
 
