@@ -132,7 +132,9 @@ function get_thumbnail_img($post_id) {
     $usable_img_url = $catched_img_url;
     if ( has_post_thumbnail()) {
         $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'custom-tb-size');
-        $usable_img_url = $thumbnail_image_url[0];
+        if (is_array($thumbnail_image_url) && !empty($thumbnail_image_url[0])) {
+            $usable_img_url = $thumbnail_image_url[0];
+        }
     } else if ($catched_img_url == NULL) {
         $usable_img_url = "";
     }

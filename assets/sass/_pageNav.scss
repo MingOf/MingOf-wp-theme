@@ -4,19 +4,23 @@
   // margin: 0 auto;
   //padding: 2.8em;
   font-size: 1.13em;
+
   .page-nav {
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    border-top: 2px solid #eee;
     transition: transform 0.3s;
-    span,a {
+    font-size: clamp(10px, 2vw, 16px);
+
+    span,
+    a {
       margin-bottom: 1em;
     }
+
     .page-numbers {
       display: inline-block;
-      margin: -1px 5px 0 5px;
-      padding: 0 16px;
+      margin-top: 5px;
+      padding: 0 1em;
       border-top: 3px solid transparent;
       transition: all 0.3s;
       position: relative;
@@ -25,17 +29,20 @@
       //@include boxShadow;
       border-radius: 2px;
       box-shadow: 0 -2px 0 #eee;
+
       &.current {
         color: #fff;
         background-color: $highlightColor;
         background-color: var(--highlightColor);
       }
+
       &:hover:not(.current) {
         border-top: 3px solid $highlightColor;
         border-top: 3px solid var(--highlightColor);
         color: $highlightColor;
         color: var(--highlightColor);
       }
+
       &::before {
         content: '';
         position: absolute;
@@ -46,6 +53,7 @@
       }
     }
   }
+
   //&:hover {
   //  .page-nav {
   //    transform: scale(1.3);
@@ -57,21 +65,25 @@
   .page-nav-wrapper {
     .page-nav {
       border: 0 none;
+
       .tl-page-num {
         color: $FontColorInDarkMode;
         color: var(--FontColorInDarkMode);
       }
+
       .page-numbers {
-          color: $FontColorInDarkMode;
-          color: var(--FontColorInDarkMode);
-          //@include boxShadowInDarkMode;
+        color: $FontColorInDarkMode;
+        color: var(--FontColorInDarkMode);
+        //@include boxShadowInDarkMode;
         box-shadow: 0 -3px 3px #222933;
+
         &.current {
           color: $FontColorInDarkMode;
           color: var(--FontColorInDarkMode);
           background-color: $highlightColorInDarkMode;
           background-color: var(--highlightColorInDarkMode);
         }
+
         &:hover:not(.current) {
           color: $highlightColorInDarkMode;
           color: var(--highlightColorInDarkMode);
