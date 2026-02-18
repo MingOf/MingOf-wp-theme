@@ -1,24 +1,31 @@
+@use "var"as *;
+
 // 评论，已废弃
 #comments {
   .comment-list {
     list-style: none;
     margin-left: 0;
+
     ol {
       list-style: none;
     }
+
     .comment-author .avatar {
       border-radius: 50%;
       margin-bottom: -20px;
     }
+
     .comment-body {
       border-bottom: 1px solid $subColor;
       border-bottom: 1px solid var(--subColor);
       margin-top: 5px;
       position: relative;
       margin-bottom: 20px;
+
       p {
         margin: 1.1em;
       }
+
       .reply {
         position: absolute;
         right: 0;
@@ -30,21 +37,25 @@
         color: #fff;
         padding: 0 6px;
         font-size: 15px;
+
         a {
           color: #fff;
         }
       }
+
       &:hover {
         .reply {
           display: block;
         }
       }
     }
+
     .comment-meta {
       font-size: 12px;
       margin-left: 41px;
     }
   }
+
   #respond {
     .comment-form-comment textarea {
       width: 100%;
@@ -54,14 +65,19 @@
       border: 1px solid var(--subColor);
       text-indent: 0.5em;
     }
-    .comment-form-author,.comment-form-email,.comment-form-url {
+
+    .comment-form-author,
+    .comment-form-email,
+    .comment-form-url {
       width: 100px;
+
       input {
         border-radius: 3px;
         text-indent: 0.5em;
         border: 1px solid #ccc;
       }
     }
+
     .form-submit {
       input {
         background-color: $highlightColor;
@@ -72,6 +88,7 @@
         padding: 0 10px;
         cursor: pointer;
         transition: all 0.3s;
+
         &:hover {
           background-color: transparent;
           border: 1px solid $highlightColor;
@@ -81,6 +98,7 @@
         }
       }
     }
+
     .comment-form-cookies-consent {
       clear: both;
     }
@@ -98,11 +116,13 @@
         }
       }
     }
+
     #respond {
       .form-submit {
         input {
           background-color: $highlightColorInDarkMode;
           background-color: var(--highlightColorInDarkMode);
+
           &:hover {
             border: 1px solid $highlightColorInDarkMode;
             border: 1px solid var(--highlightColorInDarkMode);

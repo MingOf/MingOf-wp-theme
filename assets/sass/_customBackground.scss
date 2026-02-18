@@ -1,3 +1,5 @@
+@use "var"as *;
+
 // 设置背景图片
 // 以下背景图片CSS只支持PC端，移动端性能太差，不设置background image
 .custom-background {

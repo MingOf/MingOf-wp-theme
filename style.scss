@@ -15,13 +15,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
  */
 @charset "utf-8";
 
+@use "sass:meta";
+@use "assets/sass/var"as *;
+
 :root {
   color-scheme: light dark;
 }
 
 /* 一些基础样式和变量*/
-@import "assets/sass/var";
-@import "assets/sass/normalize";
+@include meta.load-css("assets/sass/normalize");
 
 #overlay {
   position: fixed;
@@ -40,8 +42,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 /* header*/
-@import "assets/sass/header";
-@import "assets/sass/banner-m";
+@include meta.load-css("assets/sass/header");
+@include meta.load-css("assets/sass/banner-m");
 
 
 #mastcontainer {
@@ -91,28 +93,28 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 /*文章列表容器*/
-@import "assets/sass/postsContainer";
+@include meta.load-css("assets/sass/postsContainer");
 
 /*侧边栏*/
-@import "assets/sass/sidebar";
+@include meta.load-css("assets/sass/sidebar");
 
 /*时间线页面*/
-@import "assets/sass/timeline";
+@include meta.load-css("assets/sass/timeline");
 
 /*分页按钮*/
-@import "assets/sass/pageNav";
+@include meta.load-css("assets/sass/pageNav");
 
 /*404 界面*/
-@import "assets/sass/notFound";
+@include meta.load-css("assets/sass/notFound");
 
 /*关于*/
-@import "assets/sass/about";
+@include meta.load-css("assets/sass/about");
 
 // 友链
-@import "assets/sass/friends";
+@include meta.load-css("assets/sass/friends");
 
 // 有背景图的情况
-@import "assets/sass/customBackground";
+@include meta.load-css("assets/sass/customBackground");
 
 /*评论*/
 // 废弃，使用WP_discuz插件代替原生评论
@@ -120,23 +122,23 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 
 /*普通页面*/
-@import "assets/sass/page";
+@include meta.load-css("assets/sass/page");
 
 /*goTop*/
-@import "assets/sass/goTop";
+@include meta.load-css("assets/sass/goTop");
 
 
 /*footer*/
-@import "assets/sass/footer";
+@include meta.load-css("assets/sass/footer");
 
 /*灯箱*/
-@import "assets/sass/lightBox";
+@include meta.load-css("assets/sass/lightBox");
 
 /*enlighter插件*/
-@import "assets/sass/enlighter";
+@include meta.load-css("assets/sass/enlighter");
 
 /*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
-@import "assets/sass/wpDiscuzColorBak";
+@include meta.load-css("assets/sass/wpDiscuzColorBak");
 
 /*缝缝补补又是一年*/
-@import "assets/sass/patch";
+@include meta.load-css("assets/sass/patch");

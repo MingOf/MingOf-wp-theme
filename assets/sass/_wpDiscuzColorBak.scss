@@ -1,3 +1,5 @@
+@use "var"as *;
+
 // wp_discuz插件更改颜色，样式覆盖
 #wpdcom .wpd-prim-button {
   background-color: var(--highlightColor);

@@ -1,3 +1,5 @@
+@use "var"as *;
+
 // 一些变量和初始化样式
 /**
 iconfont
@@ -68,7 +70,7 @@ iconfont
 //   font-style: italic;
 // }
 
-@import './var.scss';
+// @import './var.scss';
 
 
 /**
