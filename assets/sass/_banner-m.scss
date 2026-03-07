@@ -42,7 +42,7 @@
       left: -50%;
       background-color: $bgColorBase;
       background-color: var(--bgColorBase);
-      filter: blur(5px);
+      filter: blur(3px);
     }
 
     #banner-logo {
@@ -144,7 +144,7 @@
     }
   }
 
-  .dark {
+  &.dark {
     #banner {
       &::before {
         content: '';
