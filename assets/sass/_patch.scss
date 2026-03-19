@@ -155,12 +155,8 @@ html {
   background-color: $bgColorBase;
   background-color: var(--bgColorBase);
   height: 100%;
-  font-size: 14px;
+  font-size: clamp(14px, 0.5vw + 12px, 16px);
   font-family: "Titillium Web", sans-serif;
-
-  @media screen and (max-width: 1000px) {
-    font-size: 16px;
-  }
 }
 
 html.dark {

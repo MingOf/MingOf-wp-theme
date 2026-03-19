@@ -40,20 +40,74 @@ register_nav_menus(array(
     'mobile_menus'=>'移动端banner菜单'
 ));
 
+/**
+ * 软件版本：WordPress 6.4+, highlight.js 11.9.0
+ * 参考文献：WordPress Developer Reference (wp_enqueue_script)
+ */
+function theme_hljs_init_logic($hljs_ver) {
+
+    $dark_style_url = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{$hljs_ver}/styles/github-dark-dimmed.css";
+    $light_style_url = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{$hljs_ver}/styles/stackoverflow-light.min.css";
+
+    $js_template = <<< "JS"
+    (function() {
+        const themeLink = document.getElementById('hljs-theme-css');
+        const darkStyle = "%s";
+        const lightStyle = "%s";
+
+        // //1. 主题切换逻辑
+        const updateHljsTheme = (isDark) => {
+            if (themeLink) themeLink.href = isDark ? darkStyle : lightStyle;
+        };
+
+        const colorQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        updateHljsTheme(colorQuery.matches);
+        colorQuery.addEventListener('change', e => updateHljsTheme(e.matches));
+
+        // 2. 自动高亮与行号初始化
+        // 引用：highlight.js Usage (https://highlightjs.org/usage/)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+                hljs.initLineNumbersOnLoad();
+            }
+        });
+    })();
+JS;
+    return sprintf($js_template, $dark_style_url, $light_style_url);
+}
+/**
+ * 软件版本：WordPress 6.4+, highlight.js 11.9.0
+ * 参考文献：WordPress Developer Reference (wp_enqueue_script)
+ */
+function theme_enqueue_hljs() {
+    if ( ! is_singular() ) { return; }
+
+    // --- 1. 定义版本变量 ---
+    $hljs_ver = '11.11.1';
+    $ln_ver   = '2.9.0';
+
+    // 2. 注册基础样式
+    wp_enqueue_style('hljs-theme', "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{$hljs_ver}/styles/github.min.css", array(), $hljs_ver);
+
+    // 3. 延迟加载核心 JS
+    wp_enqueue_script('hljs-main', "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{$hljs_ver}/highlight.min.js", array(), $hljs_ver, array('strategy' => 'defer', 'in_footer' => true));
+
+    // 4. 延迟加载行号插件
+    // 引用：https://github.com/wcoder/highlightjs-line-numbers.js
+    wp_enqueue_script('hljs-ln', "https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/{$ln_ver}/highlightjs-line-numbers.min.js", array('hljs-main'), $ln_ver, array('strategy' => 'defer', 'in_footer' => true));
+
+    // 5. 注入逻辑（传入版本号以保持样式一致）
+    wp_add_inline_script('hljs-ln', theme_hljs_init_logic($hljs_ver));
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_hljs');
+
 
 /**
  * 添加 js 或者 css
  */
 function add_theme_scripts() {
     wp_enqueue_style('style', get_stylesheet_uri());
-    // if(!is_admin()) {
-    //     wp_deregister_script( 'jquery' );
-    //     wp_register_script( 'jquery', 'https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js', '', '3.5.1', false );
-    //     wp_enqueue_script('jquery');
-    //     wp_deregister_script('jquery-migrate');
-    //     wp_register_script('jquery-migrate','https://cdn.bootcdn.net/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js','','3.3.2',false);
-    //     wp_enqueue_script('jquery-migrate');
-    // }
     wp_enqueue_script('animation',get_template_directory_uri().'/assets/js/dist/animation.min.js',[],null,true);
     wp_enqueue_script('changeMode',get_template_directory_uri().'/assets/js/dist/changeMode.min.js',[],null,false);
     wp_enqueue_script('catalog',get_template_directory_uri().'/assets/js/dist/catalog.min.js',[],null,true);

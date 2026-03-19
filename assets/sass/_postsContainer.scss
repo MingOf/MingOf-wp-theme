@@ -212,11 +212,13 @@
         text-decoration: underline;
       }
 
-      code {
+      :not(pre)>code {
         font-family: 'Fira Code', monospace;
-        background-color: rgba(0, 0, 0, 0.05);
-        padding: 2px 4px;
         border-radius: 4px;
+        background-color: rgba(175, 184, 193, 0.2);
+        color: #e96900c5;
+        /* 经典的偏橙色代码字，深浅背景阅读感都很好 */
+        padding: 0.2em 0.4em;
       }
 
       ul {

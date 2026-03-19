@@ -79,7 +79,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .mobile {
   height: 100%;
-  font-size: 14px;
 
   #mastcontainer {
     display: block;
@@ -135,10 +134,57 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @include meta.load-css("assets/sass/lightBox");
 
 /*enlighter插件*/
-@include meta.load-css("assets/sass/enlighter");
+// @include meta.load-css("assets/sass/enlighter");
 
 /*更换wpDiscuz插件的配色，如果安装了这个插件的话*/
 @include meta.load-css("assets/sass/wpDiscuzColorBak");
 
 /*缝缝补补又是一年*/
 @include meta.load-css("assets/sass/patch");
+
+
+
+/* 引用：highlightjs-line-numbers.js 官方建议 CSS 规范 */
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: #999;
+  border-right: 1px solid #ddd;
+  vertical-align: top;
+  padding-right: 8px !important;
+  width: 30px;
+  /* 固定行号宽度 */
+}
+
+.hljs-ln-code {
+  padding-left: 12px !important;
+}
+
+pre code.hljs {
+  /* 解决 WordPress 默认代码块边距问题 */
+  padding: 1.5em;
+  border-radius: 4px;
+
+  /* 1. 针对 highlight.js 容器禁用换行 */
+
+  white-space: pre !important;
+  /* 强制不换行，保留原始空格和缩进 */
+  overflow-x: auto !important;
+  /* 当内容超出时显示水平滚动条 */
+  display: block !important;
+  /* 确保容器表现为块级元素 */
+  word-wrap: normal !important;
+  /* 禁用单词折行 */
+}
+
+/* 2. 优化滚动条样式 (可选，针对 Webkit 内核如 Chrome/Edge) */
+pre code.hljs::-webkit-scrollbar {
+  height: 4px;
+}
+
+pre code.hljs::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
