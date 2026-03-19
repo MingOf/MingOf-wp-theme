@@ -119,46 +119,46 @@ add_action('wp_enqueue_scripts', 'add_theme_scripts');
  * 软件版本：WordPress 6.4+ (Block Editor)
  * 引用：WordPress Block Editor Handbook - Editor Styles
  */
-// function theme_custom_gutenberg_code_feedback() {
-//     wp_add_inline_style( 'wp-block-library', "
-//         /* 1. 行内代码：粉色文字 + 微灰背景 */
-//         .rich-text code, 
-//         .editor-styles-wrapper code:not(pre code) {
-//             background-color: rgba(0, 0, 0, 0.06) !important;
-//             color: #d63384 !important;
-//             padding: 2px 6px !important;
-//             border-radius: 4px !important;
-//             font-family: 'Cascadia Code', Menlo, Monaco, monospace !important;
-//             font-size: 0.9em !important;
-//         }
+function theme_custom_gutenberg_code_feedback() {
+    wp_add_inline_style( 'wp-block-library', "
+        /* 1. 行内代码：粉色文字 + 微灰背景 */
+        .rich-text code, 
+        .editor-styles-wrapper code:not(pre code) {
+            background-color: rgba(0, 0, 0, 0.06) !important;
+            color: #d63384 !important;
+            padding: 2px 6px !important;
+            border-radius: 4px !important;
+            font-family: 'Cascadia Code', Menlo, Monaco, monospace !important;
+            font-size: 0.9em !important;
+        }
 
-//         /* 2. 代码块 (Pre)：深色背景 + 左侧边框 + 模拟代码间距 */
-//         .wp-block-code {
-//             background-color: #282c34 !important; /* 模拟 Atom One Dark 背景 */
-//             border-left: 4px solid #61afef !important;
-//             border-radius: 8px !important;
-//             padding: 1.5em !important;
-//             box-shadow: inset 0 1px 5px rgba(0,0,0,0.2) !important;
-//         }
+        /* 2. 代码块 (Pre)：深色背景 + 左侧边框 + 模拟代码间距 */
+        .wp-block-code {
+            background-color: #282c34 !important; /* 模拟 Atom One Dark 背景 */
+            border-left: 4px solid #61afef !important;
+            border-radius: 8px !important;
+            padding: 1.5em !important;
+            box-shadow: inset 0 1px 5px rgba(0,0,0,0.2) !important;
+        }
 
-//         /* 代码块内部文字颜色 */
-//         .wp-block-code code {
-//             color: #d2d7e0 !important;
-//             background: transparent !important; /* 覆盖行内代码的背景 */
-//             padding: 0 !important;
-//             font-size: 14px !important;
-//             line-height: 1.6 !important;
-//             display: block !important;
-//         }
+        /* 代码块内部文字颜色 */
+        .wp-block-code code {
+            color: #d2d7e0 !important;
+            background: transparent !important; /* 覆盖行内代码的背景 */
+            padding: 0 !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            display: block !important;
+        }
 
-//         /* 3. 选中代码块时的视觉增强 */
-//         .wp-block-code.is-selected pre {
-//             outline: 2px solid #61afef !important;
-//             outline-offset: 2px;
-//         }
-//     ");
-// }
-// add_action( 'enqueue_block_editor_assets', 'theme_custom_gutenberg_code_feedback' );
+        /* 3. 选中代码块时的视觉增强 */
+        .wp-block-code.is-selected pre {
+            outline: 2px solid #61afef !important;
+            outline-offset: 2px;
+        }
+    ");
+}
+add_action( 'enqueue_block_editor_assets', 'theme_custom_gutenberg_code_feedback' );
 
 /**
  * 设置摘要的文字数量，配合 expert_read_more_link 函数
