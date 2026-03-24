@@ -148,13 +148,14 @@
     .widget_search .widget-title,
     .wp-block-search__label,
     .search-widget .widget-title {
-      font-size: 28px;
-      line-height: 1.2;
-      font-weight: 800;
-      color: #1f2f5f;
-      margin: 0 0 18px;
-      padding: 0;
-      letter-spacing: -0.02em;
+      // font-size: 28px;
+      // line-height: 1.2;
+      // font-weight: 800;
+      // color: #1f2f5f;
+      // margin: 0 0 18px;
+      // padding: 0;
+      // letter-spacing: -0.02em;
+      display: none;
     }
 
     /* 搜索表单整体 */
